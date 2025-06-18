@@ -6,11 +6,13 @@
     - HTML, CSS a JS -> Základní technologie pro celou stránku
     - Three.js -> Pro práci s 3D grafikou v prohlížeči
     - Tailwind CSS -> Pro responzivitu stránky
+    
 ### Back-end
     - Django -> Pro backend
     - MongoDB -> NoSQL databáze, ukládání dat
     - Django Rest Framework -> REST API pro komunikaci mezi frontendem a backendem
     - OAuth -> Přihlašování uživatelů a správa přístupových dat
+    
 ### Inspirace
     Poliigon: https://www.poliigon.com/
     Sketchfab: https://sketchfab.com/
@@ -29,3 +31,10 @@
     - 3Vat
     - ThreeVat
     - FreeVat
+
+### Cíle (co má aplikace umět)
+    - Ukládat 3D modely do databáze a provádět s nima základní operace (přidávat, upravovat, mazat atd.)
+    - 3D modely bude možné si prohlížet v 360° (posouvání, zoomování a rotace)
+    - Přihlašování uživatelů a mazání jejich účtů
+    - Budou se zde zobrazovat základní informace o 3D modelech (počet ploch, velikost a typ)
+    - 
