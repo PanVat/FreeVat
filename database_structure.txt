@@ -1,0 +1,34 @@
+--- FreeVat ---
+
+Tables:
+  - Model_3D
+    - id (Integer)
+    - name (Varchar)
+    - uploaded_at (Date)
+    - updated_at (Date)
+    - description (Text)
+    - properties (FK from Properties)
+    - author (FK from User)
+    
+  - Properties
+    - polygon_count (Integer)
+    - vertex_count (Integer)
+    - file_size (Integer)
+    - file_format (Varchar)
+    - version (Varchar)
+
+  - User
+    - id (Integer)
+    - email (Varchar)
+    - username (Varchar)
+    - first_name (Varchar)
+    - last_name (Varchar)
+    - created_at (Date)
+    - profile_image (Blob)
+
+  - Comment
+    - id (Integer)
+    - user (FK from User)
+    - model_3d (FK from Model_3D)
+    - content (Text)
+    - created_at (Date)
