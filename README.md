@@ -9,7 +9,7 @@
     
 ### Back-end
     - Django -> Pro backend
-    - MongoDB -> NoSQL databáze, ukládání dat
+    - PostgreSQL -> Databáze
     - Django Rest Framework -> REST API pro komunikaci mezi frontendem a backendem
     - OAuth -> Přihlašování uživatelů a správa přístupových dat
     
