@@ -37,4 +37,6 @@
     - 3D modely bude možné si prohlížet v 360° (posouvání, zoomování a rotace)
     - Přihlašování uživatelů a mazání jejich účtů
     - Budou se zde zobrazovat základní informace o 3D modelech (počet ploch, velikost a typ)
-    - 
+    - Bude zde na výběr čeština nebo angličtina
+    - Vyhledávací pole - uživatel si bude moct vyhledat 3D modely
+    - Na navigační liště budou tlačíka (Logo webu -> Vyhledávací pole -> Lišta s kategoriemi -> Změna jazyka -> Přihlásit se -> Registrovat se)
