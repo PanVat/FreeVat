@@ -5,6 +5,7 @@
     - React.js -> Pro frontend a uživatelské rozhraní
     - HTML, CSS a JS -> Základní technologie pro celou stránku
     - Three.js -> Pro práci s 3D grafikou v prohlížeči
+    - Tailwind CSS -> Pro responzivitu stránky
 ### Back-end
     - Django -> Pro backend
     - MongoDB -> NoSQL databáze, ukládání dat
