@@ -1,1 +1,24 @@
-\venv
+# Virtuální prostředí
+.venv/
+.env/
+
+# Python cache
+*.pyc
+*.pyo
+__pycache__/
+*.pyd
+
+# Node
+node_modules/
+package-lock.json
+
+# PyCharm
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# VS Code
+.vscode/
+
+# Migrace
+free_vat/free_vat/migrations/

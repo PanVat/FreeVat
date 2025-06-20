@@ -1,42 +1,50 @@
-# 3d-web
+# FreeVat
 
-## Použité technologie
+**FreeVat** je webová aplikace, která umožňuje uživatelům nahrávat, zobrazovat a mazat 3D modely. Aplikace je postavena na
+moderních technologiích a poskytuje uživatelům jednoduché a intuitivní rozhraní při prohlížení 3D modelů. Všechny
+modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si je moct stáhnout úplně kdokoli a používat na
+úplně cokoli. Je to takové zdrojákoviště 3D objektů, ke kterým má přístup úplně každý.
+
+## Z čeho se aplikace skládá?
+
 ### Front-end
-    - React.js -> Pro frontend a uživatelské rozhraní
-    - HTML, CSS a JS -> Základní technologie pro celou stránku
-    - Three.js -> Pro práci s 3D grafikou v prohlížeči
-    - Tailwind CSS -> Pro responzivitu stránky
-    
+- `HTML & CSS` - Základní struktura a stylování
+- `Three.js` - Práce s 3D grafikou na webu
+- `Tailwind CSS` - Moderní a responzivní design
+
 ### Back-end
-    - Django -> Pro backend
-    - PostgreSQL -> Databáze
-    - Django Rest Framework -> REST API pro komunikaci mezi frontendem a backendem
-    - OAuth -> Přihlašování uživatelů a správa přístupových dat
-    
-### Inspirace
-    Poliigon: https://www.poliigon.com/
-    Sketchfab: https://sketchfab.com/
-    3DViewerMax: https://3dviewermax.com/
-    3DViewerOnline: https://www.3dvieweronline.com/
-    Printables: https://www.printables.com/
-    CGTrader: https://www.cgtrader.com/
-    Thingiverse: https://www.thingiverse.com/
-    Turbosquid: https://www.turbosquid.com/
-    ClaraIO: https://clara.io/
-    PolyHaven: https://polyhaven.com/
-    BlendSwap: https://www.blendswap.com/
-    Free3D: https://free3d.com/
+- `Django` - Celá aplikace je postavena na Djangu
+- `PostgreSQL` - Databázový systém
+- `Django Rest Framework` - REST API pro komunikaci mezi frontendem a backendem
+- `OAuth` - Přihlašování uživatelů a správa přístupových dat
+- `Docker` - Kontejnerizace aplikace pro snadné nasazení a škálování
 
-### Možné názvy?
-    - 3Vat
-    - ThreeVat
-    - FreeVat
+Všechny instalované závislosti jsou uvedeny v souborech `requirements.txt` a `package.json`.
 
-### Cíle (co má aplikace umět)
-    - Ukládat 3D modely do databáze a provádět s nima základní operace (přidávat, upravovat, mazat atd.)
-    - 3D modely bude možné si prohlížet v 360° (posouvání, zoomování a rotace)
-    - Přihlašování uživatelů a mazání jejich účtů
-    - Budou se zde zobrazovat základní informace o 3D modelech (počet ploch, velikost a typ)
-    - Bude zde na výběr čeština nebo angličtina
-    - Vyhledávací pole - uživatel si bude moct vyhledat 3D modely
-    - Na navigační liště budou tlačíka (Logo webu -> Vyhledávací pole -> Lišta s kategoriemi -> Změna jazyka -> Přihlásit se -> Registrovat se)
+## Kde jsem se inspiroval?
+- Poliigon: https://www.poliigon.com/
+- Sketchfab: https://sketchfab.com/
+- 3DViewerMax: https://3dviewermax.com/
+- 3DViewerOnline: https://www.3dvieweronline.com/
+- Printables: https://www.printables.com/
+- CGTrader: https://www.cgtrader.com/
+- Thingiverse: https://www.thingiverse.com/
+- Turbosquid: https://www.turbosquid.com/
+- ClaraIO: https://clara.io/
+- PolyHaven: https://polyhaven.com/
+- BlendSwap: https://www.blendswap.com/
+- Free3D: https://free3d.com/
+
+## Možné názvy?
+- `3Vat`
+- `ThreeVat`
+- `FreeVat` (finální)
+
+## Co od aplikace očekávám?
+
+- Ukládání 3D modelů do databáze a provádět s nima základní CRUD operace
+- Prohlížení objektů v 360° - posouvání, zoomování i rotace
+- Registrace, přihlašování a mazání uživatelských účtů
+- Zobrazování základních informací o modelech (počet ploch, velikost souboru..)
+- Více jazyků na výběr - čeština / angličtina
+- Vyhledávání 3D modelů podle názvu, případně podle velikosti
