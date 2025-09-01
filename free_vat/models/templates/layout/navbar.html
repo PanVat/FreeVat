@@ -1,0 +1,59 @@
+<!-- Navigační lišta celého webu vytvořená s pomocí Bootstrapu -->
+{% load static %}
+
+<!-- Horní lišta (vyhledávací pole a registrace) -->
+<nav class="navbar bg-white shadow w-100 px-4">
+  <div class="d-flex justify-content-between align-items-center w-100 flex-wrap">
+    <!-- Výběr jazyka -->
+    <select class="form-select form-select-sm d-inline-block w-auto">
+      <option value="cs">Čeština</option>
+      <option value="en">English</option>
+    </select>
+    <!-- Vyhledávací pole -->
+    <form class="d-flex mx-auto" style="width: 400px; max-width: 100%;">
+      <input class="form-control" type="search" placeholder="Vyhledat..." aria-label="Search">
+    </form>
+    <!-- Přihlášení a registrace -->
+    <div>
+      <button type="button" class="btn btn-primary me-2">Přihlásit se</button>
+      <button type="button" class="btn btn-success">Vytvořit účet</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Spodní lišta (rozcestník a uploadování modelů) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black shadow w-100 px-4">
+    <div class="d-flex justify-content-between align-items-center w-100 flex-wrap">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'img/web_icon.svg' %}" alt="FreeVat">
+        </a>
+        <!-- Tlačítko pro rozbalení menu na mobilních zařízeních -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Kategorie jako navigační odkazy -->
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a href="#" class="nav-link">Příroda</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Sport</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Videohry</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Architektura</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Vozidla</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Jídlo</a>
+            </li>
+        </ul>
+        <!-- Tlačítko pro uploadování modelů -->
+        <button type="button" class="btn btn-success">⬆ Nahrát</button>
+    </div>
+</nav>

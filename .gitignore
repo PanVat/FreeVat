@@ -1,6 +1,6 @@
 # Virtuální prostředí
 .venv/
-*.env
+.env
 
 # Python cache
 *.pyc

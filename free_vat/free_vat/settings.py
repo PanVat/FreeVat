@@ -1,5 +1,6 @@
 from pathlib import Path
 from dotenv import load_dotenv
+import shutil
 import os
 
 load_dotenv()  # Načtení proměnných prostředí z .env souboru
@@ -23,10 +24,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    ## Vlastní aplikace ##
     'models.apps.ModelsConfig',  # Aplikace 'models'
-    'rest_framework', # Django REST framework pro API
+    'rest_framework',  # Django REST framework pro API
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -35,6 +36,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # Pro více jazyků (Čeština, Angličtina)
 ]
 
 ROOT_URLCONF = 'free_vat.urls'
@@ -42,13 +44,14 @@ ROOT_URLCONF = 'free_vat.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static',
             ],
         },
     },
@@ -56,20 +59,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'free_vat.wsgi.application'
 
+# Použití PostgreSQL jako databáze
 DATABASES = {
     'default': {
-        # Použití PostgreSQL jako databáze
         'ENGINE': 'django.db.backends.postgresql',
 
-        'NAME': '',
+        'NAME': 'postgres',
 
-        'USER': '',
+        'USER': 'postgres',  # Uživatel z pgAdmin4
 
-        'PASSWORD': '',
+        'PASSWORD': 'admin',  # Heslo z pgAdmin4
 
-        'HOST': '',
+        'HOST': 'localhost',
 
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
@@ -90,6 +93,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'cs-cz'
 
+LANGUAGES = [
+    ('cs', 'Čeština'),
+    ('en', 'English'),
+]
+
+LOCALE_PATHS = [BASE_DIR / 'locale']
+
 TIME_ZONE = 'Europe/Prague'
 
 USE_I18N = True
@@ -99,3 +109,5 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_DIRS = [BASE_DIR / 'static']
