@@ -1,0 +1,21 @@
+<svg id="CZ" xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #d7141a;
+      }
+
+      .cls-3 {
+        fill: #11457e;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <rect id="Bílá" class="cls-1" width="900" height="600"/>
+  <rect id="Červená" class="cls-2" y="300" width="900" height="300"/>
+  <path id="Modrá" class="cls-3" d="M450,300L0,600V0Z"/>
+</svg>

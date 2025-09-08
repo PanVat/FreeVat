@@ -1,0 +1,32 @@
+<svg id="GB" xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #012169;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-4, .cls-5 {
+        fill: #c8102e;
+      }
+    </style>
+  </defs>
+  <rect id="Modrá" class="cls-1" width="900" height="600"/>
+  <rect id="Bílá" class="cls-2" x="375" width="150" height="600"/>
+  <path id="Bílá_copy_2" data-name="Bílá copy 2" class="cls-3" d="M872.978-49.133l61.939,92.908L20.339,653.492-41.6,560.584Z"/>
+  <path id="Bílá_copy_3" data-name="Bílá copy 3" class="cls-3" d="M20.022-49.133L-41.917,43.775,872.661,653.492,934.6,560.584Z"/>
+  <path id="Červená" class="cls-4" d="M-6.039-4.025L-26.8,27.109,432.129,333.058l20.756-31.134Z"/>
+  <path id="Červená-2" data-name="Červená" class="cls-4" d="M885.039-36.025L905.8-4.891,446.871,301.058l-20.756-31.134Zm0,0L905.8-4.891,446.871,301.058l-20.756-31.134Zm0,0L905.8-4.891,446.871,301.058l-20.756-31.134Z"/>
+  <path id="Červená_copy_2" data-name="Červená copy 2" class="cls-4" d="M953.039,634.025L973.8,602.891,514.871,296.942l-20.756,31.134Z"/>
+  <path id="Červená_copy_2-2" data-name="Červená copy 2" class="cls-4" d="M-20.039,659.025L-40.8,627.891,418.129,321.942l20.756,31.134Z"/>
+  <path id="Bílá_copy" data-name="Bílá copy" class="cls-3" d="M900,200V400H0V200H900Z"/>
+  <rect id="Červená-3" data-name="Červená" class="cls-5" x="405" width="90" height="600"/>
+  <path id="Červená_copy" data-name="Červená copy" class="cls-4" d="M0,360V240H900V360H0Z"/>
+</svg>

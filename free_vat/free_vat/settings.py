@@ -25,8 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     ## Vlastní aplikace ##
-    'models.apps.ModelsConfig',  # Aplikace 'models'
     'rest_framework',  # Django REST framework pro API
+    'free_vat',  # Hlavní aplikace
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -44,7 +44,7 @@ ROOT_URLCONF = 'free_vat.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates/'], # Cesta k šablonám
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,8 +106,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static/' # Cesta ke statickým souborům
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-STATICFILES_DIRS = [BASE_DIR / 'static']
