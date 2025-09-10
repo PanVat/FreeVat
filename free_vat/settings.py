@@ -31,12 +31,12 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # Pro více jazyků
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware', # Pro více jazyků (Čeština, Angličtina)
 ]
 
 ROOT_URLCONF = 'free_vat.urls'
@@ -44,7 +44,7 @@ ROOT_URLCONF = 'free_vat.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates/'], # Cesta k šablonám
+        'DIRS': [BASE_DIR / 'templates/'],  # Cesta k šablonám
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,21 +91,25 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'cs-cz'
+# Výchozí jazyk aplikace
+LANGUAGE_CODE = 'cs'
 
+# Více jazyků, mezi kterými lze přepínat
 LANGUAGES = [
-    ('cs', 'Čeština'),
+    ('cs', 'Czech'),
     ('en', 'English'),
+    ('de', 'German'),
 ]
 
 LOCALE_PATHS = [BASE_DIR / 'locale']
 
 TIME_ZONE = 'Europe/Prague'
 
-USE_I18N = True
+USE_I18N = True  # Povolení mezinárodní podpory
+USE_L10N = True  # Povolení lokalizace (např. datum)
 
 USE_TZ = True
 
-STATIC_URL = 'static/' # Cesta ke statickým souborům
+STATIC_URL = 'static/'  # Cesta ke statickým souborům
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
