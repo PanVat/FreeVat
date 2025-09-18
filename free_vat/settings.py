@@ -1,6 +1,6 @@
 from pathlib import Path
 from dotenv import load_dotenv
-import shutil
+from django.utils.translation import gettext_lazy as _  # Pro překlad do jiných jazyků
 import os
 
 load_dotenv()  # Načtení proměnných prostředí z .env souboru
@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     ## Vlastní aplikace ##
     'rest_framework',  # Django REST framework pro API
     'free_vat',  # Hlavní aplikace
+    'rosetta',  # Rosetta pro správu překladů
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -44,7 +45,7 @@ ROOT_URLCONF = 'free_vat.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates/'],  # Cesta k šablonám
+        'DIRS': [BASE_DIR / 'free_vat' / 'templates'],  # Cesta k šablonám
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -96,12 +97,15 @@ LANGUAGE_CODE = 'cs'
 
 # Více jazyků, mezi kterými lze přepínat
 LANGUAGES = [
-    ('cs', 'Czech'),
-    ('en', 'English'),
-    ('de', 'German'),
+    ('en', _('English')),  # Angličtina
+    ('cs', _('Czech')),  # Čeština
+    ('de', _('German')),  # Němčina
 ]
 
-LOCALE_PATHS = [BASE_DIR / 'locale']
+# Cesta k překladovým souborům
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
 
 TIME_ZONE = 'Europe/Prague'
 

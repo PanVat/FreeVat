@@ -1,25 +1,28 @@
-<!-- Nahrání i18n pro překlady -->
 {% load i18n %}
-
 <nav class="bg-gray-800 p-4 text-white">
     <div class="mx-auto flex justify-between items-center">
-        <div class="relative group">
-            <button class="text-sm font-semibold hover:text-gray-400 transition-colors duration-300 focus:outline-none flex items-center">
-                Language
-                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-            </button>
-            <div class="absolute right-0 mt-2 w-32 bg-gray-700 rounded-md shadow-lg py-1 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 invisible group-hover:visible group-focus-within:visible">
-                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-600">Čeština</a>
-                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-600">English</a>
-            </div>
+        <div>
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <select name="language" onchange="this.form.submit()" class="bg-gray-700 text-white p-1 rounded">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                            {{ language.name_local }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <input type="hidden" name="next" value="{{ request.path }}">
+            </form>
         </div>
-
         <div class="flex space-x-8">
-            <a href="#" class="text-sm font-semibold hover:text-gray-400 transition-colors duration-300">Products</a>
-            <a href="#" class="text-sm font-semibold hover:text-gray-400 transition-colors duration-300">Solutions</a>
-            <a href="#" class="text-sm font-semibold hover:text-gray-400 transition-colors duration-300">Prices</a>
-            <a href="#" class="text-sm font-semibold hover:text-gray-400 transition-colors duration-300">Blog</a>
-            <a href="#" class="text-sm font-semibold hover:text-gray-400 transition-colors duration-300">Support</a>
+            <a href="#" class="text-sm font-semibold hover:text-gray-400 transition-colors duration-300">{% trans "Products" %}</a>
+            <a href="#" class="text-sm font-semibold hover:text-gray-400 transition-colors duration-300">{% trans "Solutions" %}</a>
+            <a href="#" class="text-sm font-semibold hover:text-gray-400 transition-colors duration-300">{% trans "Prices" %}</a>
+            <a href="#" class="text-sm font-semibold hover:text-gray-400 transition-colors duration-300">{% trans "Blog" %}</a>
+            <a href="#" class="text-sm font-semibold hover:text-gray-400 transition-colors duration-300">{% trans "Support" %}</a>
         </div>
     </div>
 </nav>
