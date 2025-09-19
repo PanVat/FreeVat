@@ -114,6 +114,6 @@ USE_L10N = True  # Povolení lokalizace (např. datum)
 
 USE_TZ = True
 
-STATIC_URL = 'static/'  # Cesta ke statickým souborům
+STATIC_URL = '/static/'  # Cesta ke statickým souborům
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

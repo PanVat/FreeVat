@@ -5,13 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <title>FreeVat</title>
-    <!-- Importování Bootstrap CSS -->
+    <!-- Importování scriptů (později bude přes NPM) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 <body>
-{% include "layout/header.html" %}
-{% include "layout/navbar.html" %}
+{% include "layout/header/header.html" %}
+{% include "layout/navbar/navbar.html" %}
 {% block content %}{% endblock %}
-{% include "layout/footer.html" %}
+{% include "layout/footer/footer.html" %}
 </body>
 </html>
