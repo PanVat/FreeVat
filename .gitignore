@@ -22,3 +22,6 @@ package-lock.json
 
 # Migrace
 free_vat/free_vat/migrations/
+
+# Jiné
+help.txt

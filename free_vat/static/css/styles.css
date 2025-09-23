@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Obrázek vlajky */
+@layer components{
+    .flag-img{
+        @apply w-10 rounded-md h-auto hover:brightness-75 !important;
+    }
+}

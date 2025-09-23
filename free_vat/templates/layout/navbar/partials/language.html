@@ -10,43 +10,29 @@
 {% get_language_info_list for LANGUAGES as languages %}
 
 <!-- Přepínání jazyků -->
-        <div x-data="{ open: false }" class="relative inline-block">
-            <!-- Aktivní vlajka -->
-            <button type="button" @click="open = !open"
-                class="inline-flex items-center justify-center p-0 bg-transparent border-none focus:outline-none"
-                aria-haspopup="true" :aria-expanded="open">
-                <img src="{% static 'img/flags/' %}{{ LANGUAGE_CODE }}.svg"
-                     alt="{{ LANGUAGE_CODE }}" class="w-10 h-auto object-cover hover:brightness-75" />
-            </button>
-            <!-- Aktivní vlajka - konec -->
-
-            <!-- Dropdown s ostatními vlajkami -->
-            <div x-show="open"
-             @click.away="open = false"
-             x-transition:enter="transition ease-out duration-200"
-             x-transition:enter-start="opacity-0 -translate-x-4"
-             x-transition:enter-end="opacity-100 translate-x-0"
-             x-transition:leave="transition ease-in duration-150"
-             x-transition:leave-start="opacity-100 translate-x-0"
-             x-transition:leave-end="opacity-0 -translate-x-4"
-             class="absolute left-full top-1/2 -translate-y-1/2 ml-2 flex space-x-2 bg-gray-800 shadow-lg px-3 py-2 z-50 whitespace-nowrap min-w-max">
-                <!-- Iterace přes dostupné jazyky -->
-                {% for language in languages %}
-                    {% if language.code != LANGUAGE_CODE %}
-                    <form action="{% url 'set_language' %}" method="post" class="p-0 m-0 border-none bg-transparent">
-                        {% csrf_token %}
-                        <input type="hidden" name="language" value="{{ language.code }}">
-                        <input type="hidden" name="next" value="{{ request.path }}">
-                        <button type="submit" class="focus:outline-none bg-transparent border-none p-0">
-                            <img src="{% static 'img/flags/' %}{{ language.code }}.svg"
-                                alt="{{ language.code }}"
-                                title="{{ language.name_local }}"
-                                class="w-10 h-auto hover:brightness-75" />
-                        </button>
-                    </form>
-                    {% endif %}
-                {% endfor %}
-                <!-- Iterace přes dostupné jazyky - konec -->
-            </div>
-            <!-- Dropdown s ostatními vlajkami -->
-        </div>
+        <div x-data="{ open: false }" class="relative inline-block" @mouseenter="open = true" @mouseleave="open = false">
+    <button type="button" class="inline-flex items-center justify-center p-0 bg-transparent border-none focus:outline-none" aria-haspopup="true" :aria-expanded="open">
+        <img src="{% static 'img/flags/' %}{{ LANGUAGE_CODE }}.svg"
+             alt="{{ LANGUAGE_CODE }}" class="flag-img object-cover" />
+    </button>
+    <div x-show="open"
+     x-transition:enter="transition ease-out duration-200"
+     x-transition:leave="transition ease-in duration-150"
+     class="absolute left-full top-1/2 -translate-y-1/2 ml-2 flex space-x-2 bg-gray-800 shadow-lg px-3 py-2 z-50 whitespace-nowrap min-w-max">
+        {% for language in languages %}
+            {% if language.code != LANGUAGE_CODE %}
+            <form action="{% url 'set_language' %}" method="post" class="p-0 m-0 border-none bg-transparent">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="{{ language.code }}">
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button type="submit" class="focus:outline-none bg-transparent border-none p-0">
+                    <img src="{% static 'img/flags/' %}{{ language.code }}.svg"
+                        alt="{{ language.code }}"
+                        title="{{ language.name_local }}"
+                        class="flag-img" />
+                </button>
+            </form>
+            {% endif %}
+        {% endfor %}
+    </div>
+    </div>
