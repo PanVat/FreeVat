@@ -3,22 +3,24 @@
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
 
-<div class="relative inline-block group">
+<!-- Přepínač mezi jazyky -->
+<div class="lang-switcher group">
+    <!-- Aktuální jazyk -->
     <button type="button"
-            class="inline-flex items-center justify-center p-0 bg-transparent border-none focus:outline-none"
+            class="flag-button"
             aria-haspopup="true">
         <img src="{% static 'img/flags/' %}{{ LANGUAGE_CODE }}.svg"
              alt="{{ LANGUAGE_CODE }}" class="flag-img"/>
     </button>
-
-    <div class="absolute left-full top-1/2 -translate-y-1/2 ml-2 flex space-x-2 bg-gray-800 shadow-lg px-3 py-2 z-50 whitespace-nowrap min-w-max hidden group-hover:flex">
+    <!-- Nabídka s ostatními jazyky -->
+    <div class="flag-dropdown">
         {% for language in languages %}
         {% if language.code != LANGUAGE_CODE %}
-        <form action="{% url 'set_language' %}" method="post" class="p-0 m-0 border-none bg-transparent">
+        <form action="{% url 'set_language' %}" method="post" class="form-toggle">
             {% csrf_token %}
             <input type="hidden" name="language" value="{{ language.code }}">
             <input type="hidden" name="next" value="{{ request.path }}">
-            <button type="submit" class="focus:outline-none bg-transparent border-none p-0">
+            <button type="submit" class="form-button">
                 <img src="{% static 'img/flags/' %}{{ language.code }}.svg"
                      alt="{{ language.code }}"
                      title="{{ language.name_local }}"

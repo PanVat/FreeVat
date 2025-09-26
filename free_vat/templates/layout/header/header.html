@@ -1,21 +1,35 @@
 {% load i18n %} <!-- Pro překlady -->
+{% load static %} <!-- Pro načítání statických souborů -->
 
-<header class="bg-gray-800 p-4 text-white">
-    <div class="flex items-center justify-between">
+<header class="header">
+    <div class="header-section">
         <!-- Logo -->
-        <a href="#" class="text-xl font-bold">
-            {% trans "My Application" %}
+        <a href="#">
+            <img src="{% static 'img/icons/web.svg' %}"
+                 alt="{% trans 'Web icon' %}"
+                 class="web-icon">
         </a>
+
         <!-- Vyhledávací pole -->
         <div class="flex-grow flex justify-center px-4">
-            <input type="text" placeholder='{% trans "Search" %}'
-                   class="w-full max-w-lg p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <div class="w-full max-w-lg relative">
+                <!-- Ikona lupy -->
+                <div class="search-icon">
+                    <img src="{% static 'img/icons/magnifying.svg' %}"
+                         alt="{% trans 'Search' %}"
+                         class="search-icon-img">
+                </div>
+                <input type="text"
+                       placeholder='{% trans "Search" %}'
+                       class="search-input">
+            </div>
         </div>
+
         <!-- Tlačítka pro přihlášení a registraci uživatele -->
         <nav>
             <ul class="flex space-x-4">
-                <li><a href="#" class="hover:text-blue-200 transition-colors duration-300">{% trans "Log in" %}</a></li>
-                <li><a href="#" class="hover:text-blue-200 transition-colors duration-300">{% trans "Sign in" %}</a>
+                <li><a href="#" class="auth-button">{% trans "Log in" %}</a></li>
+                <li><a href="#" class="auth-button">{% trans "Sign in" %}</a>
                 </li>
             </ul>
         </nav>

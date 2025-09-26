@@ -1,9 +1,89 @@
 @import "tailwindcss";
 
-/* Ikona vlajky */
-@layer components{
-    .flag-img{
+@layer components {
+    /* Ikona vlajky */
+    .flag-img {
         @apply !w-8 !h-auto hover:brightness-75 object-cover;
+    }
+
+    /* Záhlaví */
+    .header {
+        @apply bg-gray-800 p-4 text-white;
+    }
+
+    /* Záhlaví - box se všemi prvky */
+    .header-section {
+        @apply flex items-center justify-between;
+    }
+
+    /* Ikona webu */
+    .web-icon {
+        @apply h-8 w-auto;
+    }
+
+    /* Vyhledávací sekce */
+    .search-icon {
+        @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none;
+    }
+
+    /* Ikona vyhledávání */
+    .search-icon-img {
+        @apply h-5 w-5 text-gray-400;
+    }
+
+    /* Vyhledávací pole */
+    .search-input {
+        @apply w-full pl-10 p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400;
+    }
+
+    /* Tlačítka pro přihlášení a registraci */
+    .auth-button {
+        @apply hover:text-blue-200 transition-colors duration-300;
+    }
+
+    /* Menu s kategoriemi */
+    .menu {
+        @apply flex space-x-8;
+    }
+
+    /* Odkaz v menu */
+    .menu-item {
+        @apply text-sm font-semibold hover:text-gray-400 transition-colors duration-300;
+    }
+
+    /* Navigační lišta */
+    .nav {
+        @apply bg-gray-800 p-4 text-white;
+    }
+
+    /* Box s navigačními prvky */
+    .nav-section {
+        @apply mx-auto flex justify-between items-center;
+    }
+
+    /* Přepínač jazyka */
+    .lang-switcher {
+        @apply relative inline-block p-2;
+    }
+
+    /* Aktuální jazyk */
+    .flag-button {
+        @apply inline-flex items-center justify-center bg-transparent border-none focus:outline-none;
+    }
+
+    /* Jiné jazyky - dropdown */
+    .flag-dropdown {
+        @apply absolute left-full top-1/2 -translate-y-1/2 flex gap-x-2 bg-gray-800 shadow-lg px-3 py-2 z-50 whitespace-nowrap min-w-max hidden group-hover:flex;
+    }
+
+    /* Přepínací formulář */
+    .form-toggle {
+        @apply p-0 m-0 border-none bg-transparent;
+    }
+
+    /* Tlačítko (vlajka) ve formuláři */
+    .form-button {
+        @apply focus:outline-none bg-transparent border-none p-0;
     }
 }
 
