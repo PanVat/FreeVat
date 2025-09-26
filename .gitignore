@@ -14,8 +14,6 @@ package-lock.json
 
 # PyCharm
 .idea/
-*.sublime-workspace
-*.sublime-project
 
 # VS Code
 .vscode/
@@ -24,4 +22,4 @@ package-lock.json
 free_vat/free_vat/migrations/
 
 # Jiné
-help.txt
+help/

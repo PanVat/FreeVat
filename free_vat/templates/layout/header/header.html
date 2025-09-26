@@ -1,21 +1,23 @@
-{% load i18n %}
-<!-- Logo celého webu -->
-<header class="bg-blue-600 p-4 text-white">
-  <div class="flex items-center justify-between">
-    <a href="#" class="text-xl font-bold">
-      {% trans "My Application" %}
-    </a>
+{% load i18n %} <!-- Pro překlady -->
 
-    <!-- Vyhledávací pole -->
-    <div class="flex-grow flex justify-center px-4">
-      <input type="text" placeholder='{% trans "Search" %}' class="w-full max-w-lg p-2 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400">
+<header class="bg-gray-800 p-4 text-white">
+    <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#" class="text-xl font-bold">
+            {% trans "My Application" %}
+        </a>
+        <!-- Vyhledávací pole -->
+        <div class="flex-grow flex justify-center px-4">
+            <input type="text" placeholder='{% trans "Search" %}'
+                   class="w-full max-w-lg p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+        <!-- Tlačítka pro přihlášení a registraci uživatele -->
+        <nav>
+            <ul class="flex space-x-4">
+                <li><a href="#" class="hover:text-blue-200 transition-colors duration-300">{% trans "Log in" %}</a></li>
+                <li><a href="#" class="hover:text-blue-200 transition-colors duration-300">{% trans "Sign in" %}</a>
+                </li>
+            </ul>
+        </nav>
     </div>
-    <!-- Tlačítka pro přihlášení a registraci uživatele -->
-    <nav>
-      <ul class="flex space-x-4">
-        <li><a href="#" class="hover:text-blue-200 transition-colors duration-300">{% trans "Log in" %}</a></li>
-        <li><a href="#" class="hover:text-blue-200 transition-colors duration-300">{% trans "Sign in" %}</a></li>
-      </ul>
-    </nav>
-  </div>
 </header>

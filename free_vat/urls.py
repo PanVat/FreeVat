@@ -18,3 +18,8 @@ if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
         re_path(r'^rosetta/', include('rosetta.urls'))
     ]
+
+if settings.DEBUG:
+    urlpatterns += [
+        path("__reload__/", include("django_browser_reload.urls")),
+    ]

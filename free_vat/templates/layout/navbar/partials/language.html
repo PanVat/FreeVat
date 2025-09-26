@@ -1,38 +1,31 @@
-<!--
-    Soubor: 'language.html'
-    Autor: PanVat Pondin
-    Popis: Přepínač jazyků s vlajkami
--->
-
 {% load i18n static %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
 
-<!-- Přepínání jazyků -->
-        <div x-data="{ open: false }" class="relative inline-block" @mouseenter="open = true" @mouseleave="open = false">
-    <button type="button" class="inline-flex items-center justify-center p-0 bg-transparent border-none focus:outline-none" aria-haspopup="true" :aria-expanded="open">
+<div class="relative inline-block group">
+    <button type="button"
+            class="inline-flex items-center justify-center p-0 bg-transparent border-none focus:outline-none"
+            aria-haspopup="true">
         <img src="{% static 'img/flags/' %}{{ LANGUAGE_CODE }}.svg"
-             alt="{{ LANGUAGE_CODE }}" class="flag-img object-cover" />
+             alt="{{ LANGUAGE_CODE }}" class="flag-img"/>
     </button>
-    <div x-show="open"
-     x-transition:enter="transition ease-out duration-200"
-     x-transition:leave="transition ease-in duration-150"
-     class="absolute left-full top-1/2 -translate-y-1/2 ml-2 flex space-x-2 bg-gray-800 shadow-lg px-3 py-2 z-50 whitespace-nowrap min-w-max">
+
+    <div class="absolute left-full top-1/2 -translate-y-1/2 ml-2 flex space-x-2 bg-gray-800 shadow-lg px-3 py-2 z-50 whitespace-nowrap min-w-max hidden group-hover:flex">
         {% for language in languages %}
-            {% if language.code != LANGUAGE_CODE %}
-            <form action="{% url 'set_language' %}" method="post" class="p-0 m-0 border-none bg-transparent">
-                {% csrf_token %}
-                <input type="hidden" name="language" value="{{ language.code }}">
-                <input type="hidden" name="next" value="{{ request.path }}">
-                <button type="submit" class="focus:outline-none bg-transparent border-none p-0">
-                    <img src="{% static 'img/flags/' %}{{ language.code }}.svg"
-                        alt="{{ language.code }}"
-                        title="{{ language.name_local }}"
-                        class="flag-img" />
-                </button>
-            </form>
-            {% endif %}
+        {% if language.code != LANGUAGE_CODE %}
+        <form action="{% url 'set_language' %}" method="post" class="p-0 m-0 border-none bg-transparent">
+            {% csrf_token %}
+            <input type="hidden" name="language" value="{{ language.code }}">
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <button type="submit" class="focus:outline-none bg-transparent border-none p-0">
+                <img src="{% static 'img/flags/' %}{{ language.code }}.svg"
+                     alt="{{ language.code }}"
+                     title="{{ language.name_local }}"
+                     class="flag-img"/>
+            </button>
+        </form>
+        {% endif %}
         {% endfor %}
     </div>
-    </div>
+</div>

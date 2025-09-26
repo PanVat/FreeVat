@@ -1,21 +1,18 @@
-<!-- Zde je poskládána celá stránka z jednotlivých částí -->
-{% load static %}
+{% load static tailwind_tags %} <!-- Načtení statických souborů a Tailwind CSS tagů -->
+
 <!DOCTYPE html> <!-- Funguje, i když svítí červeně -->
 <html lang="cs">
 <head>
+    {% tailwind_css %}
     <meta charset="UTF-8">
     <title>FreeVat</title>
-    <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="{% static 'css/tailwind/main.css' %}">
-    <!-- Vlastní styly -->
-    <link rel="stylesheet" href="{% static 'css/styles.css">
-    <!-- Importování scriptů (později bude přes NPM) -->
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 <body>
 {% include "layout/header/header.html" %}
 {% include "layout/navbar/navbar.html" %}
-{% block content %}{% endblock %}
+{% block content %}
+<!-- Vlastní obsah každé stránky -->
+{% endblock %}
 {% include "layout/footer/footer.html" %}
 </body>
 </html>

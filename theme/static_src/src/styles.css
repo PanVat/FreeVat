@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* Ikona vlajky */
+@layer components{
+    .flag-img{
+        @apply !w-8 !h-auto hover:brightness-75 object-cover;
+    }
+}
+
+@source "../../../**/*.{html,py,js}";
