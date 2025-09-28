@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-18 15:16+0200\n"
-"PO-Revision-Date: 2025-09-18 15:15+0200\n"
+"POT-Creation-Date: 2025-09-27 15:36+0200\n"
+"PO-Revision-Date: 2025-09-27 15:41+0200\n"
 "Last-Translator:   <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\free_vat\settings.py:100
+#: .\free_vat\settings.py:115
 msgid "English"
 msgstr "Englisch"
 
-#: .\free_vat\settings.py:101
+#: .\free_vat\settings.py:116
 msgid "Czech"
 msgstr "Tschechisch"
 
-#: .\free_vat\settings.py:102
+#: .\free_vat\settings.py:117
 msgid "German"
 msgstr "Deutsch"
 
@@ -35,38 +35,53 @@ msgstr "Deutsch"
 msgid "Hello, World!"
 msgstr "Hallo, Welt!"
 
-#: .\free_vat\templates\layout\header.html:6
-msgid "My Application"
-msgstr "Meine Bewerbung"
+#: .\free_vat\templates\layout\header\header.html:9
+msgid "Web icon"
+msgstr ""
 
-#: .\free_vat\templates\layout\header.html:11
+#: .\free_vat\templates\layout\header\header.html:19
+#: .\free_vat\templates\layout\header\header.html:23
 msgid "Search"
 msgstr "Suchen"
 
-#: .\free_vat\templates\layout\header.html:16
+#: .\free_vat\templates\layout\header\header.html:31
 msgid "Log in"
 msgstr "Einloggen"
 
-#: .\free_vat\templates\layout\header.html:17
+#: .\free_vat\templates\layout\header\header.html:32
 msgid "Sign in"
 msgstr "Anmelden"
 
-#: .\free_vat\templates\layout\navbar.html:21
-msgid "Products"
-msgstr "Produkte"
+#: .\free_vat\templates\layout\navbar\partials\menu.html:4
+msgid "Models"
+msgstr ""
 
-#: .\free_vat\templates\layout\navbar.html:22
-msgid "Solutions"
-msgstr "Lösungen"
+#: .\free_vat\templates\layout\navbar\partials\menu.html:5
+msgid "Categories"
+msgstr ""
 
-#: .\free_vat\templates\layout\navbar.html:23
-msgid "Prices"
-msgstr "Preise"
+#: .\free_vat\templates\layout\navbar\partials\menu.html:6
+msgid "Software"
+msgstr ""
 
-#: .\free_vat\templates\layout\navbar.html:24
-msgid "Blog"
-msgstr "Blog"
+#: .\free_vat\templates\layout\navbar\partials\menu.html:7
+msgid "Upload"
+msgstr ""
 
-#: .\free_vat\templates\layout\navbar.html:25
-msgid "Support"
-msgstr "Unterstützung"
+#~ msgid "My Application"
+#~ msgstr "Meine Bewerbung"
+
+#~ msgid "Products"
+#~ msgstr "Produkte"
+
+#~ msgid "Solutions"
+#~ msgstr "Lösungen"
+
+#~ msgid "Prices"
+#~ msgstr "Preise"
+
+#~ msgid "Blog"
+#~ msgstr "Blog"
+
+#~ msgid "Support"
+#~ msgstr "Unterstützung"
