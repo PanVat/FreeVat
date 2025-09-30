@@ -72,4 +72,4 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - Aplikace je nyní v **CZ**, **EN** a **DE**
 - Přeinstalace všech balíčků
 - Hodiny a hodiny **centrování neposedného divu**
-- Vytvoření přívětivého záhlaví a navigace (zatím není funkční)
+- Stylování záhlaví a navigace
