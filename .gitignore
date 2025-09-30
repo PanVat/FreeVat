@@ -19,7 +19,7 @@ package-lock.json
 .vscode/
 
 # Migrace
-free_vat/free_vat/migrations/
+models/migrations/
 
 # Jiné
 help/

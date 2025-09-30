@@ -14,10 +14,10 @@
         <div class="flex-grow flex justify-center px-4">
             <div class="w-full max-w-lg relative">
                 <!-- Ikona lupy -->
-                <div class="search-icon">
+                <div class="search-icon-box">
                     <img src="{% static 'img/icons/magnifying.svg' %}"
                          alt="{% trans 'Search' %}"
-                         class="search-icon-img">
+                         class="search-icon">
                 </div>
                 <input type="text"
                        placeholder='{% trans "Search" %}'
@@ -28,8 +28,8 @@
         <!-- Tlačítka pro přihlášení a registraci uživatele -->
         <nav>
             <ul class="flex space-x-4">
-                <li><a href="#" class="login-button">{% trans "Log in" %}</a></li>
-                <li><a href="#" class="register-button">{% trans "Sign up" %}</a>
+                <li><a href="#" class="button login-button">{% trans "Log in" %}</a></li>
+                <li><a href="#" class="button register-button">{% trans "Sign up" %}</a>
                 </li>
             </ul>
         </nav>

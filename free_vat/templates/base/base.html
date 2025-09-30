@@ -9,9 +9,14 @@
 </head>
 <body>
 {% include "layout/header/header.html" %}
+{% include "base/divider.html" %}
 {% include "layout/navbar/navbar.html" %}
+{% include "base/divider.html" %}
+
 {% block content %}
-<!-- Vlastní obsah každé stránky -->
+<!-------------------------------
+    Vlastní obsah každé stránky
+--------------------------------->
 {% endblock %}
 {% include "layout/footer/footer.html" %}
 </body>

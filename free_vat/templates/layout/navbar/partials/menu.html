@@ -1,8 +1,15 @@
-{% load i18n %} <!-- Pro překlady -->
-
+{% load i18n static %}
 <div class="menu">
-    <a href="#" class="menu-item">{% trans "Models" %}</a>
-    <a href="#" class="menu-item">{% trans "Categories" %}</a>
-    <a href="#" class="menu-item">{% trans "Software" %}</a>
-    <a href="#" class="upload-button">{% trans "Upload" %}</a>
+    <ul class="flex space-x-4">
+        <li>
+            <a href="#" class="button upload-button flex items-center space-x-2">
+
+                <img
+                        src="{% static 'img/icons/upload.svg' %}"
+                        alt="Upload"
+                        class="h-5 w-5">
+                <span>{% trans "Upload" %}</span>
+            </a>
+        </li>
+    </ul>
 </div>

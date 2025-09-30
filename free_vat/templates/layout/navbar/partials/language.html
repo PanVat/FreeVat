@@ -20,7 +20,7 @@
             {% csrf_token %}
             <input type="hidden" name="language" value="{{ language.code }}">
             <input type="hidden" name="next" value="{{ request.path }}">
-            <button type="submit" class="form-button">
+            <button type="submit" class="form-toggle">
                 <img src="{% static 'img/flags/' %}{{ language.code }}.svg"
                      alt="{{ language.code }}"
                      title="{{ language.name_local }}"

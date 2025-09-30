@@ -1,88 +1,106 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Zalando+Sans:wght@400;700&display=swap');
 
 @layer components {
 
+    /* Celá stránka - globální nastavení (barva, font..) */
+    body {
+        @apply bg-[#222222] text-white;
+        font-family: sans-serif;
+    }
+
     /* Záhlaví */
     .header {
-        @apply bg-orange-300 p-4 text-white;
+        @apply bg-[#222222] flex items-center px-4;
+        @apply h-14;
     }
 
-    /* Záhlaví - box se všemi prvky */
+    /* Záhlaví (vnitřní sekce) */
     .header-section {
-        @apply flex items-center justify-between;
+        @apply flex items-center justify-between w-full;
     }
 
-    /* Ikona webu */
+    /* Dělící čára */
+    .divider {
+        @apply bg-[#404040] w-full;
+        height: 0.5px;
+    }
+
+    /* Logo webu */
     .web-icon {
-        @apply h-8 w-auto;
+        @apply h-7;
     }
 
-    /* Vyhledávací sekce */
+    /* Ikona lupy ve vyhledávacím poli */
     .search-icon {
+        @apply h-4;
+    }
+
+    /* Zde je uložená ikona lupy */
+    .search-icon-box {
         @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none;
     }
 
-    /* Ikona vyhledávání */
-    .search-icon-img {
-        @apply h-5 w-5 text-gray-400;
-    }
-
-    /* Vyhledávací pole */
+    /* Vstupní pole pro vyhledávání */
     .search-input {
-        @apply w-full pl-10 p-2 rounded-md bg-gray-700 text-white
-        focus:outline-none focus:ring-2 focus:ring-blue-400;
+        @apply w-full pl-10 p-2 rounded-md bg-[#3B4042] focus:outline-none;
     }
 
-    /* Registrace */
-    .register-button {
-        @apply bg-green-600 text-white py-2 px-4 rounded-lg
-        hover:bg-green-500 transition-colors duration-300;
+    /* Obecné tlačítko (Všechna tlačítka mají tento základní styl) */
+    .button {
+        @apply py-2 px-4 duration-150 rounded-md text-[15px];
+        @apply hover:shadow-lg hover:opacity-90;
     }
 
-    /* Přihlášení */
+    /* Přihlášení - tlačítko */
     .login-button {
-        @apply bg-gray-600 text-gray-300 py-2 px-4 rounded-lg
-        hover:bg-gray-500 transition-colors duration-300;
+        @apply bg-gray-600;
     }
 
-    /* Nahrání */
+    /* Registrace - tlačítko */
+    .register-button {
+        @apply bg-green-600;
+    }
+
+    /* Nahrání - tlačítko */
     .upload-button {
-        @apply bg-blue-600 text-white py-2 px-4 rounded-lg
-        hover:bg-blue-500 transition-colors duration-300;
+        @apply bg-blue-600;
     }
 
     /* Menu s kategoriemi */
     .menu {
-        @apply flex space-x-8;
+        @apply flex space-x-6;
     }
 
     /* Odkaz v menu */
     .menu-item {
-        @apply flex items-center justify-center text-sm font-semibold
-        hover:text-gray-400 transition-colors duration-300;
+        @apply flex items-center justify-center text-[15px]
+        hover:text-gray-300 transition-colors duration-150;
     }
 
+    /* Navigační lišta */
     .nav {
-        @apply bg-gray-800 p-4 text-white;
+        @apply bg-[#222222] p-4 items-center;
     }
 
-    /* Box s navigačními prvky */
+    /* Navigační lišta - box s navigačními prvky */
     .nav-section {
-        @apply mx-auto flex justify-between items-center;
+        @apply flex justify-between items-center;
     }
 
+    /* Kontejner s jazykovým přepínačem */
     .lang-switcher {
         @apply relative flex items-center justify-center h-full;
     }
 
-    /* Ikona vlajky */
+    /* Vlajka */
     .flag-img {
         @apply !w-8 !h-auto hover:brightness-75 object-cover block;
     }
 
-    /* Aktuální jazyk */
+    /* Aktuální jazyk (po přejetí zobrazí nabídku dalších) */
     .flag-button {
-        @apply inline-flex items-center justify-center bg-transparent border-none focus:outline-none h-full;
+        @apply inline-flex items-center justify-center bg-transparent border-none focus:outline-none h-full cursor-pointer;
     }
 
     /* Jiné jazyky - dropdown */
@@ -93,15 +111,9 @@
         hidden group-hover:flex;
     }
 
-    /* Všechny vlajky ve switcheru */
-    .flag-dropdown img {
-        @apply h-6 w-auto object-contain align-middle;
-    }
-
-    /* Přepínací formulář + tlačítko */
-    .form-toggle,
-    .form-button {
-        @apply p-0 m-0 border-none bg-transparent flex items-center focus:outline-none;
+    /* Přepínací formulář */
+    .form-toggle{
+        @apply p-0 m-0 border-none bg-transparent flex items-center focus:outline-none cursor-pointer;
     }
 }
 
