@@ -1,9 +1,15 @@
-<nav class="nav">
-    <div class="nav-section">
-        <!-- Přepínač jazyků -->
-        {% include "layout/navbar/partials/language.html" %}
+<nav class="navbar">
+    <div class="navbar-wrapper">
+        <div class="navbar-part">
+            <!-- Kategorie - tlačítka -->
+            {% include "layout/navbar/partials/categories.html" %}
+        </div>
+        <div class="navbar-part">
+            <!-- Menu s rozbalovací nabídkou -->
+            {% include "layout/navbar/partials/menu.html" %}
 
-        <!-- Menu -->
-        {% include "layout/navbar/partials/menu.html" %}
+            <!-- Přepínač jazyků -->
+            {% include "layout/navbar/partials/language.html" %}
+        </div>
     </div>
 </nav>

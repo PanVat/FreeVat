@@ -1,0 +1,129 @@
+@layer components {
+    /* Celá navigační lišta */
+    .navbar {
+        @apply bg-[#222222] p-4 items-center;
+    }
+
+    /* Obal v navigační liště */
+    .navbar-wrapper {
+        @apply flex justify-between items-center h-6;
+    }
+
+    /* Levá část navigační lišty */
+    .navbar-part {
+        @apply flex items-center gap-x-6;
+    }
+
+    /* ==============================================
+        J A Z Y K O V Ý   P Ř E P Í N A Č
+       ============================================== */
+    /* Kontejner s jazykovým přepínačem */
+    .language {
+        @apply relative flex items-center justify-center h-full;
+        @apply py-4;
+        /* Zajišťuje, že se dropdown neuzavře po přejetí myší */
+    }
+
+    /* Aktuální jazyk (po přejetí zobrazí nabídku dalších) */
+    .flag-button {
+        @apply inline-flex items-center justify-center bg-transparent border-none focus:outline-none h-full cursor-pointer;
+    }
+
+    /* Vlajka */
+    .flag-img {
+        @apply !w-8 !h-auto hover:brightness-75 object-cover block;
+    }
+
+    /* Jiné jazyky - dropdown */
+    .flag-dropdown {
+        @apply absolute top-full left-0
+        flex items-center flex-col gap-y-4
+        whitespace-nowrap min-w-max
+        hidden group-hover:flex;
+    }
+
+    /* Přepínací formulář */
+    .toggle {
+        @apply p-0 m-0 border-none bg-transparent flex items-center focus:outline-none cursor-pointer;
+    }
+
+    /* ==============================================
+       M E N U  S  K A T E G O R I E M I
+       ============================================== */
+    .categories {
+        @apply flex justify-center gap-4;
+    }
+
+    /* Box s ikonou a textem */
+    .category-box {
+        @apply flex items-center justify-center gap-1 p-2;
+    }
+
+    /* Přejetí po boxu */
+    .category-box:hover {
+        @apply bg-[#333333] rounded-md;
+    }
+
+    /* Ikona */
+    .icon {
+        @apply w-5 h-auto;
+    }
+
+    /* Text */
+    .icon-text {
+        @apply text-sm;
+    }
+
+    /* ==============================================
+        D A L Š Í  P O L O Ž K Y
+       ============================================== */
+    /* Menu */
+    .menu {
+        @apply flex items-center;
+    }
+
+    /* Obal menu */
+    .menu-wrapper {
+        @apply flex space-x-4 items-center;
+    }
+
+    /* Obal dropdown menu */
+    .menu-dropdown {
+        @apply relative;
+    }
+
+    /* Odkaz v menu */
+    .menu-item {
+        @apply flex items-center justify-center text-sm
+        text-gray-100 hover:text-white transition-colors duration-150
+        cursor-pointer;
+    }
+
+    /* Dropdown menu v navigační liště */
+    .menu-dropdown-area {
+        @apply absolute left-0 mt-4;
+        @apply bg-[#333333] shadow-xl;
+        @apply py-2 z-10 w-40;
+        @apply hidden group-hover:block;
+    }
+
+    /* Položka v dropdown menu */
+    .menu-dropdown-box {
+        @apply block px-2 py-1 text-sm text-gray-300 whitespace-nowrap;
+        @apply hover:bg-gray-700 hover:text-white flex;
+    }
+
+    .menu-dropdown-icon {
+        @apply w-5 h-auto;
+    }
+
+    .menu-dropdown-text {
+        @apply text-sm;
+    }
+
+    /* Oddělovač v dropdown menu */
+    .split-line {
+        @apply w-px bg-[#666666];
+        @apply h-6;
+    }
+}

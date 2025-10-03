@@ -1,119 +1,27 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Zalando+Sans:wght@400;700&display=swap');
 
-@layer components {
+/* Jednotlivé moduly */
+@import './navbar.css';
+@import './header.css';
 
+@layer components {
     /* Celá stránka - globální nastavení (barva, font..) */
     body {
         @apply bg-[#222222] text-white;
         font-family: sans-serif;
     }
 
-    /* Záhlaví */
-    .header {
-        @apply bg-[#222222] flex items-center px-4;
-        @apply h-14;
-    }
-
-    /* Záhlaví (vnitřní sekce) */
-    .header-section {
-        @apply flex items-center justify-between w-full;
-    }
-
     /* Dělící čára */
     .divider {
         @apply bg-[#404040] w-full;
-        height: 0.5px;
+        height: 1px;
     }
 
-    /* Logo webu */
-    .web-icon {
-        @apply h-7;
-    }
-
-    /* Ikona lupy ve vyhledávacím poli */
-    .search-icon {
-        @apply h-4;
-    }
-
-    /* Zde je uložená ikona lupy */
-    .search-icon-box {
-        @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none;
-    }
-
-    /* Vstupní pole pro vyhledávání */
-    .search-input {
-        @apply w-full pl-10 p-2 rounded-md bg-[#3B4042] focus:outline-none;
-    }
-
-    /* Obecné tlačítko (Všechna tlačítka mají tento základní styl) */
+    /* Obecné tlačítko */
     .button {
-        @apply py-2 px-4 duration-150 rounded-md text-[15px];
+        @apply py-2 px-4 duration-150 rounded-md text-sm;
         @apply hover:shadow-lg hover:opacity-90;
-    }
-
-    /* Přihlášení - tlačítko */
-    .login-button {
-        @apply bg-gray-600;
-    }
-
-    /* Registrace - tlačítko */
-    .register-button {
-        @apply bg-green-600;
-    }
-
-    /* Nahrání - tlačítko */
-    .upload-button {
-        @apply bg-blue-600;
-    }
-
-    /* Menu s kategoriemi */
-    .menu {
-        @apply flex space-x-6;
-    }
-
-    /* Odkaz v menu */
-    .menu-item {
-        @apply flex items-center justify-center text-[15px]
-        hover:text-gray-300 transition-colors duration-150;
-    }
-
-    /* Navigační lišta */
-    .nav {
-        @apply bg-[#222222] p-4 items-center;
-    }
-
-    /* Navigační lišta - box s navigačními prvky */
-    .nav-section {
-        @apply flex justify-between items-center;
-    }
-
-    /* Kontejner s jazykovým přepínačem */
-    .lang-switcher {
-        @apply relative flex items-center justify-center h-full;
-    }
-
-    /* Vlajka */
-    .flag-img {
-        @apply !w-8 !h-auto hover:brightness-75 object-cover block;
-    }
-
-    /* Aktuální jazyk (po přejetí zobrazí nabídku dalších) */
-    .flag-button {
-        @apply inline-flex items-center justify-center bg-transparent border-none focus:outline-none h-full cursor-pointer;
-    }
-
-    /* Jiné jazyky - dropdown */
-    .flag-dropdown {
-        @apply absolute left-full top-1/2 -translate-y-1/2
-        flex items-center gap-x-3
-        px-4 z-50 whitespace-nowrap min-w-max
-        hidden group-hover:flex;
-    }
-
-    /* Přepínací formulář */
-    .form-toggle{
-        @apply p-0 m-0 border-none bg-transparent flex items-center focus:outline-none cursor-pointer;
     }
 }
 

@@ -1,0 +1,48 @@
+@layer components {
+    /* Záhlaví */
+    .header {
+        @apply bg-[#222222] flex items-center px-4;
+        @apply h-14;
+    }
+
+    /* Záhlaví (vnitřní sekce) */
+    .header-section {
+        @apply flex items-center justify-between w-full;
+    }
+
+    /* Logo webu */
+    .web-icon {
+        @apply h-7;
+    }
+
+    /* Ikona lupy ve vyhledávacím poli */
+    .search-icon {
+        @apply h-4;
+    }
+
+    /* Zde je uložená ikona lupy */
+    .search-icon-box {
+        @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none;
+    }
+
+    /* Vstupní pole pro vyhledávání */
+    .search-input {
+        @apply w-full pl-10 p-2 rounded-md bg-[#3B4042] focus:outline-none;
+    }
+
+    /* Přihlášení - tlačítko */
+    .login-button {
+        @apply bg-gray-600;
+    }
+
+    /* Registrace - tlačítko */
+    .register-button {
+        @apply bg-green-600;
+    }
+
+    /* Nahrání - tlačítko */
+    .upload-button {
+        @apply bg-blue-600;
+    }
+
+}

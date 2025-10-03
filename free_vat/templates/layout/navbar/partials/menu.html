@@ -1,15 +1,72 @@
 {% load i18n static %}
-<div class="menu">
-    <ul class="flex space-x-4">
-        <li>
-            <a href="#" class="button upload-button flex items-center space-x-2">
 
-                <img
-                        src="{% static 'img/icons/upload.svg' %}"
-                        alt="Upload"
-                        class="h-5 w-5">
-                <span>{% trans "Upload" %}</span>
-            </a>
+<div class="menu">
+    <ul class="menu-wrapper">
+
+        <li class="menu-dropdown group">
+            <a class="menu-item">{% trans "Software" %}</a>
+            <div class="menu-dropdown-area">
+                <a href="#" class="menu-dropdown-box">
+                    <img src="{% static 'img/software/characters-and-creatures.svg' %}" alt=""
+                         class="menu-dropdown-icon">
+                    <span class="menu-dropdown-text">Blender</span>
+                </a>
+                <a href="#" class="menu-dropdown-box">
+                    <img src="{% static 'img/software/nature-and-plants.svg' %}" alt=""
+                         class="menu-dropdown-icon">
+                    <span class="menu-dropdown-text">3ds Max</span>
+                </a>
+                <a href="#" class="menu-dropdown-box">
+                    <img src="{% static 'img/software/sports-and-fitness.svg' %}" alt=""
+                         class="menu-dropdown-icon">
+                    <span class="menu-dropdown-text">Maya</span>
+                </a>
+                <a href="#" class="menu-dropdown-box">
+                    <img src="{% static 'img/software/weapons-and-military.svg' %}" alt=""
+                         class="menu-dropdown-icon">
+                    <span class="menu-dropdown-text">Cinema 4D</span>
+                </a>
+
+            </div>
+        </li>
+
+        <li class="menu-dropdown group">
+            <a class="menu-item">{% trans "Formats" %}</a>
+            <div class="menu-dropdown-area">
+                <a href="#" class="menu-dropdown-box">
+                    <img src="{% static 'img/software/weapons-and-military.svg' %}" alt=""
+                         class="menu-dropdown-icon">
+                    <span class="menu-dropdown-text">FBX</span>
+                </a>
+                <a href="#" class="menu-dropdown-box">
+                    <img src="{% static 'img/software/nature-and-plants.svg' %}" alt=""
+                         class="menu-dropdown-icon">
+                    <span class="menu-dropdown-text">OBJ</span>
+                </a>
+                <a href="#" class="menu-dropdown-box">
+                    <img src="{% static 'img/software/sports-and-fitness.svg' %}" alt=""
+                         class="menu-dropdown-icon">
+                    <span class="menu-dropdown-text">USDZ</span>
+                </a>
+                <a href="#" class="menu-dropdown-box">
+                    <img src="{% static 'img/software/weapons-and-military.svg' %}" alt=""
+                         class="menu-dropdown-icon">
+                    <span class="menu-dropdown-text">GLB</span>
+                </a>
+                <a href="#" class="menu-dropdown-box">
+                    <img src="{% static 'img/software/nature-and-plants.svg' %}" alt=""
+                         class="menu-dropdown-icon">
+                    <span class="menu-dropdown-text">3ds Max</span>
+                </a>
+            </div>
+        </li>
+
+        <li>
+            <div class="split-line"></div>
+        </li>
+
+        <li class="menu-dropdown group">
+            <a href="#" class="menu-item">{% trans "Textures" %}</a>
         </li>
     </ul>
 </div>
