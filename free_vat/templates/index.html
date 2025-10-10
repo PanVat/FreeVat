@@ -2,5 +2,9 @@
 {% load i18n %}
 
 {% block content %}
-<!-- Obsah domovské stránky -->
+    <div class="grid-container py-12 px-4 md:px-8">
+        {% for i in "1"|ljust:24 %}
+        <div class="color-box"></div>
+        {% endfor %}
+    </div>
 {% endblock %}

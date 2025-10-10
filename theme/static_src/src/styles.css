@@ -4,12 +4,23 @@
 /* Jednotlivé moduly */
 @import './navbar.css';
 @import './header.css';
+@import './index.css';
+@import './footer.css';
 
 @layer components {
     /* Celá stránka - globální nastavení (barva, font..) */
     body {
         @apply bg-[#222222] text-white;
-        font-family: sans-serif;
+        font-family: 'Zalando Sans', sans-serif;
+    }
+
+    /* Mírné ztmavení stránky při přejetí na odkaz v menu */
+    .overlay {
+        @apply fixed inset-0 pointer-events-none;
+        @apply opacity-0;
+        @apply bg-black;
+        @apply transition-opacity duration-100
+        z-75; /* (Header má z-50) */
     }
 
     /* Dělící čára */

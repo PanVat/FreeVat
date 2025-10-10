@@ -1,0 +1,48 @@
+{% load i18n %} {% load static %} <footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-section logo-section">
+            <h3 class="footer-heading">Název WebU</h3>
+            <p class="footer-text">
+                {% trans "Popis naší společnosti nebo mise, krátké a výstižné." %}
+            </p>
+            <div class="social-icons">
+                <a href="#" class="social-link">
+                    <i class="fab fa-facebook-f"></i> </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-section links-section">
+            <h3 class="footer-heading">{% trans "Odkazy" %}</h3>
+            <ul class="footer-link-list">
+                <li><a href="#" class="footer-link">{% trans "O nás" %}</a></li>
+                <li><a href="#" class="footer-link">{% trans "Služby" %}</a></li>
+                <li><a href="#" class="footer-link">{% trans "Kariéra" %}</a></li>
+                <li><a href="#" class="footer-link">{% trans "FAQ" %}</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section contact-section">
+            <h3 class="footer-heading">{% trans "Podpora" %}</h3>
+            <ul class="footer-link-list">
+                <li><a href="#" class="footer-link">{% trans "Nápověda" %}</a></li>
+                <li><a href="#" class="footer-link">{% trans "Kontakt" %}</a></li>
+                <li><a href="#" class="footer-link">{% trans "Obchodní podmínky" %}</a></li>
+                <li><a href="#" class="footer-link">{% trans "Ochrana soukromí" %}</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="copyright-bar">
+        <p class="text-xs text-gray-500">
+            &copy; 2025 Název WebU. {% trans "Všechna práva vyhrazena." %}
+        </p>
+    </div>
+</footer>

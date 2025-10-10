@@ -1,10 +1,11 @@
-{% load static tailwind_tags %} <!-- Načtení statických souborů a Tailwind CSS tagů -->
-
-<!DOCTYPE html> <!-- Funguje, i když svítí červeně -->
-<html lang="cs">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <!-- Načtení statických souborů a Tailwind CSS tagů -->
+    {% load static tailwind_tags %}
     {% tailwind_css %}
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreeVat</title>
 </head>
 <body>
@@ -19,5 +20,8 @@
 --------------------------------->
 {% endblock %}
 {% include "layout/footer/footer.html" %}
+{% include "base/overlay.html" %}
+
+<script src="{% static 'js/overlay.js' %}"></script>
 </body>
 </html>

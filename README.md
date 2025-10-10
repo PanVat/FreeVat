@@ -48,6 +48,7 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - [ ] Registrace, přihlašování a mazání uživatelských účtů
 - [ ] Zobrazování základních informací o modelech (počet ploch, velikost souboru..)
 - [x] Více jazyků na výběr - čeština / angličtina / němčina
+- [ ] Plně responzivní design
 - [ ] Vyhledávání 3D modelů podle názvu, případně podle velikosti
 - [ ] Nasazení aplikace na Kubernetes
 ---
