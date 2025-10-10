@@ -1,12 +1,14 @@
 @layer components {
+
     /* Celá navigační lišta */
     .navbar {
-        @apply bg-[#222222] p-4 items-center;
+        @apply bg-[#222222] p-4 items-center relative z-50;
+        @apply border-y-[1px] border-[#404040]; /* Nahrážka dělící čáry (aby správně fungoval dropdown) */
     }
 
     /* Obal v navigační liště */
     .navbar-wrapper {
-        @apply flex justify-between items-center h-6;
+        @apply flex justify-between items-center h-5;
     }
 
     /* Levá část navigační lišty */
@@ -15,45 +17,11 @@
     }
 
     /* ==============================================
-        J A Z Y K O V Ý   P Ř E P Í N A Č
-       ============================================== */
-    /* Kontejner s jazykovým přepínačem */
-    .language {
-        @apply relative flex items-center;
-        @apply py-4;
-        /* Zajišťuje, že se dropdown neuzavře po přejetí myší */
-    }
-
-    /* Aktuální jazyk (po přejetí zobrazí nabídku dalších) */
-    .flag-button {
-        @apply inline-flex items-center justify-center bg-transparent border-none focus:outline-none h-full cursor-pointer;
-    }
-
-    /* Vlajka */
-    .flag-img {
-        @apply !w-8 !h-auto hover:brightness-75 object-cover block;
-    }
-
-    /* Jiné jazyky - dropdown */
-    .flag-dropdown {
-        @apply absolute top-full left-0
-        items-center flex-col gap-y-4
-        whitespace-nowrap min-w-max
-        hidden group-hover:flex;
-    }
-
-    /* Přepínací formulář */
-    .toggle {
-        @apply p-0 m-0 border-none bg-transparent flex items-center focus:outline-none cursor-pointer;
-    }
-
-    /* ==============================================
         M E N U
        ============================================== */
     /* Menu */
     .menu {
-        @apply hidden md:flex items-center;
-        /* Skryje se na mobilních zařízeních */
+        @apply hidden md:flex items-center relative;
     }
 
     /* Obal menu */
@@ -64,14 +32,12 @@
     /* Obal dropdown menu */
     .menu-dropdown {
         @apply relative;
-        @apply py-4;
     }
 
     /* Odkaz v menu */
     .menu-item {
         @apply flex items-center justify-center text-sm text-gray-100 cursor-pointer;
-        @apply z-30;
-        /* Neztmaví se při přejetí myší */
+        @apply transition duration-100 ease-in-out py-4;
     }
 
     .menu-item:hover {
@@ -80,41 +46,65 @@
 
     /* Dropdown menu v navigační liště */
     .menu-dropdown-area {
-        @apply absolute left-0 mt-8;
-        @apply bg-[#333333] shadow-xl;
-        @apply py-2 z-50 w-40;
+        @apply absolute;
+        @apply bg-[#222222] shadow-sm;
+        @apply p-4 w-40 rounded-b-xl;
         @apply hidden group-hover:block;
+        @apply border-x border-y border-[#404040];
     }
-
-    /* Šipka u dropdown menu */
-    .menu-dropdown-area::before {
-        content: "";
-        @apply absolute z-30;
-        border: solid transparent;
-        border-width: 10px;
-        border-bottom-color: #333333;
-        top: -12%;
-        right: 78%;
-    }
-
 
     /* Položka v dropdown menu */
     .menu-dropdown-box {
-        @apply block px-2 py-1 text-sm text-gray-300 whitespace-nowrap;
-        @apply hover:bg-gray-700 hover:text-white flex;
+        @apply px-2 py-1 text-sm text-gray-300 whitespace-nowrap flex;
     }
 
-    .menu-dropdown-icon {
-        @apply w-5 h-auto;
-    }
-
-    .menu-dropdown-text {
-        @apply text-sm;
+    /* Přejetí kurzorem po položce v menu */
+    .menu-dropdown-box:hover {
+        @apply bg-[#3B4042] text-white rounded-md;
     }
 
     /* Oddělovač v dropdown menu */
     .split-line {
         @apply w-px bg-[#666666];
         @apply h-6;
+    }
+
+    /* ==============================================
+        J A Z Y K O V Ý   P Ř E P Í N A Č
+       ============================================== */
+    /* Kontejner s jazykovým přepínačem */
+    .language {
+        @apply relative flex items-center;
+        @apply z-50;
+        /* Zajišťuje, že se dropdown neuzavře po přejetí myší */
+    }
+
+    /* Aktuální jazyk (po přejetí zobrazí nabídku dalších) */
+    .flag-button {
+        @apply inline-flex items-center justify-center border-none cursor-pointer rounded-2xl;
+    }
+
+    .flag-dropdown {
+        @apply relative top-full right-0 hidden;
+        @apply items-center flex-row gap-x-2;
+        @apply p-2;
+        @apply whitespace-nowrap min-w-max;
+        @apply z-40;
+        &.flag-dropdown-visible {
+            @apply flex;
+        }
+    }
+
+    .toggle {
+        @apply p-0 m-0 border-none bg-transparent flex items-center cursor-pointer;
+        @apply hover:bg-gray-700 transition duration-150 rounded-md;
+    }
+
+    .flag-img {
+        @apply !w-9 !h-auto object-cover block rounded-md;
+    }
+
+    .flag-img:hover{
+        @apply hover:opacity-85;
     }
 }

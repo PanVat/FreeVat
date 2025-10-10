@@ -14,25 +14,10 @@
         font-family: 'Zalando Sans', sans-serif;
     }
 
-    /* Mírné ztmavení stránky při přejetí na odkaz v menu */
-    .overlay {
-        @apply fixed inset-0 pointer-events-none;
-        @apply opacity-0;
-        @apply bg-black;
-        @apply transition-opacity duration-100
-        z-75; /* (Header má z-50) */
-    }
-
-    /* Dělící čára */
-    .divider {
-        @apply bg-[#404040] w-full;
-        height: 1px;
-    }
-
     /* Obecné tlačítko */
     .button {
         @apply py-2 px-4 duration-150 rounded-md text-sm;
-        @apply hover:shadow-lg hover:opacity-90;
+        @apply hover:opacity-90;
     }
 }
 

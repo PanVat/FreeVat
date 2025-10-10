@@ -8,96 +8,69 @@
         <ul class="menu-wrapper">
             <!-- Dropdown pro modely -->
             <li class="menu-dropdown group">
-                <button class="menu-item">{% trans "Models" %}</button>
+                <a class="menu-item">{% trans "Models" %}</a>
                 <div class="menu-dropdown-area">
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/characters-and-creatures.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">{% trans 'All' %}</span>
+                        {% trans 'All' %}
                     </a>
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/nature-and-plants.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">{% trans 'Animals' %}</span>
+                        {% trans 'Animals' %}
                     </a>
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/sports-and-fitness.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">{% trans 'Architecture' %}</span>
+                        {% trans 'Architecture' %}
                     </a>
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/weapons-and-military.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">{% trans 'Characters' %}</span>
+                        {% trans 'Characters' %}
                     </a>
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/weapons-and-military.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">{% trans 'Sport' %}</span>
+                        {% trans 'Electronics' %}
+                    </a>
+                    <a href="#" class="menu-dropdown-box">
+                        {% trans 'Furniture' %}
+                    </a>
+                    <a href="#" class="menu-dropdown-box">
+                        {% trans 'Food' %}
+                    </a>
+                    <a href="#" class="menu-dropdown-box">
+                        {% trans 'Sport' %}
                     </a>
                 </div>
             </li>
 
             <!-- Dropdown pro souborové formáty -->
             <li class="menu-dropdown group">
-                <button class="menu-item">{% trans "Formats" %}</button>
+                <a class="menu-item">{% trans "Formats" %}</a>
                 <div class="menu-dropdown-area">
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/weapons-and-military.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">FBX</span>
+                        FBX
                     </a>
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/nature-and-plants.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">OBJ</span>
+                        OBJ
                     </a>
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/sports-and-fitness.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">USDZ</span>
+                        USDZ
                     </a>
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/weapons-and-military.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">GLB</span>
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/nature-and-plants.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">3ds Max</span>
+                        GLB
                     </a>
                 </div>
             </li>
 
             <!-- Dropdown pro software -->
             <li class="menu-dropdown group">
-                <button class="menu-item">{% trans "Software" %}</button>
+                <a class="menu-item">{% trans "Software" %}</a>
                 <div class="menu-dropdown-area">
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/characters-and-creatures.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">Blender</span>
+                        Blender
                     </a>
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/nature-and-plants.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">3ds Max</span>
+                        3ds Max
                     </a>
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/sports-and-fitness.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">Maya</span>
+                        Maya
                     </a>
                     <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/weapons-and-military.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">Cinema 4D</span>
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        <img src="{% static 'img/software/nature-and-plants.svg' %}" alt=""
-                             class="menu-dropdown-icon">
-                        <span class="menu-dropdown-text">3ds Max</span>
+                        Cinema 4D
                     </a>
                 </div>
             </li>
@@ -109,12 +82,12 @@
 
             <!-- Textury -->
             <li class="menu-dropdown group">
-                <button class="menu-item">{% trans "Textures" %}</button>
+                <a class="menu-item">{% trans "Textures" %}</a>
             </li>
 
             <!-- Náhodné modely -->
             <li class="menu-dropdown group">
-                <button class="menu-item">{% trans "Random" %}</button>
+                <a class="menu-item">{% trans "Random" %}</a>
             </li>
         </ul>
     </nav>

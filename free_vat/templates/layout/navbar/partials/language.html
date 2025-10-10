@@ -5,13 +5,6 @@
 
 <!-- Přepínač mezi jazyky -->
 <div class="language group">
-    <!-- Aktuální jazyk -->
-    <button type="button"
-            class="flag-button"
-            aria-haspopup="true">
-        <img src="{% static 'img/flags/' %}{{ LANGUAGE_CODE }}.svg"
-             alt="{{ LANGUAGE_CODE }}" class="flag-img"/>
-    </button>
     <!-- Nabídka s ostatními jazyky -->
     <div class="flag-dropdown">
         {% for language in languages %}
@@ -30,4 +23,12 @@
         {% endif %}
         {% endfor %}
     </div>
+
+    <!-- Aktuální jazyk -->
+    <button type="button"
+            class="flag-button"
+            aria-haspopup="true">
+        <img src="{% static 'img/flags/' %}{{ LANGUAGE_CODE }}.svg"
+             alt="{{ LANGUAGE_CODE }}" class="flag-img"/>
+    </button>
 </div>

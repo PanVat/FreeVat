@@ -10,9 +10,7 @@
 </head>
 <body>
 {% include "layout/header/header.html" %}
-{% include "base/divider.html" %}
 {% include "layout/navbar/navbar.html" %}
-{% include "base/divider.html" %}
 
 {% block content %}
 <!-------------------------------
@@ -20,8 +18,7 @@
 --------------------------------->
 {% endblock %}
 {% include "layout/footer/footer.html" %}
-{% include "base/overlay.html" %}
 
-<script src="{% static 'js/overlay.js' %}"></script>
+<script src="{% static 'js/toggle_lang.js' %}"></script>
 </body>
 </html>

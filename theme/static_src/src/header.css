@@ -2,7 +2,7 @@
     /* Záhlaví */
     .header {
         @apply bg-[#222222] flex items-center px-4 h-14;
-        @apply sticky top-0 z-50; /* Záhlaví je 'přilepené' k horní části */
+        @apply sticky top-0 z-100; /* Záhlaví je 'přilepené' k horní části */
     }
 
     /* Záhlaví (vnitřní sekce) */
