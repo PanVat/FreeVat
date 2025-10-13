@@ -1,77 +1,46 @@
 {% load i18n static %}
 
-<div class="menu">
-    <input class="peer hidden" type="checkbox" id="navbar-open"/>
-    <label class="absolute cursor-pointer text-xl sm:hidden z-40" for="navbar-open">
-    </label>
-    <nav aria-label="Header Navigation" class="peer-checked:block hidden sm:block sm:py-0">
+<!-- Celé navigační menu -->
+<div class="menu-container">
+    <nav aria-label="Header Navigation" class="menu-nav">
         <ul class="menu-wrapper">
-            <!-- Dropdown pro modely -->
+
+            <!-- Modely -->
             <li class="menu-dropdown group">
-                <a class="menu-item">{% trans "Models" %}</a>
+                <button class="menu-item">{% trans "Models" %}</button>
                 <div class="menu-dropdown-area">
-                    <a href="#" class="menu-dropdown-box">
-                        {% trans 'All' %}
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        {% trans 'Animals' %}
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        {% trans 'Architecture' %}
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        {% trans 'Characters' %}
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        {% trans 'Electronics' %}
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        {% trans 'Furniture' %}
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        {% trans 'Food' %}
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        {% trans 'Sport' %}
-                    </a>
+                    <a href="#" class="menu-dropdown-box">{% trans 'All categories' %}</a>
+                    <a href="#" class="menu-dropdown-box">{% trans 'Animals & Pets' %}</a>
+                    <a href="#" class="menu-dropdown-box">{% trans 'Architecture' %}</a>
+                    <a href="#" class="menu-dropdown-box">{% trans 'Cars & Vehicles' %}</a>
+                    <a href="#" class="menu-dropdown-box">{% trans 'Characters & Creatures' %}</a>
+                    <a href="#" class="menu-dropdown-box">{% trans 'Electronics & Gadgets' %}</a>
+                    <a href="#" class="menu-dropdown-box">{% trans 'Food & Drink' %}</a>
+                    <a href="#" class="menu-dropdown-box">{% trans 'Furniture & Home' %}</a>
+                    <a href="#" class="menu-dropdown-box">{% trans 'Nature & Plants' %}</a>
+                    <a href="#" class="menu-dropdown-box">{% trans 'Sports & Fitness' %}</a>
                 </div>
             </li>
 
-            <!-- Dropdown pro souborové formáty -->
+            <!-- Formáty -->
             <li class="menu-dropdown group">
-                <a class="menu-item">{% trans "Formats" %}</a>
+                <button class="menu-item">{% trans "Formats" %}</button>
                 <div class="menu-dropdown-area">
-                    <a href="#" class="menu-dropdown-box">
-                        FBX
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        OBJ
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        USDZ
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        GLB
-                    </a>
+                    <a href="#" class="menu-dropdown-box">FBX</a>
+                    <a href="#" class="menu-dropdown-box">OBJ</a>
+                    <a href="#" class="menu-dropdown-box">USDZ</a>
+                    <a href="#" class="menu-dropdown-box">GLB</a>
                 </div>
             </li>
 
-            <!-- Dropdown pro software -->
+            <!-- Software -->
             <li class="menu-dropdown group">
-                <a class="menu-item">{% trans "Software" %}</a>
+                <button class="menu-item">{% trans "Software" %}</button>
                 <div class="menu-dropdown-area">
-                    <a href="#" class="menu-dropdown-box">
-                        Blender
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        3ds Max
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        Maya
-                    </a>
-                    <a href="#" class="menu-dropdown-box">
-                        Cinema 4D
-                    </a>
+                    <a href="#" class="menu-dropdown-box">Blender</a>
+                    <a href="#" class="menu-dropdown-box">3ds Max</a>
+                    <a href="#" class="menu-dropdown-box">Maya</a>
+                    <a href="#" class="menu-dropdown-box">Cinema 4D</a>
                 </div>
             </li>
 
@@ -82,12 +51,7 @@
 
             <!-- Textury -->
             <li class="menu-dropdown group">
-                <a class="menu-item">{% trans "Textures" %}</a>
-            </li>
-
-            <!-- Náhodné modely -->
-            <li class="menu-dropdown group">
-                <a class="menu-item">{% trans "Random" %}</a>
+                <button class="menu-item">{% trans "Textures" %}</button>
             </li>
         </ul>
     </nav>

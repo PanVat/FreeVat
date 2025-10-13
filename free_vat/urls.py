@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns, set_language
-
 urlpatterns = [
     path('i18n/setlang/', set_language, name='set_language'),  # Přepínač jazyka
 ]

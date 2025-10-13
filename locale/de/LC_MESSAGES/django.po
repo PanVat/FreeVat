@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-08 18:29+0200\n"
-"PO-Revision-Date: 2025-09-27 15:41+0200\n"
+"POT-Creation-Date: 2025-10-13 11:57+0200\n"
+"PO-Revision-Date: 2025-10-13 12:43+0200\n"
 "Last-Translator:   <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -31,59 +31,18 @@ msgstr "Tschechisch"
 msgid "German"
 msgstr "Deutsch"
 
-#: .\free_vat\templates\layout\footer\footer.html:7
-msgid "Popis naší společnosti nebo mise, krátké a výstižné."
-msgstr ""
-
-#: .\free_vat\templates\layout\footer\footer.html:22
-msgid "Odkazy"
-msgstr ""
-
-#: .\free_vat\templates\layout\footer\footer.html:24
-msgid "O nás"
-msgstr ""
-
-#: .\free_vat\templates\layout\footer\footer.html:25
-msgid "Služby"
-msgstr ""
-
-#: .\free_vat\templates\layout\footer\footer.html:26
-msgid "Kariéra"
-msgstr ""
-
-#: .\free_vat\templates\layout\footer\footer.html:27
-msgid "FAQ"
-msgstr ""
-
-#: .\free_vat\templates\layout\footer\footer.html:32
-msgid "Podpora"
-msgstr ""
-
-#: .\free_vat\templates\layout\footer\footer.html:34
-msgid "Nápověda"
-msgstr ""
-
-#: .\free_vat\templates\layout\footer\footer.html:35
-msgid "Kontakt"
-msgstr ""
-
-#: .\free_vat\templates\layout\footer\footer.html:36
-msgid "Obchodní podmínky"
-msgstr ""
-
-#: .\free_vat\templates\layout\footer\footer.html:37
-msgid "Ochrana soukromí"
-msgstr ""
-
-#: .\free_vat\templates\layout\footer\footer.html:45
-msgid "Všechna práva vyhrazena."
-msgstr ""
+#: .\free_vat\templates\base\base.html:4
+msgid "Language"
+msgstr "de"
 
 #: .\free_vat\templates\layout\header\header.html:9
 msgid "Logo"
-msgstr ""
+msgstr "Logo"
 
 #: .\free_vat\templates\layout\header\header.html:18
+msgid "Magnifying"
+msgstr "Lupe"
+
 #: .\free_vat\templates\layout\header\header.html:22
 msgid "Search"
 msgstr "Suchen"
@@ -93,93 +52,73 @@ msgid "Log in"
 msgstr "Einloggen"
 
 #: .\free_vat\templates\layout\header\header.html:30
-#, fuzzy
 #| msgid "Sign in"
 msgid "Sign up"
-msgstr "Anmelden"
+msgstr "Registrieren"
 
-#: .\free_vat\templates\layout\navbar\partials\categories.html:5
-#: .\free_vat\templates\layout\navbar\partials\categories.html:7
-msgid "All models"
-msgstr ""
+#: .\free_vat\templates\layout\navbar\partials\menu.html:10
+msgid "Models"
+msgstr "Modelle"
 
-#: .\free_vat\templates\layout\navbar\partials\categories.html:10
-msgid "All"
-msgstr ""
+#: .\free_vat\templates\layout\navbar\partials\menu.html:12
+msgid "All categories"
+msgstr "Alle Kategorien"
 
-#: .\free_vat\templates\layout\navbar\partials\categories.html:13
-#: .\free_vat\templates\layout\navbar\partials\categories.html:15
+#: .\free_vat\templates\layout\navbar\partials\menu.html:13
 msgid "Animals & Pets"
-msgstr ""
+msgstr "Tiere & Haustiere"
 
-#: .\free_vat\templates\layout\navbar\partials\categories.html:18
-msgid "Animals"
-msgstr ""
-
-#: .\free_vat\templates\layout\navbar\partials\categories.html:21
-#: .\free_vat\templates\layout\navbar\partials\categories.html:23
-#: .\free_vat\templates\layout\navbar\partials\categories.html:26
+#: .\free_vat\templates\layout\navbar\partials\menu.html:14
 msgid "Architecture"
-msgstr ""
+msgstr "Architektur"
 
-#: .\free_vat\templates\layout\navbar\partials\categories.html:29
-#: .\free_vat\templates\layout\navbar\partials\categories.html:31
+#: .\free_vat\templates\layout\navbar\partials\menu.html:15
+msgid "Cars & Vehicles"
+msgstr "Autos & Fahrzeuge"
+
+#: .\free_vat\templates\layout\navbar\partials\menu.html:16
 msgid "Characters & Creatures"
-msgstr ""
+msgstr "Charaktere & Kreaturen"
 
-#: .\free_vat\templates\layout\navbar\partials\categories.html:34
-msgid "Characters"
-msgstr ""
-
-#: .\free_vat\templates\layout\navbar\partials\categories.html:37
-#: .\free_vat\templates\layout\navbar\partials\categories.html:39
+#: .\free_vat\templates\layout\navbar\partials\menu.html:17
 msgid "Electronics & Gadgets"
-msgstr ""
+msgstr "Elektronik & Gadgets"
 
-#: .\free_vat\templates\layout\navbar\partials\categories.html:42
-msgid "Electronics"
-msgstr ""
-
-#: .\free_vat\templates\layout\navbar\partials\categories.html:45
-#: .\free_vat\templates\layout\navbar\partials\categories.html:47
+#: .\free_vat\templates\layout\navbar\partials\menu.html:18
 msgid "Food & Drink"
-msgstr ""
+msgstr "Essen & Trinken"
 
-#: .\free_vat\templates\layout\navbar\partials\categories.html:50
-msgid "Food"
-msgstr ""
+#: .\free_vat\templates\layout\navbar\partials\menu.html:19
+msgid "Furniture & Home"
+msgstr "Möbel & Wohnen"
 
-#: .\free_vat\templates\layout\navbar\partials\categories.html:53
-#: .\free_vat\templates\layout\navbar\partials\categories.html:55
+#: .\free_vat\templates\layout\navbar\partials\menu.html:20
 msgid "Nature & Plants"
-msgstr ""
+msgstr "Natur & Pflanzen"
 
-#: .\free_vat\templates\layout\navbar\partials\categories.html:58
-msgid "Nature"
-msgstr ""
-
-#: .\free_vat\templates\layout\navbar\partials\categories.html:61
-#: .\free_vat\templates\layout\navbar\partials\categories.html:63
+#: .\free_vat\templates\layout\navbar\partials\menu.html:21
 msgid "Sports & Fitness"
-msgstr ""
+msgstr "Sport & Fitness"
 
-#: .\free_vat\templates\layout\navbar\partials\categories.html:66
-#, fuzzy
-#| msgid "Support"
-msgid "Sport"
-msgstr "Unterstützung"
-
-#: .\free_vat\templates\layout\navbar\partials\menu.html:7
-msgid "Software"
-msgstr ""
-
-#: .\free_vat\templates\layout\navbar\partials\menu.html:35
+#: .\free_vat\templates\layout\navbar\partials\menu.html:27
 msgid "Formats"
-msgstr ""
+msgstr "Formate"
+
+#: .\free_vat\templates\layout\navbar\partials\menu.html:38
+msgid "Software"
+msgstr "Software"
+
+#: .\free_vat\templates\layout\navbar\partials\menu.html:54
+msgid "Textures"
+msgstr "Texturen"
 
 #: .\help\help.txt:27
 msgid "Upload"
-msgstr ""
+msgstr "Hochladen"
+
+#, fuzzy
+#~ msgid "Sport"
+#~ msgstr "Unterstützung"
 
 #~ msgid "Hello, World!"
 #~ msgstr "Hallo, Welt!"

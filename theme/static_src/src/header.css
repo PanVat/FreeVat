@@ -1,53 +1,53 @@
-@layer components {
-    /* Záhlaví */
-    .header {
-        @apply bg-[#222222] flex items-center px-4 h-14;
-        @apply sticky top-0 z-100; /* Záhlaví je 'přilepené' k horní části */
-    }
+/* Záhlaví */
+.header {
+    @apply bg-[#222222] flex items-center px-4 h-14;
+    @apply sticky top-0 z-100;
+    /* Záhlaví je 'přilepené' k horní části */
+}
 
-    /* Záhlaví (vnitřní sekce) */
-    .header-section {
-        @apply flex items-center justify-between w-full relative;
-    }
+/* Záhlaví (vnitřní sekce) */
+.header-section {
+    @apply flex items-center justify-between w-full relative;
+}
 
-    /* Logo webu */
-    .web-icon {
-        @apply h-7 min-w-[130px];
-    }
+/* Logo webu */
+.web-icon {
+    @apply h-7 min-w-[130px];
+}
 
-    .search {
-        @apply relative flex items-center flex-grow mx-4 max-w-xl;
-        @apply hidden md:flex; /* Skryje se na mobilních zařízeních */
-    }
+/* Vyhledávací pole */
+.search {
+    @apply relative flex items-center flex-grow mx-4 max-w-xl;
+    @apply hidden md:flex;
+    /* Skryje se na mobilních zařízeních */
+}
 
-    /* Ikona lupy ve vyhledávacím poli */
-    .search-icon {
-        @apply h-4;
-    }
+/* Ikona lupy ve vyhledávacím poli */
+.search-icon {
+    @apply h-4;
+}
 
-    /* Zde je uložená ikona lupy */
-    .search-icon-box {
-        @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none;
-    }
+/* Zde je uložená ikona lupy */
+.search-icon-box {
+    @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none;
+}
 
-    /* Vstupní pole pro vyhledávání */
-    .search-input {
-        @apply pl-10 p-2 rounded-md bg-[#3B4042] focus:outline-none w-full;
-    }
+/* Vstupní pole pro vyhledávání */
+.search-input {
+    @apply pl-10 p-2 rounded-md bg-[#3B4042] focus:outline-none w-full;
+}
 
-    /* Přihlášení - tlačítko */
-    .login-button {
-        @apply bg-gray-600;
-    }
+/* Přihlášení - tlačítko */
+.login-button {
+    @apply bg-[#3B4042];
+}
 
-    /* Registrace - tlačítko */
-    .register-button {
-        @apply bg-green-600;
-    }
+/* Registrace - tlačítko */
+.register-button {
+    @apply bg-[#3B4042];
+}
 
-    /* Nahrání - tlačítko */
-    .upload-button {
-        @apply bg-blue-600;
-    }
-
+/* Nahrání - tlačítko */
+.upload-button {
+    @apply bg-blue-600;
 }

@@ -1,3 +1,4 @@
+/* Vezme tyto HTML prvky a uloží je do konstant */
 document.addEventListener('DOMContentLoaded', function() {
     const languageToggle = document.querySelector('.language');
     const flagButton = languageToggle.querySelector('.flag-button');

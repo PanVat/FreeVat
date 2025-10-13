@@ -1,110 +1,114 @@
-@layer components {
+/** NAVIGAČNÍ LIŠTA **/
+.navbar {
+    @apply bg-[#222222] p-4 items-center relative z-50;
+    @apply border-y-[1px] border-[#404040];
+}
 
-    /* Celá navigační lišta */
-    .navbar {
-        @apply bg-[#222222] p-4 items-center relative z-50;
-        @apply border-y-[1px] border-[#404040]; /* Nahrážka dělící čáry (aby správně fungoval dropdown) */
-    }
+/* Obaluje prvky v navigaci */
+.navbar-wrapper {
+    @apply flex justify-between items-center h-5;
+}
 
-    /* Obal v navigační liště */
-    .navbar-wrapper {
-        @apply flex justify-between items-center h-5;
-    }
+/* Část navigační lišty */
+.navbar-part {
+    @apply flex items-center gap-x-6;
+}
 
-    /* Levá část navigační lišty */
-    .navbar-part {
-        @apply flex items-center gap-x-6;
-    }
 
-    /* ==============================================
-        M E N U
-       ============================================== */
-    /* Menu */
-    .menu {
-        @apply hidden md:flex items-center relative;
-    }
+/** MENU **/
+.menu-nav {
+    @apply flex;
+}
 
-    /* Obal menu */
-    .menu-wrapper {
-        @apply flex space-x-4 items-center;
-    }
+/* Obal menu */
+.menu-wrapper {
+    @apply flex space-x-4 items-center;
+}
 
-    /* Obal dropdown menu */
-    .menu-dropdown {
-        @apply relative;
-    }
+/* Obal dropdown menu */
+.menu-dropdown {
+    @apply relative;
+}
 
-    /* Odkaz v menu */
-    .menu-item {
-        @apply flex items-center justify-center text-sm text-gray-100 cursor-pointer;
-        @apply transition duration-100 ease-in-out py-4;
-    }
+/* Odkaz v menu */
+.menu-item {
+    @apply flex items-center justify-center text-sm text-gray-100 cursor-pointer;
+    @apply transition duration-100 ease-in-out py-4;
+}
 
-    .menu-item:hover {
-        @apply text-[#D5D5D5];
-    }
+/* Přejetí po odkazu v menu */
+.menu-item:hover {
+    @apply text-[#D5D5D5];
+}
 
-    /* Dropdown menu v navigační liště */
-    .menu-dropdown-area {
-        @apply absolute;
-        @apply bg-[#222222] shadow-sm;
-        @apply p-4 w-40 rounded-b-xl;
-        @apply hidden group-hover:block;
-        @apply border-x border-y border-[#404040];
-    }
+/* Dropdown okýnko - obsahuje rozcestník */
+.menu-dropdown-area {
+    @apply absolute top-full left-0;
+    @apply bg-[#222222] shadow-lg;
+    @apply p-2 w-48 rounded-b-md;
+    @apply hidden group-hover:block;
+    @apply border border-[#404040];
+    @apply z-40;
+}
 
-    /* Položka v dropdown menu */
-    .menu-dropdown-box {
-        @apply px-2 py-1 text-sm text-gray-300 whitespace-nowrap flex;
-    }
+/* Položka v dropdown menu */
+.menu-dropdown-box {
+    @apply px-3 py-2 text-sm text-gray-300 whitespace-nowrap flex items-center;
+    @apply rounded-md transition-colors duration-200;
+}
 
-    /* Přejetí kurzorem po položce v menu */
-    .menu-dropdown-box:hover {
-        @apply bg-[#3B4042] text-white rounded-md;
-    }
+/* Přejetí kurzorem po položce v menu */
+.menu-dropdown-box:hover {
+    @apply bg-[#3B4042] text-white;
+}
 
-    /* Oddělovač v dropdown menu */
-    .split-line {
-        @apply w-px bg-[#666666];
-        @apply h-6;
-    }
+/* Oddělovač */
+.split-line {
+    @apply w-px bg-[#666666] h-6;
+}
 
-    /* ==============================================
-        J A Z Y K O V Ý   P Ř E P Í N A Č
-       ============================================== */
-    /* Kontejner s jazykovým přepínačem */
-    .language {
-        @apply relative flex items-center;
-        @apply z-50;
-        /* Zajišťuje, že se dropdown neuzavře po přejetí myší */
-    }
+/* Menu kontejner */
+.menu-container {
+    @apply flex items-center relative;
+}
 
-    /* Aktuální jazyk (po přejetí zobrazí nabídku dalších) */
-    .flag-button {
-        @apply inline-flex items-center justify-center border-none cursor-pointer rounded-2xl;
-    }
 
-    .flag-dropdown {
-        @apply relative top-full right-0 hidden;
-        @apply items-center flex-row gap-x-2;
-        @apply p-2;
-        @apply whitespace-nowrap min-w-max;
-        @apply z-40;
-        &.flag-dropdown-visible {
-            @apply flex;
-        }
-    }
+/** JAZYKY **/
+.language {
+    @apply relative flex items-center;
+    @apply z-50;
+}
 
-    .toggle {
-        @apply p-0 m-0 border-none bg-transparent flex items-center cursor-pointer;
-        @apply hover:bg-gray-700 transition duration-150 rounded-md;
-    }
+/* Aktuální jazyk */
+.flag-button {
+    @apply inline-flex items-center justify-center border-none cursor-pointer rounded-2xl;
+}
 
-    .flag-img {
-        @apply !w-9 !h-auto object-cover block rounded-md;
-    }
+/* Po kliknutí se zobrazí další jazyky */
+.flag-dropdown {
+    @apply relative top-full right-0 hidden;
+    @apply items-center flex-row gap-x-2;
+    @apply p-2;
+    @apply whitespace-nowrap min-w-max;
+    @apply z-40;
 
-    .flag-img:hover{
-        @apply hover:opacity-85;
+    &.flag-dropdown-visible {
+        @apply flex;
     }
+}
+
+/* Přepínač jazyků */
+.toggle {
+    @apply p-0 m-0 border-none bg-transparent flex items-center cursor-pointer;
+    @apply hover:bg-gray-700 transition duration-150 rounded-md;
+}
+
+/* Obrázek vlajky */
+.flag-img {
+    @apply !w-9 !h-auto object-cover block rounded-md;
+}
+
+/* Přejetí po obrázku */
+.flag-img:hover {
+    @apply hover:opacity-85;
 }

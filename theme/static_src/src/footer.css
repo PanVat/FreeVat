@@ -1,5 +1,25 @@
-/* Zápatí */
+/* Záhlaví */
 .footer {
-    @apply bg-[#222222] items-center justify-center;
-    @apply border-t border-[#404040];
+    @apply border-t border-[#404040] h-14 px-4;
+    @apply bg-[#222222] w-full items-center;
+}
+
+/* Dělící čára */
+.footer-divider {
+    @apply w-full mt-0 mb-4;
+}
+
+/* Vnořený kontejner, obsahuje položky záhlaví */
+.footer-info-container {
+    @apply flex justify-between items-center;
+}
+
+/* Text */
+.footer-text {
+    @apply text-sm text-white;
+}
+
+/* Text po přejetí kurzorem */
+.footer-text:hover {
+    @apply underline;
 }
