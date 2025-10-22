@@ -1,0 +1,8 @@
+{
+  "js/three/src/main.js": {
+    "file": "main.js",
+    "name": "main",
+    "src": "js/three/src/main.js",
+    "isEntry": true
+  }
+}

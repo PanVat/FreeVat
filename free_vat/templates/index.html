@@ -1,11 +1,6 @@
 {% extends 'base/base.html' %}
-{% load i18n %}
+{% load i18n static %}
 
 {% block content %}
-    <!-- Pro testovací účely, číslo určuje množství čtverečků -->
-    <div class="grid-container py-12 px-4 md:px-8">
-        {% for i in "1"|ljust:64 %}
-        <div class="color-box"></div>
-        {% endfor %}
-    </div>
+<script type="module" src="{% static 'js/three/dist/main.js' %}"></script>
 {% endblock %}

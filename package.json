@@ -1,0 +1,29 @@
+{
+  "name": "freevat",
+  "version": "1.0.0",
+  "description": "**FreeVat** je webová aplikace, která umožňuje uživatelům **nahrávat, zobrazovat, mazat a ukládat 3D modely**. Aplikace je postavena\r na\r moderních technologiích a poskytuje uživatelům jednoduché a intuitivní rozhraní při prohlížení 3D modelů. Všechny\r modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si je moct stáhnout úplně kdokoli a používat na\r úplně cokoli. Je to takové zdrojákoviště 3D objektů, do kterého můžou dobrovolníci přispívat svými výtvory, ke kterým bude mít každý přístup.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PanVat/FreeVat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/PanVat/FreeVat/issues"
+  },
+  "homepage": "https://github.com/PanVat/FreeVat#readme",
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.11"
+  }
+}

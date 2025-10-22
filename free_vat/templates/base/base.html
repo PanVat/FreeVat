@@ -20,8 +20,14 @@
 --------------------------------->
 {% endblock %}
 {% include "layout/footer/footer.html" %}
-
 <!-- Přepínání jazyků -->
 <script src="{% static 'js/toggle_lang.js' %}"></script>
+
+{% if settings.DEBUG %}
+<script type="module" src="http://localhost:5173/@vite/client"></script>
+<script type="module" src="http://localhost:5173/js/three/src/main.js"></script>
+{% else %}
+<script type="module" src="{% static 'js/three/dist/main.js' %}"></script>
+{% endif %}
 </body>
 </html>
