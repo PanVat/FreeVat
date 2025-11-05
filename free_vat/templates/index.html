@@ -2,5 +2,38 @@
 {% load i18n static %}
 
 {% block content %}
-<script type="module" src="{% static 'js/three/dist/main.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<div class="main-container">
+
+    <div class="content-panel">
+        <div class="title-section">
+            <h1 class="main-heading">FreeVat</h1>
+            <h2 class="sub-heading">Domov 3D modelů</h2>
+        </div>
+
+        <div class="feature-list">
+            <p class="feature-item">
+                <span class="feature-icon"></span> Všechny 3D modely jsou ZCELA ZDARMA
+            </p>
+            <p class="feature-item">
+                <span class="feature-icon"></span> Prohlížení modelů v reálném čase s ovládáním
+            </p>
+            <p class="feature-item">
+                <span class="feature-icon"></span> Podpora nejrozšířenějších 3D formátů
+            </p>
+            <p class="feature-item">
+                <span class="feature-icon"></span> Podpora nejpoužívanějších softwarových formátů
+            </p>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="#" class="btn-explore">Prozkoumat</a>
+            <a href="#" class="btn-upload">Nahrát</a>
+        </div>
+    </div>
+
+    <div id="three-scene-container" class="model-viewport">
+    </div>
+</div>
 {% endblock %}

@@ -6,7 +6,7 @@ moderních technologiích a poskytuje uživatelům jednoduché a intuitivní roz
 modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si je moct stáhnout úplně kdokoli a používat na
 úplně cokoli. Je to takové zdrojákoviště 3D objektů, do kterého můžou dobrovolníci přispívat svými výtvory, ke kterým bude mít každý přístup.
 
-[![Version](https://img.shields.io/badge/Verze-Indev_0.0.5-green.svg?logo=github&logoColor=white)](https://github.com/PanVat/FreeVat)
+[![Version](https://img.shields.io/badge/Verze-Indev_0.0.7-green.svg?logo=github&logoColor=white)](https://github.com/PanVat/FreeVat)
 [![Developer](https://img.shields.io/badge/Vývojář-PanVat-blue)](https://github.com/PanVat)
 ![License](https://img.shields.io/badge/Licence-Open_Source_✅-purple.svg)
 ---
@@ -26,6 +26,7 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - `PostgreSQL` - Výkonný databázový systém pro ukládání dat
 - `OAuth` - Přihlašování a registrace uživatelů
 - `Docker` - Kontejnerizace aplikace pro snadné nasazení
+- `Vite` - Buildování a vývoj v reálném čase
 ---
 ## 💡Inspirace
 
@@ -48,7 +49,7 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - [ ] Registrace, přihlašování a mazání uživatelských účtů
 - [ ] Zobrazování základních informací o modelech (počet ploch, velikost souboru..)
 - [x] Více jazyků na výběr - čeština / angličtina / němčina
-- [x] Plně responzivní design
+- [ ] Plně responzivní design
 - [ ] Vyhledávání 3D modelů podle názvu, případně podle velikosti
 - [ ] Nasazení aplikace na Kubernetes
 ---
@@ -74,3 +75,10 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - Přeinstalace všech balíčků
 - Hodiny a hodiny **centrování neposedného divu**
 - Stylování záhlaví a navigace
+---
+
+### ✅Říjen 2025 - ![Verze](https://img.shields.io/badge/Indev_0.0.7-darkgreen.svg)
+- Dokončení záhlaví, navigace a zápatí
+- Tyto elementy jsou nyní plně responzivní (alespoň na PC)
+- Instalace a nastavení `Three.js`
+- Základní implementace 3D vieweru

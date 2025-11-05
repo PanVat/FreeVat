@@ -1,14 +1,76 @@
-/* ===============================
-    P R O  T E S T O V Á N Í
-   ===============================*/
-.grid-container {
-    @apply grid grid-cols-8;
-    @apply gap-4;
-    @apply min-h-[50vh];
+/* free_vat/static/css/index.css */
+
+/* KONTENJER CELÉ STRÁNKY */
+.main-container {
+    /* Rozdělení na dva sloupce: flex-row na desktopu, celá výška obrazovky */
+    @apply flex flex-col md:flex-row min-h-screen;
 }
 
-.color-box {
-    @apply aspect-square;
-    @apply rounded-lg bg-gray-700 shadow-md;
-    @apply hover:bg-gray-600 transition-colors duration-200;
+/* LEVÝ PANEL S TEXTEM */
+.content-panel {
+    /* Poloviční šířka, tmavě modré pozadí (Poliigon styl), padding a bílý text */
+    @apply w-full md:w-1/2 bg-gray-900 text-white flex flex-col justify-center px-24;
+}
+
+/* NADPISY */
+.title-section {
+    @apply mb-12;
+}
+
+.main-heading {
+    /* Velký text pro název FreeVat */
+    @apply text-6xl font-black leading-none;
+}
+
+.sub-heading {
+    /* Menší podnadpis */
+    @apply text-xl font-light opacity-80 mt-2;
+}
+
+/* SEZNAM VÝHOD */
+.feature-list {
+    @apply mb-12 space-y-3 text-lg;
+}
+
+.feature-list p {
+    /* Odsazení prvků */
+    @apply relative;
+}
+
+.feature-item {
+    /* Použijeme Flexbox, aby byla ikona a text v jedné řadě a vertikálně zarovnané */
+    @apply flex items-start space-x-3 text-lg;
+}
+
+/* STYLOVÁNÍ IKONY (SPAN.feature-icon) */
+.feature-icon {
+    /* Pevná velikost ikony */
+    @apply w-6 h-6 flex-shrink-0 mt-0.5; /* flex-shrink-0 zajistí, že se ikona nezmenší */
+
+    /* Vložení SVG ikony jako pozadí */
+    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M20.285 2l-11.285 11.285-5.285-5.285-1.42 1.42L9 16.13L21.71 4.42z'/></svg>");
+
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* TLAČÍTKA CTA */
+.cta-buttons {
+    @apply flex space-x-4 mt-8;
+}
+
+.btn-explore {
+    /* Modré primární tlačítko */
+    @apply bg-blue-600 text-white font-bold py-3 px-6 rounded hover:bg-blue-700 transition duration-300;
+}
+
+.btn-upload {
+    /* Sekundární tlačítko s bílým okrajem */
+    @apply bg-transparent text-white font-bold py-3 px-6 rounded border border-white hover:bg-white hover:text-gray-900 transition duration-300;
+}
+
+/* PRAVÝ VIEWPORT PRO MODEL */
+.model-viewport {
+    /* Poloviční šířka, celá výška, černé pozadí */
+    @apply w-full md:w-1/2 min-h-[500px] md:h-screen bg-black;
 }
