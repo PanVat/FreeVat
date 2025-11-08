@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load i18n static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<div class="main-container">
+
+    <div class="content-panel">
+        <div class="title-section">
+            <h1 class="main-heading">Home of 3D models and renders</h1>
+            <h2 class="sub-heading">Upload and view your models without any fees!</h2>
+        </div>
+        <div class="cta-buttons">
+            <a href="#" class="btn-explore">Explore</a>
+            <a href="#" class="btn-upload">Upload</a>
+        </div>
+    </div>
+
+    <div id="three-scene-container" class="model-viewport">
+        <!-- Úvodní 3D render -->
+    </div>
+</div>
+{% endblock %}

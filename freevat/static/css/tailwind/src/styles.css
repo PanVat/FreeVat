@@ -1,0 +1,40 @@
+/* Zalando Sans */
+@import url('https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+/* Oswald */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+/* Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "tailwindcss";
+
+/* Tailwind direktivy */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Jednotlivé moduly */
+@import './base/navbar.css';
+@import './base/header.css';
+@import './base/footer.css';
+@import './index.css';
+
+/* Fonty */
+@theme {
+    --font-oswald: 'Oswald', 'sans-serif';
+    --font-zalando: 'Zalando Sans', 'sans-serif';
+}
+
+@layer components {
+    /* Celá stránka - globální nastavení (barva, font..) */
+    body {
+        @apply bg-[#222222] text-white font-zalando;
+    }
+
+    /* Obecné tlačítko */
+    .button {
+        @apply py-2 px-4 duration-150 rounded-md text-sm;
+        @apply hover:opacity-90;
+    }
+}
+
+@source "../../../**/*.{html,py,js}";

@@ -4,11 +4,22 @@
 <html lang="{% trans 'Language' %}">
 <head>
     <!-- Načtení Tailwind CSS -->
-    {% load tailwind_tags %}
-    {% tailwind_css %}
+    <link href="{% static 'css/tailwind/dist/styles.css' %}{% if settings.DEBUG %}?v={% now 'U' %}{% endif %}"
+          rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreeVat</title>
+    <!-- Google fonty -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Zalando Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+          rel="stylesheet">
+    <!-- Oswald -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <!-- Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 {% include "layout/header/header.html" %}

@@ -25,23 +25,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     ## Vlastní aplikace ##
-    'free_vat',  # Hlavní aplikace
+    'freevat',  # Hlavní aplikace
     'rosetta',  # Rosetta (vícejazyčnost)
-    'tailwind', # Tailwind CSS (styly)
-    'theme', # Tailwind CSS (aplikace)
     'django_browser_reload', # Pro automatické obnovení stránky při změně kódu
 ]
-
-TAILWIND_APP_NAME = 'theme'  # Název aplikace pro Tailwind CSS
-
-TAILWIND_OUTPUT_CSS_FILE = 'styles.css' # Název výstupního CSS souboru
-
 
 INTERNAL_IPS = [
     "127.0.0.1"
 ]
-
-NPM_BIN_PATH = r"C:\Users\poemc\AppData\Roaming\npm\npm.cmd"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,12 +46,12 @@ MIDDLEWARE = [
     "django_browser_reload.middleware.BrowserReloadMiddleware", # Pro automatické obnovení stránky při změně kódu
 ]
 
-ROOT_URLCONF = 'free_vat.urls'
+ROOT_URLCONF = 'freevat.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'free_vat' / 'templates'],  # Cesta k šablonám
+        'DIRS': [BASE_DIR / 'freevat' / 'templates'],  # Cesta k šablonám
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,7 +64,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'free_vat.wsgi.application'
+WSGI_APPLICATION = 'freevat.wsgi.application'
 
 # Použití PostgreSQL jako databáze
 DATABASES = {

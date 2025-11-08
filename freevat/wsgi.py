@@ -1,5 +1,5 @@
 """
-WSGI config for free_vat project.
+WSGI config for freevat project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'free_vat.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'freevat.settings')
 
 application = get_wsgi_application()

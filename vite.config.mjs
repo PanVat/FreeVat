@@ -2,7 +2,7 @@ import {defineConfig} from 'vite';
 import {resolve} from 'path';
 
 /* Cesta ke statickému adresáři */
-const djangoStaticRoot = resolve(__dirname, 'free_vat/static');
+const djangoStaticRoot = resolve(__dirname, 'freevat/static');
 
 export default defineConfig({
     root: djangoStaticRoot,

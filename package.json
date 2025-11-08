@@ -1,12 +1,14 @@
 {
   "name": "freevat",
   "version": "1.0.0",
-  "description": "**FreeVat** je webová aplikace, která umožňuje uživatelům **nahrávat, zobrazovat, mazat a ukládat 3D modely**. Aplikace je postavena\r na\r moderních technologiích a poskytuje uživatelům jednoduché a intuitivní rozhraní při prohlížení 3D modelů. Všechny\r modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si je moct stáhnout úplně kdokoli a používat na\r úplně cokoli. Je to takové zdrojákoviště 3D objektů, do kterého můžou dobrovolníci přispívat svými výtvory, ke kterým bude mít každý přístup.",
+  "description": "FreeVat je webová aplikace, která umožňuje uživatelům nahrávat, zobrazovat, mazat a ukládat 3D modely.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite",
-    "build": "vite build",
+    "tailwind:dev": "npx @tailwindcss/cli -i ./freevat/static/css/tailwind/src/styles.css -o ./freevat/static/css/tailwind/dist/styles.css --watch",
+    "vite:dev": "vite",
+    "dev": "npm run tailwind:dev & npm run vite:dev",
+    "build": "vite build && npx @tailwindcss/cli -i ./theme/static_src/src/styles.css -o ./theme/static/css/dist/styles.css --minify",
     "preview": "vite preview"
   },
   "repository": {
@@ -22,6 +24,8 @@
   },
   "homepage": "https://github.com/PanVat/FreeVat#readme",
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.17",
+    "tailwindcss": "^4.1.17",
     "three": "^0.180.0"
   },
   "devDependencies": {
