@@ -1,6 +1,130 @@
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 from django.db import models
+from django.core.validators import MaxLengthValidator
 
 
-# Create your models here.
+# 3D model
+class Model3D(models.Model):
+    # Jméno modelu - povinné, max. 50 znaků
+    name = models.CharField(max_length=50,
+                            verbose_name="Name of model/render",
+                            help_text="Enter the name",
+                            error_messages={"blank": "Name cannot be empty",
+                                            "max_length": "Name cannot exceed 50 characters"})
+    # Datum nahrání - automaticky nastaveno na aktuální datum
+    uploaded = models.DateTimeField(auto_now_add=True,
+                                    verbose_name="Uploaded at")
+    # Datum poslední aktualizace - automaticky aktualizováno při každé změně
+    updated = models.DateTimeField(auto_now=True,
+                                   verbose_name="Date of last update")
+    # Popis modelu - nepovinné pole
+    description = models.TextField(blank=True,
+                                   null=True,
+                                   verbose_name="Description",
+                                   help_text="Enter a short description of the model",
+                                   error_messages={"max_length": "Description cannot exceed 1000 characters"})
+    # Samotný 3D model
+    model = models.FileField(upload_to="models/",
+                             verbose_name="3D model",
+                             help_text="Upload the 3D model file (.obj, .fbx..)",
+                             error_messages={"invalid": "Invalid file format"})
+    # Náhledový obrázek modelu
+    thumbnail = models.ImageField(upload_to="thumbnails/",
+                                  verbose_name="Model preview image",
+                                  help_text="Upload a preview image for the model",
+                                  error_messages={"invalid": "Invalid image format"})
+    # Připojení tabulky 'User' (tvůrce modelu)
+    user = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name="Creator")
+    # Připojení tabulky 'Category' (kategorie modelu)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name="Model category")
+
+    # Název modelu jako řetězec
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['-uploaded']  # Seřazení podle data nahrání sestupně
+        verbose_name = "3D Model"
+        verbose_name_plural = "3D Models"
 
 
+# Údaje o souboru 3D modelu (vyplní se automaticky při nahrání)
+class Data(models.Model):
+    # Spojení s 3D modelem
+    model3d = models.OneToOneField('Model3D', primary_key=True, on_delete=models.CASCADE, verbose_name="3D Model")
+    # Počet ploch/trojúhelníků v modelu
+    polygons = models.PositiveIntegerField(verbose_name="Number of polygons")
+    # Počet vrcholů v modelu
+    vertices = models.PositiveIntegerField(verbose_name="Number of vertices")
+    # Velikost souboru v bajtech
+    file_size = models.PositiveIntegerField(verbose_name="File size (bytes)")
+    # Formát souboru (např. .obj, .fbx...)
+    file_format = models.CharField(max_length=10, verbose_name="File format")
+
+
+# Uživatelé
+class User(AbstractUser):
+    # Profilový obrázek uživatele - nepovinné pole
+    picture = models.ImageField(upload_to="profiles/",
+                                null=True,
+                                blank=True,
+                                verbose_name="Profile picture",
+                                help_text="Upload a profile picture",
+                                error_messages={"invalid": "Invalid image format"})
+
+    def __str__(self):
+        return self.username
+
+    class Meta(AbstractUser.Meta):
+        ordering = ['username']
+        verbose_name = "User"
+        verbose_name_plural = "Users"
+
+
+# Uživatelské komentáře k 3D modelům
+class Comment(models.Model):
+    # Spojení s tabulkou uživatelů (autor komentáře)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE,
+                             related_name="comments",
+                             verbose_name="Author")
+    # Spojení s tabulkou 3D modelů (model, ke kterému je komentář)
+    model3d = models.ForeignKey('Model3D',
+                                on_delete=models.CASCADE,
+                                related_name="comments",
+                                verbose_name="3D Model")
+    # Komentář
+    content = models.TextField(verbose_name="Content",
+                               help_text="Enter your comment here",
+                               error_messages={"blank": "Comment cannot be empty",
+                                               "max_length": "Comment cannot exceed 2000 characters"})
+    # Datum vytvoření komentáře
+    created_at = models.DateTimeField(auto_now_add=True,
+                                      verbose_name="Created at")
+    # Datum poslední aktualizace komentáře
+    updated_at = models.DateTimeField(auto_now=True,
+                                      verbose_name="Updated at")
+
+    def __str__(self):
+        return f"Comment by {self.user.get_username()} on {self.model3d.name}"
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Comment"
+        verbose_name_plural = "Comments"
+
+
+# Kategorie 3D modelů
+class Category(models.Model):
+    name = models.CharField(max_length=50,
+                            unique=True,
+                            verbose_name="Category Name")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"

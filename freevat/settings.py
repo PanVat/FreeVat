@@ -7,6 +7,15 @@ load_dotenv()  # Načtení proměnných prostředí z .env souboru
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Zde se ukládají mediální soubory databáze
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# URL, pod kterou jsou mediální soubory dostupné v prohlížeči
+MEDIA_URL = '/media/'
+
+# Model pro uživatelskou autentizaci
+AUTH_USER_MODEL = 'freevat.User'
+
 # Získání tajného klíče z proměnné prostředí
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
@@ -27,7 +36,7 @@ INSTALLED_APPS = [
     ## Vlastní aplikace ##
     'freevat',  # Hlavní aplikace
     'rosetta',  # Rosetta (vícejazyčnost)
-    'django_browser_reload', # Pro automatické obnovení stránky při změně kódu
+    'django_browser_reload',  # Pro automatické obnovení stránky při změně kódu
 ]
 
 INTERNAL_IPS = [
@@ -43,7 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware", # Pro automatické obnovení stránky při změně kódu
+    "django_browser_reload.middleware.BrowserReloadMiddleware",  # Pro automatické obnovení stránky při změně kódu
 ]
 
 ROOT_URLCONF = 'freevat.urls'

@@ -16,7 +16,7 @@
 
 /* Text */
 .footer-text {
-    @apply text-sm text-white;
+    @apply text-base text-white;
 }
 
 /* Text po přejetí kurzorem */

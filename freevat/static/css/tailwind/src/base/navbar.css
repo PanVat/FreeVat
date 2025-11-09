@@ -32,8 +32,8 @@
 
 /* Odkaz v menu */
 .menu-item {
-    @apply flex items-center justify-center text-sm text-gray-100 cursor-pointer;
-    @apply transition duration-100 ease-in-out py-4;
+    @apply flex items-center justify-center text-base text-gray-100 cursor-pointer;
+    @apply transition duration-100 ease-in-out py-5;
 }
 
 /* Přejetí po odkazu v menu */
@@ -45,7 +45,7 @@
 .menu-dropdown-area {
     @apply absolute top-full left-0;
     @apply bg-[#222222] shadow-lg;
-    @apply p-2 w-48 rounded-b-md;
+    @apply p-2 w-52 rounded-b-md;
     @apply hidden group-hover:block;
     @apply border border-[#404040];
     @apply z-40;
@@ -53,7 +53,7 @@
 
 /* Položka v dropdown menu */
 .menu-dropdown-box {
-    @apply px-3 py-2 text-sm text-gray-300 whitespace-nowrap flex items-center;
+    @apply px-3 py-2 text-base text-gray-300 whitespace-nowrap flex items-center;
     @apply rounded-md transition-colors duration-200;
 }
 
