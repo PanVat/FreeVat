@@ -13,6 +13,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # URL, pod kterou jsou mediální soubory dostupné v prohlížeči
 MEDIA_URL = '/media/'
 
+# Uživatelský model
+AUTH_USER_MODEL = 'users.User'
+
 # Získání tajného klíče z proměnné prostředí
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
@@ -24,6 +27,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',  # Aplikace pro správu uživatelů
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +61,7 @@ ROOT_URLCONF = 'freevat.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'freevat' / 'templates'],  # Cesta k šablonám
+        'DIRS': [BASE_DIR / 'templates'],  # Cesta k šablonám
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,6 +130,12 @@ USE_L10N = True  # Povolení lokalizace (např. datum)
 
 USE_TZ = True
 
-STATIC_URL = '/static/'  # Cesta ke statickým souborům
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+STATIC_URL = '/static/'  # Pod touto URL jsou statické soubory dostupné v prohlížeči
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
