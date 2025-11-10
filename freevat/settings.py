@@ -13,9 +13,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # URL, pod kterou jsou mediální soubory dostupné v prohlížeči
 MEDIA_URL = '/media/'
 
-# Model pro uživatelskou autentizaci
-AUTH_USER_MODEL = 'freevat.User'
-
 # Získání tajného klíče z proměnné prostředí
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
@@ -34,7 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     ## Vlastní aplikace ##
-    'freevat',  # Hlavní aplikace
+    'freevat.apps.ModelsConfig',  # Hlavní aplikace
     'rosetta',  # Rosetta (vícejazyčnost)
     'django_browser_reload',  # Pro automatické obnovení stránky při změně kódu
 ]
