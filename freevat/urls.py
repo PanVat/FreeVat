@@ -12,8 +12,8 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', views.index, name='index'),  # Hlavní stránka
     path('admin/', admin.site.urls),
-    # Uživatelské účty
-    path('login/', include('django.contrib.auth.urls')),
+    # Přesměrování do aplikace 'users'
+    path('users/', include('users.urls')),
 )
 
 # Rosetta - pro správu překladů

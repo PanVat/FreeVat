@@ -27,18 +27,27 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',  # Aplikace pro správu uživatelů
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     ## Vlastní aplikace ##
     'freevat.apps.ModelsConfig',  # Hlavní aplikace
+    'users.apps.UsersConfig',  # Aplikace pro správu uživatelů
+
+    ## Třetí strany ##
     'rosetta',  # Rosetta (vícejazyčnost)
     'django_browser_reload',  # Pro automatické obnovení stránky při změně kódu
+    'crispy_forms',  # Pro lepší vzhled formulářů
+    'crispy_tailwind'  # Pro použití Tailwind CSS s crispy_forms
 ]
+
+# Nastavení pro crispy_forms a Tailwind CSS
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
 
 INTERNAL_IPS = [
     "127.0.0.1"

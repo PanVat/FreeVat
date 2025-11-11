@@ -1,13 +1,20 @@
-{% extends "base.html" %}
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
 
-{% block title %}
-    Register
-{% endblock %}
+{% block title %}{% trans "Registrace" %}{% endblock %}
 
 {% block content %}
-<h1>Register a New User</h1>
-<form class="form-with-validation" action="/users/register" method="post">
-    {% csrf_token %}
-    {{ form }}
-</form>
+    <div class="container mx-auto mt-10 max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center">{% trans "Vytvořit účet" %}</h2>
+
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            {% crispy form %}
+        </form>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'login' %}" class="text-blue-500 hover:underline">{% trans "Už máš účet? Přihlaš se" %}</a>
+        </div>
+    </div>
 {% endblock %}

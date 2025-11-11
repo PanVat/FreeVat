@@ -23,8 +23,9 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 
 - `Django` - Framework pro vývoj webových aplikací v Pythonu
 - `Rosetta` - Správa překladů aplikace, vícejazyčnost
+- `Crispy Forms` - Tvorba a stylování uživateslkých formulářů
 - `PostgreSQL` - Výkonný databázový systém pro ukládání dat
-- `OAuth` - Přihlašování a registrace uživatelů
+- `OAuth` - Přihlašování a registrace uživatelů s účty třetích stran
 - `Docker` - Kontejnerizace aplikace pro snadné nasazení
 - `Vite` - Buildování a vývoj v reálném čase
 ---
@@ -46,12 +47,15 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 ## 🏁Cíle
 - [ ] Ukládání 3D modelů do databáze a provádění základních CRUD operací
 - [ ] Prohlížení objektů v 360° - posouvání, přibližování i rotace
+- [ ] Podpora základních 3D formátů - `.obj`, `.fbx`, `.usdz`, `.stl` a `.glb`
+- [ ] Podpora softwarových formátů - `.blend`, `.max`, `.c4d` a `.ma`
 - [ ] Registrace, přihlašování a mazání uživatelských účtů
 - [ ] Zobrazování základních informací o modelech (počet ploch, velikost souboru..)
 - [x] Více jazyků na výběr - čeština / angličtina / němčina
 - [ ] Plně responzivní design
 - [ ] Vyhledávání 3D modelů podle názvu, případně podle velikosti
 - [ ] Nasazení aplikace na Kubernetes
+- [ ] Uspokojení Grussmannových očekávání
 ---
 ## ⌛Historie
 
