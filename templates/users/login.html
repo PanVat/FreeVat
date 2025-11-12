@@ -1,15 +1,75 @@
-{% extends 'base/base.html' %}
+{% extends "base/base.html" %}
+{% load crispy_forms_tags %}
 {% load i18n %}
 
-{% block title %}{% trans 'Login' %}{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h2>Login</h2>
-        <form method="post" action="/users/login/">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">{% trans 'Log in' %}</button>
-        </form>
+    <div class="min-h-screen bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+
+            <!-- Hlavička -->
+            <div>
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-white">
+                    {% trans "Login to account" %}
+                </h2>
+                <p class="mt-2 text-center text-sm text-gray-400">
+                    {% trans 'or' %}
+                    <a href="{% url 'users:register' %}" class="font-medium text-blue-400 hover:text-blue-300">
+                        {% trans 'create a new account' %}
+                    </a>
+                </p>
+            </div>
+
+            <!-- Přihlašovací formulář -->
+            <form class="mt-8 space-y-6" method="POST">
+                {% csrf_token %}
+
+                <!-- Zobrazení chyb -->
+                {% if form.errors %}
+                    <div class="bg-red-900 border border-red-700 text-red-100 px-4 py-3 rounded">
+                        <strong class="font-bold">{% trans 'Error!' %}</strong>
+                        <span class="block sm:inline">{% trans 'Incorrect login credentials' %}</span>
+                    </div>
+                {% endif %}
+
+                <!-- Formulářová pole -->
+                <div class="rounded-md shadow-sm -space-y-px">
+                    <div class="mb-4">
+                        {{ form.username|as_crispy_field }}
+                    </div>
+                    <div>
+                        {{ form.password|as_crispy_field }}
+                    </div>
+                </div>
+
+                <!-- Zapamatovat přihlášení -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox"
+                               class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-700 bg-gray-800 rounded">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-300">
+                            {% trans 'Keep me logged in' %}
+                        </label>
+                    </div>
+
+                    <div class="text-sm">
+                        <a href="#" class="font-medium text-blue-400 hover:text-blue-300">
+                            {% trans 'Forgotten password?' %}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tlačítko přihlášení -->
+                <div>
+                    <button type="submit"
+                            class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">
+                        {% trans 'Log in' %}
+                    </button>
+                </div>
+            </form>
+
+            {% include "users/socials.html" %}
+        </div>
     </div>
 {% endblock %}

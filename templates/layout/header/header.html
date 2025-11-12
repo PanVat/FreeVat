@@ -4,29 +4,29 @@
 <header class="header">
     <div class="header-section">
         <!-- Logo -->
-        <a href="#">
+        <a href="{% url 'index' %}">
             <img src="{% static 'img/icons/web.svg' %}"
                  alt="{% trans 'Logo' %}"
                  class="web-icon">
         </a>
 
         <!-- Vyhledávací pole -->
-            <div class="search">
-                <!-- Ikona lupy -->
-                <div class="search-icon-box">
-                    <img src="{% static 'img/icons/magnifying.svg' %}"
-                         alt="{% trans 'Magnifying' %}"
-                         class="search-icon">
-                </div>
-                <input type="text"
-                       placeholder='{% trans "Search" %}'
-                       class="search-input">
+        <div class="search">
+            <!-- Ikona lupy -->
+            <div class="search-icon-box">
+                <img src="{% static 'img/icons/magnifying.svg' %}"
+                     alt="{% trans 'Magnifying' %}"
+                     class="search-icon">
             </div>
+            <input type="text"
+                   placeholder='{% trans "Search" %}'
+                   class="search-input">
+        </div>
 
         <!-- Tlačítka pro přihlášení a registraci uživatele -->
         <nav class="items-center">
             <ul class="flex space-x-4 items-center">
-                <li><a href="#" class="button login-button">{% trans "Log in" %}</a></li>
+                <li><a href="{% url 'users:login' %}" class="button login-button">{% trans "Log in" %}</a></li>
                 <li><a href="{% url 'users:register' %}" class="button register-button">{% trans "Sign up" %}</a>
                 </li>
             </ul>

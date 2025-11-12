@@ -14,6 +14,8 @@ urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     # Přesměrování do aplikace 'users'
     path('users/', include('users.urls')),
+    # Účty přes Allauth
+    path('accounts/', include('allauth.urls')),
 )
 
 # Rosetta - pro správu překladů
