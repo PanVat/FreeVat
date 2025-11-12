@@ -27,7 +27,7 @@
         <nav class="items-center">
             <ul class="flex space-x-4 items-center">
                 <li><a href="#" class="button login-button">{% trans "Log in" %}</a></li>
-                <li><a href="#" class="button register-button">{% trans "Sign up" %}</a>
+                <li><a href="{% url 'users:register' %}" class="button register-button">{% trans "Sign up" %}</a>
                 </li>
             </ul>
         </nav>

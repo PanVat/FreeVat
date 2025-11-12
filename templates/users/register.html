@@ -1,20 +1,65 @@
-{% extends 'base/base.html' %}
+<!-- templates/users/register.html -->
+{% extends "base/base.html" %}
 {% load crispy_forms_tags %}
-{% load i18n %}
 
-{% block title %}{% trans "Registrace" %}{% endblock %}
+{% block title %}Registrace{% endblock %}
 
 {% block content %}
-    <div class="container mx-auto mt-10 max-w-md">
-        <h2 class="text-2xl font-bold mb-6 text-center">{% trans "Vytvořit účet" %}</h2>
+<div class="min-h-screen bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <!-- Hlavička -->
+        <div>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-white">
+                Vytvořte si účet
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-400">
+                Nebo
+                <a href="{% url 'users:login' %}" class="font-medium text-blue-400 hover:text-blue-300">
+                    se přihlaste k existujícímu účtu
+                </a>
+            </p>
+        </div>
 
-        <form method="post" action="{% url 'register' %}">
+        <!-- Registrační formulář -->
+        <form class="mt-8 space-y-6" method="POST">
             {% csrf_token %}
-            {% crispy form %}
+
+            <!-- Zobrazení chyb -->
+            {% if form.errors %}
+            <div class="bg-red-900 border border-red-700 text-red-100 px-4 py-3 rounded">
+                <strong class="font-bold">Chyba!</strong>
+                <span class="block sm:inline">Opravte chyby ve formuláři.</span>
+            </div>
+            {% endif %}
+
+            <!-- Formulářová pole -->
+            <div class="rounded-md shadow-sm -space-y-px">
+                {% for field in form %}
+                <div class="{% if not forloop.first %}mt-4{% endif %}">
+                    {{ field|as_crispy_field }}
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Tlačítko registrace -->
+            <div>
+                <button type="submit"
+                        class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">
+                    Vytvořit účet
+                </button>
+            </div>
         </form>
 
-        <div class="text-center mt-4">
-            <a href="{% url 'login' %}" class="text-blue-500 hover:underline">{% trans "Už máš účet? Přihlaš se" %}</a>
+        <!-- Zprávy -->
+        {% if messages %}
+        <div class="mt-4">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} bg-green-900 border border-green-700 text-green-100 px-4 py-3 rounded">
+                {{ message }}
+            </div>
+            {% endfor %}
         </div>
+        {% endif %}
     </div>
+</div>
 {% endblock %}

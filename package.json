@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind:dev": "npx @tailwindcss/cli -i ./freevat/static/css/tailwind/src/styles.css -o ./freevat/static/css/tailwind/dist/styles.css --watch",
+    "tailwind:dev": "npx @tailwindcss/cli -i ./static/css/tailwind/src/styles.css -o ./static/css/tailwind/dist/styles.css --watch",
     "vite:dev": "vite",
     "dev": "npm run tailwind:dev & npm run vite:dev",
-    "build": "vite build && npx @tailwindcss/cli -i ./theme/static_src/src/styles.css -o ./theme/static/css/dist/styles.css --minify",
     "preview": "vite preview"
   },
   "repository": {

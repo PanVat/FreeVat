@@ -13,9 +13,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # URL, pod kterou jsou mediální soubory dostupné v prohlížeči
 MEDIA_URL = '/media/'
 
-# Uživatelský model
-AUTH_USER_MODEL = 'users.User'
-
 # Získání tajného klíče z proměnné prostředí
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
@@ -41,7 +38,7 @@ INSTALLED_APPS = [
     ## Třetí strany ##
     'rosetta',  # Rosetta (vícejazyčnost)
     'django_browser_reload',  # Pro automatické obnovení stránky při změně kódu
-    'crispy_forms',  # Pro lepší vzhled formulářů
+    'crispy_forms',  # Crispy - pro lepší vzhled formulářů
     'crispy_tailwind'  # Pro použití Tailwind CSS s crispy_forms
 ]
 
@@ -90,9 +87,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
 
-        'NAME': 'postgres',
+        'NAME': 'freevat',
 
-        'USER': 'postgres',  # Uživatel z pgAdmin4
+        'USER': 'admin',  # Uživatel z pgAdmin4
 
         'PASSWORD': 'admin',  # Heslo z pgAdmin4
 
@@ -146,5 +143,8 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'  # Pod touto URL jsou statické soubory dostupné v prohlížeči
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Uživatelský model
+AUTH_USER_MODEL = 'users.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
