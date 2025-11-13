@@ -5,18 +5,19 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-    <div class="min-h-screen bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-md w-full space-y-8">
-
+    <!-- Přihlašovací stránka -->
+    <div class="form-page">
+        <!-- Přihlašovací formulář - kontejner -->
+        <div class="form-container">
             <!-- Hlavička -->
             <div>
-                <h2 class="mt-6 text-center text-3xl font-extrabold text-white">
-                    {% trans "Login to account" %}
+                <h2 class="form-main-heading">
+                    {% trans "Login to FreeVat" %}
                 </h2>
-                <p class="mt-2 text-center text-sm text-gray-400">
-                    {% trans 'or' %}
-                    <a href="{% url 'users:register' %}" class="font-medium text-blue-400 hover:text-blue-300">
-                        {% trans 'create a new account' %}
+                <p class="form-sub-heading">
+                    {% trans "Not a member yet?" %}
+                    <a href="{% url 'users:register' %}">
+                        {% trans 'Create new account!' %}
                     </a>
                 </p>
             </div>
@@ -34,7 +35,7 @@
                 {% endif %}
 
                 <!-- Formulářová pole -->
-                <div class="rounded-md shadow-sm -space-y-px">
+                <div class="form-inputs-container">
                     <div class="mb-4">
                         {{ form.username|as_crispy_field }}
                     </div>
@@ -44,31 +45,31 @@
                 </div>
 
                 <!-- Zapamatovat přihlášení -->
-                <div class="flex items-center justify-between">
+                <div class="form-extra-options">
                     <div class="flex items-center">
-                        <input id="remember-me" name="remember-me" type="checkbox"
-                               class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-700 bg-gray-800 rounded">
-                        <label for="remember-me" class="ml-2 block text-sm text-gray-300">
-                            {% trans 'Keep me logged in' %}
+                        <input id="remember-me" name="remember-me" type="checkbox">
+                        <label for="remember-me">
+                            {% trans 'Remember me' %}
                         </label>
                     </div>
 
                     <div class="text-sm">
-                        <a href="#" class="font-medium text-blue-400 hover:text-blue-300">
+                        <a href="#">
                             {% trans 'Forgotten password?' %}
                         </a>
                     </div>
                 </div>
 
                 <!-- Tlačítko přihlášení -->
-                <div>
-                    <button type="submit"
-                            class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">
+                <div class="flex justify-center">
+                    <a type="submit"
+                       class="form-login-button group">
                         {% trans 'Log in' %}
-                    </button>
+                    </a>
                 </div>
             </form>
 
+            <!-- Přihlášení přes sociální sítě (zatím jen Google a Github) -->
             {% include "users/socials.html" %}
         </div>
     </div>

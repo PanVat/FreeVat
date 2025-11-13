@@ -1,16 +1,61 @@
-.form-input {
-    @apply relative block w-full px-3 py-3 border border-gray-700 bg-gray-800 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200;
+/* Celá stránka s formulářem */
+.form-page {
+    @apply min-h-screen flex items-center justify-center;
 }
 
-.form-input:focus {
-    @apply ring-2 ring-blue-500 border-transparent;
+/* Formulář */
+.form-container {
+    @apply border-1 border-[#404040] max-w-md w-full space-y-8 rounded-xl p-5;
 }
 
-/* Styly pro crispy forms chyby */
-.alert-error {
-    @apply bg-red-900 border border-red-700 text-red-100 px-4 py-3 rounded;
+/* Nadpis ve formuláři */
+.form-main-heading {
+    @apply mt-6 text-center text-4xl font-extrabold text-white;
 }
 
-.alert-success {
-    @apply bg-green-900 border border-green-700 text-green-100 px-4 py-3 rounded;
+/* Podnadpis ve formuláři */
+.form-sub-heading {
+    @apply mt-2 text-center text-base text-gray-400;
+}
+
+/* Odkaz v podnadpisu */
+.form-sub-heading a {
+    @apply text-base text-blue-500 hover:underline;
+}
+
+/* Kontejner se vstupy */
+.form-inputs-container {
+    @apply mt-8 space-y-6;
+}
+
+/* Okraje vstupů (používá se ve 'forms.py', kde nelze použít Tailwind */
+.custom-input-border {
+    @apply rounded-md;
+    border: 1px solid #404040 !important;
+}
+
+/* Kontejner pro zapamatování přihlášení a zapomenuté heslo*/
+.form-extra-options {
+    @apply flex items-center justify-between text-base;
+}
+
+/* Zapamatování přihlášení */
+.form-extra-options input {
+    @apply h-4 w-4 text-blue-600 bg-gray-800 rounded cursor-pointer;
+}
+
+/* Zaškrtnutí zapamatování přihlášení */
+.form-extra-options label {
+    @apply ml-2 block text-gray-300;
+}
+
+/* Zapomenuté heslo */
+.form-extra-options a {
+    @apply text-base text-blue-500 hover:underline;
+}
+
+/* Tlačítko pro odeslání formuláře (Přihlášení) */
+.form-login-button {
+    @apply py-2 px-4 duration-150 rounded-md text-lg w-full text-center;
+    @apply hover:opacity-90 bg-[#3B4042] cursor-pointer;
 }

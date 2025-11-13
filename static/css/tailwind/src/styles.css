@@ -1,10 +1,17 @@
 @import "tailwindcss";
 
 /* Jednotlivé moduly */
+
+/* Základní struktura stránky */
 @import './base/navbar.css';
 @import './base/header.css';
 @import './base/footer.css';
+
+/* Uživatelské formuláře */
 @import './users/form.css';
+@import './users/socials.css';
+
+/* Jednotlivé stránky */
 @import './index.css';
 
 /* Vlastní fonty */

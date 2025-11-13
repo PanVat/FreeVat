@@ -1,0 +1,29 @@
+/* socials.css */
+.social-divider {
+    @apply relative flex items-center my-4 mt-10;
+}
+
+.social-divider-line {
+    @apply flex-grow border-t border-[#404040];
+}
+
+.social-buttons-container {
+    @apply w-80 my-8 m-auto flex flex-col md:flex-row gap-3 font-semibold;
+}
+
+.social-button {
+    @apply relative flex items-center p-3 rounded-full border-1 border-[#404040] !no-underline;
+    @apply duration-150 text-base bg-[#3B4042] hover:!opacity-80 flex-1;
+}
+
+.social-logo {
+    @apply h-6 w-6 absolute left-4 flex items-center justify-center;
+}
+
+.social-logo img {
+    @apply h-6 max-w-full object-contain;
+}
+
+.social-text {
+    @apply text-center w-full pl-4;
+}
