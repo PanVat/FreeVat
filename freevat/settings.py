@@ -175,4 +175,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Uživatelský model
 AUTH_USER_MODEL = 'users.User'
 
+# Důležité kvůli chybě
+SITE_ID = 1
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

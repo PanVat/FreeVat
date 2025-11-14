@@ -27,13 +27,8 @@
             <form class="mt-8 space-y-6" method="POST">
                 {% csrf_token %}
 
-                <!-- Zobrazení chyb -->
-                {% if form.errors %}
-                    <div class="bg-red-900 border border-red-700 text-red-100 px-4 py-3 rounded">
-                        <strong class="font-bold">{% trans 'Error!' %}</strong>
-                        <span class="block sm:inline">{% trans 'Fix the mistakes in form' %}</span>
-                    </div>
-                {% endif %}
+                <!-- Zobrazení chybových hlášek -->
+                {% include "users/error.html" %}
 
                 <!-- Formulářová pole -->
                 <div class="form-inputs-container">

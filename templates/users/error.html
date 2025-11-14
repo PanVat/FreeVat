@@ -1,0 +1,10 @@
+<!-- Zobrazení chyb pro jednotlivá pole ve formuláři -->
+{% for field in form %}
+    {% if field.errors %}
+        <div class="bg-red-900 border border-red-700 text-red-100 px-4 py-3 rounded mb-4">
+            {% for error in field.errors %}
+                <span class="block sm:inline">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endfor %}

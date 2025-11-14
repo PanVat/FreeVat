@@ -28,10 +28,9 @@
     @apply mt-8 space-y-6;
 }
 
-/* Okraje vstupů (používá se ve 'forms.py', kde nelze použít Tailwind */
-.custom-input-border {
-    @apply rounded-md;
-    border: 1px solid #404040 !important;
+.form-input-classes{
+    @apply block w-full px-3 py-2 border-2 placeholder-gray-400 rounded-lg border-none outline-none text-lg;
+    background-color: #404040;
 }
 
 /* Červená barva pro hvězdičky povinných polí */
@@ -63,5 +62,5 @@
 /* Tlačítko pro odeslání formuláře (Přihlášení) */
 .form-login-button {
     @apply py-2 px-4 duration-150 rounded-md text-lg w-full text-center;
-    @apply hover:opacity-90 bg-[#3B4042] cursor-pointer;
+    @apply hover:opacity-90 bg-green-900 cursor-pointer;
 }

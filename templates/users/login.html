@@ -27,18 +27,13 @@
             <form class="mt-8 space-y-6" method="POST">
                 {% csrf_token %}
 
-                <!-- Zobrazení chyb -->
-                {% if form.errors %}
-                    <div class="bg-red-900 border border-red-700 text-red-100 px-4 py-3 rounded">
-                        <strong class="font-bold">{% trans 'Error!' %}</strong>
-                        <span class="block sm:inline">{% trans 'Incorrect login credentials' %}</span>
-                    </div>
-                {% endif %}
+                <!-- Zobrazení chybových hlášek -->
+                {% include "users/error.html" %}
 
                 <!-- Formulářová pole -->
                 <div class="form-inputs-container">
                     <div class="mb-4">
-                        {{ form.username|as_crispy_field }}
+                        {{ form.email|as_crispy_field }}
                     </div>
                     <div>
                         {{ form.password|as_crispy_field }}
@@ -63,10 +58,10 @@
 
                 <!-- Tlačítko přihlášení -->
                 <div class="flex justify-center">
-                    <a type="submit"
-                       class="form-login-button group">
-                        {% trans 'Log in' %}
-                    </a>
+                    <button type="submit"
+                            class="form-login-button group">
+                        {% trans 'Login to account' %}
+                    </button>
                 </div>
             </form>
 

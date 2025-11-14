@@ -10,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 User = get_user_model()
 
 # Vstupní pole ve formuláři
-INPUT_CLASSES = "block w-full px-3 py-2 border-2 custom-input-border placeholder-gray-400"
+INPUT_CLASSES = "form-input-classes"
 
 # Třídy pro labely ve formuláři
 LABEL_CLASSES = "text-lg font-medium mb-2 block"
@@ -52,20 +52,18 @@ class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Odstraníme pole pro potvrzení hesla
+        # Odstranění pole pro potvrzení hesla
         del self.fields['password2']
 
         self.helper = FormHelper()
         self.helper.form_method = 'post'
-        self.helper.form_class = 'space-y-4'  # Přidá mezeru mezi poli
+        self.helper.form_class = 'space-y-4'
+        self.helper.form_show_errors = False # Skryje chyby napsané pod vstupní pole
 
         # Nastavíme třídy pro labely
         self.helper.label_class = LABEL_CLASSES
 
-        # Ikonky do vstupních polí
-        self.fields['username'].widget.attrs.update({'icon': 'user'})
-
-        # Vlastní CSS styly pro pole formuláře
+        # Vlastní layout
         self.helper.layout = Layout(
             Field('username', css_class=INPUT_CLASSES),
             Field('email', css_class=INPUT_CLASSES),
@@ -80,19 +78,18 @@ class CustomUserCreationForm(UserCreationForm):
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if User.objects.filter(email__iexact=email).exists():
-            raise forms.ValidationError(_("This email is already in use."))
+            raise forms.ValidationError(_("Email address is already in use."))
         return email
 
 
 class CustomLoginForm(forms.Form):
-    # Uživatelské jméno
-    username = forms.CharField(
-        max_length=150,
-        label=_("Username"),
+    # Email místo username
+    email = forms.EmailField(
+        label=_("Email"),
         required=True,
-        widget=forms.TextInput(attrs={
+        widget=forms.EmailInput(attrs={
             'class': INPUT_CLASSES,
-            'placeholder': _('Enter your username')
+            'placeholder': _('Enter your email')
         }),
     )
 
@@ -110,23 +107,29 @@ class CustomLoginForm(forms.Form):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
-        self.helper.form_class = 'space-y-4'  # Přidá mezeru mezi poli
-        self.helper.label_class = LABEL_CLASSES  # Aplikujeme třídy na labely
+        self.helper.form_class = 'space-y-4'
+        self.helper.label_class = LABEL_CLASSES
 
-        # Tlačítko pro přihlášení
+        # Vlastní layout pro login
         self.helper.layout = Layout(
-            Field('username'),
-            Field('password'),
+            Field('email', css_class=INPUT_CLASSES),
+            Field('password', css_class=INPUT_CLASSES),
             Submit('submit', _("Log in"))
         )
 
     def clean(self):
         cleaned_data = super().clean()
-        username = cleaned_data.get("username")
+        email = cleaned_data.get("email")
         password = cleaned_data.get("password")
 
-        if username and password:
-            user = authenticate(username=username, password=password)
-            if user is None:
-                raise forms.ValidationError(_("Invalid username or password."))
+        if email and password:
+            # Najdi uživatele podle emailu
+            try:
+                user = User.objects.get(email=email)
+                # Authenticate pomocí username
+                user = authenticate(username=user.username, password=password)
+                if user is None:
+                    raise forms.ValidationError(_("Invalid email or password."))
+            except User.DoesNotExist:
+                raise forms.ValidationError(_("Invalid email or password."))
         return cleaned_data
