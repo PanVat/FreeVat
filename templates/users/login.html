@@ -1,8 +1,9 @@
 {% extends "base/base.html" %}
-{% load crispy_forms_tags %}
-{% load i18n %}
 
-{% block title %}Login{% endblock %}
+<!-- Načtení potřebných knihoven !-->
+{% load crispy_forms_tags static i18n %}
+
+{% block title %}{% trans 'FreeVat Login' %}{% endblock %}
 
 {% block content %}
     <!-- Přihlašovací stránka -->

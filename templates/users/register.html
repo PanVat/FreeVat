@@ -1,22 +1,24 @@
-<!-- templates/users/register.html -->
 {% extends "base/base.html" %}
-{% load crispy_forms_tags %}
-{% load i18n %}
 
-{% block title %} {% trans 'Registration' %} {% endblock %}
+<!-- Načtení potřebných knihoven -->
+{% load crispy_forms_tags static i18n %}
+
+{% block title %} {% trans 'FreeVat Register' %} {% endblock %}
 
 {% block content %}
-    <div class="min-h-screen bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-md w-full space-y-8">
+    <!-- Registrační stránka -->
+    <div class="form-page">
+        <!-- Registrační formulář - kontejner -->
+        <div class="form-container">
             <!-- Hlavička -->
             <div>
-                <h2 class="mt-6 text-center text-3xl font-extrabold text-white">
+                <h2 class="form-main-heading">
                     {% trans "Create new account" %}
                 </h2>
-                <p class="mt-2 text-center text-sm text-gray-400">
-                    {% trans 'or' %}
-                    <a href="{% url 'users:login' %}" class="font-medium text-blue-400 hover:text-blue-300">
-                        {% trans 'login to your existing account' %}
+                <p class="form-sub-heading">
+                    {% trans 'Already have an account?' %}
+                    <a href="{% url 'users:login' %}">
+                        {% trans 'Login here!' %}
                     </a>
                 </p>
             </div>
@@ -34,7 +36,7 @@
                 {% endif %}
 
                 <!-- Formulářová pole -->
-                <div class="rounded-md shadow-sm -space-y-px">
+                <div class="form-inputs-container">
                     {% for field in form %}
                         <div class="{% if not forloop.first %}mt-4{% endif %}">
                             {{ field|as_crispy_field }}
@@ -45,22 +47,13 @@
                 <!-- Tlačítko registrace -->
                 <div>
                     <button type="submit"
-                            class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">
-                        {% trans 'Create an account' %}
+                            class="form-login-button group">
+                        {% trans 'Create new account' %}
                     </button>
                 </div>
             </form>
 
-            <!-- Zprávy -->
-            {% if messages %}
-                <div class="mt-4">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }} bg-green-900 border border-green-700 text-green-100 px-4 py-3 rounded">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
+            <!-- Registrace přes sociální sítě -->
             {% include "users/socials.html" %}
         </div>
     </div>

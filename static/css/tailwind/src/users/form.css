@@ -34,6 +34,12 @@
     border: 1px solid #404040 !important;
 }
 
+/* Červená barva pro hvězdičky povinných polí */
+.asteriskField {
+    color: #ef4444;
+    margin-left: 2px;
+}
+
 /* Kontejner pro zapamatování přihlášení a zapomenuté heslo*/
 .form-extra-options {
     @apply flex items-center justify-between text-base;
