@@ -29,6 +29,40 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - `Docker` - Kontejnerizace aplikace pro snadné nasazení
 - `Vite` - Buildování a vývoj v reálném čase
 ---
+
+## 💻Spuštění
+
+### Naklonujte nebo manuálně stáhněte repozitář
+```
+git clone https://github.com/PanVat/FreeVat.git
+```
+
+---
+
+### Vstupte do složky projektu
+```
+cd FreeVat
+```
+
+---
+
+### Vytvořte a aktivujte virtuální prostředí
+
+### 🪟Windows
+```
+python -m venv .venv && .venv\Scripts\activate
+```
+### 🐧Linux
+```
+python3 -m venv .venv ; source .venv/bin/activate
+```
+
+---
+### Nainstalujte závislosti
+```
+pip install -r requirements.txt
+```
+
 ## 💡Inspirace
 
 - Poliigon - https://www.poliigon.com/
