@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/freevat
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=freevat
+      - DB_USER=admin
+      - DB_PASSWORD=admin
+    depends_on:
+      - db
+      - node
+
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=freevat
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5432:5432"
+
+  node:
+    image: node:18-alpine
+    working_dir: /freevat
+    volumes:
+      - .:/freevat
+      - node_modules:/freevat/node_modules
+    command: >
+      sh -c "
+        npm install &&
+        npm run tailwind:dev
+      "
+    ports:
+      - "5173:5173"  # Vite dev server port
+
+volumes:
+  postgres_data:
+  node_modules:

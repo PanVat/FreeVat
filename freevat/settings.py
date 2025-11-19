@@ -110,20 +110,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'freevat.wsgi.application'
 
-# Použití PostgreSQL jako databáze
+# Použití PostgreSQL jako databáze (vše se načítá z proměnných prostředí)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-
-        'NAME': 'freevat',
-
-        'USER': 'admin',  # Uživatel z pgAdmin4
-
-        'PASSWORD': 'admin',  # Heslo z pgAdmin4
-
-        'HOST': 'localhost',
-
-        'PORT': '5432',
+        'NAME': os.environ.get('DB_NAME', 'freevat'),
+        'USER': os.environ.get('DB_USER', 'admin'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'admin'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
 
