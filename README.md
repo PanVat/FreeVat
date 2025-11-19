@@ -48,11 +48,11 @@ cd FreeVat
 
 ### Vytvořte a aktivujte virtuální prostředí
 
-### 🪟Windows
+**Windows**
 ```
 python -m venv .venv && .venv\Scripts\activate
 ```
-### 🐧Linux
+**Linux**
 ```
 python3 -m venv .venv ; source .venv/bin/activate
 ```
