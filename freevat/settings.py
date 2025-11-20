@@ -3,6 +3,11 @@ from dotenv import load_dotenv
 from django.utils.translation import gettext_lazy as _  # Pro překlad do jiných jazyků
 import os
 
+from environ import Env
+
+env = Env()
+env.read_env()
+
 load_dotenv()  # Načtení proměnných prostředí z .env souboru
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -52,15 +57,14 @@ INSTALLED_APPS = [
     'crispy_tailwind'  # Pro použití Tailwind CSS s crispy_forms
 ]
 
+# Důležité kvůli chybě
+SITE_ID = 1
+
 # Nastavení pro crispy_forms a Tailwind CSS
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 CRISPY_TEMPLATE_PACK = "tailwind"
 
-# Přesměrování pro přihlášení/odhlášení
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'index'
-LOGIN_URL = 'users:login'
-
+# Backendy pro autentizaci
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -90,6 +94,40 @@ MIDDLEWARE = [
     "django_browser_reload.middleware.BrowserReloadMiddleware",  # Pro automatické obnovení stránky při změně kódu
 ]
 
+# Nastavení pro přihlášení přes sociální sítě
+SOCIALACCOUNT_PROVIDERS = {
+# Google
+    'google': {
+        'APP': {
+            'client_id': env('OAUTH_GOOGLE_CLIENT_ID'),
+            'secret': env('OAUTH_GOOGLE_SECRET'),
+        },
+        'AUTH_PARAMS': {
+            'prompt': 'consent'
+        }
+    },
+# GitHub
+    'github': {
+        'APP': {
+            'client_id': env('OAUTH_GITHUB_CLIENT_ID'),
+            'secret': env('OAUTH_GITHUB_SECRET'),
+        },
+        'AUTH_PARAMS': {
+            'prompt': 'consent'
+        }
+    }
+}
+
+# Zobrazí se klasický Google login formulář
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+# Přesměrování po přihlášení a odhlášení
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+# Pro Django Allauth
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http'
+
 ROOT_URLCONF = 'freevat.urls'
 
 TEMPLATES = [
@@ -114,11 +152,11 @@ WSGI_APPLICATION = 'freevat.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'freevat'),
-        'USER': os.environ.get('DB_USER', 'admin'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'admin'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
+        'NAME': 'freevat',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -169,8 +207,5 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Uživatelský model
 AUTH_USER_MODEL = 'users.User'
-
-# Důležité kvůli chybě
-SITE_ID = 1
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

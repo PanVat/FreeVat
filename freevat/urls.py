@@ -5,7 +5,10 @@ from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns, set_language
 
 urlpatterns = [
-    path('i18n/setlang/', set_language, name='set_language'),  # Přepínač jazyka
+    # Přepínač jazyka
+    path('i18n/setlang/', set_language, name='set_language'),
+    # Účty přes Allauth
+    path('accounts/', include('allauth.urls')),
 ]
 
 # Vícejazyčné URL (vše, co má být s jazykovým prefixem, sem)
@@ -14,8 +17,6 @@ urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     # Přesměrování do aplikace 'users'
     path('users/', include('users.urls')),
-    # Účty přes Allauth
-    path('accounts/', include('allauth.urls')),
 )
 
 # Rosetta - pro správu překladů

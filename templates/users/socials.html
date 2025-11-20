@@ -1,3 +1,4 @@
+{% load socialaccount %} <!-- Pro přihlášení -->
 {% load static %} <!-- Pro obrázky -->
 {% load i18n %} <!-- Pro překlady -->
 
@@ -10,7 +11,7 @@
 <div class="social-buttons-container">
 
     <a class="social-button"
-       href="#">
+       href="{% provider_login_url 'google' %}">
         <span class="social-logo">
             <img src="{% static 'img/icons/google.svg' %}" alt="Google">
         </span>
@@ -18,7 +19,7 @@
     </a>
 
     <a class="social-button"
-       href="#">
+       href="{% provider_login_url 'github' %}">
         <span class="social-logo">
             <img src="{% static 'img/icons/github.svg' %}" alt="GitHub">
         </span>
