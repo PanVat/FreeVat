@@ -1,4 +1,7 @@
+<!-- Načtení překladů a souborů -->
 {% load i18n static %}
+
+<!-- Načtení aktuálního jazyka a dostupných jazyků -->
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
@@ -14,6 +17,7 @@
             {% csrf_token %}
             <input type="hidden" name="language" value="{{ language.code }}">
             <input type="hidden" name="next" value="{{ request.path }}">
+            <!-- Přepínací tlačítko (vlajka jazyka) -->
             <button type="submit" class="toggle">
                 <img src="{% static 'img/flags/' %}{{ language.code }}.svg"
                      alt="{{ language.code }}"

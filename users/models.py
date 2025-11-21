@@ -12,7 +12,7 @@ class User(AbstractUser):
                                 help_text=_("Upload a profile picture"),
                                 error_messages={"invalid": _("Invalid image format")})
 
-    # ✅ PŘIDEJ URL PRO SOCIÁLNÍ SÍTĚ
+    # URL pro profilový obrázek ze sociálního účtu
     picture_url = models.URLField(
         max_length=500,
         blank=True,
@@ -21,7 +21,7 @@ class User(AbstractUser):
         help_text=_("URL of profile picture from social account")
     )
 
-    # ZMĚNA 1: Přepsání pole groups pro řešení kolize (E304)
+    # Přepsání pole groups pro řešení kolize (E304)
     groups = models.ManyToManyField(
         Group,
         verbose_name=_('groups'),
@@ -32,7 +32,7 @@ class User(AbstractUser):
         related_query_name="user",
     )
 
-    # ZMĚNA 2: Přepsání pole user_permissions pro řešení kolize (E304)
+    # Přepsání pole user_permissions pro řešení kolize (E304)
     user_permissions = models.ManyToManyField(
         Permission,
         verbose_name=_('user permissions'),
@@ -42,12 +42,14 @@ class User(AbstractUser):
         related_query_name="user",
     )
 
+    # Vrátí profilovou fotku - priorita: URL → lokální → defaultní
     def get_profile_picture(self):
-        """Vrátí profilovou fotku - priorita: URL → lokální → defaultní"""
         if self.picture_url:
             return self.picture_url
+        # Když se přihlásí přes sociální účet, obrázek se načte z něj
         elif self.picture:
             return self.picture.url
+        # Jinak se použije výchozí ikona
         else:
             return '/static/img/icons/user_account.svg'
 

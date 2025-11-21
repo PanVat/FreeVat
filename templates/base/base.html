@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!-- Načtení překladů a souborů -->
 {% load i18n static %}
-<html lang="{% trans 'Language' %}">
+
+<html lang="{% trans 'lang' %}">
 <head>
     <!-- Načtení Tailwind CSS -->
     <link href="{% static 'css/tailwind/dist/styles.css' %}{% if settings.DEBUG %}?v={% now 'U' %}{% endif %}"
@@ -22,6 +23,8 @@
           rel="stylesheet">
 </head>
 <body>
+
+<!-- Hlavička a navigační lišta -->
 {% include "layout/header/header.html" %}
 {% include "layout/navbar/navbar.html" %}
 
@@ -31,14 +34,9 @@
 --------------------------------->
 {% endblock %}
 {% include "layout/footer/footer.html" %}
-<!-- Přepínání jazyků -->
-<script src="{% static 'js/toggle_lang.js' %}"></script>
 
-{% if settings.DEBUG %}
-<script type="module" src="http://localhost:5173/@vite/client"></script>
-<script type="module" src="http://localhost:5173/js/three/src/main.js"></script>
-{% else %}
-<script type="module" src="{% static 'js/three/dist/main.js' %}"></script>
-{% endif %}
+<!-- Přepínání jazyků -->
+<script src="{% static 'js/web/main.js' %}"></script>
+
 </body>
 </html>

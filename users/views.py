@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import CustomUserCreationForm, CustomLoginForm
 
-# Registrace uživatele
+# Registrace uživatele přes uživatelský formulář
 def register_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -16,7 +16,7 @@ def register_view(request):
     return render(request, 'users/register.html', {'form': form})
 
 
-# Přihlášení uživatele
+# Přihlášení uživatele přes uživatelský formulář
 def login_view(request):
     if request.method == 'POST':
         form = CustomLoginForm(request.POST)

@@ -1,5 +1,5 @@
-{% load i18n %} <!-- Pro překlady -->
-{% load static %} <!-- Pro načítání statických souborů -->
+<!-- Pro překlady a statické soubory -->
+{% load i18n static %}
 
 <header class="header">
     <div class="header-section">
@@ -27,7 +27,7 @@
         <nav class="items-center">
             <ul class="flex space-x-4 items-center">
                 {% if user.is_authenticated %}
-                    <!-- Přihlášený uživatel -->
+                    <!-- Přihlášený uživatel (tlačítka přihlášení a registrace) -->
                     <li><a href="{% url 'upload' %}" class="button upload-button">{% trans "Upload" %}</a></li>
                     <li>
                         <a href="{% url 'profile' %}" class="button profile-button">
@@ -38,7 +38,7 @@
                         </a>
                     </li>
                 {% else %}
-                    <!-- Nepřihlášený uživatel -->
+                    <!-- Nepřihlášený uživatel (tlačítka nahrání a uživatelského profilu) -->
                     <li><a href="{% url 'users:login' %}" class="button login-button">{% trans "Log in" %}</a></li>
                     <li><a href="{% url 'users:register' %}" class="button register-button">{% trans "Sign up" %}</a>
                     </li>

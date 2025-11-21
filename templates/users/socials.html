@@ -1,15 +1,17 @@
-{% load socialaccount %} <!-- Pro přihlášení -->
-{% load static %} <!-- Pro obrázky -->
-{% load i18n %} <!-- Pro překlady -->
+<!-- Načtení potřebných knihoven -->
+{% load socialaccount static i18n %}
 
+<!-- Oddělovací čára -->
 <div class="social-divider">
     <div class="social-divider-line"></div>
     <span class="px-3 text-white text-base">{% trans 'or' %}</span>
     <div class="social-divider-line"></div>
 </div>
 
+<!-- Kontejner s tlačítky pro přihlášení -->
 <div class="social-buttons-container">
 
+    <!-- Přihlášení přes Google -->
     <a class="social-button"
        href="{% provider_login_url 'google' %}">
         <span class="social-logo">
@@ -18,6 +20,7 @@
         <span class="social-text">{% trans 'Google' %}</span>
     </a>
 
+    <!-- Přihlášení přes GitHub -->
     <a class="social-button"
        href="{% provider_login_url 'github' %}">
         <span class="social-logo">

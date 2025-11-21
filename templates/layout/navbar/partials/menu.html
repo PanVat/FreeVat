@@ -1,4 +1,5 @@
-{% load i18n static %}
+<!-- Překlady -->
+{% load i18n %}
 
 <!-- Celé navigační menu -->
 <div class="menu-container">
@@ -9,6 +10,7 @@
             <li class="menu-dropdown group">
                 <button class="menu-item">{% trans "Models" %}</button>
                 <div class="menu-dropdown-area">
+                    <!-- Kategorie modelů -->
                     <a href="#" class="menu-dropdown-box">{% trans 'All categories' %}</a>
                     <a href="#" class="menu-dropdown-box">{% trans 'Animals & Pets' %}</a>
                     <a href="#" class="menu-dropdown-box">{% trans 'Architecture' %}</a>
@@ -26,6 +28,7 @@
             <li class="menu-dropdown group">
                 <button class="menu-item">{% trans "Formats" %}</button>
                 <div class="menu-dropdown-area">
+                    <!-- Názvy formátů -->
                     <a href="#" class="menu-dropdown-box">FBX</a>
                     <a href="#" class="menu-dropdown-box">OBJ</a>
                     <a href="#" class="menu-dropdown-box">USDZ</a>
@@ -39,6 +42,7 @@
             <li class="menu-dropdown group">
                 <button class="menu-item">{% trans "Software" %}</button>
                 <div class="menu-dropdown-area">
+                    <!-- Názvy software -->
                     <a href="#" class="menu-dropdown-box">Blender</a>
                     <a href="#" class="menu-dropdown-box">3ds Max</a>
                     <a href="#" class="menu-dropdown-box">Maya</a>

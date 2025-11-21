@@ -6,7 +6,7 @@ moderních technologiích a poskytuje uživatelům jednoduché a intuitivní roz
 modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si je moct stáhnout úplně kdokoli a používat na
 úplně cokoli. Je to takové zdrojákoviště 3D objektů, do kterého můžou dobrovolníci přispívat svými výtvory, ke kterým bude mít každý přístup.
 
-[![Version](https://img.shields.io/badge/Verze-Indev_0.0.7-green.svg?logo=github&logoColor=white)](https://github.com/PanVat/FreeVat)
+[![Version](https://img.shields.io/badge/Verze-Indev_0.0.9-green.svg?logo=github&logoColor=white)](https://github.com/PanVat/FreeVat)
 [![Developer](https://img.shields.io/badge/Vývojář-PanVat-blue)](https://github.com/PanVat)
 ![License](https://img.shields.io/badge/Licence-Open_Source_✅-purple.svg)
 ---
@@ -87,3 +87,10 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - Tyto elementy jsou nyní plně responzivní (alespoň na PC)
 - Instalace a nastavení `Three.js`
 - Základní implementace 3D vieweru
+---
+
+### ✅Listopad 2025 (1/2) - ![Verze](https://img.shields.io/badge/Indev_0.0.9-darkgreen.svg)
+- Registrace, přihlašování, odhlašování a mazání uživatelských účtů
+- OAuth přihlašování přes `Google` a `GitHub`
+- Pokus o zdockerování aplikace (prozatím neúspěšný)
+- Čistka kódu a příprava na další vývoj

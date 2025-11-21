@@ -117,6 +117,7 @@ class CustomLoginForm(forms.Form):
             Submit('submit', _("Log in"))
         )
 
+    # Validace emailu a hesla
     def clean(self):
         cleaned_data = super().clean()
         email = cleaned_data.get("email")

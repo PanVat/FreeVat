@@ -3,7 +3,8 @@
 <!-- Načtení potřebných knihoven !-->
 {% load crispy_forms_tags static i18n %}
 
-{% block title %}{% trans 'FreeVat Login' %}{% endblock %}
+<!-- Titulek stránky !-->
+{% block title %}{% trans 'FreeVat - Login' %}{% endblock %}
 
 {% block content %}
     <!-- Přihlašovací stránka -->
@@ -48,7 +49,7 @@
                             {% trans 'Remember me' %}
                         </label>
                     </div>
-
+                <!-- Zapomenuté heslo -->
                     <div class="text-sm">
                         <a href="#">
                             {% trans 'Forgotten password?' %}

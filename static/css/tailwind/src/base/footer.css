@@ -1,4 +1,4 @@
-/* Záhlaví */
+/* Zápatí - celý kontejner */
 .footer {
     @apply border-t border-[#404040] h-14 px-4;
     @apply bg-[#222222] w-full items-center;

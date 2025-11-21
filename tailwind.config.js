@@ -6,6 +6,7 @@ export default {
     ],
     theme: {
         extend: {
+            /* Definování vlastních fontů */
             fontFamily: {
                 oswald: ['Oswald', 'sans-serif'],
                 zalando: ['"Zalando Sans"', 'sans-serif'],

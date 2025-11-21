@@ -23,7 +23,8 @@ export default defineConfig({
         emptyOutDir: true,
         manifest: true,
     },
+    /* Konfigurace vývojového serveru */
     server: {
-        origin: 'http://127.0.0.1:8000',
+        origin: 'http://localhost:8000',
     }
 });
