@@ -3,15 +3,23 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-# Uživatelé a tvůrci 3D modelů
 class User(AbstractUser):
-    # Profilový obrázek uživatele - nepovinné pole
+    # Lokální profilový obrázek
     picture = models.ImageField(upload_to="profiles/",
                                 null=True,
                                 blank=True,
-                                verbose_name="Profile picture",
-                                help_text="Upload a profile picture",
-                                error_messages={"invalid": "Invalid image format"})
+                                verbose_name=_("Profile picture"),
+                                help_text=_("Upload a profile picture"),
+                                error_messages={"invalid": _("Invalid image format")})
+
+    # ✅ PŘIDEJ URL PRO SOCIÁLNÍ SÍTĚ
+    picture_url = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        verbose_name=_("Profile Picture URL"),
+        help_text=_("URL of profile picture from social account")
+    )
 
     # ZMĚNA 1: Přepsání pole groups pro řešení kolize (E304)
     groups = models.ManyToManyField(
@@ -20,7 +28,7 @@ class User(AbstractUser):
         blank=True,
         help_text=_(
             'The groups this user belongs to. A user will get all permissions granted to each of their groups.'),
-        related_name="users_custom_groups",  # Unikátní jméno
+        related_name="users_custom_groups",
         related_query_name="user",
     )
 
@@ -30,14 +38,23 @@ class User(AbstractUser):
         verbose_name=_('user permissions'),
         blank=True,
         help_text=_('Specific permissions for this user.'),
-        related_name="users_custom_permissions",  # Unikátní jméno
+        related_name="users_custom_permissions",
         related_query_name="user",
     )
+
+    def get_profile_picture(self):
+        """Vrátí profilovou fotku - priorita: URL → lokální → defaultní"""
+        if self.picture_url:
+            return self.picture_url
+        elif self.picture:
+            return self.picture.url
+        else:
+            return '/static/img/icons/user_account.svg'
 
     def __str__(self):
         return self.username
 
     class Meta(AbstractUser.Meta):
         ordering = ['username']
-        verbose_name = "User"
-        verbose_name_plural = "Users"
+        verbose_name = _("User")
+        verbose_name_plural = _("Users")

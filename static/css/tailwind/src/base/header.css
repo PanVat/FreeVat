@@ -49,5 +49,10 @@
 
 /* Nahrání - tlačítko */
 .upload-button {
-    @apply bg-blue-600;
+    @apply bg-[#3B4042];
+}
+
+/* Uživatelský avatar */
+.profile-button{
+    @apply rounded-full h-8 w-8;
 }

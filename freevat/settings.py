@@ -96,25 +96,31 @@ MIDDLEWARE = [
 
 # Nastavení pro přihlášení přes sociální sítě
 SOCIALACCOUNT_PROVIDERS = {
-# Google
+    # Google
     'google': {
         'APP': {
             'client_id': env('OAUTH_GOOGLE_CLIENT_ID'),
             'secret': env('OAUTH_GOOGLE_SECRET'),
         },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
         'AUTH_PARAMS': {
-            'prompt': 'consent'
-        }
+            'access_type': 'online',
+        },
+        'EXTRACT_EMAIL': True,
     },
-# GitHub
+    # GitHub
     'github': {
         'APP': {
             'client_id': env('OAUTH_GITHUB_CLIENT_ID'),
             'secret': env('OAUTH_GITHUB_SECRET'),
         },
-        'AUTH_PARAMS': {
-            'prompt': 'consent'
-        }
+        'SCOPE': [
+            'user',
+            'user:email',
+        ],
     }
 }
 
@@ -124,6 +130,14 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 # Přesměrování po přihlášení a odhlášení
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# Nastavení pro Allauth
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_STORE_TOKENS = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+# Automaticky načti profilovou fotku
+SOCIALACCOUNT_AUTO_SIGNUP = True
 
 # Pro Django Allauth
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http'

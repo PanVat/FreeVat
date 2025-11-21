@@ -50,7 +50,7 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - [ ] Prohlížení objektů v 360° - posouvání, přibližování i rotace
 - [ ] Podpora základních 3D formátů - `.obj`, `.fbx`, `.usdz`, `.stl` a `.glb`
 - [ ] Podpora softwarových formátů - `.blend`, `.max`, `.c4d` a `.ma`
-- [ ] Registrace, přihlašování a mazání uživatelských účtů
+- [x] Registrace, přihlašování a mazání uživatelských účtů
 - [ ] Zobrazování základních informací o modelech (počet ploch, velikost souboru..)
 - [x] Více jazyků na výběr - čeština / angličtina / němčina
 - [ ] Plně responzivní design

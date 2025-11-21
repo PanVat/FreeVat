@@ -31,8 +31,10 @@
                     <li><a href="{% url 'upload' %}" class="button upload-button">{% trans "Upload" %}</a></li>
                     <li>
                         <a href="{% url 'profile' %}" class="button profile-button">
-                            <img src="{% static 'img/icons/user_account.svg' %}" alt="{% trans 'Profile' %}" class="w-6 h-6">
-                            {% trans "Profile" %}
+
+                            <img src="{{ user.get_profile_picture }}"
+                                 alt="{% trans 'Profile' %}"
+                                 class="w-10 h-10 rounded-full">
                         </a>
                     </li>
                 {% else %}
