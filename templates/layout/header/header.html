@@ -23,12 +23,24 @@
                    class="search-input">
         </div>
 
-        <!-- Tlačítka pro přihlášení a registraci uživatele -->
+        <!-- Tlačítka - různé pro přihlášené/nepřihlášené uživatele -->
         <nav class="items-center">
             <ul class="flex space-x-4 items-center">
-                <li><a href="{% url 'users:login' %}" class="button login-button">{% trans "Log in" %}</a></li>
-                <li><a href="{% url 'users:register' %}" class="button register-button">{% trans "Sign up" %}</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <!-- Přihlášený uživatel -->
+                    <li><a href="{% url 'upload' %}" class="button upload-button">{% trans "Upload" %}</a></li>
+                    <li>
+                        <a href="{% url 'profile' %}" class="button profile-button">
+                            <img src="{% static 'img/icons/user_account.svg' %}" alt="{% trans 'Profile' %}" class="w-6 h-6">
+                            {% trans "Profile" %}
+                        </a>
+                    </li>
+                {% else %}
+                    <!-- Nepřihlášený uživatel -->
+                    <li><a href="{% url 'users:login' %}" class="button login-button">{% trans "Log in" %}</a></li>
+                    <li><a href="{% url 'users:register' %}" class="button register-button">{% trans "Sign up" %}</a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
     </div>

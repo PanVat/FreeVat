@@ -17,6 +17,10 @@ urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     # Přesměrování do aplikace 'users'
     path('users/', include('users.urls')),
+    # Nahrání 3D modelu
+    path('upload/', views.upload_model, name='upload'),
+    # Uživatelský profil
+    path('profile/', views.user_profile, name='profile'),
 )
 
 # Rosetta - pro správu překladů
