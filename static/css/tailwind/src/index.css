@@ -38,12 +38,25 @@
     @apply bg-black flex-1 shadow-xl;
 }
 
-/* TLAČÍTKA S KATEGORIEMI */
-.button-category {
-    @apply category-button w-full flex items-center justify-between p-4 bg-white border border-gray-200;
-    @apply rounded-xl transition duration-300 ease-in-out hover:bg-indigo-50 hover:border-indigo-500;
+/* Kontejner, který obsahuje jednotlivé kategorie */
+.category-container {
+    @apply flex pb-4 gap-2 justify-center items-center;
 }
 
+/* TLAČÍTKA S KATEGORIEMI */
+.button-category {
+    @apply flex grid-cols-2 relative;
+}
+
+/* Tlačítka s kategoriemi - text */
+.button-category-text {
+    @apply text-lg font-medium text-white w-10;
+}
+
+/* Tlačítka s kategoriemi - ikony */
+.button-category-icon {
+    @apply w-5;
+}
 
 /* Feature container */
 .feature-container {

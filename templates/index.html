@@ -11,47 +11,46 @@
             <p>{% trans 'Explore high quality assets without any financial barriers!' %}</p>
         </div>
         <!-- Box s kategoriemi -->
-        <div class="category-container flex overflow-x-scroll pb-4 space-x-3 md:space-x-4">
+        <div class="category-container">
 
             <!-- Architektura -->
-            <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Architecture' %}</span>
+            <div class="button-category">
                 <!-- Ikonka -->
-                <span class="text-indigo-600">
                     <img src="{% static 'img/icons/categories/architecture.svg' %}" alt="{% trans 'Architecture' %}">
-                </span>
-            </button>
+                <!-- Text -->
+                {% trans 'Architecture' %}
+            </div>
 
             <!-- Zvířata -->
-            <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Animals' %}</span>
+            <div class="button-category">
+                <span class="button-category-text">{% trans 'Animals' %}</span>
                 <!-- Ikonka -->
                 <span class="text-pink-600">
                     <img src="{% static 'img/icons/categories/animals.svg' %}" alt="{% trans 'Animals' %}">
                 </span>
-            </button>
+            </div>
 
             <!-- Auta -->
-            <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Cars' %}</span>
+            <div class="button-category">
+                <span class="button-category-text">{% trans 'Cars' %}</span>
                 <!-- Ikonka -->
                 <span class="text-green-600">
                    <img src="{% static 'img/icons/categories/cars.svg' %}" alt="{% trans 'Cars' %}">
                 </span>
-            </button>
+            </div>
 
             <!-- Vozidla -->
-            <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Vehicles' %}</span>
+            <div class="button-category">
+                <span class="button-category-text">{% trans 'Vehicles' %}</span>
                 <!-- Ikonka -->
                 <span class="text-green-600">
                    <img src="{% static 'img/icons/categories/vehicles.svg' %}" alt="{% trans 'Vehicles' %}">
                 </span>
-            </button>
+            </div>
 
             <!-- Technologie -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Technology' %}</span>
+                <span class="button-category-text">{% trans 'Technology' %}</span>
                 <!-- Ikonka pro Technologii -->
                 <span class="text-blue-600">
                     <img src="{% static 'img/icons/categories/technology.svg' %}" alt="{% trans 'Technology' %}">
@@ -60,7 +59,7 @@
 
             <!-- Elektronika -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Electronics' %}</span>
+                <span class="button-category-text">{% trans 'Electronics' %}</span>
                 <!-- Ikonka -->
                 <span class="text-blue-600">
                     <img src="{% static 'img/icons/categories/computer.svg' %}" alt="{% trans 'Electronics' %}">
@@ -69,158 +68,159 @@
 
             <!-- Jídlo -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Food' %}</span>
+                <span class="button-category-text">{% trans 'Food' %}</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/food.svg' %}" alt="{% trans 'Food' %}">
                 </span>
             </button>
 
             <!-- Pití -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Drink' %}</span>
+                <span class="button-category-text">{% trans 'Drink' %}</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/drink.svg' %}" alt="{% trans 'Drink' %}">
                 </span>
             </button>
 
             <!-- Nábytek -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Furniture' %}</span>
+                <span class="button-category-text">{% trans 'Furniture' %}</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/furniture.svg' %}" alt="{% trans 'Furniture' %}">
                 </span>
             </button>
 
             <!-- Domov -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Home'%}</span>
+                <span class="button-category-text">{% trans 'Home'%}</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/home.svg' %}" alt="{% trans 'Home'%}">
                 </span>
             </button>
 
             <!-- Příroda -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Nature' %}</span>
+                <span class="button-category-text">{% trans 'Nature' %}</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/nature.svg' %}" alt="{% trans 'Nature' %}">
                 </span>
             </button>
 
             <!-- Rostliny -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Plants' %}</span>
+                <span class="button-category-text">{% trans 'Plants' %}</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/plants.svg' %}" alt="{% trans 'Plants' %}">
                 </span>
             </button>
 
             <!-- Sport -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">{% trans 'Sport' %}</span>
+                <span class="button-category-text">{% trans 'Sport' %}</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/sport.svg' %}" alt="{% trans 'Sport' %}">
                 </span>
             </button>
 
             <!-- Formát FBX (Filmbox) -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">FBX</span>
+                <span class="button-category-text">FBX</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/cube.svg' %}" alt="FBX">
                 </span>
             </button>
 
             <!-- Formát OBJ (Object) -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">OBJ</span>
+                <span class="button-category-text">OBJ</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/cube.svg' %}" alt="OBJ">
                 </span>
             </button>
 
             <!-- Formát USDZ (Universal Scene Description Zip) -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">USDZ</span>
+                <span class="button-category-text">USDZ</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/cube.svg' %}" alt="USDZ">
                 </span>
             </button>
 
             <!-- Formát GLTF (Graphics Library Transmission Format) -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">GLTF</span>
+                <span class="button-category-text">GLTF</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/cube.svg' %}" alt="GLTF">
                 </span>
             </button>
 
             <!-- Formát GLB (Graphics Language Binary) -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">GLB</span>
+                <span class="button-category-text">GLB</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/cube.svg' %}" alt="GLB">
                 </span>
             </button>
 
             <!-- Formát STL (STL) -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">STL</span>
+                <span class="button-category-text">STL</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/cube.svg' %}" alt="STL">
                 </span>
             </button>
 
             <!-- Formát .blend (Blender) -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">Blender</span>
+                <span class="button-category-text">Blender</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
-                    <img src="{% static 'img/icons/categories/blender.svg' %}" alt="Blender">
+                <span class="button-category-icon">
+                    <img src="{% static 'img/icons/categories/3ds-max.svg' %}" alt="Blender">
                 </span>
             </button>
 
             <!-- Formát .max (3ds Max) -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">3ds Max</span>
+                <span class="button-category-text">3ds Max</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/3ds-max.svg' %}" alt="3ds Max">
                 </span>
             </button>
 
             <!-- Formát .ma, .mb (Maya Ascii, Maya Binary) -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">Maya</span>
+                <span class="button-category-text">Maya</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/maya.svg' %}" alt="Maya">
                 </span>
             </button>
 
              <!-- Formát .c4d (Cinema 4D) -->
             <button class="button-category">
-                <span class="text-lg font-semibold text-gray-800">Cinema 4D</span>
+                <span class="button-category-text">Cinema 4D</span>
                 <!-- Ikonka -->
-                <span class="text-yellow-600">
+                <span class="button-category-icon">
                     <img src="{% static 'img/icons/categories/cinema4d.svg' %}" alt="Cinema 4D">
                 </span>
             </button>
 
         </div>
+
         <!-- Feature karty -->
         <div class="feature-container">
             <!-- Karta 1 (Kompletní bezplatný přístup) -->
