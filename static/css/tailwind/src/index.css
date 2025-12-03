@@ -38,24 +38,62 @@
     @apply bg-black flex-1 shadow-xl;
 }
 
+/* Carousel wrapper */
+.carousel-wrapper {
+    @apply relative flex items-center mx-40;
+}
+
 /* Kontejner, který obsahuje jednotlivé kategorie */
-.category-container {
-    @apply flex pb-4 gap-4 justify-center items-center overflow-x-scroll w-auto;
+.categories-carousel {
+    @apply flex-1 overflow-x-auto scroll-smooth mx-5;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Skupina tlačítek s kategoriemi */
+.carousel-group {
+    @apply flex gap-4 justify-start items-center;
 }
 
 /* TLAČÍTKA S KATEGORIEMI */
-.button-category {
-    @apply flex relative items-center gap-2;
+.carousel-card {
+    @apply flex justify-center items-center rounded-full w-fit px-6 py-2
+    border-[#60696c] border-2 flex-shrink-0
+    hover:border-white
+    transition-colors duration-200 cursor-pointer;
 }
 
 /* Tlačítka s kategoriemi - text */
-.button-category-text {
-    @apply text-lg font-medium text-white;
+.carousel-card span {
+    @apply text-lg font-medium text-white px-3 whitespace-nowrap;
 }
 
 /* Tlačítka s kategoriemi - ikony */
-.button-category-icon {
-    @apply w-5;
+.carousel-card img {
+    @apply w-6 h-6;
+}
+
+/* Přidejte tyto styly k vašim existujícím */
+.carousel-arrow.arrow-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Normální stav šipek */
+.carousel-arrow {
+    @apply absolute z-10 flex items-center justify-center text-white cursor-pointer;
+}
+
+.carousel-arrow-left {
+    left: -1.5rem;
+}
+
+.carousel-arrow-right {
+    right: -1.5rem;
+}
+
+.arrow-icon {
+    @apply w-8 h-8;
 }
 
 /* Feature container */

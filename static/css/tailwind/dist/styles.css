@@ -12,14 +12,12 @@
     --color-red-400: oklch(70.4% 0.191 22.216);
     --color-red-700: oklch(50.5% 0.213 27.518);
     --color-red-900: oklch(39.6% 0.141 25.723);
-    --color-green-600: oklch(62.7% 0.194 149.214);
     --color-green-900: oklch(39.3% 0.095 152.535);
     --color-blue-300: oklch(80.9% 0.105 251.813);
     --color-blue-400: oklch(70.7% 0.165 254.624);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-blue-700: oklch(48.8% 0.243 264.376);
-    --color-pink-600: oklch(59.2% 0.249 0.584);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-400: oklch(70.7% 0.022 261.325);
@@ -303,6 +301,9 @@
   .max-w-4xl {
     max-width: var(--container-4xl);
   }
+  .flex-shrink {
+    flex-shrink: 1;
+  }
   .flex-grow {
     flex-grow: 1;
   }
@@ -439,20 +440,11 @@
   .text-blue-400 {
     color: var(--color-blue-400);
   }
-  .text-blue-600 {
-    color: var(--color-blue-600);
-  }
   .text-gray-400 {
     color: var(--color-gray-400);
   }
   .text-gray-500 {
     color: var(--color-gray-500);
-  }
-  .text-green-600 {
-    color: var(--color-green-600);
-  }
-  .text-pink-600 {
-    color: var(--color-pink-600);
   }
   .text-red-100 {
     color: var(--color-red-100);
@@ -1030,30 +1022,85 @@
   --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
-.category-container {
+.carousel-wrapper {
+  position: relative;
+  margin-inline: calc(var(--spacing) * 40);
   display: flex;
-  width: auto;
+  align-items: center;
+}
+.categories-carousel {
+  margin-inline: calc(var(--spacing) * 5);
+  flex: 1;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.carousel-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: calc(var(--spacing) * 4);
+}
+.carousel-card {
+  display: flex;
+  width: fit-content;
+  flex-shrink: 0;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
-  gap: calc(var(--spacing) * 4);
-  overflow-x: scroll;
-  padding-bottom: calc(var(--spacing) * 4);
+  border-radius: calc(infinity * 1px);
+  border-style: var(--tw-border-style);
+  border-width: 2px;
+  border-color: #60696c;
+  padding-inline: calc(var(--spacing) * 6);
+  padding-block: calc(var(--spacing) * 2);
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+  --tw-duration: 200ms;
+  transition-duration: 200ms;
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-white);
+    }
+  }
 }
-.button-category {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: calc(var(--spacing) * 2);
-}
-.button-category-text {
+.carousel-card span {
+  padding-inline: calc(var(--spacing) * 3);
   font-size: var(--text-lg);
   line-height: var(--tw-leading, var(--text-lg--line-height));
   --tw-font-weight: var(--font-weight-medium);
   font-weight: var(--font-weight-medium);
+  white-space: nowrap;
   color: var(--color-white);
 }
-.button-category-icon {
-  width: calc(var(--spacing) * 5);
+.carousel-card img {
+  height: calc(var(--spacing) * 6);
+  width: calc(var(--spacing) * 6);
+}
+.carousel-arrow.arrow-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.carousel-arrow {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+}
+.carousel-arrow-left {
+  left: -1.5rem;
+}
+.carousel-arrow-right {
+  right: -1.5rem;
+}
+.arrow-icon {
+  height: calc(var(--spacing) * 8);
+  width: calc(var(--spacing) * 8);
 }
 .feature-container {
   margin-inline: auto;

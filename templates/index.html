@@ -10,216 +10,211 @@
             <h1>{% trans 'Unlimited World of Professional 3D Models' %}</h1>
             <p>{% trans 'Explore high quality assets without any financial barriers!' %}</p>
         </div>
-        <!-- Box s kategoriemi -->
-        <div class="category-container">
 
-            <!-- Architektura -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Animals' %}</span>
-                <!-- Ikonka -->
-                <span class="text-pink-600">
-                    <img src="{% static 'img/icons/categories/animals.svg' %}" alt="{% trans 'Animals' %}">
-                </span>
+        <div class="carousel-wrapper">
+
+            <!-- Šipka vlevo -->
+            <button class="carousel-arrow carousel-arrow-left">
+                <img src="{% static 'img/icons/arrow_left.svg' %}" alt="{% trans 'Arrow Left' %}"
+                     class="arrow-icon">
             </button>
 
-            <!-- Zvířata -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Animals' %}</span>
-                <!-- Ikonka -->
-                <span class="text-pink-600">
-                    <img src="{% static 'img/icons/categories/animals.svg' %}" alt="{% trans 'Animals' %}">
-                </span>
-            </button>
+            <!-- Box s kategoriemi -->
+            <div class="categories-carousel">
 
-            <!-- Auta -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Cars' %}</span>
-                <!-- Ikonka -->
-                <span class="text-green-600">
-                   <img src="{% static 'img/icons/categories/cars.svg' %}" alt="{% trans 'Cars' %}">
-                </span>
-            </button>
+                <!-- Carousel -->
+                <div class="carousel-group">
+                    <!-- Architektura -->
+                    <a class="carousel-card" href="#" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/architecture.svg' %}"
+                             alt="{% trans 'Architecture' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Architecture' %}</span>
+                    </a>
 
-            <!-- Vozidla -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Vehicles' %}</span>
-                <!-- Ikonka -->
-                <span class="text-green-600">
-                   <img src="{% static 'img/icons/categories/vehicles.svg' %}" alt="{% trans 'Vehicles' %}">
-                </span>
-            </button>
+                    <!-- Zvířata -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/animals.svg' %}" alt="{% trans 'Animals' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Animals' %}</span>
+                    </a>
 
-            <!-- Technologie -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Technology' %}</span>
-                <!-- Ikonka pro Technologii -->
-                <span class="text-blue-600">
-                    <img src="{% static 'img/icons/categories/technology.svg' %}" alt="{% trans 'Technology' %}">
-                </span>
-            </button>
+                    <!-- Auta -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/cars.svg' %}" alt="{% trans 'Cars' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Cars' %}</span>
+                    </a>
 
-            <!-- Elektronika -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Electronics' %}</span>
-                <!-- Ikonka -->
-                <span class="text-blue-600">
-                    <img src="{% static 'img/icons/categories/computer.svg' %}" alt="{% trans 'Electronics' %}">
-                </span>
-            </button>
+                    <!-- Vozidla -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/food.svg' %}" alt="{% trans 'Vehicles' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Vehicles' %}</span>
+                    </a>
 
-            <!-- Jídlo -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Food' %}</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/food.svg' %}" alt="{% trans 'Food' %}">
-                </span>
-            </button>
+                    <!-- Technologie -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/technology.svg' %}" alt="{% trans 'Technology' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Technology' %}</span>
+                    </a>
 
-            <!-- Pití -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Drink' %}</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/drink.svg' %}" alt="{% trans 'Drink' %}">
-                </span>
-            </button>
+                    <!-- Elektronika -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/computer.svg' %}" alt="{% trans 'Electronics' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Electronics' %}</span>
+                    </a>
 
-            <!-- Nábytek -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Furniture' %}</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/furniture.svg' %}" alt="{% trans 'Furniture' %}">
-                </span>
-            </button>
+                    <!-- Jídlo -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/food.svg' %}" alt="{% trans 'Food' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Food' %}</span>
+                    </a>
 
-            <!-- Domov -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Home' %}</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/home.svg' %}" alt="{% trans 'Home' %}">
-                </span>
-            </button>
+                    <!-- Pití -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/drink.svg' %}" alt="{% trans 'Drink' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Drink' %}</span>
+                    </a>
 
-            <!-- Příroda -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Nature' %}</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/nature.svg' %}" alt="{% trans 'Nature' %}">
-                </span>
-            </button>
+                    <!-- Nábytek -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/furniture.svg' %}" alt="{% trans 'Furniture' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Furniture' %}</span>
+                    </a>
 
-            <!-- Rostliny -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Plants' %}</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/plants.svg' %}" alt="{% trans 'Plants' %}">
-                </span>
-            </button>
+                    <!-- Domov -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/home.svg' %}" alt="{% trans 'Home' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Home' %}</span>
+                    </a>
 
-            <!-- Sport -->
-            <button class="button-category">
-                <span class="button-category-text">{% trans 'Sport' %}</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/sport.svg' %}" alt="{% trans 'Sport' %}">
-                </span>
-            </button>
+                    <!-- Příroda -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/nature.svg' %}" alt="{% trans 'Nature' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Nature' %}</span>
+                    </a>
 
-            <!-- Formát FBX (Filmbox) -->
-            <button class="button-category">
-                <span class="button-category-text">FBX</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/cube.svg' %}" alt="FBX">
-                </span>
-            </button>
+                    <!-- Rostliny -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/plants.svg' %}" alt="{% trans 'Plants' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Plants' %}</span>
+                    </a>
 
-            <!-- Formát OBJ (Object) -->
-            <button class="button-category">
-                <span class="button-category-text">OBJ</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/cube.svg' %}" alt="OBJ">
-                </span>
-            </button>
+                    <!-- Sport -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/sport.svg' %}" alt="{% trans 'Sport' %}">
+                        <!-- Text -->
+                        <span>{% trans 'Sport' %}</span>
+                    </a>
 
-            <!-- Formát USDZ (Universal Scene Description Zip) -->
-            <button class="button-category">
-                <span class="button-category-text">USDZ</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/cube.svg' %}" alt="USDZ">
-                </span>
-            </button>
+                    <!-- Formát FBX (Filmbox) -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="FBX">
+                        <!-- Text -->
+                        <span>FBX</span>
+                    </a>
 
-            <!-- Formát GLTF (Graphics Library Transmission Format) -->
-            <button class="button-category">
-                <span class="button-category-text">GLTF</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/cube.svg' %}" alt="GLTF">
-                </span>
-            </button>
+                    <!-- Formát OBJ (Object) -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="OBJ">
+                        <!-- Text -->
+                        <span>OBJ</span>
+                    </a>
 
-            <!-- Formát GLB (Graphics Language Binary) -->
-            <button class="button-category">
-                <span class="button-category-text">GLB</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/cube.svg' %}" alt="GLB">
-                </span>
-            </button>
+                    <!-- Formát USDZ (Universal Scene Description Zip) -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="USDZ">
+                        <!-- Text -->
+                        <span>USDZ</span>
+                    </a>
 
-            <!-- Formát STL (STL) -->
-            <button class="button-category">
-                <span class="button-category-text">STL</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/cube.svg' %}" alt="STL">
-                </span>
-            </button>
+                    <!-- Formát GLTF (Graphics Library Transmission Format) -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="GLTF">
+                        <!-- Text -->
+                        <span>GLTF</span>
+                    </a>
 
-            <!-- Formát .blend (Blender) -->
-            <button class="button-category">
-                <span class="button-category-text">Blender</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/3ds-max.svg' %}" alt="Blender">
-                </span>
-            </button>
+                    <!-- Formát GLB (Graphics Language Binary) -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="GLB">
+                        <!-- Text -->
+                        <span>GLB</span>
+                    </a>
 
-            <!-- Formát .max (3ds Max) -->
-            <button class="button-category">
-                <span class="button-category-text">3ds Max</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/3ds-max.svg' %}" alt="3ds Max">
-                </span>
-            </button>
+                    <!-- Formát STL (STL) -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="STL">
+                        <!-- Text -->
+                        <span>STL</span>
+                    </a>
 
-            <!-- Formát .ma, .mb (Maya Ascii, Maya Binary) -->
-            <button class="button-category">
-                <span class="button-category-text">Maya</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/maya.svg' %}" alt="Maya">
-                </span>
-            </button>
+                    <!-- Formát .blend (Blender) -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="Blender">
+                        <!-- Text -->
+                        <span>Blender</span>
+                    </a>
 
-            <!-- Formát .c4d (Cinema 4D) -->
-            <button class="button-category">
-                <span class="button-category-text">Cinema 4D</span>
-                <!-- Ikonka -->
-                <span class="button-category-icon">
-                    <img src="{% static 'img/icons/categories/cinema4d.svg' %}" alt="Cinema 4D">
-                </span>
-            </button>
+                    <!-- Formát .max (3ds Max) -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="3ds Max">
+                        <!-- Text -->
+                        <span>3dsMax</span>
+                    </a>
 
+                    <!-- Formát .ma, .mb (Maya Ascii, Maya Binary) -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="Maya">
+                        <!-- Text -->
+                        <span>Maya</span>
+                    </a>
+
+                    <!-- Formát .c4d (Cinema 4D) -->
+                    <a class="carousel-card" href="#">
+                        <!-- Ikonka -->
+                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="Cinema4D">
+                        <!-- Text -->
+                        <span>Cinema4D</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Šipka vpravo -->
+            <button class="carousel-arrow carousel-arrow-right">
+                <img src="{% static 'img/icons/arrow_right.svg' %}" alt="{% trans 'Arrow Left' %}"
+                     class="arrow-icon">
+            </button>
         </div>
 
         <!-- Feature karty -->
@@ -244,7 +239,8 @@
 
             <!-- Karta 3 (Pokročilý 3D prohlížeč) -->
             <div class="feature-card">
-                <div class="feature-icon"><img src="{% static 'img/icons/head_mounted_device.svg' %}" alt="VR Headset">
+                <div class="feature-icon"><img src="{% static 'img/icons/head_mounted_device.svg' %}"
+                                               alt="VR Headset">
                 </div>
                 <h3>{% trans 'ADVANCED 3D VIEWER' %}</h3>
                 <p>{% trans 'Personalise the viewer platform to match your company style. Use your logo, colors and customise the toolbar functions.' %}</p>
