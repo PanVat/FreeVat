@@ -40,17 +40,17 @@
 
 /* Kontejner, který obsahuje jednotlivé kategorie */
 .category-container {
-    @apply flex pb-4 gap-2 justify-center items-center;
+    @apply flex pb-4 gap-4 justify-center items-center overflow-x-scroll w-auto;
 }
 
 /* TLAČÍTKA S KATEGORIEMI */
 .button-category {
-    @apply flex grid-cols-2 relative;
+    @apply flex relative items-center gap-2;
 }
 
 /* Tlačítka s kategoriemi - text */
 .button-category-text {
-    @apply text-lg font-medium text-white w-10;
+    @apply text-lg font-medium text-white;
 }
 
 /* Tlačítka s kategoriemi - ikony */
