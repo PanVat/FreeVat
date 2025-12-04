@@ -25,7 +25,7 @@
                 <!-- Carousel -->
                 <div class="carousel-group">
                     <!-- Architektura -->
-                    <a class="carousel-card" href="#" href="#">
+                    <a class="carousel-card" href="#">
                         <!-- Ikonka -->
                         <img src="{% static 'img/icons/categories/architecture.svg' %}"
                              alt="{% trans 'Architecture' %}">
@@ -128,86 +128,6 @@
                         <!-- Text -->
                         <span>{% trans 'Sport' %}</span>
                     </a>
-
-                    <!-- Formát FBX (Filmbox) -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="FBX">
-                        <!-- Text -->
-                        <span>FBX</span>
-                    </a>
-
-                    <!-- Formát OBJ (Object) -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="OBJ">
-                        <!-- Text -->
-                        <span>OBJ</span>
-                    </a>
-
-                    <!-- Formát USDZ (Universal Scene Description Zip) -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="USDZ">
-                        <!-- Text -->
-                        <span>USDZ</span>
-                    </a>
-
-                    <!-- Formát GLTF (Graphics Library Transmission Format) -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="GLTF">
-                        <!-- Text -->
-                        <span>GLTF</span>
-                    </a>
-
-                    <!-- Formát GLB (Graphics Language Binary) -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="GLB">
-                        <!-- Text -->
-                        <span>GLB</span>
-                    </a>
-
-                    <!-- Formát STL (STL) -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="STL">
-                        <!-- Text -->
-                        <span>STL</span>
-                    </a>
-
-                    <!-- Formát .blend (Blender) -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="Blender">
-                        <!-- Text -->
-                        <span>Blender</span>
-                    </a>
-
-                    <!-- Formát .max (3ds Max) -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="3ds Max">
-                        <!-- Text -->
-                        <span>3ds Max</span>
-                    </a>
-
-                    <!-- Formát .ma, .mb (Maya Ascii, Maya Binary) -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="Maya">
-                        <!-- Text -->
-                        <span>Maya</span>
-                    </a>
-
-                    <!-- Formát .c4d (Cinema 4D) -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="Cinema 4D">
-                        <!-- Text -->
-                        <span>Cinema 4D</span>
-                    </a>
                 </div>
             </div>
             <!-- Šipka vpravo -->
@@ -303,5 +223,130 @@
                 <a href="#" class="feature-button">{% trans "Explore Assets" %}</a>
             </div>
         </div>
+
+        <!-- Loga 3D Software -->
+        <div class="flex flex-col items-center mt-20">
+            <!-- Nadpis -->
+            <h2 class="text-3xl font-bold text-center mb-12">{% trans 'Compatible With The Most Popular 3D Programs' %}</h2>
+
+            <div class="software-logos-container">
+                <!-- Blender -->
+                <div class="software-logo-item">
+                    <img src="{% static 'img/icons/software/blender.svg' %}" alt="Blender" class="software-logo-img">
+                    <div class="software-logo-content">
+                        <h3 class="software-logo-title">Blender</h3>
+                        <p class="software-logo-extension"><strong>.blend</strong>, .fbx, .obj</p>
+                    </div>
+                </div>
+
+                <!-- Cinema 4D -->
+                <div class="software-logo-item">
+                    <img src="{% static 'img/icons/software/cinema_4d.svg' %}" alt="Cinema 4D"
+                         class="software-logo-img">
+                    <div class="software-logo-content">
+                        <h3 class="software-logo-title">Cinema 4D</h3>
+                        <p class="software-logo-extension"><strong>.c4d</strong>, .fbx, .obj</p>
+                    </div>
+                </div>
+
+                <!-- 3ds Max -->
+                <div class="software-logo-item">
+                    <img src="{% static 'img/icons/software/3ds_max.png' %}" alt="3ds Max" class="software-logo-img">
+                    <div class="software-logo-content">
+                        <h3 class="software-logo-title">3ds Max</h3>
+                        <p class="software-logo-extension"><strong>.max</strong>,<strong>.3ds</strong>, .fbx</p>
+                    </div>
+                </div>
+
+                <!-- Maya -->
+                <div class="software-logo-item">
+                    <img src="{% static 'img/icons/software/maya.svg' %}" alt="Maya" class="software-logo-img">
+                    <div class="software-logo-content">
+                        <h3 class="software-logo-title">Maya</h3>
+                        <p class="software-logo-extension"><strong>.mb</strong>,<strong>.ma</strong>, .fbx</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loga 3D Formátů -->
+        <div class="flex flex-col items-center mt-20 mb-20">
+            <!-- Nadpis -->
+            <h2 class="text-3xl font-bold text-center mb-12">{% trans 'Support Of The Most Common File Formats' %}</h2>
+
+            <div class="format-logos-container">
+                <!-- FBX -->
+                <div class="format-logo-item">
+                    <div class="flex items-center space-x-4">
+                        <img src="{% static 'img/icons/formats/fbx.png' %}" alt="FBX" class="format-logo-img">
+                        <div>
+                            <h3 class="format-logo-title">FBX</h3>
+                            <p class="format-logo-extension">.fbx</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OBJ -->
+                <div class="format-logo-item">
+                    <div class="flex items-center space-x-4">
+                        <img src="{% static 'img/icons/formats/fbx.png' %}" alt="OBJ" class="format-logo-img">
+                        <div>
+                            <h3 class="format-logo-title">OBJ</h3>
+                            <p class="format-logo-extension">.obj</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- USDZ -->
+                <div class="format-logo-item">
+                    <div class="flex items-center space-x-4">
+                        <img src="{% static 'img/icons/formats/fbx.png' %}" alt="USDZ" class="format-logo-img">
+                        <div>
+                            <h3 class="format-logo-title">USDZ</h3>
+                            <p class="format-logo-extension">.usdz</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GLTF -->
+                <div class="format-logo-item">
+                    <div class="flex items-center space-x-4">
+                        <img src="{% static 'img/icons/formats/fbx.png' %}" alt="GLTF" class="format-logo-img">
+                        <div>
+                            <h3 class="format-logo-title">GLTF</h3>
+                            <p class="format-logo-extension">.gltf</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GLB -->
+                <div class="format-logo-item">
+                    <div class="flex items-center space-x-4">
+                        <img src="{% static 'img/icons/formats/fbx.png' %}" alt="GLB" class="format-logo-img">
+                        <div>
+                            <h3 class="format-logo-title">GLB</h3>
+                            <p class="format-logo-extension">.glb</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STL -->
+                <div class="format-logo-item">
+                    <div class="flex items-center space-x-4">
+                        <img src="{% static 'img/icons/formats/fbx.png' %}" alt="STL" class="format-logo-img">
+                        <div>
+                            <h3 class="format-logo-title">STL</h3>
+                            <p class="format-logo-extension">.stl</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <!-- Nadpis -->
+            <h2 class="text-3xl font-bold text-center mb-12">{% trans 'Browse The Latest 3D Models' %}</h2>
+        </div>
+
     </div>
 {% endblock %}
