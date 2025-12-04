@@ -190,7 +190,7 @@
                         <!-- Ikonka -->
                         <img src="{% static 'img/icons/categories/cube.svg' %}" alt="3ds Max">
                         <!-- Text -->
-                        <span>3dsMax</span>
+                        <span>3ds Max</span>
                     </a>
 
                     <!-- Formát .ma, .mb (Maya Ascii, Maya Binary) -->
@@ -204,9 +204,9 @@
                     <!-- Formát .c4d (Cinema 4D) -->
                     <a class="carousel-card" href="#">
                         <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="Cinema4D">
+                        <img src="{% static 'img/icons/categories/cube.svg' %}" alt="Cinema 4D">
                         <!-- Text -->
-                        <span>Cinema4D</span>
+                        <span>Cinema 4D</span>
                     </a>
                 </div>
             </div>
@@ -221,11 +221,29 @@
         <div class="feature-container">
             <!-- Karta 1 (Kompletní bezplatný přístup) -->
             <div class="feature-card">
-                <div class="feature-icon"><img src="{% static 'img/icons/money_off.svg' %}" alt="Money Off">
-                </div>
+                <div class="feature-icon"><img src="{% static 'img/icons/money_off.svg' %}" alt="Money Off"></div>
                 <h3>{% trans 'COMPLETELY FREE ACCESS' %}</h3>
-                <p>{% trans 'Works on computers, tablets and smartphones. Enrich your website with realistic displays of your models and products.' %}</p>
-                <a href="{% url 'upload' %}" class="button upload-button">{% trans "Create Account" %}</a>
+
+                <div class="feature-list">
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Get any model for free' %}</span>
+                    </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Extensive 3D Model Library' %}</span>
+                    </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Multiple 3D format support' %}</span>
+                    </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Absolutely no ads' %}</span>
+                    </div>
+                </div>
+
+                <a href="{% url 'upload' %}" class="feature-button">{% trans "Create Account" %}</a>
             </div>
 
             <!-- Karta 2 (Sdílejte svůj 3D model ještě dnes) -->
@@ -233,18 +251,56 @@
                 <div class="feature-icon"><img src="{% static 'img/icons/accessibility.svg' %}" alt="Accessibility">
                 </div>
                 <h3>{% trans 'SHARE YOUR CREATIONS' %}</h3>
-                <p>{% trans 'We guarantee a private and safe workplace for 3D models. All your data is processed with a 256-bit secure encrypted connection. You may decide to share only with who you want.' %}</p>
-                <a href="{% url 'upload' %}" class="button upload-button">{% trans "Upload Model" %}</a>
+
+                <div class="feature-list">
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Upload your models for free' %}</span>
+                    </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Unpaid account creation' %}</span>
+                    </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Secure registration and login' %}</span>
+                    </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Anyone can rate your models' %}</span>
+                    </div>
+                </div>
+
+                <a href="{% url 'upload' %}" class="feature-button">{% trans "Upload Model" %}</a>
             </div>
 
             <!-- Karta 3 (Pokročilý 3D prohlížeč) -->
             <div class="feature-card">
-                <div class="feature-icon"><img src="{% static 'img/icons/head_mounted_device.svg' %}"
-                                               alt="VR Headset">
+                <div class="feature-icon">
+                    <img src="{% static 'img/icons/head_mounted_device.svg' %}" alt="VR Headset">
                 </div>
                 <h3>{% trans 'ADVANCED 3D VIEWER' %}</h3>
-                <p>{% trans 'Personalise the viewer platform to match your company style. Use your logo, colors and customise the toolbar functions.' %}</p>
-                <a href="#" class="button upload-button">{% trans "Explore Assets" %}</a>
+
+                <div class="feature-list">
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Full 360° model preview' %}</span>
+                    </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Panning, zooming and rotating' %}</span>
+                    </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Texture visibility control' %}</span>
+                    </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <span>{% trans 'Works on all devices' %}</span>
+                    </div>
+                </div>
+
+                <a href="#" class="feature-button">{% trans "Explore Assets" %}</a>
             </div>
         </div>
     </div>

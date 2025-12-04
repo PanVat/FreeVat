@@ -59,8 +59,7 @@
 .carousel-card {
     @apply flex justify-center items-center rounded-full w-fit px-6 py-2
     border-[#60696c] border-2 flex-shrink-0
-    hover:border-white
-    transition-colors duration-200 cursor-pointer;
+    hover:border-white cursor-pointer;
 }
 
 /* Tlačítka s kategoriemi - text */
@@ -96,14 +95,16 @@
     @apply w-8 h-8;
 }
 
+/* FEATURE KARTY */
+
 /* Feature container */
 .feature-container {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 max-w-7xl mx-auto mt-10;
+    @apply grid grid-cols-3 mt-20 gap-10 px-45;
 }
 
 /* Feature cards */
 .feature-card {
-    @apply items-center bg-white p-8 rounded-2xl shadow-xl border border-gray-100 text-center;
+    @apply flex flex-col items-center bg-[#3B4042] p-8 rounded-2xl shadow-xl text-center h-full;
 }
 
 /* Feature icons */
@@ -118,10 +119,26 @@
 
 /* Feature card headings */
 .feature-card h3 {
-    @apply text-xl font-bold text-gray-900 mb-4;
+    @apply text-xl font-bold mb-6;
 }
 
-/* Feature card paragraphs */
-.feature-card p {
-    @apply text-gray-600 leading-relaxed;
+/* Feature list */
+.feature-list {
+    @apply w-full mb-6 flex-grow text-left;
+}
+
+/* Feature list item */
+.feature-list-item {
+    @apply flex items-start mb-3;
+}
+
+/* Check icon */
+.check-icon {
+    @apply text-green-500 mr-3 mt-0.5 flex-shrink-0;
+    font-size: 1.1rem;
+}
+
+/* Feature button */
+.feature-button {
+    @apply bg-black text-white py-3 px-6 rounded-md hover:bg-gray-800 mt-auto w-full;
 }
