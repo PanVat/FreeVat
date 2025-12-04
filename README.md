@@ -6,11 +6,7 @@ moderních technologiích a poskytuje uživatelům jednoduché a intuitivní roz
 modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si je moct stáhnout úplně kdokoli a používat na
 úplně cokoli. Je to takové zdrojákoviště 3D objektů, do kterého můžou dobrovolníci přispívat svými výtvory, ke kterým bude mít každý přístup.
 
-<<<<<<< HEAD
 [![Version](https://img.shields.io/badge/Verze-Indev_0.0.9__3-green.svg?logo=github&logoColor=white)](https://github.com/PanVat/FreeVat)
-=======
-[![Version](https://img.shields.io/badge/Verze-Indev_0.0.9_3-green.svg?logo=github&logoColor=white)](https://github.com/PanVat/FreeVat)
->>>>>>> 73cf7690c9d4aea4f64f966d64852ac6bb4e5a34
 [![Developer](https://img.shields.io/badge/Vývojář-PanVat-blue)](https://github.com/PanVat)
 ![License](https://img.shields.io/badge/Licence-Open_Source_✅-purple.svg)
 ---
@@ -100,9 +96,5 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - Čistka kódu a příprava na další vývoj
 ---
 
-<<<<<<< HEAD
 ### ✅Listopad 2025 (2/2) - ![Verze](https://img.shields.io/badge/Indev_0.0.9__3-darkgreen.svg)
-=======
-### ✅Listopad 2025 (2/2) - ![Verze](https://img.shields.io/badge/Indev_0.0.9_3-darkgreen.svg)
->>>>>>> 73cf7690c9d4aea4f64f966d64852ac6bb4e5a34
 - Prokrastinace :(
