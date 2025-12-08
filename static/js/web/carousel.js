@@ -1,37 +1,13 @@
-/* Vezme tyto HTML prvky a uloží je do konstant */
-document.addEventListener('DOMContentLoaded', function () {
-    const languageToggle = document.querySelector('.language');
-    const flagButton = languageToggle.querySelector('.flag-button');
-    const flagDropdown = languageToggle.querySelector('.flag-dropdown');
-
-    if (flagButton && flagDropdown) {
-        flagButton.addEventListener('click', function (event) {
-            /* Zabrání, aby se kliknutí šířilo dál, např. na body (což by to zavřelo) */
-            event.stopPropagation();
-
-            /* Přepíná třídu pro zobrazení */
-            flagDropdown.classList.toggle('flag-dropdown-visible');
-        });
-
-        /* Uzavře dropdown při kliknutí mimo něj */
-        document.addEventListener('click', function (event) {
-            /* Kontroluje, jestli kliknutí NEBYLO uvnitř kontejneru jazyka */
-            if (!languageToggle.contains(event.target)) {
-                flagDropdown.classList.remove('flag-dropdown-visible');
-            }
-        });
-    }
-});
-
-/* Posouvání carouselu pomocí šipek */
+/* Umožňuje posouvat položky v carouselu pomocí šipek a drag & drop. */
 document.addEventListener('DOMContentLoaded', function () {
     const carousel = document.querySelector('.categories-carousel');
     const leftArrow = document.querySelector('.carousel-arrow-left');
     const rightArrow = document.querySelector('.carousel-arrow-right');
 
+    /* Jak moc se posune obsah */
     const scrollAmount = 1000;
 
-    // Funkce pro kontrolu pozice a skrytí/zobrazení šipek
+    /* Funkce pro aktualizaci viditelnosti šipek */
     function updateArrowVisibility() {
         // Tolerance 5px pro zaokrouhlení
         const tolerance = 5;
@@ -42,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Kontrola zda jsme na konci
         const isAtEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - tolerance;
 
-        // Upravíme šipku vlevo
+        /* Šipka nalevo */
         if (isAtStart) {
             leftArrow.classList.add('arrow-hidden');
             leftArrow.style.pointerEvents = 'none';
@@ -51,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
             leftArrow.style.pointerEvents = 'auto';
         }
 
-        // Upravíme šipku vpravo
+        /* Šipka napravo */
         if (isAtEnd) {
             rightArrow.classList.add('arrow-hidden');
             rightArrow.style.pointerEvents = 'none';
@@ -61,10 +37,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Inicializace při načtení
+    /* Inicializace při načtení */
     updateArrowVisibility();
 
-    // Přidání event listenerů na šipky
+    /* Přidání event listeneru na šipky */
     leftArrow.addEventListener('click', () => {
         carousel.scrollBy({left: -scrollAmount, behavior: 'smooth'});
     });
@@ -73,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         carousel.scrollBy({left: scrollAmount, behavior: 'smooth'});
     });
 
-    // Kontrola pozice při scrollování
+    /* Kontrola pozice při scrollování */
     carousel.addEventListener('scroll', updateArrowVisibility);
 
     // Drag & drop
@@ -102,6 +78,5 @@ document.addEventListener('DOMContentLoaded', function () {
         carousel.scrollLeft = scrollLeft - walk;
     });
 
-    // Resize listener pro případ změny velikosti okna
     window.addEventListener('resize', updateArrowVisibility);
 });

@@ -21,6 +21,8 @@ urlpatterns += i18n_patterns(
     path('upload/', views.upload_model, name='upload'),
     # Uživatelský profil
     path('profile/', views.user_profile, name='profile'),
+    # Nahrání 3D modelu
+    path('upload/', views.upload_model, name='upload')
 )
 
 # Rosetta - pro správu překladů

@@ -1,0 +1,190 @@
+{% extends 'base/base.html' %}
+{% load i18n static %}
+
+{% block content %}
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <main>
+            <div class="page-title text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-teal-400 mb-4">Upload Your 3D Model</h1>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Share your creation with our community. Fill in the
+                    details below and upload your model.</p>
+            </div>
+
+            <div class="upload-form-container bg-gray-800 rounded-xl p-8 shadow-2xl mb-12">
+                <form id="uploadForm" method="POST" action="{% url 'upload' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {% if form.errors %}
+                        <div class="mb-6 p-4 bg-red-900/30 border-l-4 border-red-500 rounded-lg">
+                            <h3 class="text-lg font-semibold text-red-400 mb-2">Please correct the following
+                                errors:</h3>
+                            <ul class="list-disc pl-5 text-gray-300">
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li>{{ field.label }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                                {% for error in form.non_field_errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    <div class="form-row flex flex-col md:flex-row gap-8 mb-8">
+                        <div class="form-group flex-1 min-w-0">
+                            <label for="modelName" class="block text-teal-400 font-semibold mb-3">Model Name *</label>
+                            <input type="text" id="modelName" name="model_name" required
+                                   class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:outline-none focus:border-teal-400 transition-colors duration-300"
+                                   placeholder="Enter model name"
+                                   value="{{ form.model_name.value|default:'' }}">
+                        </div>
+                    </div>
+
+                    <!-- Výběr kategorie -->
+                    <div class="form-row flex flex-col md:flex-row gap-8 mb-8">
+                        <div class="form-group flex-1 min-w-0">
+                            <label for="category" class="block text-teal-400 font-semibold mb-3">Category *</label>
+                            <select id="category" name="category" required
+                                    class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:outline-none focus:border-teal-400 transition-colors duration-300">
+                                <option value="">Select a category</option>
+
+                                <!-- Architektura -->
+                                <option value="architecture"
+                                        {% if form.category.value == 'architecture' %}selected{% endif %}>Architecture
+                                </option>
+
+                                <!-- Zvířata -->
+                                <option value="animals" {% if form.category.value == 'animals' %}selected{% endif %}>
+                                    Animals
+                                </option>
+
+                                <!-- Auta -->
+                                <option value="cars" {% if form.category.value == 'cars' %}selected{% endif %}>Cars
+                                </option>
+
+                                <!-- Postavy -->
+                                <option value="characters" {% if form.category.value == 'characters' %}selected{% endif %}>Characters
+                                </option>
+
+                                <!-- Vozidla -->
+                                <option value="vehicles" {% if form.category.value == 'vehicles' %}selected{% endif %}>
+                                    Vehicles
+                                </option>
+
+                                <!-- Technologie -->
+                                <option value="technology"
+                                        {% if form.category.value == 'technology' %}selected{% endif %}>Technology
+                                </option>
+
+                                <!-- Elektronika -->
+                                <option value="electronics"
+                                        {% if form.category.value == 'electronics' %}selected{% endif %}>Electronics
+                                </option>
+
+                                <!-- Jídlo -->
+                                <option value="food" {% if form.category.value == 'food' %}selected{% endif %}>Food
+                                </option>
+
+                                <!-- Pití -->
+                                <option value="drink" {% if form.category.value == 'drink' %}selected{% endif %}>Drink
+                                </option>
+
+                                <!-- Nábytek -->
+                                <option value="furniture"
+                                        {% if form.category.value == 'furniture' %}selected{% endif %}>Furniture
+                                </option>
+
+                                <!-- Domácnost -->
+                                <option value="home" {% if form.category.value == 'home' %}selected{% endif %}>Home
+                                </option>
+
+                                <!-- Příroda -->
+                                <option value="nature" {% if form.category.value == 'nature' %}selected{% endif %}>
+                                    Nature
+                                </option>
+
+                                <!-- Rostliny -->
+                                <option value="plants" {% if form.category.value == 'plants' %}selected{% endif %}>
+                                    Plants
+                                </option>
+                                <!-- Ostatní -->
+                                <option value="other" {% if form.category.value == 'other' %}selected{% endif %}>Other
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-8">
+                        <label for="description" class="block text-teal-400 font-semibold mb-3">Model Description
+                            *</label>
+                        <textarea id="description" name="description" required
+                                  class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:outline-none focus:border-teal-400 transition-colors duration-300 min-h-[150px] resize-y"
+                                  placeholder="Describe your model, including details about textures, polygons, and any special features...">{{ form.description.value|default:'' }}</textarea>
+                    </div>
+
+                    <div class="form-row flex flex-col md:flex-row gap-8 mb-8">
+                        <div class="form-group flex-1 min-w-0">
+                            <label for="tags" class="block text-teal-400 font-semibold mb-3">Tags (comma
+                                separated)</label>
+                            <input type="text" id="tags" name="tags"
+                                   class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:outline-none focus:border-teal-400 transition-colors duration-300"
+                                   placeholder="e.g. low-poly, character, sci-fi, realistic"
+                                   value="{{ form.tags.value|default:'' }}">
+                        </div>
+                        <div class="form-group flex-1 min-w-0">
+                            <label for="polygons" class="block text-teal-400 font-semibold mb-3">Polygon Count</label>
+                            <input type="number" id="polygons" name="polygon_count"
+                                   class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:outline-none focus:border-teal-400 transition-colors duration-300"
+                                   placeholder="Approximate polygon count"
+                                   value="{{ form.polygon_count.value|default:'' }}">
+                        </div>
+                    </div>
+
+                    <div class="file-upload-area border-2 border-dashed border-gray-700 rounded-xl p-10 text-center mb-8 transition-all duration-300 hover:border-teal-400"
+                         id="fileUploadArea">
+                        <i class="fas fa-cloud-upload-alt text-5xl text-teal-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-200 mb-3">Upload 3D Model File</h3>
+                        <p class="text-gray-400 mb-6">Supported formats: .obj, .fbx, .blend, .stl, .gltf, .glb (Max
+                            size: 500MB)</p>
+                        <input type="file" id="modelFile" name="model_file" class="file-input hidden"
+                               accept=".obj,.fbx,.blend,.stl,.gltf,.glb" required>
+                        <label for="modelFile"
+                               class="file-input-label bg-gray-700 text-teal-400 px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-600 transition-colors duration-300 inline-block">Choose
+                            File</label>
+                        <div class="selected-file mt-6 p-3 bg-gray-900 rounded-lg hidden" id="selectedFile">
+                            Selected file: <span id="fileName" class="text-teal-400 font-medium"></span>
+                        </div>
+                        {% if form.model_file.errors %}
+                            <div class="mt-4 p-2 bg-red-900/30 rounded text-red-400 text-sm">
+                                {{ form.model_file.errors.0 }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-actions flex flex-col sm:flex-row justify-center gap-6 mt-12">
+                        <button type="submit"
+                                class="submit-btn bg-teal-400 text-gray-900 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-teal-500 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-teal-400/20">
+                            <i class="fas fa-upload mr-2"></i> Upload Model
+                        </button>
+                        <button type="reset"
+                                class="reset-btn bg-transparent text-gray-400 border border-gray-700 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 hover:text-gray-100 transition-colors duration-300">
+                            Reset Form
+                        </button>
+                    </div>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="success-message {% if message.tags == 'success' %}bg-green-900/30 border-l-4 border-teal-400{% else %}bg-blue-900/30 border-l-4 border-blue-400{% endif %} p-6 mt-8 rounded-lg">
+                                <h3 class="text-xl font-semibold {% if message.tags == 'success' %}text-teal-400{% else %}text-blue-400{% endif %} mb-2">
+                                    <i class="fas {% if message.tags == 'success' %}fa-check-circle{% else %}fa-info-circle{% endif %} mr-2"></i>
+                                    {{ message }}
+                                </h3>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </form>
+            </div>
+        </main>
+    </div>
+{% endblock %}

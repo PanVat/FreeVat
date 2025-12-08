@@ -40,7 +40,7 @@
 
 /* Carousel wrapper */
 .carousel-wrapper {
-    @apply relative flex items-center mx-40;
+    @apply relative flex items-center mx-35;
 }
 
 /* Kontejner, který obsahuje jednotlivé kategorie */
