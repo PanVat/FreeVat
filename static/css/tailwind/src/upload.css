@@ -1,4 +1,3 @@
-/* Custom styles for Django template */
 .dragover {
     animation: pulse-border 1.5s infinite;
     background-color: rgba(100, 255, 218, 0.05) !important;
@@ -23,56 +22,5 @@
     }
     100% {
         transform: rotate(360deg);
-    }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #112240;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #233554;
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #64ffda;
-}
-
-/* Form focus styles */
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 15px;
-    }
-
-    .upload-btn {
-        margin-top: 10px;
-    }
-
-    .file-upload-area {
-        padding: 30px 20px;
-    }
-
-    .form-actions {
-        flex-direction: column;
-    }
-
-    .submit-btn, .reset-btn {
-        width: 100%;
     }
 }

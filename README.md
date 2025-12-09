@@ -26,6 +26,7 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - `Crispy Forms` - Tvorba a stylování uživateslkých formulářů
 - `PostgreSQL` - Výkonný databázový systém pro ukládání dat
 - `OAuth` - Přihlašování a registrace uživatelů s účty třetích stran
+- `Crispy Forms` - Pro práci s uživatelskými formuláři
 - `Docker` - Kontejnerizace aplikace pro snadné nasazení
 - `Vite` - Buildování a vývoj v reálném čase
 ---

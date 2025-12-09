@@ -1,0 +1,147 @@
+# freevat/forms.py
+from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit, Layout
+
+# Třídy pro vstupní pole
+INPUT_CLASSES = "w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:outline-none focus:border-teal-400 transition-colors duration-300"
+
+# Třídy pro labely
+LABEL_CLASSES = "block text-teal-400 font-semibold mb-3"
+
+
+class ModelUploadForm(forms.Form):
+    # Jméno modelu
+    model_name = forms.CharField(
+        max_length=200,
+        required=True,
+        label='Model Name',
+        widget=forms.TextInput(attrs={
+            'class': INPUT_CLASSES,
+            'placeholder': 'Enter model name'
+        })
+    )
+
+    # Kategorie
+    category = forms.ChoiceField(
+        required=True,
+        label='Category',
+        choices=[
+            ('', 'Select a category'),
+            ('architecture', 'Architecture'),
+            ('animals', 'Animals'),
+            ('cars', 'Cars'),
+            ('characters', 'Characters'),
+            ('vehicles', 'Vehicles'),
+            ('technology', 'Technology'),
+            ('electronics', 'Electronics'),
+            ('food', 'Food'),
+            ('drink', 'Drink'),
+            ('furniture', 'Furniture'),
+            ('home', 'Home'),
+            ('nature', 'Nature'),
+            ('plants', 'Plants'),
+            ('other', 'Other'),
+        ],
+        widget=forms.Select(attrs={
+            'class': INPUT_CLASSES
+        })
+    )
+
+    # Popis modelu
+    description = forms.CharField(
+        required=True,
+        label='Model Description',
+        widget=forms.Textarea(attrs={
+            'class': INPUT_CLASSES + ' min-h-[150px] resize-y',
+            'placeholder': 'Describe your model, including details about textures, polygons, and any special features...'
+        })
+    )
+
+    # Štítky (slouží pro vyhledávání)
+    tags = forms.CharField(
+        required=False,
+        label='Tags (comma separated)',
+        widget=forms.TextInput(attrs={
+            'class': INPUT_CLASSES,
+            'placeholder': 'e.g. low-poly, character, sci-fi, realistic'
+        })
+    )
+
+    polygon_count = forms.IntegerField(
+        required=False,
+        label='Polygon Count',
+        widget=forms.NumberInput(attrs={
+            'class': INPUT_CLASSES,
+            'placeholder': 'Approximate polygon count'
+        })
+    )
+
+    model_file = forms.FileField(
+        required=True,
+        label='3D Model File',
+        widget=forms.FileInput(attrs={
+            'class': 'file-input hidden',
+            'accept': '.obj,.fbx,.blend,.stl,.gltf,.glb'
+        })
+    )
+
+    # Náhledový obrázek
+    preview_image = forms.ImageField(
+        required=False,
+        label='Preview Image',
+        widget=forms.FileInput(attrs={
+            'class': 'file-input hidden',
+            'accept': '.jpg,.jpeg,.png,.webp'
+        })
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_class = 'space-y-6'
+        self.helper.form_id = 'uploadForm'
+        self.helper.form_enctype = 'multipart/form-data'
+        self.helper.label_class = LABEL_CLASSES
+
+        # Jednoduchý layout - HTML bude v šabloně
+        self.helper.layout = Layout(
+            Submit('submit', 'Upload Model',
+                   css_class='submit-btn bg-teal-400 text-gray-900 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-teal-500 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-teal-400/20')
+        )
+
+    def clean_model_file(self):
+        model_file = self.cleaned_data.get('model_file')
+        if model_file:
+            # Kontrola velikosti souboru (max 500MB)
+            max_size = 500 * 1024 * 1024
+            if model_file.size > max_size:
+                raise forms.ValidationError('File size exceeds the maximum limit of 500MB')
+
+            # Kontrola přípony
+            allowed_extensions = ['.obj', '.fbx', '.blend', '.stl', '.gltf', '.glb']
+            import os
+            file_extension = os.path.splitext(model_file.name)[1].lower()
+            if file_extension not in allowed_extensions:
+                raise forms.ValidationError(f'File type {file_extension} is not supported')
+
+        return model_file
+
+    def clean_preview_image(self):
+        preview_image = self.cleaned_data.get('preview_image')
+        if preview_image:
+            # Kontrola velikosti obrázku (max 10MB)
+            max_size = 10 * 1024 * 1024
+            if preview_image.size > max_size:
+                raise forms.ValidationError('Preview image size exceeds the maximum limit of 10MB')
+
+            # Kontrola přípony
+            allowed_extensions = ['.jpg', '.jpeg', '.png', '.webp']
+            import os
+            file_extension = os.path.splitext(preview_image.name)[1].lower()
+            if file_extension not in allowed_extensions:
+                raise forms.ValidationError(f'Image type {file_extension} is not supported')
+
+        return preview_image
