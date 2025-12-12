@@ -45,9 +45,11 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - PolyHaven - https://polyhaven.com/
 - BlendSwap - https://www.blendswap.com/
 - Free3D - https://free3d.com/
+- Poly Pizza - https://poly.pizza/
 ---
 ## 🏁Cíle
-- [ ] Ukládání 3D modelů do databáze a provádění základních CRUD operací
+- [ ] Ukládání 3D modelů do databáze
+- [ ] Prodádění základních CRUD operací s 3D modely
 - [ ] Prohlížení objektů v 360° - posouvání, přibližování i rotace
 - [ ] Podpora základních 3D formátů - `.obj`, `.fbx`, `.usdz`, `.stl` a `.glb`
 - [ ] Podpora softwarových formátů - `.blend`, `.max`, `.c4d` a `.ma`

@@ -8,16 +8,14 @@
 @import './base/footer.css';
 
 /* Uživatelské formuláře */
-@import './users/form.css';
+@import './forms/forms.css';
 @import './users/socials.css';
 
 /* Uživatelský profil */
 @import './users/account.css';
-@import './users/upload.css';
 
 /* Jednotlivé stránky */
 @import './index.css';
-@import './upload.css';
 
 /* Vlastní fonty */
 @theme {
@@ -33,8 +31,8 @@
 
     /* Obecné tlačítko */
     .button {
-        @apply py-2 px-4 duration-150 rounded-md text-base;
-        @apply hover:opacity-90;
+        @apply py-2 px-4 duration-150 rounded-md text-base justify-center;
+        @apply hover:opacity-90 bg-[#3B4042];
     }
 }
 

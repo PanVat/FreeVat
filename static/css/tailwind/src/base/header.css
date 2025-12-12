@@ -37,21 +37,6 @@
     @apply pl-10 p-2 rounded-md bg-[#3B4042] focus:outline-none w-full;
 }
 
-/* Přihlášení - tlačítko */
-.login-button {
-    @apply bg-[#3B4042];
-}
-
-/* Registrace - tlačítko */
-.register-button {
-    @apply bg-[#3B4042];
-}
-
-/* Nahrání - tlačítko */
-.upload-button {
-    @apply bg-[#3B4042];
-}
-
 /* Uživatelský avatar */
 .profile-button{
     @apply rounded-full h-8 w-8;

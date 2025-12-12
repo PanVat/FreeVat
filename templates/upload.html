@@ -1,178 +1,149 @@
-{% extends 'base/base.html' %}
-{% load i18n static %}
-{% load crispy_forms_tags %}
+{% extends "base/base.html" %}
+
+<!-- Načtení potřebných knihoven -->
+{% load crispy_forms_tags static i18n %}
+
+<!-- Titulek stránky !-->
+{% block title %} {% trans 'Upload' %} {% endblock %}
 
 {% block content %}
-    <div class="container mx-auto px-4 py-8 max-w-6xl">
-        <div class="page-title text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-teal-400 mb-4">Upload Your 3D Model</h1>
-            <p class="text-gray-400 text-lg max-w-2xl mx-auto">Share your creation with our community. Fill in the
-                details below and upload your model.</p>
-        </div>
+    <!-- Stránka pro nahrání dat o 3D modelu -->
+    <div class="form-page">
+        <!-- Uploadovací formulář - kontejner -->
+        <div class="form-container--upload">
+            <!-- Hlavička -->
+            <div>
+                <h2 class="form-main-heading">
+                    {% trans "Upload 3D model" %}
+                </h2>
+                <p class="form-sub-heading">
+                    {% trans "View your uploaded models " %}
+                    <a href="#">
+                        {% trans 'here' %}
+                    </a>
+                </p>
+            </div>
 
-        <div class="upload-form-container bg-gray-800 rounded-xl p-8 shadow-2xl mb-12">
-            <form id="uploadForm" method="POST" action="{% url 'upload' %}" enctype="multipart/form-data">
+            <form class="mt-8 space-y-6" method="POST">
                 {% csrf_token %}
 
-                {% if form.errors %}
-                    <div class="mb-6 p-4 bg-red-900/30 border-l-4 border-red-500 rounded-lg">
-                        <h3 class="text-lg font-semibold text-red-400 mb-2">{% trans 'Please correct the following errors:' %}</h3>
-                        <ul class="list-disc pl-5 text-gray-300">
-                            {% for field in form %}
-                                {% for error in field.errors %}
-                                    <li>{{ field.label }}: {{ error }}</li>
-                                {% endfor %}
-                            {% endfor %}
-                            {% for error in form.non_field_errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
+                <!-- Zobrazení chybových hlášek -->
+                {% include "base/error.html" %}
 
-                <!-- Model Name -->
-                <div class="form-row flex flex-col md:flex-row gap-8 mb-8">
-                    <div class="form-group flex-1 min-w-0">
-                        {{ form.model_name.label_tag }}
-                        {{ form.model_name }}
-                        {% if form.model_name.errors %}
-                            <div class="mt-2 text-red-400 text-sm">{{ form.model_name.errors.0 }}</div>
-                        {% endif %}
-                    </div>
-                </div>
+                <!-- Formulářová pole -->
+                <div class="form-inputs-container">
 
-                <!-- Category -->
-                <div class="form-row flex flex-col md:flex-row gap-8 mb-8">
-                    <div class="form-group flex-1 min-w-0">
-                        {{ form.category.label_tag }}
-                        {{ form.category }}
-                        {% if form.category.errors %}
-                            <div class="mt-2 text-red-400 text-sm">{{ form.category.errors.0 }}</div>
-                        {% endif %}
-                    </div>
-                </div>
-
-                <!-- Description -->
-                <div class="form-group mb-8">
-                    {{ form.description.label_tag }}
-                    {{ form.description }}
-                    {% if form.description.errors %}
-                        <div class="mt-2 text-red-400 text-sm">{{ form.description.errors.0 }}</div>
-                    {% endif %}
-                </div>
-
-                <!-- Tags and Polygon Count -->
-                <div class="form-row flex flex-col md:flex-row gap-8 mb-8">
-                    <div class="form-group flex-1 min-w-0">
-                        {{ form.tags.label_tag }}
-                        {{ form.tags }}
-                        {% if form.tags.errors %}
-                            <div class="mt-2 text-red-400 text-sm">{{ form.tags.errors.0 }}</div>
-                        {% endif %}
-                    </div>
-                    <div class="form-group flex-1 min-w-0">
-                        {{ form.polygon_count.label_tag }}
-                        {{ form.polygon_count }}
-                        {% if form.polygon_count.errors %}
-                            <div class="mt-2 text-red-400 text-sm">{{ form.polygon_count.errors.0 }}</div>
-                        {% endif %}
-                    </div>
-                </div>
-
-                <!-- File Upload Area - 3D Model -->
-                <div class="file-upload-area border-2 border-dashed border-gray-700 rounded-xl p-10 text-center mb-8 transition-all duration-300 hover:border-teal-400"
-                     id="modelFileUploadArea">
-                    <i class="fas fa-cloud-upload-alt text-5xl text-teal-400 mb-4"></i>
-                    <h3 class="text-xl font-semibold text-gray-200 mb-3">Upload 3D Model File *</h3>
-                    <p class="text-gray-400 mb-6">Supported formats: .obj, .fbx, .blend, .stl, .gltf, .glb (Max size:
-                        500MB)</p>
-
-                    <!-- Hidden Django file field -->
-                    <div class="hidden">
-                        {{ form.model_file }}
+                    <!-- Název -->
+                    <div class="mb-4">
+                        {{ form.model_name | as_crispy_field }}
                     </div>
 
-                    <!-- Custom file input -->
-                    <input type="file" id="modelFile" name="model_file" class="file-input hidden"
-                           accept=".obj,.fbx,.blend,.stl,.gltf,.glb" required>
-                    <label for="modelFile"
-                           class="file-input-label bg-gray-700 text-teal-400 px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-600 transition-colors duration-300 inline-block">
-                        Choose File
-                    </label>
-
-                    <div class="selected-file mt-6 p-3 bg-gray-900 rounded-lg hidden" id="selectedModelFile">
-                        Selected file: <span id="modelFileName" class="text-teal-400 font-medium"></span>
+                    <!-- Kategorie -->
+                    <div class="mb-4">
+                        {{ form.category | as_crispy_field }}
                     </div>
 
-                    {% if form.model_file.errors %}
-                        <div class="mt-4 p-2 bg-red-900/30 rounded text-red-400 text-sm">
-                            {{ form.model_file.errors.0 }}
+                    <!-- Popis -->
+                    <div class="mb-4">
+                        {{ form.description | as_crispy_field }}
+                    </div>
+
+                    <!-- Vyhledávací štítky -->
+                    <div class="mb-4">
+                        {{ form.tags | as_crispy_field }}
+                    </div>
+
+                    <!-- Výběr 3D modelu -->
+                    <div class="file-upload-area" id="modelFileUploadArea">
+                        <h3 class="text-xl font-semibold text-gray-200 mb-3">Upload 3D Model File *</h3>
+                        <p class="text-gray-400 mb-6">Max File Size - 100 MB (.fbx, .gltf, .blend...)</p>
+
+                        <!-- Tlačítko pro výběr (původní stav) -->
+                        <div id="modelFileButtonContainer">
+                            <input type="file" id="modelFile" name="model_file" class="file-input hidden"
+                                   accept=".obj,.fbx,.stl,.gltf,.glb,.usdz,.blend,.c4d,.max,.3ds,.mb,.ma" required>
+                            <label for="modelFile" class="form-file-button">
+                                {% trans 'Select' %}
+                            </label>
                         </div>
-                    {% endif %}
+
+                        <!-- Kontejner pro zobrazení vybraného souboru (skrytý na začátku) -->
+                        <div class="selected-file-container hidden mt-4" id="selectedModelContainer">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-gray-300">Selected file:</span>
+                                    <span id="modelFileName" class="text-teal-400 font-medium ml-2"></span>
+                                </div>
+                                <!-- Tlačítko pro odebrání souboru -->
+                                <button type="button" id="removeModelButton" class="remove-file-button">
+                                    {% trans 'Delete' %}
+                                </button>
+                            </div>
+                        </div>
+
+                        {% if form.model_file.errors %}
+                            <div class="mt-4 p-2 bg-red-900/30 rounded text-red-400 text-sm">
+                                {{ form.model_file.errors.0 }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Výběr náhledového obrázku -->
+                    <div class="file-upload-area" id="previewFileUploadArea">
+                        <h3 class="text-xl font-semibold text-gray-200 mb-3">Preview Image</h3>
+                        <p class="text-gray-400 mb-6">Max File Size - 2 MB (.jpg, .png...)</p>
+
+                        <!-- Tlačítko pro výběr (původní stav) -->
+                        <div id="previewFileButtonContainer">
+                            <input type="file" id="previewFile" name="preview_image" class="file-input hidden"
+                                   accept=".jpg,.jpeg,.png,.webp">
+                            <label for="previewFile" class="form-file-button">
+                                {% trans 'Select' %}
+                            </label>
+                        </div>
+
+                        <!-- Kontejner pro zobrazení vybraného souboru (skrytý na začátku) -->
+                        <div class="selected-file-container hidden mt-4" id="selectedPreviewContainer">
+                            <div class="flex items-center justify-between mb-3">
+                                <div>
+                                    <span class="text-gray-300">Selected file:</span>
+                                    <span id="previewFileName" class="text-blue-400 font-medium ml-2"></span>
+                                </div>
+                                <!-- Tlačítko pro odebrání souboru -->
+                                <button type="button" id="removePreviewButton" class="remove-file-button">
+                                    {% trans 'Delete' %}
+                                </button>
+                            </div>
+
+                            <!-- Náhled obrázku -->
+                            <div id="imagePreviewContainer" class="mt-3">
+                                <div class="relative bg-gray-900 rounded-lg overflow-hidden h-48">
+                                    <img id="imagePreview" src="" alt="Preview" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if form.preview_image.errors %}
+                            <div class="mt-4 p-2 bg-red-900/30 rounded text-red-400 text-sm">
+                                {{ form.preview_image.errors.0 }}
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
 
-                <!-- File Upload Area - Preview Image -->
-                <div class="file-upload-area border-2 border-dashed border-gray-700 rounded-xl p-10 text-center mb-8 transition-all duration-300 hover:border-blue-400"
-                     id="previewFileUploadArea">
-                    <i class="fas fa-image text-5xl text-blue-400 mb-4"></i>
-                    <h3 class="text-xl font-semibold text-gray-200 mb-3">Preview Image</h3>
-                    <p class="text-gray-400 mb-6">Supported formats: .jpg, .jpeg, .png, .webp (Recommended:
-                        1280x720)</p>
-
-                    <!-- Hidden Django image field -->
-                    <div class="hidden">
-                        {{ form.preview_image }}
-                    </div>
-
-                    <!-- Custom file input -->
-                    <input type="file" id="previewFile" name="preview_image" class="file-input hidden"
-                           accept=".jpg,.jpeg,.png,.webp">
-                    <label for="previewFile"
-                           class="file-input-label bg-gray-700 text-blue-400 px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-600 transition-colors duration-300 inline-block">
-                        Choose Preview
-                    </label>
-
-                    <!-- Image preview container -->
-                    <div class="mt-4 hidden" id="imagePreviewContainer">
-                        <div class="relative bg-gray-900 rounded-lg overflow-hidden h-40">
-                            <img id="imagePreview" src="" alt="Preview" class="w-full h-full object-cover">
-                            <button type="button" id="removePreview"
-                                    class="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="selected-file mt-6 p-3 bg-gray-900 rounded-lg hidden" id="selectedPreviewFile">
-                        Selected file: <span id="previewFileName" class="text-blue-400 font-medium"></span>
-                    </div>
-
-                    {% if form.preview_image.errors %}
-                        <div class="mt-4 p-2 bg-red-900/30 rounded text-red-400 text-sm">
-                            {{ form.preview_image.errors.0 }}
-                        </div>
-                    {% endif %}
-                </div>
-
-                <!-- Buttons -->
-                <div class="form-actions flex flex-col sm:flex-row justify-center gap-6 mt-12">
-                    {% crispy form %}
+                <!-- Tlačítka -->
+                <div class="flex justify-center">
+                    <!-- Odeslat formulář -->
+                    <button type="submit"
+                            class="form-submit-button group">
+                        {% trans 'Login to account' %}
+                    </button>
+                    <!-- Resetovat formulář -->
                     <button type="reset"
-                            class="reset-btn bg-transparent text-gray-400 border border-gray-700 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 hover:text-gray-100 transition-colors duration-300">
+                            class="form-reset-button group">
                         Reset Form
                     </button>
                 </div>
-
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="success-message {% if message.tags == 'success' %}bg-green-900/30 border-l-4 border-teal-400{% else %}bg-blue-900/30 border-l-4 border-blue-400{% endif %} p-6 mt-8 rounded-lg">
-                            <h3 class="text-xl font-semibold {% if message.tags == 'success' %}text-teal-400{% else %}text-blue-400{% endif %} mb-2">
-                                <i class="fas {% if message.tags == 'success' %}fa-check-circle{% else %}fa-info-circle{% endif %} mr-2"></i>
-                                {{ message }}
-                            </h3>
-                        </div>
-                    {% endfor %}
-                {% endif %}
             </form>
         </div>
     </div>

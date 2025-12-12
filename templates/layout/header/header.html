@@ -28,9 +28,9 @@
             <ul class="flex space-x-4 items-center">
                 {% if user.is_authenticated %}
                     <!-- Přihlášený uživatel (tlačítka přihlášení a registrace) -->
-                    <li><a href="{% url 'upload' %}" class="button upload-button">{% trans "Upload" %}</a></li>
+                    <li><a href="{% url 'upload' %}" class="button">{% trans "Upload" %}</a></li>
                     <li>
-                        <a href="{% url 'profile' %}" class="button profile-button">
+                        <a href="{% url 'profile' %}" class="profile-button">
 
                             <img src="{{ user.get_profile_picture }}"
                                  alt="{% trans 'Profile' %}"
@@ -39,9 +39,8 @@
                     </li>
                 {% else %}
                     <!-- Nepřihlášený uživatel (tlačítka nahrání a uživatelského profilu) -->
-                    <li><a href="{% url 'users:login' %}" class="button login-button">{% trans "Log in" %}</a></li>
-                    <li><a href="{% url 'users:register' %}" class="button register-button">{% trans "Sign up" %}</a>
-                    </li>
+                    <li><a href="{% url 'users:login' %}" class="button">{% trans "Log in" %}</a></li>
+                    <li><a href="{% url 'users:register' %}" class="button">{% trans "Sign up" %}</a></li>
                 {% endif %}
             </ul>
         </nav>

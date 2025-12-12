@@ -3,15 +3,15 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout
 
-# Třídy pro vstupní pole
-INPUT_CLASSES = "w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:outline-none focus:border-teal-400 transition-colors duration-300"
+# Vstupní pole ve formuláři
+INPUT_CLASSES = "form-input-classes"
 
-# Třídy pro labely
-LABEL_CLASSES = "block text-teal-400 font-semibold mb-3"
+# Třídy pro labely ve formuláři
+LABEL_CLASSES = "text-lg font-medium mb-2 block"
 
 
 class ModelUploadForm(forms.Form):
-    # Jméno modelu
+    # Název modelu
     model_name = forms.CharField(
         max_length=200,
         required=True,
@@ -65,24 +65,6 @@ class ModelUploadForm(forms.Form):
         widget=forms.TextInput(attrs={
             'class': INPUT_CLASSES,
             'placeholder': 'e.g. low-poly, character, sci-fi, realistic'
-        })
-    )
-
-    polygon_count = forms.IntegerField(
-        required=False,
-        label='Polygon Count',
-        widget=forms.NumberInput(attrs={
-            'class': INPUT_CLASSES,
-            'placeholder': 'Approximate polygon count'
-        })
-    )
-
-    model_file = forms.FileField(
-        required=True,
-        label='3D Model File',
-        widget=forms.FileInput(attrs={
-            'class': 'file-input hidden',
-            'accept': '.obj,.fbx,.blend,.stl,.gltf,.glb'
         })
     )
 

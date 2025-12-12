@@ -1,10 +1,10 @@
 {% extends "base/base.html" %}
 
-<!-- Načtení potřebných knihoven !-->
+<!-- Načtení potřebných knihoven -->
 {% load crispy_forms_tags static i18n %}
 
 <!-- Titulek stránky !-->
-{% block title %}{% trans 'FreeVat - Login' %}{% endblock %}
+{% block title %} {% trans 'Login' %} {% endblock %}
 
 {% block content %}
     <!-- Přihlašovací stránka -->
@@ -29,13 +29,15 @@
                 {% csrf_token %}
 
                 <!-- Zobrazení chybových hlášek -->
-                {% include "users/error.html" %}
+                {% include "base/error.html" %}
 
                 <!-- Formulářová pole -->
                 <div class="form-inputs-container">
+                    <!-- Email -->
                     <div class="mb-4">
                         {{ form.email|as_crispy_field }}
                     </div>
+                    <!-- Heslo -->
                     <div>
                         {{ form.password|as_crispy_field }}
                     </div>
@@ -49,7 +51,8 @@
                             {% trans 'Remember me' %}
                         </label>
                     </div>
-                <!-- Zapomenuté heslo -->
+
+                    <!-- Zapomenuté heslo -->
                     <div class="text-sm">
                         <a href="#">
                             {% trans 'Forgotten password?' %}
@@ -60,7 +63,7 @@
                 <!-- Tlačítko přihlášení -->
                 <div class="flex justify-center">
                     <button type="submit"
-                            class="form-login-button group">
+                            class="form-submit-button group">
                         {% trans 'Login to account' %}
                     </button>
                 </div>

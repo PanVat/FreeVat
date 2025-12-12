@@ -5,7 +5,7 @@
 
 /* Formulář */
 .form-container {
-    @apply border-1 border-[#404040] max-w-md w-full space-y-8 rounded-xl p-5;
+    @apply border-1 border-[#404040] max-w-md w-full space-y-8 rounded-xl p-5 my-10 mx-10;
 }
 
 /* Nadpis ve formuláři */
@@ -28,7 +28,7 @@
     @apply mt-8 space-y-6;
 }
 
-.form-input-classes{
+.form-input-classes {
     @apply block w-full px-3 py-2 border-2 placeholder-gray-400 rounded-lg border-none outline-none text-lg;
     background-color: #404040;
 }
@@ -59,8 +59,46 @@
     @apply text-base text-blue-500 hover:underline;
 }
 
-/* Tlačítko pro odeslání formuláře (Přihlášení) */
-.form-login-button {
+/* Tlačítka pro nahrávání souborů */
+.form-file-button {
+    @apply py-2 px-4 duration-150 rounded-md text-base bg-[#3B4042];
+    @apply hover:opacity-90 cursor-pointer;
+}
+
+.remove-file-button {
+    @apply py-2 px-4 duration-150 rounded-md text-base text-white bg-red-700;
+    @apply hover:bg-red-600 hover:opacity-100 cursor-pointer;
+}
+
+
+/* Oblast pro přetažení souborů */
+.file-upload-area {
+    @apply border-2 border-dashed border-[#3B4042] rounded-xl p-10 text-center mb-8 transition-all duration-200 hover:border-[#7d8082];
+}
+
+/* Nadpis v oblasti pro přetažení souborů */
+.file-upload-heading {
+    @apply text-xl font-semibold text-gray-200 mb-3;
+}
+
+/* Tlačítko pro odeslání formuláře */
+.form-submit-button {
     @apply py-2 px-4 duration-150 rounded-md text-lg w-full text-center;
     @apply hover:opacity-90 bg-green-900 cursor-pointer;
+}
+
+/* Tlačítko pro resetování formuláře */
+.form-reset-button {
+    @apply py-2 px-4 duration-150 rounded-md text-lg w-full text-center;
+    @apply hover:opacity-90 bg-red-900 cursor-pointer;
+}
+
+/* Zobrazení vybraného souboru po nahrání */
+.selected-file {
+    @apply selected-file mt-6 p-3 bg-gray-900 rounded-lg;
+}
+
+/* Upravená třída pro 'Upload' */
+.form-container--upload {
+    @apply border-1 border-[#404040] max-w-3xl w-full space-y-8 rounded-xl p-5 my-10;
 }

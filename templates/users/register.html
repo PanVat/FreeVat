@@ -4,7 +4,7 @@
 {% load crispy_forms_tags static i18n %}
 
 <!-- Titulek stránky !-->
-{% block title %} {% trans 'FreeVat - Register' %} {% endblock %}
+{% block title %} {% trans 'Register' %} {% endblock %}
 
 {% block content %}
     <!-- Registrační stránka -->
@@ -29,7 +29,7 @@
                 {% csrf_token %}
 
                 <!-- Zobrazení chybových hlášek -->
-                {% include "users/error.html" %}
+                {% include "base/error.html" %}
 
                 <!-- Formulářová pole -->
                 <div class="form-inputs-container">
@@ -43,11 +43,14 @@
                 <!-- Tlačítko registrace -->
                 <div>
                     <button type="submit"
-                            class="form-login-button group">
+                            class="form-submit-button group">
                         {% trans 'Create new account' %}
                     </button>
                 </div>
             </form>
+
+            <!-- Přihlášení přes sociální sítě (zatím jen Google a Github) -->
+            {% include "users/socials.html" %}
         </div>
     </div>
 {% endblock %}
