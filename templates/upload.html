@@ -55,7 +55,7 @@
 
                     <!-- Výběr 3D modelu -->
                     <div class="file-upload-area" id="modelFileUploadArea">
-                        <h3 class="text-xl font-semibold text-gray-200 mb-3">Upload 3D Model File *</h3>
+                        <h3 class="text-xl font-semibold text-gray-200 mb-3">Upload 3D Model File</h3>
                         <p class="text-gray-400 mb-6">Max File Size - 100 MB (.fbx, .gltf, .blend...)</p>
 
                         <!-- Tlačítko pro výběr (původní stav) -->
@@ -68,24 +68,22 @@
                         </div>
 
                         <!-- Kontejner pro zobrazení vybraného souboru (skrytý na začátku) -->
-                        <div class="selected-file-container hidden mt-4" id="selectedModelContainer">
+                        <div class="selected-file-container hidden" id="selectedModelContainer">
                             <div class="flex items-center justify-between">
-                                <div>
-                                    <span class="text-gray-300">Selected file:</span>
-                                    <span id="modelFileName" class="text-teal-400 font-medium ml-2"></span>
+                                <div class="flex items-center">
+                                    <img src="{% static 'img/icons/categories/cube.svg' %}" alt="{% trans 'Model' %}"
+                                         class="w-5 h-5">
+
+                                    <div>
+                                        <span id="modelFileName" class="font-medium ml-2"></span>
+                                    </div>
                                 </div>
                                 <!-- Tlačítko pro odebrání souboru -->
                                 <button type="button" id="removeModelButton" class="remove-file-button">
-                                    {% trans 'Delete' %}
+                                    <img src="{% static 'img/icons/cross.svg' %}" alt="{% trans 'Delete' %}"/>
                                 </button>
                             </div>
                         </div>
-
-                        {% if form.model_file.errors %}
-                            <div class="mt-4 p-2 bg-red-900/30 rounded text-red-400 text-sm">
-                                {{ form.model_file.errors.0 }}
-                            </div>
-                        {% endif %}
                     </div>
 
                     <!-- Výběr náhledového obrázku -->
@@ -103,31 +101,22 @@
                         </div>
 
                         <!-- Kontejner pro zobrazení vybraného souboru (skrytý na začátku) -->
-                        <div class="selected-file-container hidden mt-4" id="selectedPreviewContainer">
-                            <div class="flex items-center justify-between mb-3">
-                                <div>
-                                    <span class="text-gray-300">Selected file:</span>
-                                    <span id="previewFileName" class="text-blue-400 font-medium ml-2"></span>
+                        <div class="selected-file-container hidden" id="selectedPreviewContainer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="{% static 'img/icons/categories/cube.svg' %}" alt="{% trans 'File' %}"
+                                         class="w-5 h-5">
+
+                                    <div>
+                                        <span id="previewFileName" class="font-medium ml-2"></span>
+                                    </div>
                                 </div>
                                 <!-- Tlačítko pro odebrání souboru -->
                                 <button type="button" id="removePreviewButton" class="remove-file-button">
-                                    {% trans 'Delete' %}
+                                    <img src="{% static 'img/icons/cross.svg' %}" alt="{% trans 'Delete' %}"/>
                                 </button>
                             </div>
-
-                            <!-- Náhled obrázku -->
-                            <div id="imagePreviewContainer" class="mt-3">
-                                <div class="relative bg-gray-900 rounded-lg overflow-hidden h-48">
-                                    <img id="imagePreview" src="" alt="Preview" class="w-full h-full object-cover">
-                                </div>
-                            </div>
                         </div>
-
-                        {% if form.preview_image.errors %}
-                            <div class="mt-4 p-2 bg-red-900/30 rounded text-red-400 text-sm">
-                                {{ form.preview_image.errors.0 }}
-                            </div>
-                        {% endif %}
                     </div>
                 </div>
 
@@ -136,12 +125,12 @@
                     <!-- Odeslat formulář -->
                     <button type="submit"
                             class="form-submit-button group">
-                        {% trans 'Login to account' %}
+                        {% trans 'Upload' %}
                     </button>
                     <!-- Resetovat formulář -->
                     <button type="reset"
                             class="form-reset-button group">
-                        Reset Form
+                        {% trans 'Reset' %}
                     </button>
                 </div>
             </form>
