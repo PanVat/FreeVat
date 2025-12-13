@@ -9,6 +9,9 @@ INPUT_CLASSES = "form-input-classes"
 # Třídy pro labely ve formuláři
 LABEL_CLASSES = "text-lg font-medium mb-2 block"
 
+# Třídy pro dropdown s kategoriemi
+DROPDOWN_CLASSES = "form-dropdown-classes"
+
 
 class ModelUploadForm(forms.Form):
     # Název modelu
@@ -19,32 +22,6 @@ class ModelUploadForm(forms.Form):
         widget=forms.TextInput(attrs={
             'class': INPUT_CLASSES,
             'placeholder': 'Enter model name'
-        })
-    )
-
-    # Kategorie
-    category = forms.ChoiceField(
-        required=True,
-        label='Category',
-        choices=[
-            ('', 'Select a category'),
-            ('architecture', 'Architecture'),
-            ('animals', 'Animals'),
-            ('cars', 'Cars'),
-            ('characters', 'Characters'),
-            ('vehicles', 'Vehicles'),
-            ('technology', 'Technology'),
-            ('electronics', 'Electronics'),
-            ('food', 'Food'),
-            ('drink', 'Drink'),
-            ('furniture', 'Furniture'),
-            ('home', 'Home'),
-            ('nature', 'Nature'),
-            ('plants', 'Plants'),
-            ('other', 'Other'),
-        ],
-        widget=forms.Select(attrs={
-            'class': INPUT_CLASSES
         })
     )
 
@@ -90,8 +67,7 @@ class ModelUploadForm(forms.Form):
 
         # Jednoduchý layout - HTML bude v šabloně
         self.helper.layout = Layout(
-            Submit('submit', 'Upload Model',
-                   css_class='submit-btn bg-teal-400 text-gray-900 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-teal-500 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-teal-400/20')
+            Submit('submit', 'Upload Model')
         )
 
     def clean_model_file(self):

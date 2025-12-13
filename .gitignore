@@ -19,5 +19,5 @@ package-lock.json
 .vscode/
 
 # Migrace
-freevat/migrations/
-users/migrations/
+freevat/migrations/*.*
+users/migrations/*.*

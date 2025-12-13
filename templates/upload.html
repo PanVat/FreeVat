@@ -121,16 +121,19 @@
                 </div>
 
                 <!-- Tlačítka -->
-                <div class="flex justify-center">
-                    <!-- Odeslat formulář -->
+                <div class="flex justify-center gap-4">
                     <button type="submit"
-                            class="form-submit-button group">
+                            class="form-submit-button">
                         {% trans 'Upload' %}
                     </button>
-                    <!-- Resetovat formulář -->
                     <button type="reset"
-                            class="form-reset-button group">
+                            class="form-reset-button">
                         {% trans 'Reset' %}
+                    </button>
+                    <button type="button"
+                            id="discardButton"
+                            class="form-discard-button js-discard-button">
+                        {% trans 'Discard' %}
                     </button>
                 </div>
             </form>

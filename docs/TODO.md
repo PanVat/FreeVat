@@ -1,0 +1,5 @@
+## Chyby
+- ❎ místo dropdownu s kategoriemi v `freevat/forms.py` je pouze vstupní pole
+- ❎ web není responzivní na menších zařízeních
+- ❎ na mobilních zařízeních není implementováno hamburger menu
+- ❎ pole `kategorie` v `freevat/models.py` je zatím odstraněno (musí se vyřešit)

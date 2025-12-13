@@ -4,12 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // a nechat prohlížeč ignorovat, pokud neexistuje.
     const imagePreview = document.getElementById('imagePreview');
 
-    /**
-     * Pomocná funkce pro přepínání viditelnosti prvků v upload zóně.
-     * Skrývá nadpisy (H3, P) a tlačítko 'Select' a zobrazuje kontejner s vybraným souborem.
-     * @param {string} type - 'model' nebo 'preview'
-     * @param {boolean} isFileSelected - zda byl vybrán soubor
-     */
     function toggleUploadState(type, isFileSelected) {
         const area = document.getElementById(`${type}FileUploadArea`);
         if (!area) return;
@@ -83,9 +77,33 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => {
                 toggleUploadState('model', false);
                 toggleUploadState('preview', false);
-                // Vzhledem k tomu, že imagePreview je null, tato podmínka se neprovede,
-                // ale je zde ponechána pro případ, že by se náhled v budoucnu vrátil.
                 if (imagePreview) imagePreview.src = '';
+            }, 10);
+        });
+    }
+
+    // =======================================================
+    // --- Discard (Reset a přesměrování) ---
+    // =======================================================
+    const discardBtn = document.getElementById('discardButton');
+    const formElement = document.querySelector('form');
+
+    if (discardBtn && formElement) {
+        discardBtn.addEventListener('click', function (e) {
+            e.preventDefault(); // Zabráníme výchozí akci tlačítka
+
+            // 1. Vyčistíme všechna formulářová pole
+            formElement.reset();
+
+            // 2. Resetujeme stav UI (skrýt kontejner vybraného souboru, zobrazit H3/P/Select)
+            // Používáme setTimeout pro zajištění, že se reset UI provede po resetu formuláře prohlížečem
+            setTimeout(() => {
+                toggleUploadState('model', false);
+                toggleUploadState('preview', false);
+                if (imagePreview) imagePreview.src = '';
+
+                // 3. Provedeme přesměrování na hlavní stránku
+                window.location.href = '/';
             }, 10);
         });
     }

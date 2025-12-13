@@ -37,8 +37,6 @@ class Model3D(models.Model):
                                   error_messages={"invalid": _("Invalid image format")})
     # Připojení tabulky 'User' (tvůrce modelu)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_("Creator"))
-    # Připojení tabulky 'Category' (kategorie modelu)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name=_("Model category"))
 
     # Název modelu jako řetězec
     def __str__(self):
@@ -95,18 +93,3 @@ class Comment(models.Model):
         ordering = ['-created_at']
         verbose_name = _("Comment")
         verbose_name_plural = _("Comments")
-
-
-# Kategorie 3D modelů
-class Category(models.Model):
-    name = models.CharField(max_length=50,
-                            unique=True,
-                            verbose_name=_("Category Name"))
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        ordering = ['name']
-        verbose_name = _("Category")
-        verbose_name_plural = _("Categories")

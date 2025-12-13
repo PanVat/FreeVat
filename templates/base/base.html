@@ -10,6 +10,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}FreeVat{% endblock %}</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'img/icons/favicon.png' %}">
     <!-- Google fonty -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,17 +31,21 @@
 {% include "layout/navbar/navbar.html" %}
 
 {% block content %}
-<!-------------------------------
-    Vlastní obsah každé stránky
---------------------------------->
+    <!-------------------------------
+        Vlastní obsah každé stránky
+    --------------------------------->
 {% endblock %}
 {% include "layout/footer/footer.html" %}
 
 <!-- Přepínání jazyků -->
 <script src="{% static 'js/web/language.js' %}"></script>
-<!-- Posouvání carouselu -->
-<script src="{% static 'js/web/carousel.js' %}"></script>
 <!-- Nahrání 3D assetu -->
 <script src="{% static 'js/web/upload.js' %}"></script>
 </body>
 </html>
+
+<!--
+Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+Adipisci aliquid asperiores beatae distinctio dolores doloribus eos est itaque laborum nesciunt
+obcaecati porro quae quaerat quod rerum saepe, vel voluptatibus! Nam?
+-->

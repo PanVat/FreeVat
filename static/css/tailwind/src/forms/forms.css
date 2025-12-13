@@ -33,8 +33,53 @@
     display: none;
 }
 
+/* Stylování vstupních polí ve formuláři v 'upload.html' (použije se ve 'forms.py' */
 .form-input-classes {
-    @apply block w-full px-3 py-2 placeholder-gray-400 rounded-lg border-2 border-[#3B4042] outline-none text-lg;
+    @apply block w-full px-4 py-3 placeholder-gray-400 rounded-lg border-2 border-[#3B4042] outline-none text-base;
+}
+
+.form-dropdown-classes {
+    /* Ponechte základní vzhled inputů */
+    @apply block w-full px-4 py-3 text-white bg-transparent rounded-lg border-2 border-[#3B4042] outline-none text-base appearance-none;
+}
+
+/* ======================================================= */
+/* VLASTNÍ STYLY PRO CHOICES.JS (nebo jiný custom dropdown) */
+/* ======================================================= */
+
+/* Kontejner, který obaluje celou komponentu (nahrazuje SELECT) */
+.choices {
+    @apply relative text-white;
+    /* Použijte třídy k nastavení vzhledu okraje a pozadí pro ZAVŘENÝ dropdown */
+    @apply border-2 border-[#3B4042] rounded-lg;
+}
+
+/* Vstupní pole, které zobrazuje vybranou hodnotu */
+.choices__inner {
+    @apply bg-transparent p-0;
+    /* Důležité: Odstranit defaultní pozadí Choice.js */
+    @apply min-h-[46px] flex items-center px-4;
+    /* Zajistí stejnou výšku jako inputy */
+}
+
+/* Rozbalený seznam (obsahuje položky) */
+.choices__list--dropdown {
+    @apply absolute z-20 w-full mt-1 rounded-lg border-2 border-[#3B4042];
+    @apply bg-gray-900 shadow-xl;
+    /* Nastaví tmavé pozadí rozbaleného seznamu */
+}
+
+/* Jednotlivé položky seznamu (nahrazuje OPTION) */
+.choices__item--choice {
+    /* Nyní se styly APLIKUJÍ, protože je to LI nebo DIV */
+    @apply bg-gray-800 text-gray-200 cursor-pointer;
+    /* Základní stav */
+}
+
+/* Položka při najetí myší (hover) nebo vybrání (selected) */
+.choices__item--choice.is-highlighted {
+    @apply bg-teal-600 text-white;
+    /* Svítivé zvýraznění */
 }
 
 /* Červená barva pro hvězdičky povinných polí */
@@ -89,14 +134,20 @@
 
 /* Tlačítko pro odeslání formuláře */
 .form-submit-button {
-    @apply py-2 px-4 duration-150 rounded-md text-lg w-full text-center;
+    @apply py-2 px-4 duration-150 rounded-xl text-lg w-full text-center;
     @apply hover:opacity-90 bg-green-900 cursor-pointer;
 }
 
 /* Tlačítko pro resetování formuláře */
 .form-reset-button {
-    @apply py-2 px-4 duration-150 rounded-md text-lg w-full text-center;
-    @apply hover:opacity-90 bg-red-900 cursor-pointer;
+    @apply py-2 px-4 duration-150 rounded-xl text-lg w-full text-center;
+    @apply hover:opacity-90 border-3 border-gray-500 cursor-pointer;
+}
+
+/* Tlačítko pro zahození formuláře */
+.form-discard-button {
+    @apply py-2 px-4 duration-150 rounded-xl text-lg w-full text-center;
+    @apply hover:opacity-90 border-3 border-red-800 cursor-pointer;
 }
 
 /* Zobrazení vybraného souboru po nahrání */
@@ -105,7 +156,7 @@
 }
 
 /* Ikonka nahraného souboru */
-.selected-file-container img{
+.selected-file-container img {
     @apply w-6 h-6;
 }
 
