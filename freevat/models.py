@@ -26,15 +26,16 @@ class Model3D(models.Model):
                                    help_text=_("Enter a short description of the model"),
                                    error_messages={"max_length": _("Description cannot exceed 1000 characters")})
     # Samotný 3D model
-    model = models.FileField(upload_to="models/",
+    model = models.FileField(upload_to="models/models/",
                              verbose_name=_("3D model"),
                              help_text=_("Upload the 3D model file (.obj, .fbx..)"),
                              error_messages={"invalid": _("Invalid file format")})
     # Náhledový obrázek modelu
-    thumbnail = models.ImageField(upload_to="thumbnails/",
+    thumbnail = models.ImageField(upload_to="models/thumbnails/",
                                   verbose_name=_("Model preview image"),
                                   help_text=_("Upload a preview image for the model"),
                                   error_messages={"invalid": _("Invalid image format")})
+
     # Připojení tabulky 'User' (tvůrce modelu)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_("Creator"))
 

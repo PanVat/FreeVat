@@ -21,3 +21,6 @@ package-lock.json
 # Migrace
 freevat/migrations/*.*
 users/migrations/*.*
+
+# Data z databáze
+media/

@@ -35,13 +35,13 @@ class ModelUploadForm(forms.Form):
         })
     )
 
-    # Štítky (slouží pro vyhledávání)
-    tags = forms.CharField(
-        required=False,
-        label='Tags (comma separated)',
-        widget=forms.TextInput(attrs={
-            'class': INPUT_CLASSES,
-            'placeholder': 'e.g. low-poly, character, sci-fi, realistic'
+    # 3D model soubor
+    model_file = forms.FileField(
+        required=True,
+        label='3D Model File',
+        widget=forms.FileInput(attrs={
+            'class': 'file-input hidden',
+            'accept': '.obj,.fbx,.stl,.gltf,.glb,.usdz,.blend,.c4d,.max,.3ds,.mb,.ma'
         })
     )
 

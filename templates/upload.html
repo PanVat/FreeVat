@@ -24,7 +24,7 @@
                 </p>
             </div>
 
-            <form class="mt-8 space-y-6" method="POST">
+            <form class="mt-8 space-y-6" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <!-- Zobrazení chybových hlášek -->
@@ -38,19 +38,9 @@
                         {{ form.model_name | as_crispy_field }}
                     </div>
 
-                    <!-- Kategorie -->
-                    <div class="mb-4">
-                        {{ form.category | as_crispy_field }}
-                    </div>
-
                     <!-- Popis -->
                     <div class="mb-4">
                         {{ form.description | as_crispy_field }}
-                    </div>
-
-                    <!-- Vyhledávací štítky -->
-                    <div class="mb-4">
-                        {{ form.tags | as_crispy_field }}
                     </div>
 
                     <!-- Výběr 3D modelu -->

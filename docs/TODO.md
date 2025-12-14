@@ -3,3 +3,4 @@
 - ❎ web není responzivní na menších zařízeních
 - ❎ na mobilních zařízeních není implementováno hamburger menu
 - ❎ pole `kategorie` v `freevat/models.py` je zatím odstraněno (musí se vyřešit)
+- ❎ dočasně odstraněné pole `tagy` (pro zjednodušení)

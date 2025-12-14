@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 class User(AbstractUser):
     # Lokální profilový obrázek
-    picture = models.ImageField(upload_to="profiles/",
+    picture = models.ImageField(upload_to="users/",
                                 null=True,
                                 blank=True,
                                 verbose_name=_("Profile picture"),

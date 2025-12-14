@@ -1,11 +1,8 @@
 import os
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.core.files.storage import FileSystemStorage
-from django.conf import settings
 from .forms import ModelUploadForm
-from .models import Model3D  # Import modelu, pokud ho máš
+from .models import Model3D
 
 
 # Domovská stránka
@@ -13,67 +10,36 @@ def index(request):
     return render(request, 'index.html')
 
 
-@login_required
+@login_required(login_url='login')
 def upload_model(request):
-    """Stránka pro upload 3D modelů pomocí Crispy Forms"""
-
     if request.method == 'POST':
+        # Načteme data z formuláře včetně souborů (request.FILES)
         form = ModelUploadForm(request.POST, request.FILES)
 
         if form.is_valid():
-            try:
-                # Uložit model do databáze
-                model = form.save(commit=False)
+            # 1. Získání vyčištěných dat
+            data = form.cleaned_data
 
-                # Nastavit uživatele
-                model.user = request.user
-                model.author_name = request.user.get_full_name() or request.user.username
+            # 2. Vytvoření instance Model3D (zatím bez uložení do DB, protože řešíme M2M)
+            # Ale protože používáme forms.Form a ne ModelForm, musíme instanci vytvořit ručně:
+            new_model = Model3D(
+                name=data['model_name'],
+                description=data['description'],
+                model=data['model_file'],
+                thumbnail=data['preview_image'],
+                user=request.user  # Přiřadíme aktuálně přihlášeného uživatele
+            )
 
-                # Zpracovat preview image pokud existuje
-                preview_image = form.cleaned_data.get('preview_image')
-                if preview_image:
-                    # Uložit preview image
-                    fs_preview = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'previews'))
-                    preview_filename = fs_preview.save(preview_image.name, preview_image)
-                    model.preview_image = fs_preview.url(preview_filename)
+            # 3. Uložení samotného modelu do databáze (získá ID)
+            new_model.save()
 
-                # Uložit 3D model soubor (už by měl být uložen přes form.save())
-                # Ale pojďme to udělat explicitně pro jistotu
-                model_file = form.cleaned_data.get('model_file')
-                if model_file:
-                    fs_model = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, '3d_models'))
-                    model_filename = fs_model.save(model_file.name, model_file)
-                    model.model_file = model_filename
-
-                # Uložit model do databáze
-                model.save()
-
-                # Pokud používáš ManyToMany pole (např. tags), ulož je teď
-                if hasattr(model, 'tags') and 'tags' in form.cleaned_data:
-                    tags = form.cleaned_data['tags']
-                    # Zpracovat tags podle potřeby
-                    # Například: model.tags.add(*tags.split(','))
-
-                messages.success(request,
-                                 '🎉 3D model has been uploaded successfully! It will be reviewed by our team and published soon.')
-                return redirect('upload')
-
-            except Exception as e:
-                messages.error(request, f'Error uploading file: {str(e)}')
-                # Znovu zobrazit formulář s chybou
-                return render(request, 'upload.html', {'form': form})
-        else:
-            # Zobraz chyby z validace formuláře
-            for field, errors in form.errors.items():
-                for error in errors:
-                    field_name = form.fields[field].label if field in form.fields else field
-                    messages.error(request, f"{field_name}: {error}")
+            # 5. Přesměrování po úspěšném nahrání (např. na domovskou stránku)
+            return redirect('index')  # Změňte 'home' na název vašeho view pro hlavní stranu
 
     else:
-        # GET request - vytvoř prázdný formulář
+        # GET request - prázdný formulář
         form = ModelUploadForm()
 
-    # DŮLEŽITÉ: Předat form do contextu!
     return render(request, 'upload.html', {'form': form})
 
 
