@@ -1,18 +1,15 @@
-# freevat/forms.py
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout
 
-# Vstupní pole ve formuláři
+# CSS třídy pro vstupní pole ve formuláři (jsou definovány ve 'forms.css')
 INPUT_CLASSES = "form-input-classes"
 
-# Třídy pro labely ve formuláři
-LABEL_CLASSES = "text-lg font-medium mb-2 block"
-
-# Třídy pro dropdown s kategoriemi
-DROPDOWN_CLASSES = "form-dropdown-classes"
+# CSS třídy pro popisy ve formuláři (jsou definovány ve 'forms.css')
+LABEL_CLASSES = "form-label-classes"
 
 
+# Formulář pro nahrání 3D modelu
 class ModelUploadForm(forms.Form):
     # Název modelu
     model_name = forms.CharField(
@@ -35,7 +32,7 @@ class ModelUploadForm(forms.Form):
         })
     )
 
-    # 3D model soubor
+    # Samotný soubor 3D modelu
     model_file = forms.FileField(
         required=True,
         label='3D Model File',
@@ -55,6 +52,7 @@ class ModelUploadForm(forms.Form):
         })
     )
 
+    # Inicializace formuláře s Crispy Forms
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -70,6 +68,7 @@ class ModelUploadForm(forms.Form):
             Submit('submit', 'Upload Model')
         )
 
+    # Validace souboru 3D modelu
     def clean_model_file(self):
         model_file = self.cleaned_data.get('model_file')
         if model_file:
@@ -87,6 +86,7 @@ class ModelUploadForm(forms.Form):
 
         return model_file
 
+    # Validace náhledového obrázku
     def clean_preview_image(self):
         preview_image = self.cleaned_data.get('preview_image')
         if preview_image:

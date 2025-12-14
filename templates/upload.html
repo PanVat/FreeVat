@@ -3,7 +3,7 @@
 <!-- Načtení potřebných knihoven -->
 {% load crispy_forms_tags static i18n %}
 
-<!-- Titulek stránky !-->
+<!-- Titulek stránky -->
 {% block title %} {% trans 'Upload' %} {% endblock %}
 
 {% block content %}
@@ -11,7 +11,8 @@
     <div class="form-page">
         <!-- Uploadovací formulář - kontejner -->
         <div class="form-container--upload">
-            <!-- Hlavička -->
+
+            <!-- Nadpis -->
             <div>
                 <h2 class="form-main-heading">
                     {% trans "Upload 3D model" %}
@@ -24,6 +25,7 @@
                 </p>
             </div>
 
+            <!-- Formulář pro nahrání 3D modelu -->
             <form class="mt-8 space-y-6" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
@@ -112,14 +114,19 @@
 
                 <!-- Tlačítka -->
                 <div class="flex justify-center gap-4">
+                    <!-- Odeslání formuláře -->
                     <button type="submit"
                             class="form-submit-button">
                         {% trans 'Upload' %}
                     </button>
+
+                    <!-- Reset formuláře -->
                     <button type="reset"
                             class="form-reset-button">
                         {% trans 'Reset' %}
                     </button>
+
+                    <!-- Vymazání formuláře a přesměrování na domovskou stránku -->
                     <button type="button"
                             id="discardButton"
                             class="form-discard-button js-discard-button">

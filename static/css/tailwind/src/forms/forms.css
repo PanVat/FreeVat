@@ -38,48 +38,9 @@
     @apply block w-full px-4 py-3 placeholder-gray-400 rounded-lg border-2 border-[#3B4042] outline-none text-base;
 }
 
-.form-dropdown-classes {
-    /* Ponechte základní vzhled inputů */
-    @apply block w-full px-4 py-3 text-white bg-transparent rounded-lg border-2 border-[#3B4042] outline-none text-base appearance-none;
-}
-
-/* ======================================================= */
-/* VLASTNÍ STYLY PRO CHOICES.JS (nebo jiný custom dropdown) */
-/* ======================================================= */
-
-/* Kontejner, který obaluje celou komponentu (nahrazuje SELECT) */
-.choices {
-    @apply relative text-white;
-    /* Použijte třídy k nastavení vzhledu okraje a pozadí pro ZAVŘENÝ dropdown */
-    @apply border-2 border-[#3B4042] rounded-lg;
-}
-
-/* Vstupní pole, které zobrazuje vybranou hodnotu */
-.choices__inner {
-    @apply bg-transparent p-0;
-    /* Důležité: Odstranit defaultní pozadí Choice.js */
-    @apply min-h-[46px] flex items-center px-4;
-    /* Zajistí stejnou výšku jako inputy */
-}
-
-/* Rozbalený seznam (obsahuje položky) */
-.choices__list--dropdown {
-    @apply absolute z-20 w-full mt-1 rounded-lg border-2 border-[#3B4042];
-    @apply bg-gray-900 shadow-xl;
-    /* Nastaví tmavé pozadí rozbaleného seznamu */
-}
-
-/* Jednotlivé položky seznamu (nahrazuje OPTION) */
-.choices__item--choice {
-    /* Nyní se styly APLIKUJÍ, protože je to LI nebo DIV */
-    @apply bg-gray-800 text-gray-200 cursor-pointer;
-    /* Základní stav */
-}
-
-/* Položka při najetí myší (hover) nebo vybrání (selected) */
-.choices__item--choice.is-highlighted {
-    @apply bg-teal-600 text-white;
-    /* Svítivé zvýraznění */
+/* Stylování popisků ve formuláři */
+.form-label-classes {
+    @apply text-lg font-medium mb-2 block;
 }
 
 /* Červená barva pro hvězdičky povinných polí */
@@ -108,23 +69,26 @@
     @apply text-base text-blue-500 hover:underline;
 }
 
-/* Tlačítka pro nahrávání souborů */
+/* Tlačítko pro nahrávání souborů */
 .form-file-button {
     @apply py-2 px-4 duration-150 rounded-md text-base bg-[#3B4042];
     @apply hover:opacity-90 cursor-pointer;
 }
 
+/* Křížek pro odstranění nahraného souboru */
 .remove-file-button {
     @apply duration-150 cursor-pointer;
 }
 
+/* Ikonka křížku */
 .remove-file-button img {
     @apply w-6 h-6;
 }
 
 /* Oblast pro přetažení souborů */
 .file-upload-area {
-    @apply border-2 border-dashed border-[#3B4042] rounded-xl p-10 text-center mb-8 transition-all duration-200 hover:border-[#7d8082];
+    @apply border-2 border-dashed border-[#3B4042] rounded-xl p-10 text-center mb-8;
+    @apply transition-all duration-200 hover:border-[#7d8082];
 }
 
 /* Nadpis v oblasti pro přetažení souborů */

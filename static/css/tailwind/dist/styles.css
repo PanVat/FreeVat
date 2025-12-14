@@ -15,7 +15,6 @@
     --color-red-900: oklch(39.6% 0.141 25.723);
     --color-green-500: oklch(72.3% 0.219 149.579);
     --color-green-900: oklch(39.3% 0.095 152.535);
-    --color-teal-600: oklch(60% 0.118 184.704);
     --color-blue-300: oklch(80.9% 0.105 251.813);
     --color-blue-400: oklch(70.7% 0.165 254.624);
     --color-blue-500: oklch(62.3% 0.214 259.815);
@@ -223,6 +222,9 @@
   .visible {
     visibility: visible;
   }
+  .relative {
+    position: relative;
+  }
   .static {
     position: static;
   }
@@ -292,6 +294,9 @@
   .inline-block {
     display: inline-block;
   }
+  .table {
+    display: table;
+  }
   .h-5 {
     height: calc(var(--spacing) * 5);
   }
@@ -315,6 +320,15 @@
   }
   .max-w-4xl {
     max-width: var(--container-4xl);
+  }
+  .flex-shrink {
+    flex-shrink: 1;
+  }
+  .flex-grow {
+    flex-grow: 1;
+  }
+  .border-collapse {
+    border-collapse: collapse;
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
@@ -477,6 +491,9 @@
   .text-white {
     color: var(--color-white);
   }
+  .underline {
+    text-decoration-line: underline;
+  }
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -485,8 +502,15 @@
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)) !important;
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow) !important;
   }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
+  }
   .blur {
     --tw-blur: blur(8px);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .hover\:bg-blue-700 {
@@ -859,60 +883,13 @@
   --tw-outline-style: none;
   outline-style: none;
 }
-.form-dropdown-classes {
+.form-label-classes {
+  margin-bottom: calc(var(--spacing) * 2);
   display: block;
-  width: 100%;
-  appearance: none;
-  border-radius: var(--radius-lg);
-  border-style: var(--tw-border-style);
-  border-width: 2px;
-  border-color: #3B4042;
-  background-color: transparent;
-  padding-inline: calc(var(--spacing) * 4);
-  padding-block: calc(var(--spacing) * 3);
-  font-size: var(--text-base);
-  line-height: var(--tw-leading, var(--text-base--line-height));
-  color: var(--color-white);
-  --tw-outline-style: none;
-  outline-style: none;
-}
-.choices {
-  position: relative;
-  color: var(--color-white);
-  border-radius: var(--radius-lg);
-  border-style: var(--tw-border-style);
-  border-width: 2px;
-  border-color: #3B4042;
-}
-.choices__inner {
-  background-color: transparent;
-  padding: calc(var(--spacing) * 0);
-  display: flex;
-  min-height: 46px;
-  align-items: center;
-  padding-inline: calc(var(--spacing) * 4);
-}
-.choices__list--dropdown {
-  position: absolute;
-  z-index: 20;
-  margin-top: calc(var(--spacing) * 1);
-  width: 100%;
-  border-radius: var(--radius-lg);
-  border-style: var(--tw-border-style);
-  border-width: 2px;
-  border-color: #3B4042;
-  background-color: var(--color-gray-900);
-  --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-}
-.choices__item--choice {
-  cursor: pointer;
-  background-color: var(--color-gray-800);
-  color: var(--color-gray-200);
-}
-.choices__item--choice.is-highlighted {
-  background-color: var(--color-teal-600);
-  color: var(--color-white);
+  font-size: var(--text-lg);
+  line-height: var(--tw-leading, var(--text-lg--line-height));
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
 }
 .asteriskField {
   color: #ef4444;
@@ -1590,6 +1567,11 @@ h2 {
   inherits: false;
   initial-value: 0 0 #0000;
 }
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @property --tw-blur {
   syntax: "*";
   inherits: false;
@@ -1681,6 +1663,7 @@ h2 {
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-outline-style: solid;
       --tw-blur: initial;
       --tw-brightness: initial;
       --tw-contrast: initial;

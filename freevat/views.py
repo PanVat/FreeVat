@@ -1,4 +1,3 @@
-import os
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import ModelUploadForm
@@ -10,39 +9,41 @@ def index(request):
     return render(request, 'index.html')
 
 
+# Nahrání 3D modelu (je potřeba být přihlášen)
 @login_required(login_url='login')
 def upload_model(request):
     if request.method == 'POST':
-        # Načteme data z formuláře včetně souborů (request.FILES)
+        # Načtení dat z formuláře včetně souborů (request.FILES)
         form = ModelUploadForm(request.POST, request.FILES)
 
         if form.is_valid():
-            # 1. Získání vyčištěných dat
+            # Získání vyčištěných dat z formuláře
             data = form.cleaned_data
 
-            # 2. Vytvoření instance Model3D (zatím bez uložení do DB, protože řešíme M2M)
-            # Ale protože používáme forms.Form a ne ModelForm, musíme instanci vytvořit ručně:
+            # Vytvoření instance Model3D (ještě se neukládá do DB)
             new_model = Model3D(
                 name=data['model_name'],
                 description=data['description'],
                 model=data['model_file'],
                 thumbnail=data['preview_image'],
-                user=request.user  # Přiřadíme aktuálně přihlášeného uživatele
+                user=request.user  # Přiřazení aktuálně přihlášeného uživatele
             )
 
-            # 3. Uložení samotného modelu do databáze (získá ID)
+            # Uložení modelu do databáze
             new_model.save()
 
-            # 5. Přesměrování po úspěšném nahrání (např. na domovskou stránku)
-            return redirect('index')  # Změňte 'home' na název vašeho view pro hlavní stranu
+            # Po úspěšném nahrání přesměrování na domovskou stránku (index.html)
+            return redirect('index')
 
     else:
         # GET request - prázdný formulář
         form = ModelUploadForm()
 
+    # Zobrazení formuláře pro nahrání modelu
     return render(request, 'upload.html', {'form': form})
 
 
+# Zobrazení živatelského profilu (pouze pro přihlášené)
 @login_required
 def user_profile(request):
     return render(request, 'users/profile.html')

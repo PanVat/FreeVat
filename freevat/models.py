@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 class Model3D(models.Model):
     # Jméno modelu - povinné, max. 50 znaků
     name = models.CharField(max_length=50,
-                            verbose_name=_("Name of your "),
+                            verbose_name=_("Name"),
                             help_text=_("Enter the name"),
                             error_messages={"blank": _("Name cannot be empty"),
                                             "max_length": _("Name cannot exceed 50 characters")})
