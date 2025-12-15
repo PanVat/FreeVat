@@ -1,33 +1,38 @@
-FROM python:3.13-slim
+# Python
+FROM python:3.12-slim
 
-# Nastavení proměnných prostředí
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+# Proměnné prostředí
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-# Pracovní adresář
+# Nastavení pracovního adresáře
 WORKDIR /app
 
-# Instalace závislostí
+# Instalace systémových balíčků (build-essential, libpq-dev a netcat)
 RUN apt-get update && apt-get install -y \
-    gcc \
-    postgresql-dev \
+    build-essential \
+    libpq-dev \
+    netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
 
-# UV
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
-
-# Kopírování souboru se závislostmi
+# Instalace závislostí
 COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Stáhnutí Python závislostí
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-# Zkopírování celého kódu projektu
+# Kód
 COPY . .
 
-# Port
+# *** NOVÉ KROKY PRO ENTRYPOINT SKRIPT ***
+# Přidání spouštěcího skriptu a nastavení oprávnění
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Port, na kterém aplikace poběží
 EXPOSE 8000
 
-# Spuštění aplikace
+# Nastavení entrypointu a CMD
+# ENTRYPOINT spustí náš skript
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+# CMD je to, co entrypoint skript spustí na závěr (exec "$@")
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
