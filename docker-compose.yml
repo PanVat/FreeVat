@@ -10,6 +10,8 @@ services:
       - ./media:/app/media  # Uložení mediálních souborů z DB
     ports:
       - "8000:8000"
+    expose:
+      - 8000
     env_file:
       - .env
     depends_on:

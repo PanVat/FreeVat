@@ -27,9 +27,15 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - `PostgreSQL` - Výkonný databázový systém pro ukládání dat
 - `OAuth` - Přihlašování a registrace uživatelů s účty třetích stran
 - `Crispy Forms` - Pro práci s uživatelskými formuláři
-- `Docker` - Kontejnerizace aplikace pro snadné nasazení
+- `Node.js` - Prostředí pro běh JavaScriptu na serveru
 - `Vite` - Buildování a vývoj v reálném čase
+- `Docker` - Kontejnerizace aplikace pro snadné nasazení
+- `Oracle VirtualBox` - Testování aplikace na jiných zařízeních
 ---
+
+## 🔥Zprovoznění pomocí Dockeru
+
+
 
 ## 💡Inspirace
 
@@ -48,11 +54,11 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - Poly Pizza - https://poly.pizza/
 ---
 ## 🏁Cíle
-- [ ] Ukládání 3D modelů do databáze
-- [ ] Prodádění základních CRUD operací s 3D modely
+- [x] Ukládání 3D modelů do databáze
+- [x] Prodádění základních CRUD operací s 3D modely
 - [ ] Prohlížení objektů v 360° - posouvání, přibližování i rotace
-- [ ] Podpora základních 3D formátů - `.obj`, `.fbx`, `.usdz`, `.stl` a `.glb`
-- [ ] Podpora softwarových formátů - `.blend`, `.max`, `.c4d` a `.ma`
+- [x] Podpora základních 3D formátů - `.obj`, `.fbx`, `.usdz`, `.stl` a `.glb`
+- [x] Podpora softwarových formátů - `.blend`, `.max`, `.c4d` a `.ma`
 - [x] Registrace, přihlašování a mazání uživatelských účtů
 - [ ] Zobrazování základních informací o modelech (počet ploch, velikost souboru..)
 - [x] Více jazyků na výběr - čeština / angličtina / němčina
