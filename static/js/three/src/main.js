@@ -1,107 +1,135 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 
-// ID kontejneru, který máte v index.html
+// ID kontejneru v HTML
 const CONTAINER_ID = 'model-container';
-const RENDER_HEIGHT = 500;
 
 // Globální proměnné
-let scene, camera, renderer, controls, clock;
-let loadedModel; // Proměnná pro váš načtený model (nahradí 'cube')
-
-// Cesta k vašemu 3D modelu. POZOR na to, že toto je URL, ne cesta na disku.
-// Musí to odpovídat tomu, jak Django obsluhuje statické soubory.
-const MODEL_PATH = '/static/models/scene.gltf'; // <-- Upravte na správnou cestu a název souboru!
-
+let scene, camera, renderer, controls, loadedModel;
 
 function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    const container = document.getElementById(CONTAINER_ID);
+    if (!container || !camera || !renderer) return;
+
+    camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(container.clientWidth, container.clientHeight);
 }
 
 function initializeScene() {
     const container = document.getElementById(CONTAINER_ID);
 
     if (!container) {
-        console.error(`Kontejner s ID '${CONTAINER_ID}' nebyl nalezen!`);
+        console.warn(`Kontejner s ID '${CONTAINER_ID}' nebyl na této stránce nalezen.`);
         return;
     }
 
+    // --- ZÍSKÁNÍ CESTY K MODELU Z HTML ---
+    // Toto je klíčová změna. Čteme atribut data-model-url.
+    const modelUrl = container.getAttribute('data-model-url');
+
+    if (!modelUrl) {
+        console.error('Atribut data-model-url je prázdný!');
+        return;
+    }
+
+    // Získání rozměrů přímo z rodičovského divu (aby byl responzivní)
     const width = container.clientWidth;
-    const height = RENDER_HEIGHT;
+    const height = container.clientHeight;
 
     // 1. Scéna a Kamera
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(
-        45,
-        width / height,
-        1,
-        1000
-    );
-    camera.position.set(0, 10, 30); // <-- Upravena pozice kamery, aby lépe viděla model
+    scene.background = new THREE.Color(0xf3f4f6); // Světle šedé pozadí (Tailwind gray-100)
+
+    camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+    camera.position.set(0, 5, 10);
 
     // 2. Renderer
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
     renderer.setSize(width, height);
+    renderer.setPixelRatio(window.devicePixelRatio); // Pro ostrý obraz na mobilech
+
+    // Přidání rendereru do stránky
+    container.innerHTML = ''; // Vyčištění pro jistotu
     container.appendChild(renderer.domElement);
 
-    // 3. Doplňky
-    clock = new THREE.Clock();
+    // 3. Ovládání (OrbitControls)
     controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // Plynulý dojezd
+    controls.dampingFactor = 0.05;
 
-    // 4. Osvětlení (Ambientní a Směrové - kritické pro PBR materiály)
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+    // 4. Osvětlení
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
     scene.add(ambientLight);
 
     const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-    directionalLight.position.set(5, 5, 5);
+    directionalLight.position.set(5, 10, 7);
     scene.add(directionalLight);
 
-    // 5. NAČTENÍ 3D MODELU (místo kostky)
+    // 5. Načtení modelu
     const loader = new GLTFLoader();
+
+    // Zobrazení loading textu (pokud ho v HTML máte)
+    const loadingOverlay = document.getElementById('loading-overlay');
+
     loader.load(
-        MODEL_PATH,
+        modelUrl, // Zde používáme dynamickou URL z Django
         (gltf) => {
             loadedModel = gltf.scene;
             scene.add(loadedModel);
 
-            // Volitelné: Přizpůsobení měřítka, pozice, rotace modelu
-            loadedModel.scale.set(10, 10, 10); // <-- Nastavte měřítko modelu, pokud je moc malý/velký
-            loadedModel.position.set(0, 0, 0); // <-- Nastavte pozici modelu
+            // Automatické vycentrování modelu
+            const box = new THREE.Box3().setFromObject(loadedModel);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
 
-            console.log('Model načten:', loadedModel);
+            // Reset pozice modelu na střed
+            loadedModel.position.x += (loadedModel.position.x - center.x);
+            loadedModel.position.y += (loadedModel.position.y - center.y);
+            loadedModel.position.z += (loadedModel.position.z - center.z);
+
+            // Automatický zoom kamery podle velikosti objektu
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const fov = camera.fov * (Math.PI / 180);
+            let cameraZ = Math.abs(maxDim / 2 * Math.tan(fov * 2));
+            cameraZ *= 2.5; // Zoom out faktor
+            camera.position.z = cameraZ;
+
+            controls.target.set(0, 0, 0);
+
+            // Skrytí loading overlay
+            if (loadingOverlay) loadingOverlay.style.display = 'none';
+
+            console.log('Model úspěšně načten z:', modelUrl);
         },
         (xhr) => {
-            // Průběh načítání
-            console.log((xhr.loaded / xhr.total * 100) + '% načteno');
+            // Progress
+            if (xhr.total > 0) {
+                const percent = (xhr.loaded / xhr.total * 100).toFixed(0);
+                if (loadingOverlay) loadingOverlay.innerText = `Načítám... ${percent}%`;
+            }
         },
         (error) => {
-            // Chyba načítání
-            console.error('Při načítání modelu došlo k chybě:', error);
+            console.error('Chyba při načítání modelu:', error);
+            if (loadingOverlay) loadingOverlay.innerText = 'Chyba při načítání modelu.';
         }
     );
-    // Konec načítání 3D modelu
 
-    // 6. Reakce na Změnu Velikosti Okna
+    // 6. Resize listener
     window.addEventListener('resize', onWindowResize, false);
 
-    // Spuštění animace
+    // Spuštění smyčky
     animate();
 }
 
-// ... (onWindowResize, animate, render funkce zůstávají stejné, ale animate bude pracovat s loadedModel) ...
-
 function animate() {
-    window.requestAnimationFrame(animate);
-    controls.update();
-    render();
+    requestAnimationFrame(animate);
+    if (controls) controls.update();
+    if (renderer && scene && camera) {
+        renderer.render(scene, camera);
+    }
 }
 
-function render() {
-    renderer.render(scene, camera);
-}
-
-// Spuštění celého inicializačního procesu
-initializeScene();
+// Spuštění po načtení DOMu
+document.addEventListener('DOMContentLoaded', initializeScene);

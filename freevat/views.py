@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+
+from . import settings
 from .forms import ModelUploadForm
 from .models import Model3D
 
@@ -47,3 +49,20 @@ def upload_model(request):
 @login_required
 def user_profile(request):
     return render(request, 'users/profile.html')
+
+# Detail 3D modelu
+def model_detail(request, pk):
+    # Najde model podle Primary Key (ID), nebo vrátí chybu 404
+    model_obj = get_object_or_404(Model3D, pk=pk)
+
+    context = {
+        'model': model_obj,
+        'debug': settings.DEBUG  # Zde předáme proměnnou do šablony
+    }
+    return render(request, 'model_detail.html', context)
+
+
+def model_list(request):
+    models = Model3D.objects.all().order_by('-id')
+
+    return render(request, 'model_list.html', {'models': models})

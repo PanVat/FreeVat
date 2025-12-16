@@ -1,0 +1,64 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% load static %}
+{% if debug %}
+    <script type="module" src="http://localhost:5173/js/three/src/main.js"></script>
+    <script>
+        // Nastavte origin pro dev server pro případné problémy s CORS
+        if (!window.location.origin.includes(':8000')) {
+            console.warn("Může být nutné upravit Vite server origin pro správné načítání.");
+        }
+    </script>
+{% else %}
+    <script type="module" src="{% static 'js/three/dist/main.js' %}"></script>
+{% endif %}
+
+{% block content %}
+    <div class="container mx-auto px-4 py-8">
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <div class="lg:col-span-1 space-y-6">
+                {% if model.thumbnail %}
+                    <div class="rounded-lg overflow-hidden shadow-lg border border-gray-200">
+                        <img src="{{ model.thumbnail.url }}" alt="{{ model.title }}" class="w-full h-auto object-cover">
+                    </div>
+                {% endif %}
+
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ model.title }}</h1>
+                    <p class="text-gray-600 leading-relaxed">
+                        {{ model.description|default:"Bez popisu" }}
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg text-sm text-gray-500">
+                    <p>Nahráno: {{ model.created_at|date:"d.m.Y" }}</p>
+                    <p>Autor: {{ model.author.username }}</p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2">
+                <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl relative" style="height: 600px;">
+
+                    <div id="model-container"
+                         data-model-url="{{ model.file.url }}"
+                         class="w-full h-full">
+                    </div>
+
+                    <div id="loading-overlay"
+                         class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75 text-white z-10">
+                        Načítám 3D model...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    {% load static %}
+    <script type="module" src="{% static 'js/three/dist/main.js' %}"></script>
+{% endblock extra_js %}

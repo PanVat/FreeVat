@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns, set_language
-from django.conf.urls.static import static # Pro statické soubory
+from django.conf.urls.static import static  # Pro statické soubory
 
 urlpatterns = [
     # Přepínač jazyka
@@ -24,6 +24,10 @@ urlpatterns += i18n_patterns(
     path('upload/', views.upload_model, name='upload'),
     # Profil uživatele
     path('profile/', views.user_profile, name='profile'),
+    # Cesta pro seznam modelů
+    path('models/', views.model_list, name='model_list'),
+    # Detail 3D modelu
+    path('model/<int:pk>/', views.model_detail, name='model_detail')
 )
 
 # Rosetta

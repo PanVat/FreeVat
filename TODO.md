@@ -5,3 +5,4 @@
 - ❎ pole `kategorie` v `freevat/models.py` je zatím odstraněno (musí se vyřešit)
 - ❎ dočasně odstraněné pole `tagy` (pro zjednodušení)
 - ❎ Nefunguje JS carousel s kategoriemi na domovské stránce
+- ❎ Na Kubernetesu se musí udělat migrace i u `/users` aplikace

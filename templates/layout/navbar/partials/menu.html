@@ -9,9 +9,12 @@
             <!-- Modely -->
             <li class="menu-dropdown group">
                 <button class="menu-item">{% trans "Models" %}</button>
+                <!-- Jednotlivé kategorie modelů -->
                 <div class="menu-dropdown-area">
-                    <!-- Kategorie modelů -->
-                    <a href="#" class="menu-dropdown-box">{% trans 'All categories' %}</a>
+                    <!-- Všechny modely -->
+                    <a href="{% url 'model_list' %}" class="menu-dropdown-box">
+                        {% trans 'All categories' %}
+                    </a>
                     <a href="#" class="menu-dropdown-box">{% trans 'Animals & Pets' %}</a>
                     <a href="#" class="menu-dropdown-box">{% trans 'Architecture' %}</a>
                     <a href="#" class="menu-dropdown-box">{% trans 'Cars & Vehicles' %}</a>

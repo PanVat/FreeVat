@@ -12,7 +12,7 @@ export default defineConfig({
 
         rollupOptions: {
             input: {
-                main: resolve(djangoStaticRoot, 'js/three/src/upload.js'),
+                main: resolve(djangoStaticRoot, 'js/three/src/main.js'),
             },
             output: {
                 /* Názvy výstupního souboru */
