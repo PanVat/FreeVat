@@ -2,17 +2,6 @@
 {% load static %}
 
 {% load static %}
-{% if debug %}
-    <script type="module" src="http://localhost:5173/js/three/src/main.js"></script>
-    <script>
-        // Nastavte origin pro dev server pro případné problémy s CORS
-        if (!window.location.origin.includes(':8000')) {
-            console.warn("Může být nutné upravit Vite server origin pro správné načítání.");
-        }
-    </script>
-{% else %}
-    <script type="module" src="{% static 'js/three/dist/main.js' %}"></script>
-{% endif %}
 
 {% block content %}
     <div class="container mx-auto px-4 py-8">
@@ -42,7 +31,7 @@
             <div class="lg:col-span-2">
                 <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl relative" style="height: 600px;">
 
-                    <div id="model-container"
+                    <div id="viewer"
                          data-model-url="{{ model.file.url }}"
                          class="w-full h-full">
                     </div>
@@ -58,7 +47,11 @@
     </div>
 {% endblock %}
 
+<!-- Three.js skript pro zobrazení 3D modelu -->
 {% block extra_js %}
-    {% load static %}
-    <script type="module" src="{% static 'js/three/dist/main.js' %}"></script>
-{% endblock extra_js %}
+    {% if debug %}
+        <script type="module" src="http://localhost:5173/js/three/src/main.js"></script>
+    {% else %}
+        <script type="module" src="{% static 'js/three/dist/main.js' %}"></script>
+    {% endif %}
+{% endblock %}

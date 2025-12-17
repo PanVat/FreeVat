@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tailwind:dev": "npx @tailwindcss/cli -i ./static/css/tailwind/src/styles.css -o ./static/css/tailwind/dist/styles.css --watch",
     "vite:dev": "vite",
-    "dev": "npm run tailwind:dev & npm run vite:dev",
+    "dev": "concurrently \"npm run tailwind:dev\" \"npm run vite:dev\"",
     "preview": "vite preview"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "three": "^0.180.0"
   },
   "devDependencies": {
+    "concurrently": "^9.2.1",
     "vite": "^7.1.11"
   }
 }
