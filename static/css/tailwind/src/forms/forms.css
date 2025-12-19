@@ -5,7 +5,7 @@
 
 /* Formulář */
 .form-container {
-    @apply border-1 border-[#404040] max-w-md w-full space-y-8 rounded-xl p-5 m-10;
+    @apply border-1 border-[#404040] max-w-md w-full space-y-8 rounded-xl p-5 m-16;
 }
 
 /* Nadpis ve formuláři */
@@ -126,5 +126,5 @@
 
 /* Upravená třída pro 'Upload' */
 .form-container--upload {
-    @apply border-1 border-[#404040] max-w-3xl w-full space-y-8 rounded-xl p-5 m-10;
+    @apply border-1 border-[#404040] max-w-3xl w-full space-y-8 rounded-xl p-5 m-14;
 }

@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+# Formulář pro uživatele
 class User(AbstractUser):
     # Lokální profilový obrázek
     picture = models.ImageField(upload_to="users/",
@@ -19,6 +20,22 @@ class User(AbstractUser):
         null=True,
         verbose_name=_("Profile Picture URL"),
         help_text=_("URL of profile picture from social account")
+    )
+
+    # Bio/Popis uživatele
+    bio = models.TextField(
+        max_length=500,
+        blank=True,
+        null=True,
+        verbose_name=_("Description"),
+    )
+
+    # Odkaz na osobní web nebo portfolio
+    website_url = models.URLField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Website"),
     )
 
     # Přepsání pole groups pro řešení kolize (E304)

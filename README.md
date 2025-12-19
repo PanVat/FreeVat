@@ -6,7 +6,7 @@ moderních technologiích a poskytuje uživatelům jednoduché a intuitivní roz
 modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si je moct stáhnout úplně kdokoli a používat na
 úplně cokoli. Je to takové zdrojákoviště 3D objektů, do kterého můžou dobrovolníci přispívat svými výtvory, ke kterým bude mít každý přístup.
 
-[![Version](https://img.shields.io/badge/Verze-Indev_0.0.9__3-green.svg?logo=github&logoColor=white)](https://github.com/PanVat/FreeVat)
+[![Version](https://img.shields.io/badge/Verze-Pre--Alpha_0.1.0-green.svg?logo=github&logoColor=white)](https://github.com/PanVat/FreeVat)
 [![Developer](https://img.shields.io/badge/Vývojář-PanVat-blue)](https://github.com/PanVat)
 ![License](https://img.shields.io/badge/Licence-Open_Source_✅-purple.svg)
 ---
@@ -33,10 +33,6 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - `Oracle VirtualBox` - Testování aplikace na jiných zařízeních
 ---
 
-## 🔥Zprovoznění pomocí Dockeru
-
-
-
 ## 💡Inspirace
 
 - Poliigon - https://www.poliigon.com/
@@ -56,7 +52,7 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 ## 🏁Cíle
 - [x] Ukládání 3D modelů do databáze
 - [x] Prodádění základních CRUD operací s 3D modely
-- [ ] Prohlížení objektů v 360° - posouvání, přibližování i rotace
+- [x] Prohlížení objektů v 360° - posouvání, přibližování i rotace
 - [x] Podpora základních 3D formátů - `.obj`, `.fbx`, `.usdz`, `.stl` a `.glb`
 - [x] Podpora softwarových formátů - `.blend`, `.max`, `.c4d` a `.ma`
 - [x] Registrace, přihlašování a mazání uživatelských účtů
@@ -107,3 +103,11 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 
 ### ✅Listopad 2025 (2/2) - ![Verze](https://img.shields.io/badge/Indev_0.0.9__3-darkgreen.svg)
 - Prokrastinace :(
+---
+
+### ✅Prosinec 2025 (1/1) - ![Verze](https://img.shields.io/badge/Pre--Alpha_0.1.0-darkgreen.svg)
+- Formulář pro nahrávání uživatelských dat
+- Ukládání 3D modelů do databáze
+- Zobrazení nahraných modelů na stránce
+- Posouvání, přibližování a rotace modelů ve vieweru
+- Možnost změny hesla a uživatelských údajů
