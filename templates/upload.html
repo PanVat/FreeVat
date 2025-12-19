@@ -1,18 +1,13 @@
 {% extends "base/base.html" %}
 
-<!-- Načtení potřebných knihoven -->
 {% load crispy_forms_tags static i18n %}
 
-<!-- Titulek stránky -->
 {% block title %} {% trans 'Upload' %} {% endblock %}
 
 {% block content %}
-    <!-- Stránka pro nahrání dat o 3D modelu -->
     <div class="form-page">
-        <!-- Uploadovací formulář - kontejner -->
         <div class="form-container--upload">
 
-            <!-- Nadpis -->
             <div>
                 <h2 class="form-main-heading">
                     {% trans "Upload 3D model" %}
@@ -25,115 +20,257 @@
                 </p>
             </div>
 
-            <!-- Formulář pro nahrání 3D modelu -->
-            <form class="mt-8 space-y-6" method="POST" enctype="multipart/form-data">
+            <form class="mt-8 space-y-6" id="uploadForm" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                <!-- Zobrazení chybových hlášek -->
                 {% include "base/error.html" %}
 
-                <!-- Formulářová pole -->
                 <div class="form-inputs-container">
 
-                    <!-- Název -->
                     <div class="mb-4">
                         {{ form.model_name | as_crispy_field }}
                     </div>
 
-                    <!-- Popis -->
+                    <div class="mb-4 relative">
+                        <label class="form-label-classes">{% trans "Category" %}</label>
+                        {{ form.category }}
+                        <div class="custom-dropdown" id="categoryDropdown">
+                            <div class="form-input-classes cursor-pointer flex justify-between items-center"
+                                 id="dropdownTrigger">
+                                <span id="selectedCategoryText">{% trans "Select a category" %}</span>
+                                <img src="{% static 'img/icons/chevron-down.svg' %}"
+                                     class="w-4 h-4 transition-transform" id="dropdownChevron">
+                            </div>
+
+                            <ul class="absolute z-50 left-0 right-0 mt-2 bg-[#1A1D1E] border border-gray-700 rounded-lg hidden max-h-60 overflow-y-auto"
+                                id="dropdownList">
+                                {% for category in form.category.field.queryset %}
+                                    <li class="px-4 py-3 hover:bg-gray-800 cursor-pointer flex items-center gap-3 border-b border-gray-800 last:border-0"
+                                        data-value="{{ category.id }}">
+                                        {% if category.icon %}
+                                            <img src="{{ category.icon.url }}" class="w-5 h-5">
+                                        {% endif %}
+                                        <span>{{ category.name }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="mb-4">
                         {{ form.description | as_crispy_field }}
                     </div>
 
-                    <!-- Výběr 3D modelu -->
-                    <div class="file-upload-area" id="modelFileUploadArea">
-                        <h3 class="text-xl font-semibold text-gray-200 mb-3">Upload 3D Model File</h3>
-                        <p class="text-gray-400 mb-6">Max File Size - 100 MB (.fbx, .gltf, .blend...)</p>
+                    <div class="mb-6">
+                        <label class="form-label-classes">
+                            {% trans "Model" %}<span class="text-red-500 ml-1">*</span>
+                        </label>
+                        <div class="file-upload-area" id="modelFileUploadArea">
+                            <h3 class="text-xl font-semibold text-gray-200 mb-3">Upload 3D Model File</h3>
+                            <p class="text-gray-400 mb-6">Max File Size - 100 MB (.fbx, .gltf, .blend...)</p>
 
-                        <!-- Tlačítko pro výběr (původní stav) -->
-                        <div id="modelFileButtonContainer">
-                            <input type="file" id="modelFile" name="model_file" class="file-input hidden"
-                                   accept=".obj,.fbx,.stl,.gltf,.glb,.usdz,.blend,.c4d,.max,.3ds,.mb,.ma" required>
-                            <label for="modelFile" class="form-file-button">
-                                {% trans 'Select' %}
-                            </label>
-                        </div>
+                            <div id="modelFileButtonContainer">
+                                <input type="file" id="modelFile" name="model_file" class="file-input hidden"
+                                       accept=".obj,.fbx,.stl,.gltf,.glb,.usdz,.blend,.c4d,.max,.3ds,.mb,.ma" required>
+                                <label for="modelFile" class="form-file-button">{% trans 'Select' %}</label>
+                            </div>
 
-                        <!-- Kontejner pro zobrazení vybraného souboru (skrytý na začátku) -->
-                        <div class="selected-file-container hidden" id="selectedModelContainer">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <img src="{% static 'img/icons/categories/cube.svg' %}" alt="{% trans 'Model' %}"
-                                         class="w-5 h-5">
-
-                                    <div>
-                                        <span id="modelFileName" class="font-medium ml-2"></span>
-                                    </div>
+                            <div class="selected-file-container hidden" id="selectedModelContainer">
+                                <div class="flex items-center justify-between w-full">
+                                    <span id="modelFileName" class="font-medium text-gray-300 truncate pr-4"></span>
+                                    <button type="button" id="removeModelButton"
+                                            class="remove-file-button flex-shrink-0">
+                                        <img src="{% static 'img/icons/cross.svg' %}" alt="{% trans 'Delete' %}"
+                                             class="w-4 h-4"/>
+                                    </button>
                                 </div>
-                                <!-- Tlačítko pro odebrání souboru -->
-                                <button type="button" id="removeModelButton" class="remove-file-button">
-                                    <img src="{% static 'img/icons/cross.svg' %}" alt="{% trans 'Delete' %}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="form-label-classes">
+                            {% trans "Thumbnail" %}<span class="text-red-500 ml-1">*</span>
+                        </label>
+                        <div class="file-upload-area" id="previewFileUploadArea">
+                            <h3 class="text-xl font-semibold text-gray-200 mb-3">Main Preview Image</h3>
+                            <p class="text-gray-400 mb-6">Max File Size - 2 MB (.jpg, .png...)</p>
+
+                            <div id="previewFileButtonContainer">
+                                <input type="file" id="previewFile" name="preview_image" class="file-input hidden"
+                                       accept=".jpg,.jpeg,.png,.webp">
+                                <label for="previewFile" class="form-file-button">{% trans 'Select' %}</label>
+                            </div>
+
+                            <div class="selected-file-container hidden" id="selectedPreviewContainer">
+                                <div class="flex items-center justify-between w-full">
+                                    <span id="previewFileName" class="font-medium text-gray-300 truncate pr-4"></span>
+                                    <button type="button" id="removePreviewButton"
+                                            class="remove-file-button flex-shrink-0">
+                                        <img src="{% static 'img/icons/cross.svg' %}" alt="{% trans 'Delete' %}"
+                                             class="w-4 h-4"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="form-label-classes">{% trans "Photos" %}</label>
+                        <div class="file-upload-area" id="galleryFileUploadArea">
+                            <h3 class="text-xl font-semibold text-gray-200 mb-3">Photos</h3>
+                            <p class="text-gray-400 mb-6">Upload more images to show details of your model.</p>
+
+                            <div id="galleryFileButtonContainer" class="mb-4">
+                                <input type="file" id="galleryFiles" name="gallery_images" class="file-input hidden"
+                                       accept=".jpg,.jpeg,.png,.webp" multiple>
+                                <label for="galleryFiles" class="form-file-button inline-block cursor-pointer">
+                                    {% trans 'Select' %}
+                                </label>
+                            </div>
+
+                            <div class="selected-file-container hidden" id="selectedGalleryContainer">
+                                <div id="galleryFilesList" class="space-y-2 mb-4">
+                                </div>
+                                <button type="button" id="clearAllGallery"
+                                        class="remove-file-button w-full flex justify-center py-2 items-center gap-2 border border-dashed border-red-900/30 hover:bg-red-900/10 transition-colors">
+                                    <img src="{% static 'img/icons/cross.svg' %}" class="w-4 h-4"/>
+                                    <span>{% trans "Clear All Gallery" %}</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Výběr náhledového obrázku -->
-                    <div class="file-upload-area" id="previewFileUploadArea">
-                        <h3 class="text-xl font-semibold text-gray-200 mb-3">Preview Image</h3>
-                        <p class="text-gray-400 mb-6">Max File Size - 2 MB (.jpg, .png...)</p>
-
-                        <!-- Tlačítko pro výběr (původní stav) -->
-                        <div id="previewFileButtonContainer">
-                            <input type="file" id="previewFile" name="preview_image" class="file-input hidden"
-                                   accept=".jpg,.jpeg,.png,.webp">
-                            <label for="previewFile" class="form-file-button">
-                                {% trans 'Select' %}
-                            </label>
-                        </div>
-
-                        <!-- Kontejner pro zobrazení vybraného souboru (skrytý na začátku) -->
-                        <div class="selected-file-container hidden" id="selectedPreviewContainer">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <img src="{% static 'img/icons/categories/cube.svg' %}" alt="{% trans 'File' %}"
-                                         class="w-5 h-5">
-
-                                    <div>
-                                        <span id="previewFileName" class="font-medium ml-2"></span>
-                                    </div>
-                                </div>
-                                <!-- Tlačítko pro odebrání souboru -->
-                                <button type="button" id="removePreviewButton" class="remove-file-button">
-                                    <img src="{% static 'img/icons/cross.svg' %}" alt="{% trans 'Delete' %}"/>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Tlačítka -->
                 <div class="flex justify-center gap-4">
-                    <!-- Odeslání formuláře -->
-                    <button type="submit"
-                            class="form-submit-button">
-                        {% trans 'Upload' %}
-                    </button>
-
-                    <!-- Reset formuláře -->
-                    <button type="reset"
-                            class="form-reset-button">
-                        {% trans 'Reset' %}
-                    </button>
-
-                    <!-- Vymazání formuláře a přesměrování na domovskou stránku -->
-                    <button type="button"
-                            id="discardButton"
-                            class="form-discard-button js-discard-button">
-                        {% trans 'Discard' %}
-                    </button>
+                    <button type="submit" class="form-submit-button">{% trans 'Upload' %}</button>
+                    <button type="reset" id="resetButton" class="form-reset-button">{% trans 'Reset' %}</button>
+                    <button type="button" id="discardButton"
+                            class="form-discard-button js-discard-button">{% trans 'Discard' %}</button>
                 </div>
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Dropdown Logic ---
+            const trigger = document.getElementById('dropdownTrigger');
+            const list = document.getElementById('dropdownList');
+            const chevron = document.getElementById('dropdownChevron');
+            const hiddenInput = document.querySelector('input[name="category"]');
+            const selectedText = document.getElementById('selectedCategoryText');
+
+            if (hiddenInput.value) {
+                const defaultLi = list.querySelector(`li[data-value="${hiddenInput.value}"]`);
+                if (defaultLi) selectedText.innerText = defaultLi.querySelector('span').innerText;
+            }
+
+            trigger.addEventListener('click', () => {
+                list.classList.toggle('hidden');
+                chevron.classList.toggle('rotate-180');
+            });
+
+            list.querySelectorAll('li').forEach(item => {
+                item.addEventListener('click', function () {
+                    hiddenInput.value = this.getAttribute('data-value');
+                    selectedText.innerText = this.querySelector('span').innerText;
+                    list.classList.add('hidden');
+                    chevron.classList.remove('rotate-180');
+                    trigger.classList.add('border-blue-500');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!trigger.contains(e.target) && !list.contains(e.target)) {
+                    list.classList.add('hidden');
+                    chevron.classList.remove('rotate-180');
+                }
+            });
+
+            // --- Single File Handlers (Model & Thumbnail) ---
+            function setupFileHandler(inputId, containerId, buttonBoxId, nameId, removeBtnId) {
+                const input = document.getElementById(inputId);
+                const container = document.getElementById(containerId);
+                const buttonBox = document.getElementById(buttonBoxId);
+                const nameSpan = document.getElementById(nameId);
+                const removeBtn = document.getElementById(removeBtnId);
+
+                input.addEventListener('change', function () {
+                    if (this.files && this.files[0]) {
+                        nameSpan.innerText = this.files[0].name;
+                        container.classList.remove('hidden');
+                        buttonBox.classList.add('hidden');
+                    }
+                });
+
+                removeBtn.addEventListener('click', function () {
+                    input.value = '';
+                    container.classList.add('hidden');
+                    buttonBox.classList.remove('hidden');
+                });
+            }
+
+            setupFileHandler('modelFile', 'selectedModelContainer', 'modelFileButtonContainer', 'modelFileName', 'removeModelButton');
+            setupFileHandler('previewFile', 'selectedPreviewContainer', 'previewFileButtonContainer', 'previewFileName', 'removePreviewButton');
+
+            // --- Advanced Gallery Logic ---
+            const galleryInput = document.getElementById('galleryFiles');
+            const galleryContainer = document.getElementById('selectedGalleryContainer');
+            const galleryList = document.getElementById('galleryFilesList');
+            const clearAllBtn = document.getElementById('clearAllGallery');
+            let galleryFilesArray = [];
+
+            function renderGallery() {
+                galleryList.innerHTML = '';
+                if (galleryFilesArray.length > 0) {
+                    galleryContainer.classList.remove('hidden');
+                    galleryFilesArray.forEach((file, index) => {
+                        const item = document.createElement('div');
+                        item.className = "flex items-center justify-between p-3 bg-[#1A1D1E] border border-gray-800 rounded-lg";
+                        item.innerHTML = `
+                            <span class="font-medium text-sm text-gray-300 truncate pr-4">${file.name}</span>
+                            <button type="button" class="remove-single-file p-1 hover:bg-red-500/10 rounded-md transition-colors" data-index="${index}">
+                                <img src="{% static 'img/icons/cross.svg' %}" class="w-4 h-4"/>
+                            </button>
+                        `;
+                        galleryList.appendChild(item);
+                    });
+                } else {
+                    galleryContainer.classList.add('hidden');
+                }
+            }
+
+            galleryInput.addEventListener('change', function () {
+                galleryFilesArray = [...galleryFilesArray, ...Array.from(this.files)];
+                renderGallery();
+                this.value = ''; // Allow re-selecting same file
+            });
+
+            galleryList.addEventListener('click', function (e) {
+                const btn = e.target.closest('.remove-single-file');
+                if (btn) {
+                    galleryFilesArray.splice(parseInt(btn.getAttribute('data-index')), 1);
+                    renderGallery();
+                }
+            });
+
+            clearAllBtn.addEventListener('click', () => {
+                galleryFilesArray = [];
+                renderGallery();
+            });
+
+            // Form Submit - Sync Gallery Array to Input
+            document.getElementById('uploadForm').addEventListener('submit', function (e) {
+                const dataTransfer = new DataTransfer();
+                galleryFilesArray.forEach(file => dataTransfer.items.add(file));
+                galleryInput.files = dataTransfer.files;
+            });
+
+            document.getElementById('resetButton').addEventListener('click', () => {
+                setTimeout(() => location.reload(), 10);
+            });
+        });
+    </script>
 {% endblock %}

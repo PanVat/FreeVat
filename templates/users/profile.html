@@ -1,23 +1,46 @@
 {% extends "base/base.html" %}
+
+<!-- Načtení potřebných knihoven -->
 {% load i18n static %}
 
-{% block title %}{% trans 'User Profile' %}{% endblock %}
+<!-- Titulek stránky -->
+{% block title %}{% trans 'User profile' %}{% endblock %}
 
 {% block content %}
-    <div class="container mx-auto px-4 py-8">
-        <div class="max-w-4xl mx-auto">
+    <!-- Stránka uživatelského profilu -->
+    <div class="form-page">
+        <div class="form-container--profile">
             <!-- Hlavička profilu -->
-            <div class="bg-gray-800 rounded-lg p-6 mb-6">
-                <div class="flex items-center gap-6">
-                    <img src="{{ user.get_profile_picture }}"
-                         alt="Profile"
-                         class="w-20 h-20 rounded-full">
-                    <div>
-                        <h1 class="text-2xl font-bold">{{ user.username }}</h1>
-                        <p class="text-gray-400">{{ user.email }}</p>
-                        <p class="text-sm text-gray-500">{% trans 'Member since' %}
-                            {{ user.date_joined|date:"F Y" }}</p>
+            <div class="bg-gray-800 rounded-lg p-8 mb-6">
+                <div class="flex flex-col items-center text-center">
+                    <div class="relative mb-4">
+                        <img src="{{ user.get_profile_picture }}"
+                             alt="Profile"
+                             class="w-32 h-32 rounded-full border-4 border-[#3B4042] object-cover shadow-xl">
                     </div>
+
+                    <h1 class="text-3xl font-bold text-white">{{ user.username }}</h1>
+
+                    <p class="text-gray-400 mt-1">{{ user.email }}</p>
+
+                    {% if user.website_url %}
+                        <a href="{{ user.website_url }}" target="_blank"
+                           class="text-blue-400 hover:text-blue-300 flex items-center gap-2 mt-3 text-sm transition-colors">
+                            <i class="fas fa-globe"></i> {{ user.website_url|truncatechars:40 }}
+                        </a>
+                    {% endif %}
+
+                    {% if user.bio %}
+                        <div class="max-w-md mt-4">
+                            <p class="text-gray-300 italic text-sm leading-relaxed">
+                                "{{ user.bio }}"
+                            </p>
+                        </div>
+                    {% endif %}
+
+                    <p class="text-xs text-gray-500 mt-6 uppercase tracking-wider">
+                        {% trans 'Member since' %} {{ user.date_joined|date:"F Y" }}
+                    </p>
                 </div>
             </div>
 

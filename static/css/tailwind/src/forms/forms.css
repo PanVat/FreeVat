@@ -105,13 +105,13 @@
 /* Tlačítko pro resetování formuláře */
 .form-reset-button {
     @apply py-2 px-4 duration-150 rounded-xl text-lg w-full text-center;
-    @apply hover:opacity-90 border-3 border-gray-500 cursor-pointer;
+    @apply hover:opacity-90 bg-[#3B4042] cursor-pointer;
 }
 
 /* Tlačítko pro zahození formuláře */
 .form-discard-button {
     @apply py-2 px-4 duration-150 rounded-xl text-lg w-full text-center;
-    @apply hover:opacity-90 border-3 border-red-800 cursor-pointer;
+    @apply hover:opacity-90 bg-red-800 cursor-pointer;
 }
 
 /* Zobrazení vybraného souboru po nahrání */
@@ -127,4 +127,9 @@
 /* Upravená třída pro 'Upload' */
 .form-container--upload {
     @apply border-1 border-[#404040] max-w-3xl w-full space-y-8 rounded-xl p-5 m-14;
+}
+
+/* Upravená třída pro 'Profile' */
+.form-container--profile{
+    @apply border-1 border-[#404040] max-w-5xl w-full space-y-8 rounded-xl p-5 m-14;
 }

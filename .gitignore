@@ -20,15 +20,3 @@ node_modules/
 # Migrace
 freevat/migrations/*.*
 users/migrations/*.*
-
-# Media (uložená data z databáze)
-media/models/models/*
-media/models/thumbnails/*
-media/users/avatars/*
-
-# Ponechání prázdných složek
-!media/models/models/.gitkeep
-!media/models/thumbnails/.gitkeep
-!media/users/avatars/.gitkeep
-
-

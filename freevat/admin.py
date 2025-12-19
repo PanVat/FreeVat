@@ -1,7 +1,9 @@
 from django.contrib import admin
-from .models import Model3D, Data, Comment
+from .models import Model3D, Data, Comment, Category, ModelImage
 
 # Registrování modelů v admin rozhraní
 admin.site.register(Model3D)
 admin.site.register(Data)
 admin.site.register(Comment)
+admin.site.register(Category)
+admin.site.register(ModelImage)

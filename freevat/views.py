@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from . import settings
 from .forms import ModelUploadForm
-from .models import Model3D
+from .models import Model3D, ModelImage
 
 
 # Domovská stránka
@@ -15,33 +15,37 @@ def index(request):
 @login_required(login_url='login')
 def upload_model(request):
     if request.method == 'POST':
-        # Načtení dat z formuláře včetně souborů (request.FILES)
         form = ModelUploadForm(request.POST, request.FILES)
 
         if form.is_valid():
-            # Získání vyčištěných dat z formuláře
+            # 1. Vytvoření hlavního modelu
+            # (Používáme commit=False, abychom mohli přidat uživatele před uložením,
+            # pokud bys používal ModelForm, u Form jen vytvoříme instanci)
             data = form.cleaned_data
 
-            # Vytvoření instance Model3D (ještě se neukládá do DB)
             new_model = Model3D(
                 name=data['model_name'],
+                category=data['category'],  # Přidání vybrané kategorie
                 description=data['description'],
                 model=data['model_file'],
                 thumbnail=data['preview_image'],
-                user=request.user  # Přiřazení aktuálně přihlášeného uživatele
+                user=request.user
             )
-
-            # Uložení modelu do databáze
             new_model.save()
 
-            # Po úspěšném nahrání přesměrování na domovskou stránku (index.html)
-            return redirect('index')
+            # 2. Zpracování GALERIE (více souborů)
+            # request.FILES.getlist() je klíčové pro získání všech nahraných fotek
+            images = request.FILES.getlist('gallery_images')
+            for f in images:
+                ModelImage.objects.create(
+                    model_3d=new_model,
+                    image=f
+                )
 
+            return redirect('index')
     else:
-        # GET request - prázdný formulář
         form = ModelUploadForm()
 
-    # Zobrazení formuláře pro nahrání modelu
     return render(request, 'upload.html', {'form': form})
 
 
@@ -49,6 +53,7 @@ def upload_model(request):
 @login_required
 def user_profile(request):
     return render(request, 'users/profile.html')
+
 
 # Detail 3D modelu
 def model_detail(request, pk):

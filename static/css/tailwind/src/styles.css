@@ -12,7 +12,7 @@
 @import './users/socials.css';
 
 /* Uživatelský profil */
-@import './users/account.css';
+@import './users/profile.css';
 
 /* Jednotlivé stránky */
 @import './index.css';

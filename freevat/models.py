@@ -5,6 +5,25 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+# Kategorie pro 3D modely (např. Architektura, Postavy, Auta...)
+class Category(models.Model):
+    # Název kategorie
+    name = models.CharField(max_length=50, verbose_name=_("Category name"))
+
+    # Ikonka kategorie
+    icon = models.FileField(upload_to="models/categories",
+                             null=True,
+                             blank=True,
+                             verbose_name=_("Category icon"))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _("Category")
+        verbose_name_plural = _("Categories")
+
+
 # 3D model
 class Model3D(models.Model):
     # Jméno modelu - povinné, max. 50 znaků
@@ -13,6 +32,14 @@ class Model3D(models.Model):
                             help_text=_("Enter the name"),
                             error_messages={"blank": _("Name cannot be empty"),
                                             "max_length": _("Name cannot exceed 50 characters")})
+
+    # Kategorie modelu
+    category = models.ForeignKey(Category,
+                                 on_delete=models.SET_NULL,
+                                 null=True,
+                                 blank=False,
+                                 verbose_name=_("Category"))
+
     # Datum nahrání - automaticky nastaveno na aktuální datum
     uploaded = models.DateTimeField(auto_now_add=True,
                                     verbose_name=_("Uploaded at"))
@@ -30,7 +57,7 @@ class Model3D(models.Model):
                              verbose_name=_("3D model"),
                              help_text=_("Upload the 3D model file (.obj, .fbx..)"),
                              error_messages={"invalid": _("Invalid file format")})
-    # Náhledový obrázek modelu
+    # Náhledový obrázek modelu (Hlavní náhled)
     thumbnail = models.ImageField(upload_to="models/thumbnails/",
                                   verbose_name=_("Model preview image"),
                                   help_text=_("Upload a preview image for the model"),
@@ -49,6 +76,12 @@ class Model3D(models.Model):
         verbose_name_plural = _("3D Models")
 
 
+# Obrázek 3D modelu (bude z nich tvořena galerie)
+class ModelImage(models.Model):
+    model3d = models.ForeignKey(Model3D, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="models/gallery/", verbose_name=_("Gallery Image"))
+
+
 # Údaje o souboru 3D modelu (vyplní se automaticky při nahrání)
 class Data(models.Model):
     # Spojení s 3D modelem
@@ -63,27 +96,22 @@ class Data(models.Model):
     file_format = models.CharField(max_length=10, verbose_name=_("File format"))
 
 
-# Uživatelské komentáře k 3D modelům
+# Uživatelské komentáře k 3D modelům (beze změny)
 class Comment(models.Model):
-    # Spojení s tabulkou uživatelů (autor komentáře)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE,
                              related_name="comments",
                              verbose_name=_("Author"))
-    # Spojení s tabulkou 3D modelů (model, ke kterému je komentář)
     model3d = models.ForeignKey('Model3D',
                                 on_delete=models.CASCADE,
                                 related_name="comments",
                                 verbose_name=_("3D Model"))
-    # Komentář
     content = models.TextField(verbose_name=_("Content"),
                                help_text=_("Enter your comment here"),
                                error_messages={"blank": _("Comment cannot be empty"),
                                                "max_length": _("Comment cannot exceed 2000 characters")})
-    # Datum vytvoření komentáře
     created_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name=_("Created at"))
-    # Datum poslední aktualizace komentáře
     updated_at = models.DateTimeField(auto_now=True,
                                       verbose_name=_("Updated at"))
 

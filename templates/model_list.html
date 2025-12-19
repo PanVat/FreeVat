@@ -1,50 +1,70 @@
 {% extends "base/base.html" %}
-{% load i18n %}
+{% load i18n static %}
 
 {% block content %}
     <div class="container mx-auto px-4 py-8">
-
         <div class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl font-bold text-gray-800">{% trans 'Free 3D models' %}</h1>
-            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">View all ></a>
+            <h1 class="text-3xl font-bold text-white">{% trans 'Free 3D models' %}</h1>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
             {% for model in models %}
                 <a href="{% url 'model_detail' model.pk %}" class="group block">
-                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-[#1A1D1E] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-800">
 
-                        <div class="aspect-w-16 aspect-h-9 bg-gray-700 relative overflow-hidden h-48">
+                        <div class="aspect-video bg-gray-900 relative overflow-hidden w-full">
                             {% if model.thumbnail %}
-                                <img src="{{ model.thumbnail.url }}"
-                                     alt="{{ model.title }}"
+                                <img src="{{ model.thumbnail.url }}" alt="{{ model.title }}"
                                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             {% else %}
-                                <div class="flex items-center justify-center h-full text-gray-500">
-                                    No Preview
+                                <div class="flex items-center justify-center h-full text-gray-600 italic text-sm">
+                                    <span>No Preview</span>
                                 </div>
                             {% endif %}
                         </div>
 
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-white mb-1 truncate">{{ model.title }}</h3>
-                            <p class="text-gray-400 text-xs uppercase font-semibold tracking-wider">
-                                {{ model.author.username }}
-                            </p>
+                        <div class="p-3 flex items-start gap-3">
 
-                            <div class="mt-3 flex items-center justify-between text-gray-500 text-xs">
-                                <span class="bg-gray-700 px-2 py-1 rounded">3D Model</span>
+                            <img src="{{ model.author.get_profile_picture }}"
+                                 alt="{{ model.author.username }}"
+                                 class="w-10 h-10 rounded-full object-cover border border-gray-700 flex-shrink-0">
+
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-sm font-bold text-white truncate leading-tight mb-0.5">
+                                    {{ model.title }}
+                                </h3>
+                                <p class="text-xs text-gray-400 truncate">
+                                    {{ model.author.username }}
+                                </p>
                             </div>
+
+                            <div class="flex flex-col items-end gap-1 flex-shrink-0">
+                                <div class="flex gap-1">
+                                    <div class="w-6 h-6 bg-gray-700 rounded flex items-center justify-center text-[10px] text-gray-300 border border-gray-600"
+                                         title="Category: {{ model.category }}">
+                                        <i class="fas fa-folder"></i></div>
+                                    <div class="px-1 min-w-[24px] h-6 bg-gray-700 rounded flex items-center justify-center text-[9px] font-bold text-green-400 border border-gray-600 uppercase">
+                                        {{ model.get_extension }}
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-0.5 mt-1">
+                                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5">
+                                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5">
+                                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5">
+                                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5">
+                                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5">
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </a>
                 {% empty %}
                 <div class="col-span-full text-center py-12 text-gray-500">
-                    <p class="text-xl">Zatím nebyly nahrány žádné modely.</p>
+                    <p class="text-xl">{% trans 'No models uploaded yet.' %}</p>
                 </div>
             {% endfor %}
-
         </div>
     </div>
 {% endblock %}
