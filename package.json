@@ -8,6 +8,7 @@
     "tailwind:dev": "npx @tailwindcss/cli -i ./static/css/tailwind/src/styles.css -o ./static/css/tailwind/dist/styles.css --watch",
     "vite:dev": "vite",
     "dev": "concurrently \"npm run tailwind:dev\" \"npm run vite:dev\"",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "repository": {
@@ -29,6 +30,6 @@
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
-    "vite": "^7.1.11"
+    "vite": "^7.3.0"
   }
 }

@@ -1,8 +1,6 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-{% load static %}
-
 {% block content %}
     <div class="container mx-auto px-4 py-8">
 
@@ -31,27 +29,28 @@
             <div class="lg:col-span-2">
                 <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl relative" style="height: 600px;">
 
-                    <div id="viewer"
+                    <div id="model-container"
                          data-model-url="{{ model.file.url }}"
                          class="w-full h-full">
                     </div>
 
                     <div id="loading-overlay"
                          class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75 text-white z-10">
-                        Načítám 3D model...
+                        <div class="text-center">
+                            <span class="block text-2xl font-bold mb-2">Načítám...</span>
+                            <span class="text-sm text-gray-400">Prosím čekejte</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
-{% endblock %}
 
-<!-- Three.js skript pro zobrazení 3D modelu -->
-{% block extra_js %}
     {% if debug %}
         <script type="module" src="http://localhost:5173/js/three/src/main.js"></script>
     {% else %}
         <script type="module" src="{% static 'js/three/dist/main.js' %}"></script>
     {% endif %}
+
 {% endblock %}

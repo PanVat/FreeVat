@@ -1,30 +1,31 @@
 import {defineConfig} from 'vite';
 import {resolve} from 'path';
 
-/* Cesta ke statickému adresáři */
 const djangoStaticRoot = resolve(__dirname, 'static');
 
 export default defineConfig({
+    // Root je nastaven na static, takže cesty uvnitř budou relativní k němu
     root: djangoStaticRoot,
-    build: {
-        /* Výstupní adresář */
-        outDir: resolve(djangoStaticRoot, 'js/three/dist'),
 
+    server: {
+        // Povolíme přístup z Django serveru
+        origin: 'http://localhost:8000',
+        cors: true,
+    },
+
+    build: {
+        // Kam se uloží hotový soubor po 'npm run build'
+        outDir: resolve(djangoStaticRoot, 'js/three/dist'),
+        emptyOutDir: true,
         rollupOptions: {
             input: {
+                // CESTA MUSÍ ODPOVÍDAT: static/js/three/src/main.js
                 main: resolve(djangoStaticRoot, 'js/three/src/main.js'),
             },
             output: {
-                /* Názvy výstupního souboru */
-                entryFileNames: '[name].js',
+                entryFileNames: '[name].js', // Vytvoří main.js
                 assetFileNames: 'assets/[name].[ext]',
             }
         },
-        emptyOutDir: true,
-        manifest: true,
-    },
-    /* Konfigurace vývojového serveru */
-    server: {
-        origin: 'http://localhost:8000',
     }
 });

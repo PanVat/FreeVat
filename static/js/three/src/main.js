@@ -1,175 +1,94 @@
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+function init() {
+    const container = document.getElementById('model-container');
 
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
-import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader.js';
-import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader.js';
-import {STLLoader} from 'three/examples/jsm/loaders/STLLoader.js';
-
-// ====== SCÉNA ======
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x111827); // dark background
-
-// ====== KAMERA ======
-const camera = new THREE.PerspectiveCamera(
-    60,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
-camera.position.set(0, 2, 5);
-
-// ====== RENDERER ======
-const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    alpha: false
-});
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.outputColorSpace = THREE.SRGBColorSpace;
-renderer.shadowMap.enabled = true;
-
-document.getElementById('viewer').appendChild(renderer.domElement);
-
-// ====== CONTROLS ======
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.dampingFactor = 0.05;
-
-// ====== SVĚTLA ======
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-scene.add(ambientLight);
-
-const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
-dirLight.position.set(5, 10, 7);
-dirLight.castShadow = true;
-scene.add(dirLight);
-
-// ====== GRID (volitelné) ======
-const grid = new THREE.GridHelper(10, 10, 0x444444, 0x222222);
-scene.add(grid);
-
-// ====== LOADERY ======
-const gltfLoader = new GLTFLoader();
-const fbxLoader = new FBXLoader();
-const objLoader = new OBJLoader();
-const stlLoader = new STLLoader();
-
-let currentModel = null;
-
-// ====== UNIVERZÁLNÍ LOADER ======
-function loadModel(url) {
-    clearScene();
-
-    const ext = url.split('.').pop().toLowerCase();
-
-    switch (ext) {
-        case 'glb':
-        case 'gltf':
-            gltfLoader.load(url, (gltf) => {
-                currentModel = gltf.scene;
-                scene.add(currentModel);
-                frameObject(currentModel);
-            });
-            break;
-
-        case 'fbx':
-            fbxLoader.load(url, (object) => {
-                object.scale.set(0.01, 0.01, 0.01);
-                currentModel = object;
-                scene.add(currentModel);
-                frameObject(currentModel);
-            });
-            break;
-
-        case 'obj':
-            objLoader.load(url, (object) => {
-                currentModel = object;
-                scene.add(currentModel);
-                frameObject(currentModel);
-            });
-            break;
-
-        case 'stl':
-            stlLoader.load(url, (geometry) => {
-                const material = new THREE.MeshStandardMaterial({
-                    color: 0xcccccc,
-                    metalness: 0.1,
-                    roughness: 0.6
-                });
-                const mesh = new THREE.Mesh(geometry, material);
-                currentModel = mesh;
-                scene.add(currentModel);
-                frameObject(currentModel);
-            });
-            break;
-
-        default:
-            console.error('Nepodporovaný formát:', ext);
+    if (!container) {
+        console.error("Kontejner 'model-container' nebyl nalezen!");
+        return;
     }
-}
 
-// ====== CENTROVÁNÍ + KAMERA ======
-function frameObject(object) {
-    const box = new THREE.Box3().setFromObject(object);
-    const size = box.getSize(new THREE.Vector3());
-    const center = box.getCenter(new THREE.Vector3());
+    // --- ZMĚNA: Testovací URL natvrdo ---
+    // Používáme veřejný model robota, abychom otestovali funkčnost vieweru
+    const modelUrl = 'https://threejs.org/examples/models/gltf/RobotExpressive/RobotExpressive.glb';
 
-    object.position.sub(center);
+    console.log("Používám testovací model:", modelUrl);
 
-    const maxDim = Math.max(size.x, size.y, size.z);
-    const fov = camera.fov * (Math.PI / 180);
-    let cameraZ = Math.abs(maxDim / Math.tan(fov / 2));
-    cameraZ *= 1.5;
+    // --- Nastavení scény ---
+    const scene = new THREE.Scene();
 
-    camera.position.set(0, maxDim * 0.5, cameraZ);
-    camera.near = cameraZ / 100;
-    camera.far = cameraZ * 100;
-    camera.updateProjectionMatrix();
+    // --- Kamera ---
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.set(0, 5, 15); // Trochu dál a výš
 
-    controls.target.set(0, 0, 0);
-    controls.update();
-}
+    // --- Renderer ---
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
 
-// ====== VYČIŠTĚNÍ SCÉNY ======
-function clearScene() {
-    if (!currentModel) return;
+    // Vyčistíme kontejner (pro jistotu) a přidáme plátno
+    container.innerHTML = '';
+    container.appendChild(renderer.domElement);
 
-    scene.remove(currentModel);
+    // --- Světla ---
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
 
-    currentModel.traverse((child) => {
-        if (child.geometry) child.geometry.dispose();
-        if (child.material) {
-            if (Array.isArray(child.material)) {
-                child.material.forEach(mat => mat.dispose());
-            } else {
-                child.material.dispose();
-            }
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+    directionalLight.position.set(5, 10, 7.5);
+    scene.add(directionalLight);
+
+    // --- Ovládání ---
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+
+    // --- Načítání modelu ---
+    const loader = new GLTFLoader();
+
+    loader.load(
+        modelUrl,
+        (gltf) => {
+            const model = gltf.scene;
+            scene.add(model);
+
+            // Vycentrování modelu
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+
+            model.position.x += (model.position.x - center.x);
+            model.position.y += (model.position.y - center.y);
+            model.position.z += (model.position.z - center.z);
+
+            // Skrytí overlaye (pokud existuje)
+            const overlay = document.getElementById('loading-overlay');
+            if (overlay) overlay.style.display = 'none';
+
+            console.log("Testovací model úspěšně načten!");
+        },
+        (xhr) => {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        },
+        (error) => {
+            console.error('Chyba při načítání modelu:', error);
+            alert("Chyba načítání: Podívej se do konzole (F12).");
         }
+    );
+
+    // --- Resize ---
+    window.addEventListener('resize', () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
     });
 
-    currentModel = null;
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    }
+    animate();
 }
 
-// ====== RESIZE ======
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-// ====== RENDER LOOP ======
-function animate() {
-    requestAnimationFrame(animate);
-    controls.update();
-    renderer.render(scene, camera);
-}
-
-animate();
-
-// ====== EXPORT FUNKCE ======
-// Zavoláš z Django šablony nebo JS:
-// loadModel('/media/models/example.glb');
-
-window.loadModel = loadModel;
+init();
