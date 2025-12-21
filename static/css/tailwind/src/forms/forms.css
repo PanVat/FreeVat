@@ -23,6 +23,11 @@
     @apply text-base text-blue-500 hover:underline;
 }
 
+/* Formulář */
+.form {
+    @apply mt-8 space-y-6;
+}
+
 /* Kontejner se vstupy */
 .form-inputs-container {
     @apply mt-8 space-y-6;
@@ -35,7 +40,7 @@
 
 /* Stylování vstupních polí ve formuláři v 'upload.html' (použije se ve 'forms.py' */
 .form-input-classes {
-    @apply block w-full px-4 py-3 placeholder-gray-400 rounded-lg border-2 border-[#3B4042] outline-none text-base;
+    @apply flex w-full px-4 py-3 placeholder-gray-400 rounded-lg border-2 border-[#3B4042] outline-none text-base justify-between items-center;
 }
 
 /* Stylování popisků ve formuláři */
@@ -72,23 +77,59 @@
 /* Tlačítko pro nahrávání souborů */
 .form-file-button {
     @apply py-2 px-4 duration-150 rounded-md text-base bg-[#3B4042];
-    @apply hover:opacity-90 cursor-pointer;
+    @apply hover:opacity-90 cursor-pointer shadow-sm;
 }
 
 /* Křížek pro odstranění nahraného souboru */
 .remove-file-button {
-    @apply duration-150 cursor-pointer;
+    @apply duration-150 cursor-pointer flex-shrink-0;
 }
 
 /* Ikonka křížku */
 .remove-file-button img {
-    @apply w-6 h-6;
+    @apply w-6 h-6 hover:opacity-80;
+}
+
+/* Dropdown s kategoriemi (seznam) */
+.form-category-list {
+    @apply absolute z-50 left-0 mt-4 right-0 max-h-74 overflow-y-auto;
+    @apply border-2 border-[#3B4042] bg-[#222222] rounded-lg;
+    /* Skrytí scrollbaru */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Skrytí scrollbaru */
+.form-category-list::-webkit-scrollbar {
+    display: none;
+}
+
+/* Položka v dropdownu s kategoriemi */
+.form-category-item {
+    @apply px-4 py-3 cursor-pointer flex items-center gap-3 last:border-0;
+    @apply border-b-2 border-[#3B4042] hover:bg-[#3B4042];
+}
+
+/* Odstanění celé galerie */
+.remove-gallery-button {
+    @apply py-2 px-4 duration-150 rounded-md text-base bg-[#3B4042];
+    @apply hover:opacity-90 bg-red-800 cursor-pointer;
 }
 
 /* Oblast pro přetažení souborů */
 .file-upload-area {
-    @apply border-2 border-dashed border-[#3B4042] rounded-xl p-10 text-center mb-8;
+    @apply border-2 border-dashed border-[#3B4042] rounded-xl p-8 text-center mb-8;
     @apply transition-all duration-200 hover:border-[#7d8082];
+}
+
+/* Nadpis v oblasti pro nahrávání */
+.file-upload-title {
+    @apply text-xl font-semibold text-gray-200 mb-3;
+}
+
+/* Popis v oblasti pro přetažení souborů */
+.file-upload-description {
+    @apply text-gray-400 mb-6;
 }
 
 /* Nadpis v oblasti pro přetažení souborů */
@@ -99,24 +140,44 @@
 /* Tlačítko pro odeslání formuláře */
 .form-submit-button {
     @apply py-2 px-4 duration-150 rounded-xl text-lg w-full text-center;
-    @apply hover:opacity-90 bg-green-900 cursor-pointer;
+    @apply hover:opacity-90 bg-green-900 cursor-pointer shadow-sm;
 }
 
 /* Tlačítko pro resetování formuláře */
 .form-reset-button {
     @apply py-2 px-4 duration-150 rounded-xl text-lg w-full text-center;
-    @apply hover:opacity-90 bg-[#3B4042] cursor-pointer;
+    @apply hover:opacity-90 bg-[#3B4042] cursor-pointer shadow-sm;
 }
 
 /* Tlačítko pro zahození formuláře */
 .form-discard-button {
     @apply py-2 px-4 duration-150 rounded-xl text-lg w-full text-center;
-    @apply hover:opacity-90 bg-red-800 cursor-pointer;
+    @apply hover:opacity-90 bg-red-800 cursor-pointer shadow-sm;
+}
+
+/* Kontejner pro tlačítka ve formuláři */
+.form-gallery-buttons {
+    @apply flex justify-center space-x-4;
+}
+
+/* Kontejner s nahranými soubory v galerii */
+.gallery-uploaded-files {
+    @apply mb-8 space-y-4;
 }
 
 /* Zobrazení vybraného souboru po nahrání */
 .selected-file {
     @apply mt-6 p-3 bg-gray-900 rounded-lg;
+}
+
+/* Kontejner se zvoleným souborem a křížkem */
+.selected-file-container {
+    @apply flex items-center justify-between w-full bg-[#292929] px-3 py-2 rounded-lg;
+}
+
+/* Jméno nahraného souboru */
+.selected-file-container span {
+    @apply font-medium text-gray-300 truncate pr-4;
 }
 
 /* Ikonka nahraného souboru */
@@ -130,6 +191,6 @@
 }
 
 /* Upravená třída pro 'Profile' */
-.form-container--profile{
+.form-container--profile {
     @apply border-1 border-[#404040] max-w-5xl w-full space-y-8 rounded-xl p-5 m-14;
 }

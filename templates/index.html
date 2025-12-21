@@ -11,143 +11,39 @@
             <p>{% trans 'Explore high quality assets without any financial barriers!' %}</p>
         </div>
 
+        <!-- Carousel s kategoriemi 3D modelů (načítá se z databáze) -->
         <div class="carousel-wrapper">
-
-            <!-- Šipka vlevo -->
+            <!-- Šipky pro posun carouselu doprava -->
             <button class="carousel-arrow carousel-arrow-left">
-                <img src="{% static 'img/icons/arrow_left.svg' %}" alt="{% trans 'Arrow Left' %}"
-                     class="arrow-icon">
+                <img src="{% static 'img/icons/arrow_left.svg' %}" alt="{% trans 'Arrow Left' %}" class="arrow-icon">
             </button>
 
-            <!-- Box s kategoriemi -->
+            <!-- Načte všechny kategorie z databáze -->
             <div class="categories-carousel">
-
-                <!-- Carousel -->
                 <div class="carousel-group">
-                    <!-- Architektura -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/architecture.svg' %}"
-                             alt="{% trans 'Architecture' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Architecture' %}</span>
-                    </a>
+                    {% for category in categories %}
+                        <a class="carousel-card" href="#">
+                            {% if category.icon %}
+                                <img src="{{ category.icon.url }}" alt="{{ category.name }}">
+                            {% else %}
+                                <img src="{% static 'img/icons/default.svg' %}" alt="{{ category.name }}">
+                            {% endif %}
 
-                    <!-- Zvířata -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/animals.svg' %}" alt="{% trans 'Animals' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Animals' %}</span>
-                    </a>
-
-                    <!-- Auta -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/cars.svg' %}" alt="{% trans 'Cars' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Cars' %}</span>
-                    </a>
-
-                    <!-- Postavy -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/characters.svg' %}" alt="{% trans 'Characters' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Characters' %}</span>
-                    </a>
-
-                    <!-- Vozidla -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/food.svg' %}" alt="{% trans 'Vehicles' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Vehicles' %}</span>
-                    </a>
-
-                    <!-- Technologie -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/technology.svg' %}" alt="{% trans 'Technology' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Technology' %}</span>
-                    </a>
-
-                    <!-- Elektronika -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/electronics.svg' %}" alt="{% trans 'Electronics' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Electronics' %}</span>
-                    </a>
-
-                    <!-- Jídlo -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/food.svg' %}" alt="{% trans 'Food' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Food' %}</span>
-                    </a>
-
-                    <!-- Pití -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/drink.svg' %}" alt="{% trans 'Drink' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Drink' %}</span>
-                    </a>
-
-                    <!-- Nábytek -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/furniture.svg' %}" alt="{% trans 'Furniture' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Furniture' %}</span>
-                    </a>
-
-                    <!-- Domov -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/home.svg' %}" alt="{% trans 'Home' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Home' %}</span>
-                    </a>
-
-                    <!-- Příroda -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/nature.svg' %}" alt="{% trans 'Nature' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Nature' %}</span>
-                    </a>
-
-                    <!-- Rostliny -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/plants.svg' %}" alt="{% trans 'Plants' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Plants' %}</span>
-                    </a>
-
-                    <!-- Sport -->
-                    <a class="carousel-card" href="#">
-                        <!-- Ikonka -->
-                        <img src="{% static 'img/icons/categories/sport.svg' %}" alt="{% trans 'Sport' %}">
-                        <!-- Text -->
-                        <span>{% trans 'Sport' %}</span>
-                    </a>
+                            <span>{{ category.name }}</span>
+                        </a>
+                    {% endfor %}
                 </div>
             </div>
-            <!-- Šipka vpravo -->
+
+            <!-- Šipky pro posun carouselu doleva -->
             <button class="carousel-arrow carousel-arrow-right">
-                <img src="{% static 'img/icons/arrow_right.svg' %}" alt="{% trans 'Arrow Left' %}"
-                     class="arrow-icon">
+                <img src="{% static 'img/icons/arrow_right.svg' %}" alt="{% trans 'Arrow Right' %}" class="arrow-icon">
             </button>
         </div>
 
         <!-- Feature karty -->
         <div class="feature-container">
-            <!-- Karta 1 (Kompletní bezplatný přístup) -->
+            <!-- Karta 1 (Kompletně bezplatný přístup) -->
             <div class="feature-card">
                 <div class="feature-icon"><img src="{% static 'img/icons/money_off.svg' %}" alt="Money Off"></div>
                 <h3>{% trans 'COMPLETELY FREE ACCESS' %}</h3>
@@ -361,4 +257,7 @@
         </div>
 
     </div>
+
+    <!-- Obsahuje logiku pro posun carouselu pomocí šipek -->
+    <script src="{% static 'js/web/carousel.js' %}"></script>
 {% endblock %}

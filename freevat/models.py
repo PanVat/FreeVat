@@ -78,7 +78,9 @@ class Model3D(models.Model):
 
 # Obrázek 3D modelu (bude z nich tvořena galerie)
 class ModelImage(models.Model):
-    model3d = models.ForeignKey(Model3D, related_name='images', on_delete=models.CASCADE)
+    # Jeden Model3D může mít více obrázků v galerii
+    model3d = models.ForeignKey('Model3D', related_name='images', on_delete=models.CASCADE)
+    # Obrázek galerie
     image = models.ImageField(upload_to="models/gallery/", verbose_name=_("Gallery Image"))
 
 
@@ -96,22 +98,27 @@ class Data(models.Model):
     file_format = models.CharField(max_length=10, verbose_name=_("File format"))
 
 
-# Uživatelské komentáře k 3D modelům (beze změny)
+# Uživatelské komentáře k 3D modelům
 class Comment(models.Model):
+    # Autor komentáře
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE,
                              related_name="comments",
                              verbose_name=_("Author"))
+    # Spojení s 3D modelem
     model3d = models.ForeignKey('Model3D',
                                 on_delete=models.CASCADE,
                                 related_name="comments",
                                 verbose_name=_("3D Model"))
+    # Obsah komentáře
     content = models.TextField(verbose_name=_("Content"),
                                help_text=_("Enter your comment here"),
                                error_messages={"blank": _("Comment cannot be empty"),
                                                "max_length": _("Comment cannot exceed 2000 characters")})
+    # Datum vytvoření komentáře
     created_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name=_("Created at"))
+    # Datum poslední aktualizace komentáře
     updated_at = models.DateTimeField(auto_now=True,
                                       verbose_name=_("Updated at"))
 
