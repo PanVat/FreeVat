@@ -57,20 +57,28 @@ def user_profile(request):
     return render(request, 'users/profile.html')
 
 
+# Seznam nahraných 3D modelů
+def model_list(request, category_name=None):
+    models = Model3D.objects.all().order_by('-id')
+    current_category = None
+
+    if category_name:
+        # Najdeme kategorii v databázi podle názvu
+        current_category = get_object_or_404(Category, name=category_name)
+        # Vyfiltrujeme pouze modely patřící do této kategorie
+        models = models.filter(category=current_category)
+
+    return render(request, 'model_list.html', {
+        'models': models,
+        'current_category': current_category
+    })
+
+
 # Detail 3D modelu
 def model_detail(request, pk):
-    # Najde model podle Primary Key (ID), nebo vrátí chybu 404
     model_obj = get_object_or_404(Model3D, pk=pk)
-
     context = {
         'model': model_obj,
-        'debug': settings.DEBUG  # Zde předáme proměnnou do šablony
+        'debug': settings.DEBUG
     }
     return render(request, 'model_detail.html', context)
-
-
-# Seznam nahraných 3D modelů
-def model_list(request):
-    models = Model3D.objects.all().order_by('-id')
-
-    return render(request, 'model_list.html', {'models': models})

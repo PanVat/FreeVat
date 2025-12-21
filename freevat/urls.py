@@ -26,8 +26,10 @@ urlpatterns += i18n_patterns(
     path('profile/', views.user_profile, name='profile'),
     # Cesta pro seznam modelů
     path('models/', views.model_list, name='model_list'),
-    # Detail 3D modelu
-    path('model/<int:pk>/', views.model_detail, name='model_detail')
+    # Zobrazení všech modelů v dané kategorii
+    path('models/<str:category_name>/', views.model_list, name='model_list_by_category'),
+    # PŘIDEJ TENTO ŘÁDEK:
+    path('model/<int:pk>/', views.model_detail, name='model_detail'),
 )
 
 # Rosetta
@@ -41,5 +43,5 @@ if settings.DEBUG:
     urlpatterns += [
         path("__reload__/", include("django_browser_reload.urls")),
     ]
-    # Django bude servírovat nahrané soubory (modely, obrázky) z /media/
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Django bude servírovat nahrané soubory (modely, obrázky) z /media/
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

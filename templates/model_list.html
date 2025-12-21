@@ -4,7 +4,13 @@
 {% block content %}
     <div class="container mx-auto px-4 py-8">
         <div class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl font-bold text-white">{% trans 'Free 3D models' %}</h1>
+            <h1 class="text-2xl font-bold text-white">
+                {% if current_category %}
+                    {% trans "Models in category" %}: {{ current_category.name }}
+                {% else %}
+                    {% trans "All 3D Models" %}
+                {% endif %}
+            </h1>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -14,37 +20,45 @@
 
                         <div class="aspect-video bg-gray-900 relative overflow-hidden w-full">
                             {% if model.thumbnail %}
-                                <img src="{{ model.thumbnail.url }}" alt="{{ model.title }}"
+                                <img src="{{ model.thumbnail.url }}" alt="{{ model.name }}"
                                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             {% else %}
                                 <div class="flex items-center justify-center h-full text-gray-600 italic text-sm">
-                                    <span>No Preview</span>
+                                    <span>{% trans "No Preview" %}</span>
                                 </div>
                             {% endif %}
                         </div>
 
                         <div class="p-3 flex items-start gap-3">
 
-                            <img src="{{ model.author.get_profile_picture }}"
-                                 alt="{{ model.author.username }}"
-                                 class="w-10 h-10 rounded-full object-cover border border-gray-700 flex-shrink-0">
+                            <div class="w-10 h-10 rounded-full bg-gray-700 border border-gray-600 flex-shrink-0 overflow-hidden">
+                                {% if model.user.profile.image %}
+                                    <img src="{{ model.user.profile.image.url }}" alt="{{ model.user.username }}"
+                                         class="w-full h-full object-cover">
+                                {% else %}
+                                    <div class="flex items-center justify-center h-full text-[10px] text-gray-400 uppercase">
+                                        {{ model.user.username|slice:":2" }}
+                                    </div>
+                                {% endif %}
+                            </div>
 
                             <div class="flex-1 min-w-0">
                                 <h3 class="text-sm font-bold text-white truncate leading-tight mb-0.5">
-                                    {{ model.title }}
+                                    {{ model.name }}
                                 </h3>
                                 <p class="text-xs text-gray-400 truncate">
-                                    {{ model.author.username }}
+                                    {{ model.user.username }}
                                 </p>
                             </div>
 
                             <div class="flex flex-col items-end gap-1 flex-shrink-0">
                                 <div class="flex gap-1">
                                     <div class="w-6 h-6 bg-gray-700 rounded flex items-center justify-center text-[10px] text-gray-300 border border-gray-600"
-                                         title="Category: {{ model.category }}">
-                                        <i class="fas fa-folder"></i></div>
+                                         title="Category: {{ model.category.name }}">
+                                        <i class="fas fa-folder"></i>
+                                    </div>
                                     <div class="px-1 min-w-[24px] h-6 bg-gray-700 rounded flex items-center justify-center text-[9px] font-bold text-green-400 border border-gray-600 uppercase">
-                                        {{ model.get_extension }}
+                                        {{ model.model.name|slice:"-4:"|cut:"." }}
                                     </div>
                                 </div>
 
@@ -56,13 +70,12 @@
                                     <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5">
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </a>
                 {% empty %}
                 <div class="col-span-full text-center py-12 text-gray-500">
-                    <p class="text-xl">{% trans 'No models uploaded yet.' %}</p>
+                    <p class="text-xl">{% trans 'No models found in this category.' %}</p>
                 </div>
             {% endfor %}
         </div>

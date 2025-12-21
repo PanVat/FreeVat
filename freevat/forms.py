@@ -49,7 +49,7 @@ class ModelUploadForm(forms.Form):
         label=_('Model'),
         widget=forms.FileInput(attrs={
             'class': 'file-input hidden',
-            'accept': '.obj,.fbx,.stl,.gltf,.glb,.usdz,.blend,.c4d,.max,.3ds,.mb,.ma'
+            'accept': '.obj,.fbx,.stl,.gltf,.glb,.blend,.c4d,.max,.3ds,.mb,.ma'
         })
     )
 

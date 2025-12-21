@@ -27,7 +27,6 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 # Povolené hosty, načtené z proměnné prostředí
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -156,6 +155,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.static',
+                # Pro zobrazení kategorií ve všech šablonách
+                'freevat.context_processors.categories_processor',
             ],
         },
     },

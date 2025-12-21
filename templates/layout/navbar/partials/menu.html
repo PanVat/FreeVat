@@ -6,24 +6,19 @@
     <nav aria-label="Header Navigation" class="menu-nav">
         <ul class="menu-wrapper">
 
-            <!-- Modely -->
+            <!-- Kategorie modelů -->
             <li class="menu-dropdown group">
                 <button class="menu-item">{% trans "Models" %}</button>
-                <!-- Jednotlivé kategorie modelů -->
                 <div class="menu-dropdown-area">
-                    <!-- Všechny modely -->
                     <a href="{% url 'model_list' %}" class="menu-dropdown-box">
-                        {% trans 'All categories' %}
+                        {% trans 'All' %}
                     </a>
-                    <a href="#" class="menu-dropdown-box">{% trans 'Animals & Pets' %}</a>
-                    <a href="#" class="menu-dropdown-box">{% trans 'Architecture' %}</a>
-                    <a href="#" class="menu-dropdown-box">{% trans 'Cars & Vehicles' %}</a>
-                    <a href="#" class="menu-dropdown-box">{% trans 'Characters & Creatures' %}</a>
-                    <a href="#" class="menu-dropdown-box">{% trans 'Electronics & Gadgets' %}</a>
-                    <a href="#" class="menu-dropdown-box">{% trans 'Food & Drink' %}</a>
-                    <a href="#" class="menu-dropdown-box">{% trans 'Furniture & Home' %}</a>
-                    <a href="#" class="menu-dropdown-box">{% trans 'Nature & Plants' %}</a>
-                    <a href="#" class="menu-dropdown-box">{% trans 'Sports & Fitness' %}</a>
+
+                    {% for category in categories %}
+                        <a href="{% url 'model_list_by_category' category.name %}" class="menu-dropdown-box">
+                            {{ category.name }}
+                        </a>
+                    {% endfor %}
                 </div>
             </li>
 
@@ -34,7 +29,6 @@
                     <!-- Názvy formátů -->
                     <a href="#" class="menu-dropdown-box">FBX</a>
                     <a href="#" class="menu-dropdown-box">OBJ</a>
-                    <a href="#" class="menu-dropdown-box">USDZ</a>
                     <a href="#" class="menu-dropdown-box">GLTF</a>
                     <a href="#" class="menu-dropdown-box">GLB</a>
                     <a href="#" class="menu-dropdown-box">STL</a>
