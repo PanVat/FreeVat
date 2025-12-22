@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from . import settings
-from .forms import ModelUploadForm
-from .models import Model3D, ModelImage, Category
+from .forms import ModelUploadForm # Formulář pro nahrání modelu
+from .models import Model3D, ModelImage, Category # Tabulky z databáze
 
 
 # Domovská stránka
@@ -11,6 +11,7 @@ def index(request):
     # Načtení všech kategorií
     categories = Category.objects.all().order_by('name')
 
+    # Předání kategorií do šablony
     context = {
         'categories': categories
     }
@@ -59,18 +60,41 @@ def user_profile(request):
 
 # Seznam nahraných 3D modelů
 def model_list(request, category_name=None):
-    models = Model3D.objects.all().order_by('-id')
+    # Základní QuerySet (zatím bez řazení)
+    models = Model3D.objects.all()
     current_category = None
 
+    # Filtrování podle kategorie
     if category_name:
         # Najdeme kategorii v databázi podle názvu
         current_category = get_object_or_404(Category, name=category_name)
         # Vyfiltrujeme pouze modely patřící do této kategorie
         models = models.filter(category=current_category)
 
+    # Řazení podle zvoleného kritéria
+    sort_by = request.GET.get('sort', 'newest')
+
+    # Nejnovější
+    if sort_by == 'newest':
+        models = models.order_by('-id')
+    # Nejstarší
+    elif sort_by == 'oldest':
+        models = models.order_by('id')
+    # Vzestupně podle názvu
+    elif sort_by == 'name_asc':
+        models = models.order_by('name')
+    # Sestupně podle názvu
+    elif sort_by == 'name_desc':
+        models = models.order_by('-name')
+    else:
+        # Fallback pro případ neznámého parametru
+        models = models.order_by('-id')
+
+    # Předání dat do šablony
     return render(request, 'model_list.html', {
         'models': models,
-        'current_category': current_category
+        'current_category': current_category,
+        'current_sort': sort_by
     })
 
 
