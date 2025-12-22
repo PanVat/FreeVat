@@ -17,6 +17,19 @@ node_modules/
 # VS Code
 .vscode/
 
+# Data z databáze
+media/
+
+# Media (uložená data z databáze)
+media/models/models/*
+media/models/thumbnails/*
+media/users/avatars/*
+
+# Ponechání prázdných složek
+!media/models/models/.gitkeep
+!media/models/thumbnails/.gitkeep
+!media/users/avatars/.gitkeep
+
 # Migrace
 freevat/migrations/*.*
 users/migrations/*.*
