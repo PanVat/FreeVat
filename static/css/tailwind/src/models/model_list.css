@@ -1,19 +1,108 @@
 /* Celá stránka */
-.models-full-page{
+.models-full-page {
     @apply px-4;
 }
 
 /* Nadpis a řazení modelů */
-.models-sort-container{
+.models-sort-container {
     @apply flex justify-between items-center py-8;
 }
 
 /* Nadpis stránky podle kategorie */
-.models-category-title{
+.models-category-title {
     @apply text-3xl font-bold text-white;
 }
 
 /* Dropdown pro řazení modelů */
-.models-sort-dropdown{
+.models-sort-dropdown {
     @apply relative z-20;
+}
+
+/* Štítek "Seřadit" u dropdownu */
+.models-sort-label {
+    @apply absolute -top-2 left-3 bg-[#222222] px-1 text-[10px] font-bold text-gray-400 uppercase tracking-wider z-10 pointer-events-none;
+}
+
+/* Tlačítko pro otevření dropdownu */
+.models-dropdown-button {
+    @apply flex items-center justify-between w-48 bg-[#222222] px-4 py-3 rounded-md border border-[#404040] transition-colors text-base cursor-pointer;
+}
+
+/* Dropdown s možnostmi řazení */
+.models-dropdown-menu {
+    @apply absolute right-0 mt-1 w-full bg-[#222222] border border-[#404040] z-50 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100;
+    @apply group-hover:visible transition-all duration-100 transform origin-top overflow-hidden;
+}
+
+/* Položka v dropdown menu */
+.models-dropdown-item {
+    @apply block text-base text-gray-300 transition-colors duration-200 px-3 py-2 mx-2 my-1;
+}
+
+.models-dropdown-item:hover {
+    @apply bg-[#3B4042] text-white rounded-md;
+}
+
+/* Seznam náhledových oken modelů */
+.models-preview-cards {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pb-8;
+}
+
+/* Náhledové okno modelu */
+.model-preview-card {
+    @apply bg-[#1A1A1A] rounded-md overflow-hidden drop-shadow-sm transition-all group-hover:scale-101 duration-150;
+}
+
+/* Náhledový obrázek modelu */
+.model-thumbnail-div {
+    @apply aspect-video bg-gray-900 relative overflow-hidden w-full;
+}
+
+.model-thumbnail-div img {
+    @apply w-full h-full object-cover group-hover:scale-103 transition-transform duration-300;
+}
+
+/* Informace o modelu pod obrázkem */
+.model-preview-info {
+    @apply p-3 flex items-start gap-3;
+}
+
+/* Profilová fotka tvůrce modelu */
+.model-info-profile {
+    @apply w-10 h-10 rounded-full bg-gray-700 flex-shrink-0 overflow-hidden;
+}
+
+/* Profilová fotka, pokud tvůrce nemá žádnou nastavenou */
+.model-info-profile-not-set {
+    @apply flex items-center justify-center h-full text-[10px] text-gray-400 uppercase;
+}
+
+/* Název modelu */
+.model-info-name {
+    @apply text-sm font-bold text-white truncate leading-tight mb-0.5;
+}
+
+/* Jméno tvůrce modelu */
+.model-info-creator {
+    @apply text-xs text-gray-400 truncate;
+}
+
+/* Vlastnosti modelu */
+.model-properties {
+    @apply flex flex-col items-end gap-1 flex-shrink-0;
+}
+
+/* Ikonka kategorie modelu */
+.model-property-icon {
+    @apply w-6 h-6 rounded flex items-center justify-center;
+}
+
+/* Název souboru modelu */
+.model-property-filename {
+    @apply px-1 rounded flex items-center justify-center text-xs font-bold text-green-400 uppercase;
+}
+
+/* Zpráva, když nejsou nalezeny žádné modely */
+.models-no-results {
+    @apply col-span-full text-center py-12 text-gray-500;
 }
