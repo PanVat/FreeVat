@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from . import settings
-from .forms import ModelUploadForm # Formulář pro nahrání modelu
-from .models import Model3D, ModelImage, Category # Tabulky z databáze
+from .forms import ModelUploadForm  # Formulář pro nahrání modelu
+from .models import Model3D, ModelImage, Category  # Tabulky z databáze
 
 
 # Domovská stránka
@@ -101,8 +101,17 @@ def model_list(request, category_name=None):
 # Detail 3D modelu
 def model_detail(request, pk):
     model_obj = get_object_or_404(Model3D, pk=pk)
+
+    # Načtení galerie obrázků pro tento model
+    gallery = model_obj.images.all()  # Předpokládám related_name='images' v ModelImage
+
+    # Načtení podobných modelů (stejná kategorie, kromě aktuálního)
+    similar_models = Model3D.objects.filter(category=model_obj.category).exclude(pk=pk)[:3]
+
     context = {
         'model': model_obj,
+        'gallery': gallery,
+        'similar_models': similar_models,
         'debug': settings.DEBUG
     }
     return render(request, 'model_detail.html', context)

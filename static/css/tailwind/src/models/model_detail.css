@@ -1,0 +1,6 @@
+/* Celá stránka */
+.model-detail-page{
+    @apply container mx-auto px-4 py-8;
+}
+
+/* Kontejner pro detaily modelu */
