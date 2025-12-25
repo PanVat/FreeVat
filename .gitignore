@@ -18,10 +18,11 @@ node_modules/
 .vscode/
 
 # Data z databáze
-media/**/*
+media/*
 
 # Ponechání prázdných složek
-!media/**/.gitkeep
+!.gitkeep
+!media/**/
 
 # Migrace
 freevat/migrations/*.*

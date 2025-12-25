@@ -12,9 +12,9 @@ class Category(models.Model):
 
     # Ikonka kategorie
     icon = models.FileField(upload_to="models/categories",
-                             null=True,
-                             blank=True,
-                             verbose_name=_("Category icon"))
+                            null=True,
+                            blank=True,
+                            verbose_name=_("Category icon"))
 
     def __str__(self):
         return self.name
@@ -22,6 +22,29 @@ class Category(models.Model):
     class Meta:
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
+
+
+# Formát 3D modelu
+class Format(models.Model):
+    # Název formátu
+    name = models.CharField(max_length=20, verbose_name=_("Format name"))
+
+    # Ikona formátu
+    icon = models.FileField(
+        upload_to='models/formats/',
+        verbose_name=_("Format icon"),
+        help_text=_("Upload a small image or SVG representing the format")
+    )
+
+    # Jednoduchý popisek (např. ".max, .3ds, .obj")
+    description = models.CharField(max_length=30, verbose_name=_("Description"))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _("Format")
+        verbose_name_plural = _("Formats")
 
 
 # 3D model

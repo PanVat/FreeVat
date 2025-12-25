@@ -9,12 +9,27 @@
 
 /* 3D scéna a navrhované modely */
 .model-detail-upper-section {
-    @apply grid grid-cols-1 lg:grid-cols-4 gap-6 mb-4;
+    @apply grid grid-cols-1 lg:grid-cols-4 gap-4 mb-4;
 }
 
 /* 3D scéna */
 .model-3d-scene {
     @apply lg:col-span-3 bg-[#1A1A1A] rounded-md overflow-hidden relative h-full shadow-sm;
+}
+
+/* Box s tlačítky pro fullscreen a reset kamery */
+.model-scene-buttons {
+    @apply absolute bottom-4 right-4 flex gap-2 z-30;
+}
+
+/* Tlačítka */
+.model-scene-button {
+    @apply w-10 h-10 text-white rounded-lg flex items-center justify-center;
+    @apply hover:scale-110 transition-transform cursor-pointer;
+}
+
+.model-scene-button img{
+    @apply w-7 h-7;
 }
 
 /* 3D scéna (načítání) */
@@ -38,7 +53,7 @@
 
 /* 3D scéna a navrhované modely */
 .model-detail-lower-section {
-    @apply grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6;
+    @apply grid grid-cols-1 lg:grid-cols-4 gap-4 mb-6;
 }
 
 /* Galerie náhledových obrázků modelu */
@@ -81,17 +96,22 @@
 }
 
 .model-rating-button img {
-    @apply w-7 h-7 transition-all;
+    @apply w-7 h-7;
 }
 
 /* Nový řádek s popisem a parametry */
-.model-info-description-row {
-    @apply grid grid-cols-1 md:grid-cols-3 gap-6 mb-4;
+.model-info-description-box {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-4 mb-4;
 }
 
 /* Box pro popis (vlevo - zabírá 2/3) */
 .model-description-box {
     @apply md:col-span-2 bg-[#1A1A1A] p-6 rounded-md;
+}
+
+/* Popis modelu */
+.model-description-text {
+    @apply text-gray-400 leading-relaxed;
 }
 
 /* Box pro technické parametry (vpravo - zabírá 1/3) */

@@ -1,0 +1,83 @@
+﻿[
+{
+    "model": "freevat.format",
+    "pk": 1,
+    "fields": {
+        "name": "Blender",
+        "icon": "models/formats/blender.svg",
+        "description": ".blend"
+    }
+},
+{
+    "model": "freevat.format",
+    "pk": 3,
+    "fields": {
+        "name": "Cinema 4D",
+        "icon": "models/formats/cinema_4d.svg",
+        "description": ".c4d"
+    }
+},
+{
+    "model": "freevat.format",
+    "pk": 4,
+    "fields": {
+        "name": "3ds Max",
+        "icon": "models/formats/3ds_max_DnMr9CT.png",
+        "description": ".max, .3ds"
+    }
+},
+{
+    "model": "freevat.format",
+    "pk": 5,
+    "fields": {
+        "name": "Maya",
+        "icon": "models/formats/maya.svg",
+        "description": ".mb, .ma"
+    }
+},
+{
+    "model": "freevat.format",
+    "pk": 6,
+    "fields": {
+        "name": "FBX",
+        "icon": "models/formats/fbx.png",
+        "description": ".fbx"
+    }
+},
+{
+    "model": "freevat.format",
+    "pk": 7,
+    "fields": {
+        "name": "OBJ",
+        "icon": "models/formats/obj.png",
+        "description": ".obj"
+    }
+},
+{
+    "model": "freevat.format",
+    "pk": 8,
+    "fields": {
+        "name": "GLTF",
+        "icon": "models/formats/gltf.png",
+        "description": ".gltf"
+    }
+},
+{
+    "model": "freevat.format",
+    "pk": 9,
+    "fields": {
+        "name": "GLB",
+        "icon": "models/formats/glb.png",
+        "description": ".glb"
+    }
+},
+{
+    "model": "freevat.format",
+    "pk": 10,
+    "fields": {
+        "name": "STL",
+        "icon": "models/formats/stl.png",
+        "description": ".stl"
+    }
+}
+]

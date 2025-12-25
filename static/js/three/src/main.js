@@ -1,93 +1,162 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader.js';
+import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader.js';
+import {STLLoader} from 'three/examples/jsm/loaders/STLLoader.js';
 
 function init() {
     const container = document.getElementById('model-container');
+    if (!container) return;
 
-    if (!container) {
-        console.error("Kontejner 'model-container' nebyl nalezen!");
+    const modelUrl = container.dataset.modelUrl;
+    if (!modelUrl) {
+        console.error("URL modelu nebyla nalezena.");
         return;
     }
 
-    // --- ZMĚNA: Testovací URL natvrdo ---
-    // Používáme veřejný model robota, abychom otestovali funkčnost vieweru
-    const modelUrl = 'https://threejs.org/examples/models/gltf/RobotExpressive/RobotExpressive.glb';
-
-    console.log("Používám testovací model:", modelUrl);
+    const extension = modelUrl.split('.').pop().toLowerCase();
 
     // --- Nastavení scény ---
     const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 2000);
+    const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
 
-    // --- Kamera ---
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.set(0, 5, 15); // Trochu dál a výš
-
-    // --- Renderer ---
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
-    // Vyčistíme kontejner (pro jistotu) a přidáme plátno
     container.innerHTML = '';
     container.appendChild(renderer.domElement);
 
-    // --- Světla ---
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-    scene.add(ambientLight);
-
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-    directionalLight.position.set(5, 10, 7.5);
-    scene.add(directionalLight);
+    // --- Posílené osvětlení ---
+    scene.add(new THREE.AmbientLight(0xffffff, 1.2));
+    const lights = [
+        {pos: [10, 20, 10], int: 2.0},
+        {pos: [-10, 10, -10], int: 1.5},
+        {pos: [0, -10, 0], int: 0.8}
+    ];
+    lights.forEach(l => {
+        const light = new THREE.DirectionalLight(0xffffff, l.int);
+        light.position.set(...l.pos);
+        scene.add(light);
+    });
 
     // --- Ovládání ---
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
 
-    // --- Načítání modelu ---
-    const loader = new GLTFLoader();
+    // Proměnné pro uložení výchozího stavu
+    let initialCameraPos = new THREE.Vector3();
+    let initialTarget = new THREE.Vector3();
 
-    loader.load(
-        modelUrl,
-        (gltf) => {
-            const model = gltf.scene;
-            scene.add(model);
+    // --- Funkce pro zpracování modelu ---
+    const setupModel = (object) => {
+        const box = new THREE.Box3().setFromObject(object);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
 
-            // Vycentrování modelu
-            const box = new THREE.Box3().setFromObject(model);
-            const center = box.getCenter(new THREE.Vector3());
+        // Vycentrování modelu
+        object.position.x += (object.position.x - center.x);
+        object.position.y += (object.position.y - center.y);
+        object.position.z += (object.position.z - center.z);
 
-            model.position.x += (model.position.x - center.x);
-            model.position.y += (model.position.y - center.y);
-            model.position.z += (model.position.z - center.z);
+        // Nastavení kamery (vzdálenost 1.2 pro lepší vyplnění plátna)
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const distance = maxDim * 1.2;
 
-            // Skrytí overlaye (pokud existuje)
-            const overlay = document.getElementById('loading-overlay');
-            if (overlay) overlay.style.display = 'none';
+        camera.position.set(distance, distance * 0.8, distance);
+        camera.lookAt(0, 0, 0);
+        controls.target.set(0, 0, 0);
+        controls.update();
 
-            console.log("Testovací model úspěšně načten!");
-        },
-        (xhr) => {
-            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-        },
-        (error) => {
-            console.error('Chyba při načítání modelu:', error);
-            alert("Chyba načítání: Podívej se do konzole (F12).");
+        // Uložení výchozího bodu pro tlačítko Reset
+        initialCameraPos.copy(camera.position);
+        initialTarget.copy(controls.target);
+
+        // Výpočet Triangles a Vertices
+        let triangles = 0;
+        let vertices = 0;
+        object.traverse((child) => {
+            if (child.isMesh) {
+                const pos = child.geometry.attributes.position;
+                if (pos) {
+                    triangles += pos.count / 3;
+                    vertices += pos.count;
+                }
+            }
+        });
+
+        const trisEl = document.getElementById('info-tris');
+        const vertsEl = document.getElementById('info-verts');
+        if (trisEl) trisEl.innerText = Math.round(triangles).toLocaleString();
+        if (vertsEl) vertsEl.innerText = Math.round(vertices).toLocaleString();
+
+        scene.add(object);
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) overlay.style.display = 'none';
+    };
+
+    // --- Logika tlačítek ---
+
+    // Reset pohledu
+    document.getElementById('reset-view')?.addEventListener('click', () => {
+        camera.position.copy(initialCameraPos);
+        controls.target.copy(initialTarget);
+        controls.update();
+    });
+
+    // Fullscreen
+    document.getElementById('toggle-fullscreen')?.addEventListener('click', () => {
+        const sceneContainer = document.querySelector('.model-3d-scene');
+        if (!document.fullscreenElement) {
+            sceneContainer.requestFullscreen().catch(err => console.error(err));
+        } else {
+            document.exitFullscreen();
         }
-    );
+    });
 
-    // --- Resize ---
-    window.addEventListener('resize', () => {
+    // --- Loadery ---
+    let loader;
+    switch (extension) {
+        case 'glb':
+        case 'gltf':
+            loader = new GLTFLoader();
+            loader.load(modelUrl, (gltf) => setupModel(gltf.scene));
+            break;
+        case 'obj':
+            loader = new OBJLoader();
+            loader.load(modelUrl, (obj) => setupModel(obj));
+            break;
+        case 'fbx':
+            loader = new FBXLoader();
+            loader.load(modelUrl, (fbx) => setupModel(fbx));
+            break;
+        case 'stl':
+            loader = new STLLoader();
+            loader.load(modelUrl, (geom) => {
+                const mat = new THREE.MeshStandardMaterial({color: 0xcccccc, metalness: 0.2, roughness: 0.5});
+                setupModel(new THREE.Mesh(geom, mat));
+            });
+            break;
+    }
+
+    // --- Resize události ---
+    const onResize = () => {
         camera.aspect = container.clientWidth / container.clientHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(container.clientWidth, container.clientHeight);
-    });
+    };
+
+    window.addEventListener('resize', onResize);
+    document.addEventListener('fullscreenchange', onResize);
 
     function animate() {
         requestAnimationFrame(animate);
         controls.update();
         renderer.render(scene, camera);
     }
+
     animate();
 }
 
