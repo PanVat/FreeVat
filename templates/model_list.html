@@ -83,18 +83,9 @@
                         <!-- Podokno s informacemi o modelu -->
                         <div class="model-preview-info">
 
-                            <!-- Profilový obrázek uživatele nebo iniciály -->
+                            <!-- Profilový obrázek uživatele -->
                             <div class="model-info-profile">
-                                <!-- Pokud má uživatel profilový obrázek, zobraz ho -->
-                                {% if model.user.profile.image %}
-                                    <img src="{{ model.user.profile.image.url }}" alt="{{ model.user.username }}"
-                                         class="w-full h-full object-cover">
-                                {% else %}
-                                    <!-- Jinak se vytvoří kruhové pole s iniciálami uživatele -->
-                                    <div class="model-info-profile-not-set">
-                                        {{ model.user.username|slice:":2" }}
-                                    </div>
-                                {% endif %}
+                                <img src="{{ model.user.get_profile_picture }}" alt="{{ model.user.username }}">
                             </div>
 
                             <div class="flex-1">

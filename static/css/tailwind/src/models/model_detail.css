@@ -1,6 +1,42 @@
 /* Celá stránka */
-.model-detail-page{
-    @apply container mx-auto px-4 py-8;
+.model-detail-page {
+    @apply p-6 text-white;
 }
 
-/* Kontejner pro detaily modelu */
+/*
+ * PRVNÍ SEKCE: 3D scéna a navrhované modely
+ */
+
+/* 3D scéna a navrhované modely */
+.model-detail-upper-section {
+    @apply grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6;
+}
+
+/* 3D scéna */
+.model-3d-scene {
+    @apply lg:col-span-3 bg-[#1A1A1A] rounded-md overflow-hidden relative h-full shadow-sm;
+}
+
+/* 3D scéna (načítání) */
+.model-scene-loading {
+    @apply absolute inset-0 flex items-center justify-center bg-[#1A1A1A] z-20;
+}
+
+/* Načítací kolečko */
+.model-scene-loader {
+    @apply w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-4;
+}
+
+/* Navrhované modely */
+.related-models-container {
+    @apply lg:col-span-1 flex flex-col gap-4;
+}
+
+/*
+ * DRUHÁ SEKCE: Bližší detaily modelu
+ */
+
+/* 3D scéna a navrhované modely */
+.model-detail-lower-section {
+    @apply grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8;
+}

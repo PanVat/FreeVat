@@ -17,6 +17,7 @@
 /* Jednotlivé stránky */
 @import './index.css';
 @import './models/model_list.css';
+@import './models/model_detail.css';
 
 /* Vlastní fonty */
 @theme {

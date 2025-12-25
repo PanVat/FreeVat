@@ -1,31 +1,94 @@
 {% extends "base/base.html" %}
+
+<!-- Načtení potřebných knihoven -->
 {% load i18n static %}
 
 {% block content %}
-    <div class="max-w-[1600px] mx-auto px-4 py-8 text-white">
+    <!-- Celá stránka -->
+    <div class="model-detail-page">
 
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+        <!-- Horní sekce s 3D modelem a dalšími doporučenými modely -->
+        <div class="model-detail-upper-section">
 
-            <div class="lg:col-span-3 bg-[#0F1112] rounded-2xl overflow-hidden border border-gray-800 relative h-[600px] shadow-2xl">
+            <!-- 3D scéna -->
+            <div class="model-3d-scene">
+                <!-- Kontejner s nahraným 3D modelem -->
                 <div id="model-container" data-model-url="{{ model.model.url }}" class="w-full h-full"></div>
 
-                <div id="loading-overlay" class="absolute inset-0 flex items-center justify-center bg-[#0F1112] z-20">
+                <!-- Načítací překryvná vrstva -->
+                <div id="loading-overlay" class="model-scene-loading">
+                    <!-- Text -->
                     <div class="text-center">
-                        <div class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                        <!-- Načítací kolečko -->
+                        <div class="model-scene-loader"></div>
                         <p class="text-lg font-medium">{% trans "Loading 3D Scene..." %}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="lg:col-span-1 flex flex-col gap-4">
-                <h2 class="text-sm font-bold uppercase tracking-wider text-gray-500">{% trans "Related Models" %}</h2>
+            <!-- Navrhované modely téže kategorie -->
+            <div class="related-models-container">
+                <!-- Načtení podobných modelů -->
                 {% for similar in similar_models %}
-                    <a href="{% url 'model_detail' similar.pk %}"
-                       class="group relative aspect-video bg-[#1A1D1E] rounded-xl overflow-hidden border border-gray-800 hover:border-blue-500 transition-all">
-                        <img src="{{ similar.thumbnail.url }}"
-                             class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
-                        <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
-                            <p class="text-sm font-medium truncate">{{ similar.name }}</p>
+                    <!-- Jednotlivé okno s odkazem na detail modelu -->
+                    <a href="{% url 'model_detail' similar.pk %}" class="group block">
+                        <div class="model-preview-card">
+
+                            <!-- Náhledový obrázek modelu importovaný z databáze -->
+                            <div class="model-thumbnail-div">
+                                {% if similar.thumbnail %}
+                                    <img src="{{ similar.thumbnail.url }}" alt="{{ similar.name }}">
+                                {% endif %}
+                            </div>
+
+                            <!-- Podokno s informacemi o modelu -->
+                            <div class="model-preview-info">
+
+                                <!-- Profilový obrázek uživatele -->
+                                <div class="model-info-profile">
+                                    <img src="{{ model.user.get_profile_picture }}" alt="{{ model.user.username }}">
+                                </div>
+
+                                <div class="flex-1 min-w-0">
+                                    <!-- Název modelu -->
+                                    <h3 class="model-info-name truncate">
+                                        {{ similar.name }}
+                                    </h3>
+                                    <!-- Uživatelské jméno vlastníka modelu -->
+                                    <p class="model-info-creator truncate">
+                                        {{ similar.user.username }}
+                                    </p>
+                                </div>
+
+                                <!-- Kategorie modelu a formát souboru -->
+                                <div class="model-properties">
+                                    <div class="flex gap-1 items-center">
+
+                                        <!-- Ikona kategorie modelu -->
+                                        <div class="model-property-icon w-4 h-4">
+                                            {% if similar.category.icon %}
+                                                <img src="{{ similar.category.icon.url }}"
+                                                     alt="{{ similar.category.name }}"
+                                                     class="w-full h-full object-contain">
+                                            {% endif %}
+                                        </div>
+                                        <!-- Formát souboru modelu -->
+                                        <div class="model-property-filename">
+                                            {{ similar.model.name|slice:"-4:"|cut:"."|upper }}
+                                        </div>
+                                    </div>
+
+                                    <!-- Uživatelské hodnocení modelu (5 hvězdiček) -->
+                                    <div class="flex gap-0.5 mt-1">
+                                        <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                                        <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                                        <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                                        <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                                        <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </a>
                     {% empty %}
@@ -34,8 +97,8 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
-
+        <!-- Spodní sekce s galerií obrázků, hodnocením modelu a bližšími informacemi o modelu -->
+        <div class="model-detail-lower-section">
             <div class="lg:col-span-3">
                 <div class="flex flex-wrap items-center justify-between gap-4 mb-6 bg-[#1A1D1E] p-4 rounded-2xl border border-gray-800">
                     <div>

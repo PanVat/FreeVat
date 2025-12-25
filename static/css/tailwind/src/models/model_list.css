@@ -55,7 +55,7 @@
 
 /* Náhledový obrázek modelu */
 .model-thumbnail-div {
-    @apply aspect-video bg-gray-900 relative overflow-hidden w-full;
+    @apply aspect-video relative overflow-hidden w-full;
 }
 
 .model-thumbnail-div img {
@@ -69,12 +69,7 @@
 
 /* Profilová fotka tvůrce modelu */
 .model-info-profile {
-    @apply w-10 h-10 rounded-full bg-gray-700 flex-shrink-0 overflow-hidden;
-}
-
-/* Profilová fotka, pokud tvůrce nemá žádnou nastavenou */
-.model-info-profile-not-set {
-    @apply flex items-center justify-center h-full text-[10px] text-gray-400 uppercase;
+    @apply w-10 h-10 rounded-full overflow-hidden flex items-center justify-center;
 }
 
 /* Název modelu */
