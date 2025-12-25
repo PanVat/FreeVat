@@ -1,6 +1,6 @@
 /* Celá stránka */
 .model-detail-page {
-    @apply p-6 text-white;
+    @apply px-4 text-white;
 }
 
 /*
@@ -9,7 +9,7 @@
 
 /* 3D scéna a navrhované modely */
 .model-detail-upper-section {
-    @apply grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6;
+    @apply grid grid-cols-1 lg:grid-cols-4 gap-6 mb-4;
 }
 
 /* 3D scéna */
@@ -38,5 +38,73 @@
 
 /* 3D scéna a navrhované modely */
 .model-detail-lower-section {
-    @apply grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8;
+    @apply grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6;
+}
+
+/* Galerie náhledových obrázků modelu */
+.model-detail-gallery {
+    @apply grid grid-cols-4 gap-4 bg-[#1A1A1A] p-4 rounded-md;
+}
+
+/* Náhledový obrázek (nahraný z DB) */
+.model-detail-thumbnail {
+    @apply aspect-video rounded-md overflow-hidden cursor-pointer;
+}
+
+/* Prázdný náhledový obrázek */
+.model-detail-thumbnail-empty {
+    @apply aspect-video bg-[#1A1D1E] rounded-xl flex items-center justify-center text-gray-700 text-2xl font-bold;
+}
+
+/*
+ * TŘETÍ SEKCE: Hodnocení modelu
+ */
+
+/* Sekce s hodnocením modelu */
+.model-rating-section {
+    @apply flex flex-wrap items-center justify-between gap-4 mb-4 bg-[#1A1A1A] p-4 rounded-md;
+}
+
+/* Název modelu */
+.model-rating-name {
+    @apply text-3xl font-black tracking-tight;
+}
+
+/* Kategorie modelu */
+.model-rating-category {
+    @apply text-blue-500 text-sm font-bold;
+}
+
+/* Tlačítka (like, dislike, sdílet) */
+.model-rating-button {
+    @apply w-12 h-12 flex items-center justify-center cursor-pointer;
+}
+
+.model-rating-button img {
+    @apply w-7 h-7 transition-all;
+}
+
+/* Nový řádek s popisem a parametry */
+.model-info-description-row {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-6 mb-4;
+}
+
+/* Box pro popis (vlevo - zabírá 2/3) */
+.model-description-box {
+    @apply md:col-span-2 bg-[#1A1A1A] p-6 rounded-md;
+}
+
+/* Box pro technické parametry (vpravo - zabírá 1/3) */
+.model-technical-params {
+    @apply md:col-span-1 bg-[#1A1A1A] p-6 rounded-md grid grid-cols-2 gap-4 h-full;
+}
+
+/* Jednotlivá položka parametru */
+.param-item {
+    @apply flex flex-col justify-center border-b border-gray-800 pb-2;
+}
+
+/* Nadpisy sekcí uvnitř boxů */
+.section-title {
+    @apply text-sm font-bold uppercase tracking-widest text-gray-500 mb-3;
 }

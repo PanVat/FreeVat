@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.5)  15 DEC 2025 12:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.5)  25 DEC 2025 17:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./sablona-zaverecne-prace.tex
-(sablona-zaverecne-prace.tex
+**./freevat.tex
+(freevat.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
@@ -562,84 +562,24 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 35.
 LaTeX Info: Redefining \hbar on input line 50.
 )
-(C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/oswald\Oswald.sty
-Package: Oswald 2021/10/17 (Carl-Clemens Ebinger and autoinst) Style file for O
-swald fonts.
-
-(C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
-Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
-
-(C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
-(C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
-\XKV@toks=\toks31
-\XKV@tempa@toks=\toks32
-)
-\XKV@depth=\count308
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 11
-2.
-
-(C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd
-File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-)<<t1.cmap>>) (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/base\text
-comp.sty
-Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-) (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/fontaxes\fontaxes.sty
-Package: fontaxes 2025-05-24 v2.0.1 Font selection axes (deprecated)
-)
-! Undefined control sequence.
-<recently read> ...ew_figurestyle_proportional:nn 
-                                                  
-l.37 }{}
-        
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.37 }{}
-        
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Undefined control sequence.
-<recently read> ...ons_new_figurestyle_tabular:nn 
-                                                  
-l.37 }{}
-        
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-) (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count309
+(C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count308
 \lst@gtempboxa=\box56
-\lst@token=\toks33
-\lst@length=\count310
+\lst@token=\toks31
+\lst@length=\count309
 \lst@currlwidth=\dimen198
-\lst@column=\count311
-\lst@pos=\count312
+\lst@column=\count310
+\lst@pos=\count311
 \lst@lostspace=\dimen199
 \lst@width=\dimen256
-\lst@newlines=\count313
-\lst@lineno=\count314
+\lst@newlines=\count312
+\lst@lineno=\count313
 \lst@maxwidth=\dimen257
+
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count315
-\lst@skipnumbers=\count316
+\c@lstnumber=\count314
+\lst@skipnumbers=\count315
 \lst@framebox=\box57
 )
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
@@ -655,38 +595,42 @@ Package: expl3 2024-01-04 L3 programming layer (loader)
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count317
+\l__color_backend_stack_int=\count316
 \l__pdf_internal_box=\box58
 ))
 Package: l3keys2e 2023-10-10 LaTeX2e option processing using LaTeX3 keys
 )
 Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
-\g__lipsum_par_int=\count318
-\l__lipsum_a_int=\count319
-\l__lipsum_b_int=\count320
+\g__lipsum_par_int=\count317
+\l__lipsum_a_int=\count318
+\l__lipsum_b_int=\count319
 
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex))
-(sablona-zaverecne-prace.aux)
-\openout1 = `sablona-zaverecne-prace.aux'.
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 25
+5.
+(C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)<<t1.cmap>> (freevat.aux)
+\openout1 = `freevat.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 255.
+LaTeX Font Info:    ... okay on input line 255.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 255.
+LaTeX Font Info:    ... okay on input line 255.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 255.
+LaTeX Font Info:    ... okay on input line 255.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 255.
+LaTeX Font Info:    ... okay on input line 255.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 255.
+LaTeX Font Info:    ... okay on input line 255.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 255.
+LaTeX Font Info:    ... okay on input line 255.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 255.
+LaTeX Font Info:    ... okay on input line 255.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 255.
+LaTeX Font Info:    ... okay on input line 255.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 255.
+LaTeX Font Info:    ... okay on input line 255.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -726,17 +670,17 @@ LaTeX Font Info:    ... okay on input line 276.
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count321
+\scratchcounter=\count320
 \scratchdimen=\dimen258
 \scratchbox=\box59
-\nofMPsegments=\count322
-\nofMParguments=\count323
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count324
+\nofMPsegments=\count321
+\nofMParguments=\count322
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count323
 \MPscratchDim=\dimen259
-\MPnumerator=\count325
-\makeMPintoPDFobject=\count326
-\everyMPtoPDFconversion=\toks35
+\MPnumerator=\count324
+\makeMPintoPDFobject=\count325
+\everyMPtoPDFconversion=\toks33
 )
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -752,10 +696,10 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 276.
- (sablona-zaverecne-prace.out) (sablona-zaverecne-prace.out)
+Package hyperref Info: Link coloring OFF on input line 255.
+ (freevat.out) (freevat.out)
 \@outlinefile=\write3
-\openout3 = `sablona-zaverecne-prace.out'.
+\openout3 = `freevat.out'.
 
 
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
@@ -771,126 +715,109 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-\c@lstlisting=\count327
-
-(cleaning stray figureversions output...)
-[1
-
-{C:/Users/poemc/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/poem
-c/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2
-
-]
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 28
-6.
+\c@lstlisting=\count326
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 26
+5.
 
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
-<image/logo-skoly.png, id=66, 356.2911pt x 137.5539pt>
-File: image/logo-skoly.png Graphic file (type png)
-<use image/logo-skoly.png>
-Package pdftex.def Info: image/logo-skoly.png  used on input line 290.
+<../img/school_logo.png, id=56, 356.2911pt x 137.5539pt>
+File: ../img/school_logo.png Graphic file (type png)
+<use ../img/school_logo.png>
+Package pdftex.def Info: ../img/school_logo.png  used on input line 269.
 (pdftex.def)             Requested size: 273.14923pt x 105.45715pt.
-<image/programovani-02.jpg, id=68, 1204.5pt x 677.53125pt>
-File: image/programovani-02.jpg Graphic file (type jpg)
-<use image/programovani-02.jpg>
-Package pdftex.def Info: image/programovani-02.jpg  used on input line 308.
-(pdftex.def)             Requested size: 364.19667pt x 204.86337pt.
+<../img/web_logo.png, id=58, 544.0325pt x 117.43875pt>
+File: ../img/web_logo.png Graphic file (type png)
+<use ../img/web_logo.png>
+Package pdftex.def Info: ../img/web_logo.png  used on input line 287.
+(pdftex.def)             Requested size: 364.19667pt x 78.62082pt.
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 313.
+ 292.
 
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )<<ot1.cmap>>
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 313.
+ 292.
 
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )<<oml.cmap>>
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 313.
+ 292.
 
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )<<oms.cmap>>
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 313.
+ 292.
 
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )<<omx.cmap>>
-LaTeX Font Info:    Trying to load font information for U+esint on input line 3
-13.
+LaTeX Font Info:    Trying to load font information for U+esint on input line 2
+92.
 
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
 File: uesint.fd 
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 31
-3.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 29
+2.
 
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 3
-13.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
+92.
 
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 313.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 292.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 313.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 292.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 313.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 292.
 
 [1
 
 
- <./image/logo-skoly.png> <./image/programovani-02.jpg>] [2
+
+{C:/Users/poemc/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/poem
+c/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <../img/school_log
+o.png> <../img/web_logo.png (PNG copy)>] [2
 
 ] [3] [4
 
-] [5]
-(sablona-zaverecne-prace.toc)
+] [5] (freevat.toc)
 \tf@toc=\write4
-\openout4 = `sablona-zaverecne-prace.toc'.
+\openout4 = `freevat.toc'.
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.399 	\chapter
-               *{Úvod} [1
+[1
 
-]
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.399 	\chapter
-               *{Úvod} [2
+] [2
 
 ] [3] [4
 
 ]
 Kapitola 1.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 429.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 408.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 429.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 408.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 429.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 408.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4
-36.
+15.
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 [5]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-53.
+32.
  (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -905,23 +832,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Underfull \vbox (badness 2326) has occurred while \output is active []
 
  [13]
-File: image/logo-skoly.png Graphic file (type png)
-<use image/logo-skoly.png>
-Package pdftex.def Info: image/logo-skoly.png  used on input line 695.
+File: ../img/school_logo.png Graphic file (type png)
+<use ../img/school_logo.png>
+Package pdftex.def Info: ../img/school_logo.png  used on input line 674.
 (pdftex.def)             Requested size: 273.14923pt x 105.45715pt.
 
 
-LaTeX Warning: Citation `socSSPU' on page 14 undefined on input line 700.
+LaTeX Warning: Citation `socSSPU' on page 14 undefined on input line 679.
 
-<image/vysledek_10.pdf, id=194, 433.62pt x 289.08pt>
-File: image/vysledek_10.pdf Graphic file (type pdf)
-<use image/vysledek_10.pdf>
-Package pdftex.def Info: image/vysledek_10.pdf  used on input line 705.
+<../img/vysledek_10.pdf, id=187, 433.62pt x 289.08pt>
+File: ../img/vysledek_10.pdf Graphic file (type pdf)
+<use ../img/vysledek_10.pdf>
+Package pdftex.def Info: ../img/vysledek_10.pdf  used on input line 684.
 (pdftex.def)             Requested size: 286.806pt x 191.21242pt.
-<image/vysledek_20.pdf, id=195, 433.62pt x 289.08pt>
-File: image/vysledek_20.pdf Graphic file (type pdf)
-<use image/vysledek_20.pdf>
-Package pdftex.def Info: image/vysledek_20.pdf  used on input line 709.
+<../img/vysledek_20.pdf, id=188, 433.62pt x 289.08pt>
+File: ../img/vysledek_20.pdf Graphic file (type pdf)
+<use ../img/vysledek_20.pdf>
+Package pdftex.def Info: ../img/vysledek_20.pdf  used on input line 688.
 (pdftex.def)             Requested size: 286.806pt x 191.21242pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -941,18 +868,18 @@ Package fancyhdr Warning: \headheight is too small (15.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.13202pt}.
 
-[15 <./image/vysledek_10.pdf> <./image/vysledek_20.pdf
+[15 <../img/vysledek_10.pdf> <../img/vysledek_20.pdf
 
-pdfTeX warning: pdflatex.exe (file ./image/vysledek_20.pdf): PDF inclusion: mul
-tiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex.exe (file ../img/vysledek_20.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
 >]
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 734.
+nput line 713.
 LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
-752.
+731.
 
 (C:\Users\poemc\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmtt.fd
 File: ts1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
@@ -965,6 +892,9 @@ Package fancyhdr Warning: \headheight is too small (15.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.13202pt}.
 
 [16]
+Underfull \vbox (badness 4242) has occurred while \output is active []
+
+
 
 Package fancyhdr Warning: \headheight is too small (15.0pt): 
 (fancyhdr)                Make it at least 15.13202pt, for example:
@@ -1004,19 +934,19 @@ Package fancyhdr Warning: \headheight is too small (15.0pt):
 
 [22
 
-] (sablona-zaverecne-prace.lof)
+] (freevat.lof)
 \tf@lof=\write5
-\openout5 = `sablona-zaverecne-prace.lof'.
+\openout5 = `freevat.lof'.
 
- (sablona-zaverecne-prace.lot)
+ (freevat.lot)
 \tf@lot=\write6
-\openout6 = `sablona-zaverecne-prace.lot'.
+\openout6 = `freevat.lot'.
 
  [23] [24]
 P\v {r}\'{\i }loha A.
 [25
 
-] (sablona-zaverecne-prace.aux)
+] (freevat.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1025,41 +955,40 @@ L3 programming layer <2024-01-04>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `sablona-zaverecne-prace.out' has not changed
-.
+Package rerunfilecheck Info: File `freevat.out' has not changed.
 (rerunfilecheck)             Checksum: C85B2B8BA4C39DC054E654068C54BBB8;1930.
  ) 
 Here is how much of TeX's memory you used:
- 18585 strings out of 474486
- 300519 string characters out of 5743755
- 1957542 words of memory out of 5000000
- 40334 multiletter control sequences out of 15000+600000
+ 18237 strings out of 474486
+ 293261 string characters out of 5743755
+ 1959542 words of memory out of 5000000
+ 40006 multiletter control sequences out of 15000+600000
  654618 words of font info for 162 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,12n,117p,851b,2176s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\poemc\AppData\Local\MiKTeX\fonts/pk/ljfour/public/esint/dpi720\esi
-nt10.pk> <C:\Users\poemc\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\tctt1200.pk> <C:\Users\poemc\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ectt1200.pk><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmex10.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/poemc/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/poemc/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/poemc/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/poemc/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Use
-rs/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm
-10.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rs
-fs10.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic
-/uhvb8a.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbo
-l/usyr.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol
-/usyr.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
-tmb8a.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
-tmr8a.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
-tmr8a.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
-tmri8a.pfb>
-Output written on sablona-zaverecne-prace.pdf (32 pages, 516331 bytes).
+ 79i,12n,93p,836b,2116s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\poemc\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt
+1200.pk> <C:\Users\poemc\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\ectt1200.pk><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmex10.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmmi10.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/poemc/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/poemc/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/poemc/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/poe
+mc/AppData/Local/Programs/MiKTeX/fonts/type1/public/esint-type1/esint10.pfb><C:
+/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsf
+s/rsfs10.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helv
+etic/uhvb8a.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/s
+ymbol/usyr.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/sy
+mbol/usyr.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
+es/utmb8a.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
+es/utmr8a.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
+es/utmr8a.pfb><C:/Users/poemc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on freevat.pdf (30 pages, 441012 bytes).
 PDF statistics:
- 559 PDF objects out of 1000 (max. 8388607)
- 122 named destinations out of 1000 (max. 500000)
+ 553 PDF objects out of 1000 (max. 8388607)
+ 125 named destinations out of 1000 (max. 500000)
  145 words of extra memory for PDF output out of 10000 (max. 10000000)
 

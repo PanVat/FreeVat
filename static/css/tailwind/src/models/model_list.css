@@ -5,12 +5,12 @@
 
 /* Nadpis a řazení modelů */
 .models-sort-container {
-    @apply flex justify-between items-center py-8;
+    @apply flex justify-between items-center;
 }
 
 /* Nadpis stránky podle kategorie */
 .models-category-title {
-    @apply text-3xl font-bold text-white;
+    @apply text-3xl font-bold text-white py-8;
 }
 
 /* Dropdown pro řazení modelů */
@@ -50,7 +50,7 @@
 
 /* Náhledové okno modelu */
 .model-preview-card {
-    @apply bg-[#1A1A1A] rounded-md overflow-hidden drop-shadow-sm transition-all group-hover:scale-101 duration-150;
+    @apply bg-[#1A1A1A] rounded-md overflow-hidden drop-shadow-sm transition-all duration-150;
 }
 
 /* Náhledový obrázek modelu */

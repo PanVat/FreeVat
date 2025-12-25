@@ -1,5 +1,0 @@
-# Export dat do souboru JSON
-python manage.py dumpdata freevat.Category --indent 4 > database/categories.json
-
-# Import dat ze souboru JSON
-python manage.py loaddata database/categories.json
