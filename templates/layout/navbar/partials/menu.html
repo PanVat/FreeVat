@@ -1,7 +1,7 @@
 <!-- Překlady -->
 {% load i18n %}
 
-<!-- Celé navigační menu -->
+<!-- Celé navigační menu (Položky jsou načtené z databáze) -->
 <div class="menu-container">
     <nav aria-label="Header Navigation" class="menu-nav">
         <ul class="menu-wrapper">
@@ -26,12 +26,12 @@
             <li class="menu-dropdown group">
                 <button class="menu-item">{% trans "Formats" %}</button>
                 <div class="menu-dropdown-area">
-                    <!-- Názvy formátů -->
-                    <a href="#" class="menu-dropdown-box">FBX</a>
-                    <a href="#" class="menu-dropdown-box">OBJ</a>
-                    <a href="#" class="menu-dropdown-box">GLTF</a>
-                    <a href="#" class="menu-dropdown-box">GLB</a>
-                    <a href="#" class="menu-dropdown-box">STL</a>
+                    {% for format in formats %}
+                        <a href="#"
+                           class="menu-dropdown-box">
+                            {{ format.name }}
+                        </a>
+                    {% endfor %}
                 </div>
             </li>
 
@@ -39,13 +39,15 @@
             <li class="menu-dropdown group">
                 <button class="menu-item">{% trans "Software" %}</button>
                 <div class="menu-dropdown-area">
-                    <!-- Názvy software -->
-                    <a href="#" class="menu-dropdown-box">Blender</a>
-                    <a href="#" class="menu-dropdown-box">3ds Max</a>
-                    <a href="#" class="menu-dropdown-box">Maya</a>
-                    <a href="#" class="menu-dropdown-box">Cinema 4D</a>
+                    {% for software in software_list %}
+                        <a href="#"
+                           class="menu-dropdown-box">
+                            {{ software.name }}
+                        </a>
+                    {% endfor %}
                 </div>
             </li>
+
 
             <!-- Oddělovací svislá čára -->
             <li>

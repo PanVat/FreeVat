@@ -46,6 +46,27 @@ class Format(models.Model):
         verbose_name = _("Format")
         verbose_name_plural = _("Formats")
 
+# Formát 3D software
+class Software(models.Model):
+    # Název formátu
+    name = models.CharField(max_length=20, verbose_name=_("Software name"))
+
+    # Ikona formátu
+    icon = models.FileField(
+        upload_to='models/software/',
+        verbose_name=_("Format icon"),
+        help_text=_("Upload a small image or SVG representing the software")
+    )
+
+    # Jednoduchý popisek (např. ".max, .3ds")
+    description = models.CharField(max_length=30, verbose_name=_("Software"))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _("Software")
+        verbose_name_plural = _("Software")
 
 # 3D model
 class Model3D(models.Model):

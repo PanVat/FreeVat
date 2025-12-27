@@ -1,6 +1,9 @@
-from .models import Category
+from .models import Category, Format, Software
 
-
-# Zpřístupnění všech kategorií ve všech šablonách
-def categories_processor(request):
-    return {'categories': Category.objects.all().order_by('name')}
+# Umožní přístup k datům z databáze ve všech šablonách
+def global_data(request):
+    return {
+        "categories": Category.objects.all(),
+        "formats": Format.objects.all(),
+        "software_list": Software.objects.all(),
+    }

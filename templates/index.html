@@ -133,111 +133,57 @@
 
         <!-- Loga 3D Software -->
         <div class="flex flex-col items-center mt-20">
-            <!-- Nadpis -->
-            <h2 class="text-3xl font-bold text-center mb-12">{% trans 'Compatible With The Most Popular 3D Programs' %}</h2>
+            <h2 class="text-3xl font-bold text-center mb-12">
+                {% trans 'Compatible With The Most Popular 3D Programs' %}
+            </h2>
 
             <div class="software-logos-container">
-                <!-- Blender -->
-                <div class="software-logo-item">
-                    <img src="{% static 'img/icons/software/blender.svg' %}" alt="Blender" class="software-logo-img">
-                    <div class="software-logo-content">
-                        <h3 class="software-logo-title">Blender</h3>
-                        <p class="software-logo-extension"><strong>.blend</strong>, .fbx, .obj</p>
-                    </div>
-                </div>
+                {% for software in software_list %}
+                    <div class="software-logo-item">
+                        {% if software.icon %}
+                            <img src="{{ software.icon.url }}"
+                                 alt="{{ software.name }}"
+                                 class="software-logo-img">
+                        {% endif %}
 
-                <!-- Cinema 4D -->
-                <div class="software-logo-item">
-                    <img src="{% static 'img/icons/software/cinema_4d.svg' %}" alt="Cinema 4D"
-                         class="software-logo-img">
-                    <div class="software-logo-content">
-                        <h3 class="software-logo-title">Cinema 4D</h3>
-                        <p class="software-logo-extension"><strong>.c4d</strong>, .fbx, .obj</p>
+                        <div class="software-logo-content">
+                            <h3 class="software-logo-title">{{ software.name }}</h3>
+                            <p class="software-logo-extension">
+                                {{ software.description }}
+                            </p>
+                        </div>
                     </div>
-                </div>
-
-                <!-- 3ds Max -->
-                <div class="software-logo-item">
-                    <img src="{% static 'img/icons/software/3ds_max.png' %}" alt="3ds Max" class="software-logo-img">
-                    <div class="software-logo-content">
-                        <h3 class="software-logo-title">3ds Max</h3>
-                        <p class="software-logo-extension"><strong>.max</strong>,<strong>.3ds</strong>, .fbx</p>
-                    </div>
-                </div>
-
-                <!-- Maya -->
-                <div class="software-logo-item">
-                    <img src="{% static 'img/icons/software/maya.svg' %}" alt="Maya" class="software-logo-img">
-                    <div class="software-logo-content">
-                        <h3 class="software-logo-title">Maya</h3>
-                        <p class="software-logo-extension"><strong>.mb</strong>,<strong>.ma</strong>, .fbx</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
+
 
         <!-- Loga 3D Formátů -->
         <div class="flex flex-col items-center mt-20 mb-20">
-            <!-- Nadpis -->
-            <h2 class="text-3xl font-bold text-center mb-12">{% trans 'Support Of The Most Common File Formats' %}</h2>
+            <h2 class="text-3xl font-bold text-center mb-12">
+                {% trans 'Support Of The Most Common File Formats' %}
+            </h2>
 
-            <div class="format-logos-container flex justify-center">
-                <!-- FBX -->
-                <div class="format-logo-item">
-                    <div class="flex items-center space-x-4">
-                        <img src="{% static 'img/icons/formats/fbx.png' %}" alt="FBX" class="format-logo-img">
-                        <div>
-                            <h3 class="format-logo-title">FBX</h3>
-                            <p class="format-logo-extension">.fbx</p>
+            <div class="format-logos-container flex justify-center flex-wrap gap-6">
+                {% for format in formats %}
+                    <div class="format-logo-item">
+                        <div class="flex items-center space-x-4">
+                            {% if format.icon %}
+                                <img src="{{ format.icon.url }}"
+                                     alt="{{ format.name }}"
+                                     class="format-logo-img">
+                            {% endif %}
+
+                            <div>
+                                <h3 class="format-logo-title">{{ format.name }}</h3>
+                                <p class="format-logo-extension">{{ format.description }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- OBJ -->
-                <div class="format-logo-item">
-                    <div class="flex items-center space-x-4">
-                        <img src="{% static 'img/icons/formats/fbx.png' %}" alt="OBJ" class="format-logo-img">
-                        <div>
-                            <h3 class="format-logo-title">OBJ</h3>
-                            <p class="format-logo-extension">.obj</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GLTF -->
-                <div class="format-logo-item">
-                    <div class="flex items-center space-x-4">
-                        <img src="{% static 'img/icons/formats/fbx.png' %}" alt="GLTF" class="format-logo-img">
-                        <div>
-                            <h3 class="format-logo-title">GLTF</h3>
-                            <p class="format-logo-extension">.gltf</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GLB -->
-                <div class="format-logo-item">
-                    <div class="flex items-center space-x-4">
-                        <img src="{% static 'img/icons/formats/fbx.png' %}" alt="GLB" class="format-logo-img">
-                        <div>
-                            <h3 class="format-logo-title">GLB</h3>
-                            <p class="format-logo-extension">.glb</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- STL -->
-                <div class="format-logo-item">
-                    <div class="flex items-center space-x-4">
-                        <img src="{% static 'img/icons/formats/fbx.png' %}" alt="STL" class="format-logo-img">
-                        <div>
-                            <h3 class="format-logo-title">STL</h3>
-                            <p class="format-logo-extension">.stl</p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
+
 
         <!-- Prohlížejte nejnovější 3D modely -->
         <div>

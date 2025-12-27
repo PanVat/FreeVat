@@ -155,8 +155,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.static',
-                # Pro zobrazení kategorií ve všech šablonách
-                'freevat.context_processors.categories_processor',
+                # Pro zobrazení dat z databáze ve všech šablonách
+                'freevat.context_processors.global_data',
             ],
         },
     },
