@@ -33,6 +33,11 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - `Oracle VirtualBox` - Testování aplikace na jiných zařízeních
 ---
 
+## 🔧Instalace
+- Jak nainstalovat a spustit aplikaci lokálně je uvedeno [zde](docs/INSTALL.md)
+
+---
+
 ## 💡Inspirace
 
 - Poliigon - https://www.poliigon.com/
@@ -54,12 +59,14 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - [x] Prodádění základních CRUD operací s 3D modely
 - [x] Prohlížení objektů v 360° - posouvání, přibližování i rotace
 - [x] Podpora základních 3D formátů - `.obj`, `.fbx`, `.usdz`, `.stl` a `.glb`
-- [x] Podpora softwarových formátů - `.blend`, `.max`, `.c4d` a `.ma`
+- [ ] Podpora softwarových formátů - `.blend`, `.max`, `.c4d` a `.ma`
 - [x] Registrace, přihlašování a mazání uživatelských účtů
-- [ ] Zobrazování základních informací o modelech (počet ploch, velikost souboru..)
+- [x] Zobrazování základních informací o modelech (počet ploch, velikost souboru..)
 - [x] Více jazyků na výběr - čeština / angličtina / němčina
-- [ ] Plně responzivní design
+- [ ] Plně responzivní design pro PC
+- [ ] Plně responzivní design pro mobily a tablety
 - [ ] Vyhledávání 3D modelů podle názvu, případně podle velikosti
+- [x] Řazení modelů podle data přidání, názvu nebo velikosti
 - [ ] Nasazení aplikace na Kubernetes
 - [ ] Uspokojení Grussmannových očekávání
 ---
