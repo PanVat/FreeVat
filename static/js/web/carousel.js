@@ -9,32 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* Funkce pro aktualizaci viditelnosti šipek */
     function updateArrowVisibility() {
-        // Tolerance 5px pro zaokrouhlení
-        const tolerance = 5;
+        // UPRAVENO: Odstraněna logika skrývání.
+        // Šipky se pouze "resetují" do viditelného stavu, aby byly vždy dostupné.
 
-        // Kontrola zda jsme na začátku
-        const isAtStart = carousel.scrollLeft <= tolerance;
+        leftArrow.classList.remove('arrow-hidden');
+        leftArrow.style.pointerEvents = 'auto';
 
-        // Kontrola zda jsme na konci
-        const isAtEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - tolerance;
-
-        /* Šipka nalevo */
-        if (isAtStart) {
-            leftArrow.classList.add('arrow-hidden');
-            leftArrow.style.pointerEvents = 'none';
-        } else {
-            leftArrow.classList.remove('arrow-hidden');
-            leftArrow.style.pointerEvents = 'auto';
-        }
-
-        /* Šipka napravo */
-        if (isAtEnd) {
-            rightArrow.classList.add('arrow-hidden');
-            rightArrow.style.pointerEvents = 'none';
-        } else {
-            rightArrow.classList.remove('arrow-hidden');
-            rightArrow.style.pointerEvents = 'auto';
-        }
+        rightArrow.classList.remove('arrow-hidden');
+        rightArrow.style.pointerEvents = 'auto';
     }
 
     /* Inicializace při načtení */

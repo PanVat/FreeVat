@@ -8,6 +8,7 @@
 {% block content %}
     <!-- Celá stránka -->
     <div class="main">
+
         <!-- Nadpisy -->
         <div class="main-header">
             <h1>{% trans 'Unlimited World of Professional 3D Models' %}</h1>
@@ -25,13 +26,8 @@
             <div class="categories-carousel">
                 <div class="carousel-group">
                     {% for category in categories %}
-                        <a class="carousel-card" href="#">
-                            {% if category.icon %}
-                                <img src="{{ category.icon.url }}" alt="{{ category.name }}">
-                            {% else %}
-                                <img src="{% static 'img/icons/default.svg' %}" alt="{{ category.name }}">
-                            {% endif %}
-
+                        <a class="carousel-card" href="{% url 'model_list_by_category' category.name %}">
+                            <img src="{{ category.icon.url }}" alt="{{ category.name }}">
                             <span>{{ category.name }}</span>
                         </a>
                     {% endfor %}
@@ -40,7 +36,7 @@
 
             <!-- Šipky pro posun carouselu doleva -->
             <button class="carousel-arrow carousel-arrow-right">
-                <img src="{% static 'img/icons/arrow_right.svg' %}" alt="{% trans 'Arrow Right' %}" class="arrow-icon">
+                <img src="{% static 'img/icons/arrow_right.svg' %}" alt="{% trans 'Arrow right' %}" class="arrow-icon">
             </button>
         </div>
 
@@ -48,152 +44,166 @@
         <div class="feature-container">
             <!-- Karta 1 (Kompletně bezplatný přístup) -->
             <div class="feature-card">
-                <div class="feature-icon"><img src="{% static 'img/icons/money_off.svg' %}" alt="Money Off"></div>
+                <!-- Ikonka -->
+                <div class="feature-icon"><img src="{% static 'img/icons/money_off.svg' %}" alt="{% trans 'Free' %}">
+                </div>
+
+                <!-- Nadpis -->
                 <h3>{% trans 'COMPLETELY FREE ACCESS' %}</h3>
 
+                <!-- Seznam funkcí -->
                 <div class="feature-list">
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Get any model for free' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Extensive 3D Model Library' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Multiple 3D format support' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Absolutely no ads' %}</span>
                     </div>
                 </div>
 
-                <a href="{% url 'upload' %}" class="feature-button">{% trans "Create Account" %}</a>
+                <!-- Tlačítko (pokud je uživatel přihlášen, vede na profil, jinak na registraci) -->
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="feature-button">{% trans "Create account" %}</a>
+                {% else %}
+                    <a href="{% url 'users:register' %}" class="feature-button">{% trans "Create account" %}</a>
+                {% endif %}
             </div>
 
             <!-- Karta 2 (Sdílejte svůj 3D model ještě dnes) -->
             <div class="feature-card">
-                <div class="feature-icon"><img src="{% static 'img/icons/accessibility.svg' %}" alt="Accessibility">
+                <!-- Ikonka -->
+                <div class="feature-icon"><img src="{% static 'img/icons/accessibility.svg' %}"
+                                               alt="{% trans 'Accessibility' %}">
                 </div>
+
+                <!-- Nadpis -->
                 <h3>{% trans 'SHARE YOUR CREATIONS' %}</h3>
 
+                <!-- Seznam funkcí -->
                 <div class="feature-list">
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Upload your models for free' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Unpaid account creation' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Secure registration and login' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Anyone can rate your models' %}</span>
                     </div>
                 </div>
 
-                <a href="{% url 'upload' %}" class="feature-button">{% trans "Upload Model" %}</a>
+                <!-- Tlačítko (pokud je uživatel přihlášen, vede na nahrání modelu, jinak na registraci) -->
+                {% if user.is_authenticated %}
+                    <a href="{% url 'upload' %}" class="feature-button">{% trans "Upload model" %}</a>
+                {% else %}
+                    <a href="{% url 'users:login' %}" class="feature-button">{% trans "Upload model" %}</a>
+                {% endif %}
             </div>
 
             <!-- Karta 3 (Pokročilý 3D prohlížeč) -->
             <div class="feature-card">
+                <!-- Ikonka -->
                 <div class="feature-icon">
-                    <img src="{% static 'img/icons/head_mounted_device.svg' %}" alt="VR Headset">
+                    <img src="{% static 'img/icons/head_mounted_device.svg' %}" alt="{% trans 'VR headset' %}">
                 </div>
+                <!-- Nadpis -->
                 <h3>{% trans 'ADVANCED 3D VIEWER' %}</h3>
 
+                <!-- Seznam funkcí -->
                 <div class="feature-list">
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Full 360° model preview' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Panning, zooming and rotating' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Texture visibility control' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="Check Icon">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
                         <span>{% trans 'Works on all devices' %}</span>
                     </div>
                 </div>
 
-                <a href="#" class="feature-button">{% trans "Explore Assets" %}</a>
+                <!-- Tlačítko -->
+                <a href="{% url 'model_list' %}" class="feature-button">{% trans "Explore 3Ds" %}</a>
             </div>
-        </div>
 
-        <!-- Loga 3D Software -->
-        <div class="flex flex-col items-center mt-20">
-            <h2 class="text-3xl font-bold text-center mb-12">
-                {% trans 'Compatible With The Most Popular 3D Programs' %}
-            </h2>
+            <!-- Karta 4 (Úprava uživatelského profilu) -->
+            <div class="feature-card">
+                <!-- Ikonka -->
+                <div class="feature-icon">
+                    <img src="{% static 'img/icons/user.svg' %}" alt="{% trans 'User' %}">
+                </div>
+                <!-- Nadpis -->
+                <h3>{% trans 'SIMPLE MAINTENANCE' %}</h3>
 
-            <div class="software-logos-container">
-                {% for software in software_list %}
-                    <div class="software-logo-item">
-                        {% if software.icon %}
-                            <img src="{{ software.icon.url }}"
-                                 alt="{{ software.name }}"
-                                 class="software-logo-img">
-                        {% endif %}
-
-                        <div class="software-logo-content">
-                            <h3 class="software-logo-title">{{ software.name }}</h3>
-                            <p class="software-logo-extension">
-                                {{ software.description }}
-                            </p>
-                        </div>
+                <!-- Seznam funkcí -->
+                <div class="feature-list">
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <span>{% trans 'Secure pasword change' %}</span>
                     </div>
-                {% endfor %}
-            </div>
-        </div>
-
-
-        <!-- Loga 3D Formátů -->
-        <div class="flex flex-col items-center mt-20 mb-20">
-            <h2 class="text-3xl font-bold text-center mb-12">
-                {% trans 'Support Of The Most Common File Formats' %}
-            </h2>
-
-            <div class="format-logos-container flex justify-center flex-wrap gap-6">
-                {% for format in formats %}
-                    <div class="format-logo-item">
-                        <div class="flex items-center space-x-4">
-                            {% if format.icon %}
-                                <img src="{{ format.icon.url }}"
-                                     alt="{{ format.name }}"
-                                     class="format-logo-img">
-                            {% endif %}
-
-                            <div>
-                                <h3 class="format-logo-title">{{ format.name }}</h3>
-                                <p class="format-logo-extension">{{ format.description }}</p>
-                            </div>
-                        </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <span>{% trans 'Add user information' %}</span>
                     </div>
-                {% endfor %}
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <span>{% trans 'No cyber tracking' %}</span>
+                    </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/icons/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <span>{% trans 'Safe account deletion' %}</span>
+                    </div>
+                </div>
+
+                <!-- Tlačítko (pokud je uživatel přihlášen, vede na profil, jinak na registraci) -->
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="feature-button">{% trans "View your profile" %}</a>
+                {% else %}
+                    <a href="{% url 'users:login' %}" class="feature-button">{% trans "View your profile" %}</a>
+                {% endif %}
             </div>
         </div>
-
 
         <!-- Prohlížejte nejnovější 3D modely -->
-        <div>
+        <div class="latest-models-section">
             <!-- Nadpis -->
-            <h2 class="text-3xl font-bold text-center mb-12">{% trans 'Browse The Latest 3D Models' %}</h2>
-            <div>
+            <h2 class="latest-models-heading">{% trans 'Browse The Latest 3D Models' %}</h2>
 
+            <!-- Mřížka s náhledy modelů -->
+            <div class="latest-models-grid">
+                {% for model in latest_models %}
+                    <!-- Jednotlivé okno s modelem -->
+                    {% include 'models/partials/model_box.html' with similar=model %}
+                    {% empty %}
+                    <p class="text-gray-400 text-center col-span-full">{% trans "No models available yet." %}</p>
+                {% endfor %}
             </div>
-        </div>
 
+        </div>
     </div>
 
     <!-- Obsahuje logiku pro posun carouselu pomocí šipek -->

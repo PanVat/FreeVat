@@ -11,9 +11,13 @@ def index(request):
     # Načtení všech kategorií
     categories = Category.objects.all().order_by('name')
 
-    # Předání kategorií do šablony
+    # Načtení 10 nejnovějších modelů
+    latest_models = Model3D.objects.all().order_by('-id')[:8]
+
+    # Předání dat do šablony
     context = {
-        'categories': categories
+        'categories': categories,
+        'latest_models': latest_models
     }
 
     return render(request, 'index.html', context)

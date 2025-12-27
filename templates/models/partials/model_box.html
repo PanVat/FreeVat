@@ -1,0 +1,63 @@
+{% load static %}
+
+<!-- Jednotlivé okno s odkazem na detail modelu -->
+<a href="{% url 'model_detail' similar.pk %}" class="group block">
+    <div class="model-preview-card">
+
+        <!-- Náhledový obrázek modelu importovaný z databáze -->
+        <div class="model-thumbnail-div">
+            {% if similar.thumbnail %}
+                <img src="{{ similar.thumbnail.url }}" alt="{{ similar.name }}">
+            {% endif %}
+        </div>
+
+        <!-- Podokno s informacemi o modelu -->
+        <div class="model-preview-info">
+
+            <!-- Profilový obrázek uživatele -->
+            <div class="model-info-profile">
+                <img src="{{ model.user.get_profile_picture }}" alt="{{ model.user.username }}">
+            </div>
+
+            <div class="flex-1 min-w-0">
+                <!-- Název modelu -->
+                <h3 class="model-info-name truncate">
+                    {{ similar.name }}
+                </h3>
+                <!-- Uživatelské jméno vlastníka modelu -->
+                <p class="model-info-creator truncate">
+                    {{ similar.user.username }}
+                </p>
+            </div>
+
+            <!-- Kategorie modelu a formát souboru -->
+            <div class="model-properties">
+                <div class="flex gap-1 items-center">
+
+                    <!-- Ikona kategorie modelu -->
+                    <div class="model-property-icon w-4 h-4">
+                        {% if similar.category.icon %}
+                            <img src="{{ similar.category.icon.url }}"
+                                 alt="{{ similar.category.name }}"
+                                 class="w-full h-full object-contain">
+                        {% endif %}
+                    </div>
+                    <!-- Formát souboru modelu -->
+                    <div class="model-property-filename">
+                        {{ similar.model.name|slice:"-4:"|cut:"."|upper }}
+                    </div>
+                </div>
+
+                <!-- Uživatelské hodnocení modelu (5 hvězdiček) -->
+                <div class="flex gap-0.5 mt-1">
+                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</a>

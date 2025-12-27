@@ -72,65 +72,7 @@
         <div class="models-preview-cards">
             {% for model in models %}
                 <!-- Jednotlivé okno s odkazem na detail modelu -->
-                <a href="{% url 'model_detail' model.pk %}" class="group block">
-                    <div class="model-preview-card">
-
-                        <!-- Náhledový obrázek modelu importovaný z databáze -->
-                        <div class="model-thumbnail-div">
-                            <img src="{{ model.thumbnail.url }}" alt="{{ model.name }}">
-                        </div>
-
-                        <!-- Podokno s informacemi o modelu -->
-                        <div class="model-preview-info">
-
-                            <!-- Profilový obrázek uživatele -->
-                            <div class="model-info-profile">
-                                <img src="{{ model.user.get_profile_picture }}" alt="{{ model.user.username }}">
-                            </div>
-
-                            <div class="flex-1">
-                                <!-- Název modelu -->
-                                <h3 class="model-info-name">
-                                    {{ model.name }}
-                                </h3>
-                                <!-- Uživatelské jméno vlastníka modelu -->
-                                <p class="model-info-creator">
-                                    {{ model.user.username }}
-                                </p>
-                            </div>
-
-                            <!-- Kategorie modelu a formát souboru -->
-                            <div class="model-properties">
-                                <div class="flex gap-1 items-center">
-                                    <!-- Ikona kategorie modelu -->
-                                    <div class="model-property-icon">
-                                        <img src="{{ model.category.icon.url }}"
-                                             alt="{{ model.category.name }}"
-                                             class=object-contain">
-                                    </div>
-                                    <!-- Formát souboru modelu -->
-                                    <div class="model-property-filename">
-                                        {{ model.model.name|slice:"-4:"|cut:"." }}
-                                    </div>
-                                </div>
-
-                                <!-- Uživatelské hodnocení modelu (5 hvězdiček) -->
-                                <div class="flex gap-0.5 mt-1">
-                                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5"
-                                         alt="{% trans 'Star' %}">
-                                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5"
-                                         alt="{% trans 'Star' %}">
-                                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5"
-                                         alt="{% trans 'Star' %}">
-                                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5"
-                                         alt="{% trans 'Star' %}">
-                                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5"
-                                         alt="{% trans 'Star' %}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                {% include 'models/partials/model_box.html' with similar=model %}
                 <!-- Zpráva, že nebyly nalezeny žádné modely v dané kategorii -->
                 {% empty %}
                 <div class="models-no-results">
