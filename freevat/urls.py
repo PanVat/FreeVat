@@ -27,7 +27,10 @@ urlpatterns += i18n_patterns(
     # Cesta pro seznam modelů
     path('models/', views.model_list, name='model_list'),
     # Zobrazení všech modelů v dané kategorii
-    path('models/<str:category_name>/', views.model_list, name='model_list_by_category'),
+    path('models/category/<str:category_name>/', views.model_list, name='model_list_by_category'),
+    # Zobrazení modelů v daném formátu
+    path('models/format/<str:format_ext>/', views.model_list, name='model_list_by_format'),
+    path('models/software/<str:software_name>/', views.model_list, name='model_list_by_software'),
     # PŘIDEJ TENTO ŘÁDEK:
     path('model/<int:pk>/', views.model_detail, name='model_detail'),
 )

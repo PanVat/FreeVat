@@ -54,7 +54,7 @@
 /* Položka v dropdown menu */
 .menu-dropdown-box {
     @apply px-3 py-2 text-base text-gray-300 whitespace-nowrap flex items-center;
-    @apply rounded-md transition-colors duration-200;
+    @apply rounded-md transition-colors duration-150;
 }
 
 /* Přejetí kurzorem po položce v menu */

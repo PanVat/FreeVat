@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from . import settings
 from .forms import ModelUploadForm  # Formulář pro nahrání modelu
-from .models import Model3D, ModelImage, Category  # Tabulky z databáze
+from .models import Model3D, ModelImage  # Tabulky z databáze
+from .models import Category, Format, Software  # Tabulky z databáze
 
 
 # Domovská stránka
@@ -63,42 +64,39 @@ def user_profile(request):
 
 
 # Seznam nahraných 3D modelů
-def model_list(request, category_name=None):
-    # Základní QuerySet (zatím bez řazení)
+def model_list(request, category_name=None, format_ext=None, software_name=None):
     models = Model3D.objects.all()
-    current_category = None
+    current_filter = None
 
-    # Filtrování podle kategorie
+    # 1. Filtrování podle kategorie
     if category_name:
-        # Najdeme kategorii v databázi podle názvu
-        current_category = get_object_or_404(Category, name=category_name)
-        # Vyfiltrujeme pouze modely patřící do této kategorie
-        models = models.filter(category=current_category)
+        category_obj = get_object_or_404(Category, name=category_name)
+        models = models.filter(category=category_obj)
+        current_filter = category_obj.name
 
-    # Řazení podle zvoleného kritéria
+    # 2. Filtrování podle formátu
+    elif format_ext:
+        models = models.filter(data__file_format__iexact=format_ext)
+        current_filter = format_ext.upper()
+
+    # 3. Filtrování podle softwaru (přes příponu v Data)
+    elif software_name:
+        models = models.filter(data__file_format__iexact=software_name)
+        current_filter = software_name
+
+
+    # Řazení
     sort_by = request.GET.get('sort', 'newest')
-
-    # Nejnovější
     if sort_by == 'newest':
         models = models.order_by('-id')
-    # Nejstarší
     elif sort_by == 'oldest':
         models = models.order_by('id')
-    # Vzestupně podle názvu
-    elif sort_by == 'name_asc':
-        models = models.order_by('name')
-    # Sestupně podle názvu
-    elif sort_by == 'name_desc':
-        models = models.order_by('-name')
-    else:
-        # Fallback pro případ neznámého parametru
-        models = models.order_by('-id')
 
-    # Předání dat do šablony
+    # Výpis stránky
     return render(request, 'model_list.html', {
         'models': models,
-        'current_category': current_category,
-        'current_sort': sort_by
+        'current_filter': current_filter,
+        'current_sort': sort_by,
     })
 
 

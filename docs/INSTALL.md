@@ -54,8 +54,8 @@ CREATE DATABASE freevat;
 
 ### 5. Nastavení konfiguračního souboru
 
-- Přejmenujte soubor `.env.example` na `.env`
-- Nastavte si přístupové klíče pro `Django` a `OAuth`
+- přejmenujte soubor `.env.example` na `.env`
+- nastavte si přístupové klíče pro `Django` a `OAuth`
 
 ---
 
@@ -75,7 +75,17 @@ python manage.py createsuperuser
 
 ---
 
-### 8. Kompilace překladů
+### 8. Načtení základních tabulek
+
+```
+python manage.py loaddata database/categories.yaml
+python manage.py loaddata database/formats.yaml
+python manage.py loaddata database/software.yaml
+```
+
+---
+
+### 9. Kompilace překladů
 
 ```
 python manage.py compilemessages
@@ -83,11 +93,12 @@ python manage.py compilemessages
 
 ---
 
-### 9. Spuštění serveru
+### 10. Spuštění serveru
 
 ```
 npm run dev
 python manage.py runserver
 ```
 
-- Do prohlížeče zadejte `localhost:8000`
+- do prohlížeče zadejte `localhost:8000`
+- příkazy musí běžet v samostatných terminálech

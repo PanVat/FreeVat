@@ -1,9 +1,9 @@
-<!-- Překlady -->
-{% load i18n %}
+<!-- Překlady a obrázky -->
+{% load i18n static %}
 
 <!-- Celé navigační menu (Položky jsou načtené z databáze) -->
 <div class="menu-container">
-    <nav aria-label="Header Navigation" class="menu-nav">
+    <nav class="menu-nav">
         <ul class="menu-wrapper">
 
             <!-- Kategorie modelů -->
@@ -14,6 +14,7 @@
                         {% trans 'All' %}
                     </a>
 
+                    <!-- Nahraje každou kategorii z databáze -->
                     {% for category in categories %}
                         <a href="{% url 'model_list_by_category' category.name %}" class="menu-dropdown-box">
                             {{ category.name }}
@@ -26,9 +27,10 @@
             <li class="menu-dropdown group">
                 <button class="menu-item">{% trans "Formats" %}</button>
                 <div class="menu-dropdown-area">
+
+                    <!-- Nahraje každý formát z databáze -->
                     {% for format in formats %}
-                        <a href="#"
-                           class="menu-dropdown-box">
+                        <a href="{% url 'model_list_by_format' format.extension %}" class="menu-dropdown-box">
                             {{ format.name }}
                         </a>
                     {% endfor %}
@@ -39,15 +41,15 @@
             <li class="menu-dropdown group">
                 <button class="menu-item">{% trans "Software" %}</button>
                 <div class="menu-dropdown-area">
+
+                    <!-- Nahraje každý software z databáze -->
                     {% for software in software_list %}
-                        <a href="#"
-                           class="menu-dropdown-box">
+                        <a href="{% url 'model_list_by_software' software.name|lower %}" class="menu-dropdown-box">
                             {{ software.name }}
                         </a>
                     {% endfor %}
                 </div>
             </li>
-
 
             <!-- Oddělovací svislá čára -->
             <li>

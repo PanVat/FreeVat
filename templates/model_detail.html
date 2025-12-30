@@ -91,30 +91,45 @@
 
                 <!-- Box s popisem modelu a technickými parametry -->
                 <div class="model-info-description-box">
-                    <!-- Popis -->
                     <div class="model-description-box">
                         <h3 class="section-title">{% trans "Description" %}</h3>
                         <p class="model-description-text">
-                            {{ model.description|default:"No description provided for this model." }}
+                            {{ model.description|default:_("No description provided for this model.") }}
                         </p>
                     </div>
-                    <!-- Technické parametry -->
+
                     <div class="model-technical-params">
                         <div class="param-item">
                             <span class="text-gray-500 uppercase text-xs font-bold">{% trans "Format" %}</span>
-                            <span class="font-bold uppercase text-blue-400">{{ model.model.name|slice:"-4:"|cut:"." }}</span>
+                            <span class="font-bold uppercase text-blue-400">{{ model.data.file_format }}</span>
                         </div>
+
+                        <div class="param-item">
+                            <span class="text-gray-500 uppercase text-xs font-bold">{% trans "Software" %}</span>
+                            <div class="flex items-center">
+                                {% if model.software %}
+                                    <img src="{{ model.software.icon.url }}" class="w-4 h-4 mr-1"
+                                         alt="{{ model.software.name }}">
+                                    <span class="font-bold text-gray-200">{{ model.software.name }}</span>
+                                {% else %}
+                                    <span class="font-mono text-gray-400">---</span>
+                                {% endif %}
+                            </div>
+                        </div>
+
                         <div class="param-item">
                             <span class="text-gray-500 uppercase text-xs font-bold">{% trans "Size" %}</span>
-                            <span class="font-mono">{{ model.model.size|filesizeformat }}</span>
+                            <span class="font-mono text-gray-200">{{ model.data.file_size|filesizeformat }}</span>
                         </div>
+
                         <div class="param-item">
                             <span class="text-gray-500 uppercase text-xs font-bold">{% trans "Triangles" %}</span>
-                            <span id="info-tris" class="font-mono text-yellow-500">---</span>
+                            <span class="font-mono text-yellow-500">{{ model.data.polygons|default:"0" }}</span>
                         </div>
+
                         <div class="param-item">
                             <span class="text-gray-500 uppercase text-xs font-bold">{% trans "Vertices" %}</span>
-                            <span id="info-verts" class="font-mono text-yellow-500">---</span>
+                            <span class="font-mono text-yellow-500">{{ model.data.vertices|default:"0" }}</span>
                         </div>
                     </div>
                 </div>

@@ -29,6 +29,9 @@ class Format(models.Model):
     # Název formátu
     name = models.CharField(max_length=20, verbose_name=_("Format name"))
 
+    # Přípona
+    extension = models.CharField(max_length=10, verbose_name=_("Extension"), default="obj")
+
     # Ikona formátu
     icon = models.FileField(
         upload_to='models/formats/',
@@ -132,12 +135,16 @@ class ModelImage(models.Model):
 class Data(models.Model):
     # Spojení s 3D modelem
     model3d = models.OneToOneField('Model3D', primary_key=True, on_delete=models.CASCADE, verbose_name=_("3D Model"))
+
     # Počet ploch/trojúhelníků v modelu
     polygons = models.PositiveIntegerField(verbose_name=_("Number of polygons"))
+
     # Počet vrcholů v modelu
     vertices = models.PositiveIntegerField(verbose_name=_("Number of vertices"))
+
     # Velikost souboru v bajtech
     file_size = models.PositiveIntegerField(verbose_name=_("File size (bytes)"))
+
     # Formát souboru (např. .obj, .fbx...)
     file_format = models.CharField(max_length=10, verbose_name=_("File format"))
 

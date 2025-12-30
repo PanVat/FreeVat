@@ -2,7 +2,7 @@
 <!-- Načtení překladů a souborů -->
 {% load i18n static %}
 
-<html lang="{% trans 'lang' %}">
+<html lang="{% trans 'en' %}">
 <head>
     <!-- Načtení Tailwind CSS -->
     <link href="{% static 'css/tailwind/dist/styles.css' %}{% if settings.DEBUG %}?v={% now 'U' %}{% endif %}"
@@ -37,13 +37,5 @@
 {% endblock %}
 {% include "layout/footer/footer.html" %}
 
-<!-- Přepínání jazyků -->
-<script src="{% static 'js/web/language.js' %}"></script>
 </body>
 </html>
-
-<!--
-Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-Adipisci aliquid asperiores beatae distinctio dolores doloribus eos est itaque laborum nesciunt
-obcaecati porro quae quaerat quod rerum saepe, vel voluptatibus! Nam?
--->
