@@ -151,10 +151,53 @@
 
             <!-- Uživatelské komentáře k modelu -->
             <div class="lg:col-span-1 flex flex-col gap-6">
-                <div class="bg-[#1A1A1A] p-6 rounded-md flex-grow">
-                    <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">{% trans "Comments" %}</h3>
-                    <div class="text-center py-8">
-                        <p class="text-gray-600 text-sm">{% trans "No comments yet." %}</p>
+                <div class="bg-[#1A1A1A] p-6 rounded-md flex-grow flex flex-col">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">
+                        {% trans "Comments" %} ({{ comments.count }})
+                    </h3>
+
+                    <div class="mb-6">
+                        {% if user.is_authenticated %}
+                            <form method="post" class="flex flex-col gap-2">
+                                {% csrf_token %}
+                                {{ comment_form.content }}
+                                <button type="submit"
+                                        class="self-end bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-xs font-bold transition">
+                                    {% trans "POST COMMENT" %}
+                                </button>
+                            </form>
+                        {% else %}
+                            <div class="text-center p-4 bg-[#222] rounded border border-dashed border-gray-700">
+                                <p class="text-xs text-gray-500">
+                                    {% trans "Please" %} <a href="{% url 'account_login' %}"
+                                                            class="text-blue-400 hover:underline">{% trans "login" %}</a> {% trans "to add a comment." %}
+                                </p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="flex flex-col gap-4 overflow-y-auto max-h-[500px] pr-2 custom-scrollbar">
+                        {% for comment in comments %}
+                            <div class="border-b border-gray-800 pb-4 last:border-0">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <img src="{{ comment.user.get_profile_picture }}"
+                                         alt="{{ comment.user.username }}"
+                                         class="w-8 h-8 rounded-full object-cover">
+
+                                    <div class="flex flex-col">
+                                        <span class="text-sm font-bold text-gray-200">{{ comment.user.username }}</span>
+                                        <span class="text-[10px] text-gray-500 uppercase">{{ comment.created_at|timesince }} {% trans "ago" %}</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-400 leading-relaxed">
+                                    {{ comment.content }}
+                                </p>
+                            </div>
+                            {% empty %}
+                            <div class="text-center py-8">
+                                <p class="text-gray-600 text-sm">{% trans "No comments yet." %}</p>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

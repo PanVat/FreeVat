@@ -1,16 +1,16 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout
-from django.utils.translation import gettext_lazy as _ # Překlad
-from .models import Category
+from django.utils.translation import gettext_lazy as _  # Překlad
+from .models import Category, Comment
 
 # CSS třídy pro vstupy do formulářových polí a popisy
 INPUT_CLASSES = "form-input-classes"
 LABEL_CLASSES = "form-label-classes"
 
 
+# Nahrání formuláře s 3D modelem
 class ModelUploadForm(forms.Form):
-
     # Název modelu
     model_name = forms.CharField(
         max_length=50,
@@ -80,3 +80,17 @@ class ModelUploadForm(forms.Form):
         self.helper.layout = Layout(
             Submit('submit', 'Upload Model')
         )
+
+
+# Uživatelský komentář k 3D modelu
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={
+                'class': 'w-full bg-[#2A2A2A] text-white p-3 rounded-md border border-gray-700 focus:outline-none focus:border-blue-500 text-sm',
+                'placeholder': _('Write a comment...'),
+                'rows': '3',
+            }),
+        }

@@ -2,10 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from . import settings
-from .forms import ModelUploadForm  # Formulář pro nahrání modelu
-from .models import Model3D, ModelImage  # Tabulky z databáze
-from .models import Category, Format, Software  # Tabulky z databáze
-
+from .forms import ModelUploadForm, CommentForm  # Formulář pro nahrání modelu
+from .models import Model3D, ModelImage, Comment, Category  # Tabulky z databáze
 
 # Domovská stránka
 def index(request):
@@ -84,7 +82,6 @@ def model_list(request, category_name=None, format_ext=None, software_name=None)
         models = models.filter(data__file_format__iexact=software_name)
         current_filter = software_name
 
-
     # Řazení
     sort_by = request.GET.get('sort', 'newest')
     if sort_by == 'newest':
@@ -104,16 +101,32 @@ def model_list(request, category_name=None, format_ext=None, software_name=None)
 def model_detail(request, pk):
     model_obj = get_object_or_404(Model3D, pk=pk)
 
-    # Načtení galerie obrázků pro tento model
-    gallery = model_obj.images.all()  # Předpokládám related_name='images' v ModelImage
+    # 1. Zpracování nového komentáře (pokud je uživatel přihlášen)
+    if request.method == 'POST' and request.user.is_authenticated:
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user  # Autor je aktuálně přihlášený uživatel
+            comment.model3d = model_obj  # Komentář patří k tomuto modelu
+            comment.save()
+            return redirect('model_detail', pk=pk)  # Refresh stránky po odeslání
+    else:
+        form = CommentForm()
 
-    # Načtení podobných modelů (stejná kategorie, kromě aktuálního)
+    # 2. Načtení galerie a podobných modelů (tvé původní)
+    gallery = model_obj.images.all()
     similar_models = Model3D.objects.filter(category=model_obj.category).exclude(pk=pk)[:3]
+
+    # 3. Načtení komentářů pro tento konkrétní model
+    # Využíváme related_name="comments" z modelu Comment
+    comments = model_obj.comments.all()
 
     context = {
         'model': model_obj,
         'gallery': gallery,
         'similar_models': similar_models,
+        'comments': comments,  # Předání komentářů
+        'comment_form': form,  # Předání formuláře
         'debug': settings.DEBUG
     }
     return render(request, 'model_detail.html', context)
