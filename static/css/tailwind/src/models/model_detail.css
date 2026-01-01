@@ -14,7 +14,9 @@
 
 /* 3D scéna */
 .model-3d-scene {
-    @apply lg:col-span-3 bg-[#1A1A1A] rounded-md overflow-hidden relative h-full shadow-sm;
+    /* Přidáme aspect-video nebo min-height */
+    @apply lg:col-span-3 bg-[#1A1A1A] rounded-md overflow-hidden relative shadow-sm w-full aspect-video;
+    @apply min-h-[400px]
 }
 
 /* Box s tlačítky pro fullscreen a reset kamery */
@@ -28,7 +30,7 @@
     @apply hover:scale-110 transition-transform cursor-pointer;
 }
 
-.model-scene-button img{
+.model-scene-button img {
     @apply w-7 h-7;
 }
 

@@ -1951,7 +1951,8 @@
 }
 .model-3d-scene {
   position: relative;
-  height: 100%;
+  aspect-ratio: var(--aspect-video);
+  width: 100%;
   overflow: hidden;
   border-radius: var(--radius-md);
   background-color: #1A1A1A;
@@ -1960,6 +1961,7 @@
   @media (width >= 64rem) {
     grid-column: span 3 / span 3;
   }
+  min-height: 400px;
 }
 .model-scene-buttons {
   position: absolute;

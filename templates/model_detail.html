@@ -14,32 +14,22 @@
         <div class="model-detail-upper-section">
 
             <!-- 3D scéna -->
-            <div class="model-3d-scene">
-                <div class="model-3d-scene relative group">
-                    <!-- Obsahuje 3D scénu z Three.js -->
-                    <div id="model-container" data-model-url="{{ model.model.url }}" class="w-full h-full"></div>
+            <div class="model-3d-scene relative group">
+                <div id="model-container" data-model-url="{{ model.model.url }}" class="w-full h-full"></div>
 
-                    <!-- Tlačítka pro fullscreen a reset pohledu -->
-                    <div class="model-scene-buttons">
-                        <!-- Reset pohledu -->
-                        <button id="reset-view"
-                                class="model-scene-button"
-                                title="Reset View">
-                            <img src="{% static 'img/icons/reset.svg' %}" alt="Reset">
-                        </button>
-                        <!-- Fullscreen režim -->
-                        <button id="toggle-fullscreen"
-                                class="model-scene-button"
-                                title="Fullscreen">
-                            <img src="{% static 'img/icons/fullscreen.svg' %}" alt="Fullscreen">
-                        </button>
-                    </div>
-                    <!-- Načítací překryvná vrstva během načítání 3D scény -->
-                    <div id="loading-overlay" class="model-scene-loading">
-                        <div class="text-center">
-                            <div class="model-scene-loader"></div>
-                            <p class="text-lg font-medium">{% trans "Loading 3D Scene..." %}</p>
-                        </div>
+                <div class="model-scene-buttons">
+                    <button id="reset-view" class="model-scene-button" title="Reset View">
+                        <img src="{% static 'img/icons/reset.svg' %}" alt="Reset">
+                    </button>
+                    <button id="toggle-fullscreen" class="model-scene-button" title="Fullscreen">
+                        <img src="{% static 'img/icons/fullscreen.svg' %}" alt="Fullscreen">
+                    </button>
+                </div>
+
+                <div id="loading-overlay" class="model-scene-loading">
+                    <div class="text-center">
+                        <div class="model-scene-loader"></div>
+                        <p class="text-lg font-medium">{% trans "Loading 3D Scene..." %}</p>
                     </div>
                 </div>
             </div>
