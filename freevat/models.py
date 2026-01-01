@@ -3,6 +3,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
+import trimesh
 
 
 # =========================================================
@@ -124,12 +125,7 @@ class Software(models.Model):
 class Model3D(models.Model):
     name = models.CharField(
         max_length=50,
-        verbose_name=_("Name"),
-        help_text=_("Enter the name"),
-        error_messages={
-            "blank": _("Name cannot be empty"),
-            "max_length": _("Name cannot exceed 50 characters")
-        }
+        verbose_name=_("Name")
     )
 
     category = models.ForeignKey(
@@ -140,39 +136,21 @@ class Model3D(models.Model):
         verbose_name=_("Category")
     )
 
-    uploaded = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name=_("Uploaded at")
-    )
-
-    updated = models.DateTimeField(
-        auto_now=True,
-        verbose_name=_("Date of last update")
-    )
-
     description = models.TextField(
         blank=True,
         null=True,
         verbose_name=_("Description"),
-        help_text=_("Enter a short description of the model"),
-        error_messages={
-            "max_length": _("Description cannot exceed 1000 characters")
-        }
+        help_text=_("Enter a short description of the model")
     )
 
     model = models.FileField(
         upload_to="models/models/",
-        verbose_name=_("3D model"),
-        help_text=_("Upload the 3D model file (.obj, .fbx..)"),
-        error_messages={"invalid": _("Invalid file format")}
+        verbose_name=_("3D model")
     )
 
-    # 🔥 ZMĚNA ZDE
     thumbnail = models.ImageField(
         upload_to=thumbnail_upload_path,
-        verbose_name=_("Model preview image"),
-        help_text=_("Upload a preview image for the model"),
-        error_messages={"invalid": _("Invalid image format")}
+        verbose_name=_("Model preview image")
     )
 
     user = models.ForeignKey(
@@ -181,6 +159,9 @@ class Model3D(models.Model):
         verbose_name=_("Creator")
     )
 
+    uploaded = models.DateTimeField(auto_now_add=True, verbose_name=_("Uploaded at"))
+    updated = models.DateTimeField(auto_now=True, verbose_name=_("Date of last update"))
+
     def __str__(self):
         return self.name
 
@@ -188,6 +169,32 @@ class Model3D(models.Model):
         ordering = ['-uploaded']
         verbose_name = _("3D Model")
         verbose_name_plural = _("3D Models")
+
+    def save(self, *args, **kwargs):
+        # 1. Uložíme základní model
+        super().save(*args, **kwargs)
+
+        try:
+            # 2. Cesta k souboru a přípona
+            file_path = self.model.path
+            ext = os.path.splitext(file_path)[1].lower().replace('.', '')
+
+            # 3. Analýza souboru
+            mesh = trimesh.load(file_path, force='mesh')
+            f_size = os.path.getsize(file_path)
+
+            # 4. Zápis do tabulky Data
+            Data.objects.update_or_create(
+                model3d=self,
+                defaults={
+                    'polygons': len(mesh.faces),
+                    'vertices': len(mesh.vertices),
+                    'file_size': f_size,
+                    'file_format': ext.upper()
+                }
+            )
+        except Exception as e:
+            print(f"Chyba při analýze: {e}")
 
 
 # =========================================================
@@ -219,23 +226,10 @@ class Data(models.Model):
         on_delete=models.CASCADE,
         verbose_name=_("3D Model")
     )
-
-    polygons = models.PositiveIntegerField(
-        verbose_name=_("Number of polygons")
-    )
-
-    vertices = models.PositiveIntegerField(
-        verbose_name=_("Number of vertices")
-    )
-
-    file_size = models.PositiveIntegerField(
-        verbose_name=_("File size (bytes)")
-    )
-
-    file_format = models.CharField(
-        max_length=10,
-        verbose_name=_("File format")
-    )
+    polygons = models.PositiveIntegerField(verbose_name=_("Number of polygons"))
+    vertices = models.PositiveIntegerField(verbose_name=_("Number of vertices"))
+    file_size = models.PositiveIntegerField(verbose_name=_("File size (bytes)"))
+    file_format = models.CharField(max_length=10, verbose_name=_("File format"))
 
 
 # =========================================================

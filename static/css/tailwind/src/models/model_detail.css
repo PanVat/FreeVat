@@ -46,7 +46,7 @@
 
 /* Navrhované modely */
 .related-models-container {
-    @apply lg:col-span-1 flex flex-col gap-4;
+    @apply lg:col-span-1 flex flex-col gap-4 bg-[#1A1A1A] rounded-md;
 }
 
 /*

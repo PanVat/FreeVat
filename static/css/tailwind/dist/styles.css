@@ -2021,6 +2021,8 @@
   display: flex;
   flex-direction: column;
   gap: calc(var(--spacing) * 4);
+  border-radius: var(--radius-md);
+  background-color: #1A1A1A;
   @media (width >= 64rem) {
     grid-column: span 1 / span 1;
   }

@@ -50,14 +50,11 @@
 
                 <!-- Uživatelské hodnocení modelu (5 hvězdiček) -->
                 <div class="flex gap-0.5 mt-1">
-                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
-                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
-                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
-                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
-                    <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                    {% for i in "12345" %}
+                        <img src="{% static 'img/icons/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                    {% endfor %}
                 </div>
             </div>
-
         </div>
     </div>
 </a>
