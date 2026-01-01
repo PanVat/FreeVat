@@ -15,7 +15,7 @@ class ModelUploadForm(forms.Form):
     model_name = forms.CharField(
         max_length=50,
         min_length=3,
-        required=True,
+        required=False,
         label=_('Name'),
         widget=forms.TextInput(attrs={
             'class': INPUT_CLASSES,
@@ -26,7 +26,7 @@ class ModelUploadForm(forms.Form):
     # Kategorie
     category = forms.ModelChoiceField(
         queryset=Category.objects.all(),
-        required=True,
+        required=False,
         label=_('Category'),
         widget=forms.HiddenInput()
     )
@@ -55,7 +55,7 @@ class ModelUploadForm(forms.Form):
 
     # Náhledový obrázek
     preview_image = forms.ImageField(
-        required=True,
+        required=False,
         label=_('Thumbnail'),
         widget=forms.FileInput(attrs={
             'class': 'file-input hidden',

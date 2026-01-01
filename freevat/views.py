@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from . import settings
 from .forms import ModelUploadForm, CommentForm  # Formulář pro nahrání modelu
-from .models import Model3D, ModelImage, Comment, Category  # Tabulky z databáze
+from .models import Model3D, ModelImage, Category  # Tabulky z databáze
 
 # Domovská stránka
 def index(request):

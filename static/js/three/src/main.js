@@ -4,8 +4,6 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader.js';
 import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader.js';
 import {STLLoader} from 'three/examples/jsm/loaders/STLLoader.js';
-// PŘIDÁNO: Import USDZLoaderu
-import {USDZLoader} from 'three/examples/jsm/loaders/USDZLoader.js';
 
 function init() {
     const container = document.getElementById('model-container');
@@ -48,6 +46,7 @@ function init() {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
 
+    // Proměnné pro uložení výchozího stavu
     let initialCameraPos = new THREE.Vector3();
     let initialTarget = new THREE.Vector3();
 
@@ -57,10 +56,12 @@ function init() {
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
 
+        // Vycentrování modelu
         object.position.x += (object.position.x - center.x);
         object.position.y += (object.position.y - center.y);
         object.position.z += (object.position.z - center.z);
 
+        // Nastavení kamery (vzdálenost 1.2 pro lepší vyplnění plátna)
         const maxDim = Math.max(size.x, size.y, size.z);
         const distance = maxDim * 1.2;
 
@@ -69,9 +70,11 @@ function init() {
         controls.target.set(0, 0, 0);
         controls.update();
 
+        // Uložení výchozího bodu pro tlačítko Reset
         initialCameraPos.copy(camera.position);
         initialTarget.copy(controls.target);
 
+        // Výpočet Triangles a Vertices
         let triangles = 0;
         let vertices = 0;
         object.traverse((child) => {
@@ -95,12 +98,15 @@ function init() {
     };
 
     // --- Logika tlačítek ---
+
+    // Reset pohledu
     document.getElementById('reset-view')?.addEventListener('click', () => {
         camera.position.copy(initialCameraPos);
         controls.target.copy(initialTarget);
         controls.update();
     });
 
+    // Fullscreen
     document.getElementById('toggle-fullscreen')?.addEventListener('click', () => {
         const sceneContainer = document.querySelector('.model-3d-scene');
         if (!document.fullscreenElement) {
@@ -126,11 +132,6 @@ function init() {
             loader = new FBXLoader();
             loader.load(modelUrl, (fbx) => setupModel(fbx));
             break;
-        // PŘIDÁNO: Case pro USDZ
-        case 'usdz':
-            loader = new USDZLoader();
-            loader.load(modelUrl, (usdz) => setupModel(usdz));
-            break;
         case 'stl':
             loader = new STLLoader();
             loader.load(modelUrl, (geom) => {
@@ -138,8 +139,6 @@ function init() {
                 setupModel(new THREE.Mesh(geom, mat));
             });
             break;
-        default:
-            console.warn("Nepodporovaný formát souboru:", extension);
     }
 
     // --- Resize události ---
