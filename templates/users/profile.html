@@ -7,72 +7,90 @@
 {% block title %}{% trans 'User profile' %}{% endblock %}
 
 {% block content %}
-    <!-- Stránka uživatelského profilu -->
+    <!-- Celá stránka -->
     <div class="form-page">
         <div class="form-container--profile">
-            <!-- Hlavička profilu -->
-            <div class="bg-gray-800 rounded-lg p-8 mb-6">
-                <div class="flex flex-col items-center text-center">
-                    <div class="relative mb-4">
+
+            <!-- Horní sekce - správa účtu -->
+            <div class="upper-section">
+                <div class="user-profile-section">
+                    <!-- Profilový obrázek uživatele -->
+                    <div class="relative">
                         <img src="{{ user.get_profile_picture }}"
                              alt="Profile"
-                             class="w-32 h-32 rounded-full border-4 border-[#3B4042] object-cover shadow-xl">
+                             class="profile-picture">
                     </div>
-
-                    <h1 class="text-3xl font-bold text-white">{{ user.username }}</h1>
-
-                    <p class="text-gray-400 mt-1">{{ user.email }}</p>
-
-                    {% if user.website_url %}
-                        <a href="{{ user.website_url }}" target="_blank"
-                           class="text-blue-400 hover:text-blue-300 flex items-center gap-2 mt-3 text-sm transition-colors">
-                            <i class="fas fa-globe"></i> {{ user.website_url|truncatechars:40 }}
-                        </a>
-                    {% endif %}
-
-                    {% if user.bio %}
-                        <div class="max-w-md mt-4">
-                            <p class="text-gray-300 italic text-sm leading-relaxed">
-                                "{{ user.bio }}"
-                            </p>
-                        </div>
-                    {% endif %}
-
-                    <p class="text-xs text-gray-500 mt-6 uppercase tracking-wider">
-                        {% trans 'Member since' %} {{ user.date_joined|date:"F Y" }}
-                    </p>
+                    <!-- Údaje uživatele -->
+                    <div>
+                        <h1 class="text-4xl font-bold text-white">{{ user.username }}</h1>
+                        <p class="text-gray-400 text-lg">{{ user.email }}</p>
+                        <p class="text-sm text-gray-500 mt-2 uppercase">
+                            {% trans 'Member since' %} {{ user.date_joined|date:"d. m. Y" }}
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Možnosti profilu -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-800 rounded-lg p-6">
-                    <h2 class="text-xl font-bold mb-4">{% trans 'My Models' %}</h2>
-                    <p class="text-gray-400">{% trans 'You have not uploaded any models yet.' %}</p>
-                    <a href="{% url 'upload' %}"
-                       class="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
-                        {% trans 'Upload First Model' %}
+                <!-- Tlačítka pro správu účtu -->
+                <div class="manage-account-buttons">
+
+                    <!-- Upravit profil -->
+                    <a href="{% url 'users:edit_profile' %}"
+                       class="button text-lg">
+                       {% trans 'Edit profile' %}
+                    </a>
+
+                    <!-- Změnit heslo -->
+                    <a href="{% url 'users:change_password' %}"
+                       class="button text-lg">
+                        {% trans 'Change password' %}
+                    </a>
+
+                    <!-- Odhlášení -->
+                    <a href="{% url 'users:logout' %}"
+                       class="button text-lg">
+                        {% trans 'Logout' %}
                     </a>
                 </div>
-
-                <div class="bg-gray-800 rounded-lg p-6">
-                    <h2 class="text-xl font-bold mb-4">{% trans 'Account Settings' %}</h2>
-                    <ul class="space-y-2">
-                        <li><a href="{% url 'users:edit_profile' %}"
-                               class="text-blue-400 hover:text-blue-300 flex items-center gap-2">
-                            <i class="fas fa-user-edit"></i> {% trans 'Edit Profile' %}
-                        </a></li>
-                        <li><a href="{% url 'users:change_password' %}"
-                               class="text-blue-400 hover:text-blue-300 flex items-center gap-2">
-                            <i class="fas fa-key"></i> {% trans 'Change Password' %}
-                        </a></li>
-                        <li><a href="{% url 'users:logout' %}"
-                               class="text-red-400 hover:text-red-300 flex items-center gap-2 mt-4 border-t border-gray-700 pt-2">
-                            <i class="fas fa-sign-out-alt"></i> {% trans 'Logout' %}
-                        </a></li>
-                    </ul>
-                </div>
             </div>
+
+            <!-- Dolní sekce - uživatelské 3D modely -->
+            <div class="bottom-section">
+
+                <!-- Nadpis a tlačítka -->
+                <div class="models-buttons">
+
+                    <!-- Nadpis -->
+                    <h2 class="text-3xl font-bold">{% trans 'My models' %}</h2>
+
+                    <div class="flex gap-3 w-full sm:w-auto">
+                        <!-- Nahrát model -->
+                        <a href="{% url 'upload' %}"
+                           class="button">
+                            {% trans 'Upload' %}
+                        </a>
+                        <!-- Zobrazit všechny modely -->
+                        <a href="{% url 'user_models_all' %}"
+                           class="button hover:opacity-90 bg-green-900">
+                            {% trans 'My models' %}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Nejnovějších 8 modelů -->
+                {% if user_models %}
+                    <!-- Mřížka s modely -->
+                    <div class="models-grid">
+                        {% for model in user_models %}
+                            {% include 'models/partials/model_box.html' with similar=model %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="no-models">
+                        <p class="text-gray-400">{% trans 'You have not uploaded any models yet.' %}</p>
+                    </div>
+                {% endif %}
+            </div>
+
         </div>
     </div>
 {% endblock %}

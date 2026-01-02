@@ -17,7 +17,7 @@ window.closeModal = function () {
     }
 }
 
-// Zavření klávesou Esc
+/* Zavření klávesou 'ESC' nebo kliknutí mimo obrázek */
 document.addEventListener('keydown', function (event) {
     if (event.key === "Escape") {
         closeModal();

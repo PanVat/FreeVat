@@ -11,6 +11,7 @@
 /* 3D scéna - Hlavní obal */
 .model-3d-scene {
     @apply lg:col-span-3 bg-[#1A1A1A] rounded-md overflow-hidden shadow-sm w-full relative;
+    @apply cursor-grab active:cursor-grabbing;
     min-height: 600px;
     height: 100%;
 }
@@ -72,7 +73,7 @@
 }
 
 /* Obrázek v galerii */
-.gallery-image{
+.gallery-image {
     @apply w-full h-full object-cover hover:scale-103 transition-transform duration-300;
 }
 

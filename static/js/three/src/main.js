@@ -49,7 +49,7 @@ function init() {
     // --- Ovládání ---
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
+    controls.dampingFactor = 0.15;
 
     let initialCameraPos = new THREE.Vector3();
     let initialTarget = new THREE.Vector3();

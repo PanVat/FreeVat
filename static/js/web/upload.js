@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
             item.innerHTML = `
             <span class="truncate pr-4">${file.name}</span>
             <button type="button" class="remove-single-file remove-file-button" data-index="${index}">
-                <img src="/static/img/icons/cross.svg" alt="Remove"/>
+                <img src="/img/symbols/cross.svg" alt="Remove"/>
             </button>
         `;
             galleryList.appendChild(item);

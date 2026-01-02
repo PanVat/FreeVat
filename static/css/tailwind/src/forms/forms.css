@@ -192,5 +192,5 @@
 
 /* Upravená třída pro 'Profile' */
 .form-container--profile {
-    @apply border-1 border-[#404040] max-w-5xl w-full space-y-8 rounded-xl p-5 m-14;
+    @apply border-1 border-[#404040] max-w-7xl w-full space-y-8 rounded-xl p-5 m-14;
 }

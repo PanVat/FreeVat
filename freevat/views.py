@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from . import settings
 from .forms import ModelUploadForm, CommentForm  # Formulář pro nahrání modelu
 from .models import Model3D, ModelImage, Category  # Tabulky z databáze
+from django.contrib import messages
+
 
 # Domovská stránka
 def index(request):
@@ -59,7 +61,42 @@ def upload_model(request):
 # Zobrazení živatelského profilu (pouze pro přihlášené)
 @login_required
 def user_profile(request):
-    return render(request, 'users/profile.html')
+    # Načtení modelů, které patří přihlášenému uživateli
+    user_models_preview = Model3D.objects.filter(user=request.user).order_by('-id')[:8]
+
+    return render(request, 'users/profile.html', {
+        'user_models': user_models_preview,
+        'total_models_count': Model3D.objects.filter(user=request.user).count()
+    })
+
+
+# Zobrazení všech modelů uživatele
+@login_required
+def user_models_list(request):
+    # Fetchujeme všechny modely přihlášeného uživatele
+    all_models = Model3D.objects.filter(user=request.user).order_by('-id')
+
+    return render(request, 'users/user_models_all.html', {
+        'models': all_models
+    })
+
+
+# Smazání modelu
+@login_required
+def delete_model(request, pk):
+    model_obj = get_object_or_404(Model3D, pk=pk, user=request.user)
+    if request.method == 'POST':
+        model_obj.delete()
+        messages.success(request, "Model was successfully deleted.")
+        return redirect('users:profile')
+    return redirect('users:profile')
+
+
+# Úprava již nahraného modelu
+@login_required
+def edit_model(request, pk):
+    model_obj = get_object_or_404(Model3D, pk=pk, user=request.user)
+    return render(request, 'forms/edit_model.html', {'model': model_obj})
 
 
 # Seznam nahraných 3D modelů

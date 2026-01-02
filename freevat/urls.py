@@ -33,6 +33,12 @@ urlpatterns += i18n_patterns(
     path('models/software/<str:software_name>/', views.model_list, name='model_list_by_software'),
     # Stránka s 3D viewerem a informacemi o modelu:
     path('model/<int:pk>/', views.model_detail, name='model_detail'),
+    # Cesta pro úpravu modelu
+    path('model/edit/<int:pk>/', views.edit_model, name='edit_model'),
+    # Cesta pro smazání modelu
+    path('model/delete/<int:pk>/', views.delete_model, name='delete_model'),
+    # Všechny uživatelovy modely
+    path('profile/my-models/', views.user_models_list, name='user_models_all'),
 )
 
 # Rosetta

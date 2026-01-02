@@ -1,0 +1,39 @@
+/* Horní sekce s tlačítky a profilem */
+.upper-section {
+    @apply rounded-lg border-1 border-[#3B4042] p-4 mb-4 flex flex-col md:flex-row justify-between items-center gap-4;
+}
+
+/* Kontejner s informacemi o uživateli */
+.user-profile-section {
+    @apply rounded-lg flex flex-col md:flex-row items-center gap-6 text-center md:text-left p-4;
+}
+
+/* Profilový obrázek */
+.profile-picture {
+    @apply w-32 h-32 rounded-full object-cover shadow-sm;
+}
+
+/* Kontejner s tlačítky pro úpravu profilu */
+.manage-account-buttons {
+    @apply flex flex-col gap-4 w-full md:w-64;
+}
+
+/* Dolní sekce s 3D modely */
+.bottom-section {
+    @apply rounded-lg border-1 border-[#3B4042] p-4;
+}
+
+/* Nadpis a tlačítka */
+.models-buttons {
+    @apply flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 mx-1 gap-4;
+}
+
+/* Mřížka s modely */
+.models-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+}
+
+/* Žádné nahrané modely */
+.no-models {
+    @apply py-20 text-center border-2 border-dashed border-gray-700 rounded-xl;
+}
