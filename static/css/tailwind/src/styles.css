@@ -15,7 +15,7 @@
 @import './users/profile.css';
 
 /* Jednotlivé stránky */
-@import './index.css';
+@import 'pages/index.css';
 @import './models/model_list.css';
 @import './models/model_detail.css';
 

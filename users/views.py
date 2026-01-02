@@ -9,18 +9,15 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.base import ContentFile
 from django.contrib.auth import get_user_model
 
-# Import tvých formulářů
+
 from .forms import CustomUserCreationForm, CustomLoginForm, UserUpdateForm, StyledPasswordChangeForm
 
 User = get_user_model()
 
 
-# --- POMOCNÁ FUNKCE PRO GENEROVÁNÍ AVATARA ---
+# Vytvoří čtvercový obrázek s iniciálami uživatele na barevném pozadí
 def generate_initials_avatar(username):
-    """
-    Vytvoří čtvercový obrázek s iniciálami uživatele na barevném pozadí.
-    """
-    # Paleta barev pro pozadí (moderní, syté barvy)
+    # Paleta barev pro pozadí
     colors = ['#1abc9c', '#2ecc71', '#3498db', '#9b59b6', '#34495e', '#16a085', '#27ae60', '#2980b9', '#8e44ad',
               '#2c3e50', '#f1c40f', '#e67e22', '#e74c3c', '#95a5a6', '#f39c12', '#d35400', '#c0392b']
     bg_color = random.choice(colors)
@@ -32,15 +29,14 @@ def generate_initials_avatar(username):
     # Získání iniciál (max 2 písmena)
     initials = username[:2].upper()
 
-    # Pokus o načtení fontu (v závislosti na OS)
+    # Pokus o načtení fontu
     try:
-        # Cesta k fontu - na většině Linux/Serverů nebo Windows by mělo něco fungovat
+        # Cesta k fontu
         font = ImageFont.truetype("arial.ttf", 80)
     except:
         font = ImageFont.load_default()
 
     # Vycentrování textu
-    # U novějších verzí Pillow (Pillow 10+) používáme textbbox
     try:
         left, top, right, bottom = draw.textbbox((0, 0), initials, font=font)
         text_width = right - left
@@ -60,20 +56,19 @@ def generate_initials_avatar(username):
     return ContentFile(buffer.getvalue(), name=f'{username}_default.png')
 
 
-# --- VIEWS ---
-
+# Registrace uživatele
 def register_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            # 1. Uložíme uživatele (commit=False, abychom mohli přidat fotku)
+            # Uložíme uživatele
             user = form.save(commit=False)
 
-            # 2. Vygenerujeme defaultní fotku
+            # Vygenerujeme defaultní fotku
             avatar_file = generate_initials_avatar(user.username)
             user.picture.save(f'{user.username}_avatar.png', avatar_file, save=False)
 
-            # 3. Definitivně uložíme uživatele
+            # Definitivně uložíme uživatele
             user.save()
 
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
@@ -84,14 +79,15 @@ def register_view(request):
     return render(request, 'users/register.html', {'form': form})
 
 
+# Piřhlášení uživatele
 def login_view(request):
     if request.method == 'POST':
         form = CustomLoginForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data['email']  # Ve formuláři máš 'email'
+            email = form.cleaned_data['email']
             password = form.cleaned_data['password']
 
-            # Najdeme uživatele podle emailu (protože Django authenticate standardně chce username)
+            # Najdeme uživatele podle emailu
             try:
                 target_user = User.objects.get(email=email)
                 user = authenticate(request, username=target_user.username, password=password)
@@ -100,7 +96,6 @@ def login_view(request):
                     login(request, user)
                     return redirect('index')
             except User.DoesNotExist:
-                # Chybu už by měl vyhodit form.clean(), ale pro jistotu:
                 messages.error(request, 'Neplatný email nebo heslo.')
     else:
         form = CustomLoginForm()
@@ -135,7 +130,8 @@ def change_password(request):
         form = StyledPasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             user = form.save()
-            update_session_auth_hash(request, user)  # Důležité: udrží uživatele přihlášeného
+            # Důležité: udrží uživatele přihlášeného
+            update_session_auth_hash(request, user)
             messages.success(request, 'Vaše heslo bylo úspěšně změněno!')
             return redirect('profile')
     else:

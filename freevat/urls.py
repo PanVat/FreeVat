@@ -31,7 +31,7 @@ urlpatterns += i18n_patterns(
     # Zobrazení modelů v daném formátu
     path('models/format/<str:format_ext>/', views.model_list, name='model_list_by_format'),
     path('models/software/<str:software_name>/', views.model_list, name='model_list_by_software'),
-    # PŘIDEJ TENTO ŘÁDEK:
+    # Stránka s 3D viewerem a informacemi o modelu:
     path('model/<int:pk>/', views.model_detail, name='model_detail'),
 )
 

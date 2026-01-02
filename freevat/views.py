@@ -29,7 +29,7 @@ def upload_model(request):
         form = ModelUploadForm(request.POST, request.FILES)
 
         if form.is_valid():
-            # 1. Vytvoření modelu
+            # Vytvoření modelu
             new_model = Model3D.objects.create(
                 name=form.cleaned_data['model_name'],
                 category=form.cleaned_data['category'],
@@ -39,7 +39,7 @@ def upload_model(request):
                 user=request.user
             )
 
-            # 2. Zpracování galerie
+            # Zpracování galerie
             gallery_files = request.FILES.getlist('gallery_images')
             for f in gallery_files:
                 ModelImage.objects.create(
@@ -47,11 +47,12 @@ def upload_model(request):
                     image=f
                 )
 
-            # 3. Po úspěšném nahrání přesměrování na domovskou stránku
+            # Po úspěšném nahrání přesměrování na domovskou stránku
             return redirect('index')
     else:
         form = ModelUploadForm()
 
+    # Vykreslení domovské stránky
     return render(request, 'upload.html', {'form': form})
 
 
@@ -66,18 +67,18 @@ def model_list(request, category_name=None, format_ext=None, software_name=None)
     models = Model3D.objects.all()
     current_filter = None
 
-    # 1. Filtrování podle kategorie
+    # Filtrování podle kategorie
     if category_name:
         category_obj = get_object_or_404(Category, name=category_name)
         models = models.filter(category=category_obj)
         current_filter = category_obj.name
 
-    # 2. Filtrování podle formátu
+    # Filtrování podle formátu
     elif format_ext:
         models = models.filter(data__file_format__iexact=format_ext)
         current_filter = format_ext.upper()
 
-    # 3. Filtrování podle softwaru (přes příponu v Data)
+    # Filtrování podle softwaru (přes příponu v Data)
     elif software_name:
         models = models.filter(data__file_format__iexact=software_name)
         current_filter = software_name
@@ -101,7 +102,7 @@ def model_list(request, category_name=None, format_ext=None, software_name=None)
 def model_detail(request, pk):
     model_obj = get_object_or_404(Model3D, pk=pk)
 
-    # 1. Zpracování nového komentáře (pokud je uživatel přihlášen)
+    # Zpracování nového komentáře (pokud je uživatel přihlášen)
     if request.method == 'POST' and request.user.is_authenticated:
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -113,12 +114,11 @@ def model_detail(request, pk):
     else:
         form = CommentForm()
 
-    # 2. Načtení galerie a podobných modelů (tvé původní)
+    # Načtení galerie a podobných modelů
     gallery = model_obj.images.all()
     similar_models = Model3D.objects.filter(category=model_obj.category).exclude(pk=pk)[:3]
 
-    # 3. Načtení komentářů pro tento konkrétní model
-    # Využíváme related_name="comments" z modelu Comment
+    # Načtení komentářů pro tento konkrétní model
     comments = model_obj.comments.all()
 
     context = {

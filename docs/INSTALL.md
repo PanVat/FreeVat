@@ -48,6 +48,7 @@ npm install
 
 ```
 CREATE DATABASE freevat;
+ALTER USER postgres WITH PASSWORD 'admin';
 ```
 
 ---

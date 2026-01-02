@@ -1,12 +1,13 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout
-from django.utils.translation import gettext_lazy as _  # Překlad
+from django.utils.translation import gettext_lazy as _
 from .models import Category, Comment
 
 # CSS třídy pro vstupy do formulářových polí a popisy
 INPUT_CLASSES = "form-input-classes"
 LABEL_CLASSES = "form-label-classes"
+COMMENT_CLASSES = "user-comment-classes"
 
 
 # Nahrání formuláře s 3D modelem
@@ -15,7 +16,7 @@ class ModelUploadForm(forms.Form):
     model_name = forms.CharField(
         max_length=50,
         min_length=3,
-        required=False,
+        required=True,
         label=_('Name'),
         widget=forms.TextInput(attrs={
             'class': INPUT_CLASSES,
@@ -26,14 +27,14 @@ class ModelUploadForm(forms.Form):
     # Kategorie
     category = forms.ModelChoiceField(
         queryset=Category.objects.all(),
-        required=False,
+        required=True,
         label=_('Category'),
         widget=forms.HiddenInput()
     )
 
     # Popis modelu
     description = forms.CharField(
-        required=False,
+        required=True,
         max_length=1000,
         min_length=10,
         label=_('Description'),
@@ -55,7 +56,7 @@ class ModelUploadForm(forms.Form):
 
     # Náhledový obrázek
     preview_image = forms.ImageField(
-        required=False,
+        required=True,
         label=_('Thumbnail'),
         widget=forms.FileInput(attrs={
             'class': 'file-input hidden',
@@ -89,7 +90,7 @@ class CommentForm(forms.ModelForm):
         fields = ['content']
         widgets = {
             'content': forms.Textarea(attrs={
-                'class': 'w-full bg-[#2A2A2A] text-white p-3 rounded-md border border-gray-700 focus:outline-none focus:border-blue-500 text-sm',
+                'class': COMMENT_CLASSES,
                 'placeholder': _('Write a comment...'),
                 'rows': '3',
             }),

@@ -1,7 +1,7 @@
 {% extends "base/base.html" %}
 
 <!-- Načtení potřebných knihoven -->
-{% load i18n static %}
+{% load i18n static format_numbers %}
 
 {% block content %}
     <!-- Celá stránka -->
@@ -13,45 +13,40 @@
         <!-- Horní sekce s 3D modelem a dalšími doporučenými modely -->
         <div class="model-detail-upper-section">
 
-            <!-- 3D scéna -->
-            <div class="model-3d-scene">
-                <div class="model-3d-scene relative group">
-                    <!-- Obsahuje 3D scénu z Three.js -->
-                    <div id="model-container" data-model-url="{{ model.model.url }}" class="w-full h-full"></div>
+            <div class="model-3d-scene group relative">
+                <div id="model-container"
+                     data-model-url="{{ model.model.url }}"
+                     class="w-full h-full relative z-0">
+                </div>
 
-                    <!-- Tlačítka pro fullscreen a reset pohledu -->
-                    <div class="model-scene-buttons">
-                        <!-- Reset pohledu -->
-                        <button id="reset-view"
-                                class="model-scene-button"
-                                title="Reset View">
-                            <img src="{% static 'img/icons/reset.svg' %}" alt="Reset">
-                        </button>
-                        <!-- Fullscreen režim -->
-                        <button id="toggle-fullscreen"
-                                class="model-scene-button"
-                                title="Fullscreen">
-                            <img src="{% static 'img/icons/fullscreen.svg' %}" alt="Fullscreen">
-                        </button>
-                    </div>
-                    <!-- Načítací překryvná vrstva během načítání 3D scény -->
-                    <div id="loading-overlay" class="model-scene-loading">
-                        <div class="text-center">
-                            <div class="model-scene-loader"></div>
-                            <p class="text-lg font-medium">{% trans "Loading 3D Scene..." %}</p>
-                        </div>
+                <div class="model-scene-buttons z-10">
+                    <button id="reset-view"
+                            class="model-scene-button"
+                            title="{% trans 'Reset View' %}">
+                        <img src="{% static 'img/icons/reset.svg' %}" alt="Reset">
+                    </button>
+                    <button id="toggle-fullscreen"
+                            class="model-scene-button"
+                            title="{% trans 'Fullscreen' %}">
+                        <img src="{% static 'img/icons/fullscreen.svg' %}" alt="Fullscreen">
+                    </button>
+                </div>
+
+                <div id="loading-overlay" class="model-scene-loading z-20">
+                    <div class="text-center">
+                        <div class="model-scene-loader"></div>
+                        <p class="text-lg font-medium">{% trans "Loading 3D Scene..." %}</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Navrhované modely téže kategorie -->
             <div class="related-models-container">
-                <!-- Načtení podobných modelů -->
                 {% for similar in similar_models %}
-                    <!-- Jednotlivé okno s odkazem na detail modelu -->
                     {% include 'models/partials/model_box.html' with similar=similar %}
                     {% empty %}
-                    <p class="text-gray-600 text-sm">{% trans "No similar models found." %}</p>
+                    <div class="flex items-center justify-center h-full bg-[#1A1A1A] rounded-md border border-gray-800 border-dashed p-6 text-center">
+                        <p class="text-gray-500 text-sm italic">{% trans "No similar models found." %}</p>
+                    </div>
                 {% endfor %}
             </div>
         </div>
@@ -111,12 +106,12 @@
 
                         <div class="param-item">
                             <span class="text-gray-500 uppercase text-xs font-bold">{% trans "Triangles" %}</span>
-                            <span class="font-mono text-yellow-500">{{ model.data.polygons|default:"0" }}</span>
+                            <span class="font-mono text-yellow-500">{{ model.data.polygons|default:"0"|format_numbers }}</span>
                         </div>
 
                         <div class="param-item">
                             <span class="text-gray-500 uppercase text-xs font-bold">{% trans "Vertices" %}</span>
-                            <span class="font-mono text-yellow-500">{{ model.data.vertices|default:"0" }}</span>
+                            <span class="font-mono text-yellow-500">{{ model.data.vertices|default:"0"|format_numbers }}</span>
                         </div>
                     </div>
                 </div>
