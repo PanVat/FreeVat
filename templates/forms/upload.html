@@ -4,7 +4,7 @@
 {% load crispy_forms_tags static i18n %}
 
 <!-- Titulek stránky -->
-{% block title %} {% trans 'Upload' %} {% endblock %}
+{% block title %} {% trans 'FreeVat - Upload model' %} {% endblock %}
 
 {% block content %}
     <!-- Stránka pro nahrávání 3D modelů -->
@@ -28,9 +28,6 @@
             <form class="form" id="uploadForm" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                <!-- Zobrazení chybových hlášek -->
-                {% include "base/error.html" %}
-
                 <!-- Formulářová pole -->
                 <div class="form-inputs-container">
                     <!-- Název modelu -->
@@ -48,7 +45,7 @@
                                  id="dropdownTrigger">
                                 <span id="selectedCategoryText">{% trans "Select a category" %}</span>
                                 <img src="{% static 'img/symbols/arrow_down.svg' %}"
-                                     class="w-5 h-5 transition-transform" id="dropdownChevron" alt="Arrow down">
+                                     class="w-5 h-5 transition-transform" id="dropdownChevron" alt="{% trans 'Arrow down' %}">
                             </div>
 
                             <!-- Seznam kategorií (dropdown) - fetchuje se z databáze -->
@@ -59,7 +56,7 @@
                                     <li class="form-category-item"
                                         data-value="{{ category.id }}">
                                         {% if category.icon %}
-                                            <img src="{{ category.icon.url }}" class="w-5 h-5" alt="Category icon">
+                                            <img src="{{ category.icon.url }}" class="w-5 h-5" alt="{% trans 'Category icon' %}">
                                         {% endif %}
                                         <span>{{ category.name }}</span>
                                     </li>
@@ -77,7 +74,7 @@
                     <div class="mb-6">
                         <!-- Nadpis -->
                         <label class="form-label-classes">
-                            {% trans "Model" %}<span class="text-red-500 ml-1">*</span>
+                            {% trans "3D Model" %}<span class="text-red-500 ml-1">*</span>
                         </label>
                         <!-- Oblast pro nahrání souboru -->
                         <div class="file-upload-area" id="modelFileUploadArea">
@@ -127,10 +124,11 @@
                             <!-- Kontejner s nahraným náhledovým obrázkem -->
                             <div class="hidden" id="selectedPreviewContainer">
                                 <div class="selected-file-container">
+                                <div class="selected-file-container">
                                     <span id="previewFileName"></span>
                                     <button type="button" id="removePreviewButton"
                                             class="remove-file-button">
-                                        <img src="{% static 'img/icons/cross.svg' %}" alt="{% trans 'Delete' %}"/>
+                                        <img src="{% static 'img/icons/cross.svg' %}" alt="{% trans 'Cross' %}"/>
                                     </button>
                                 </div>
                             </div>

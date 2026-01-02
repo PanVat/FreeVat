@@ -19,7 +19,7 @@
         <div class="carousel-wrapper">
             <!-- Šipky pro posun carouselu doprava -->
             <button class="carousel-arrow carousel-arrow-left">
-                <img src="{% static 'img/symbols/arrow_left.svg' %}" alt="{% trans 'Arrow Left' %}" class="arrow-icon">
+                <img src="{% static 'img/symbols/arrow_left.svg' %}" alt="{% trans 'Arrow left' %}" class="arrow-icon">
             </button>
 
             <!-- Načte všechny kategorie z databáze -->
@@ -36,7 +36,8 @@
 
             <!-- Šipky pro posun carouselu doleva -->
             <button class="carousel-arrow carousel-arrow-right">
-                <img src="{% static 'img/symbols/arrow_right.svg' %}" alt="{% trans 'Arrow right' %}" class="arrow-icon">
+                <img src="{% static 'img/symbols/arrow_right.svg' %}" alt="{% trans 'Arrow right' %}"
+                     class="arrow-icon">
             </button>
         </div>
 
@@ -45,7 +46,8 @@
             <!-- Karta 1 (Kompletně bezplatný přístup) -->
             <div class="feature-card">
                 <!-- Ikonka -->
-                <div class="feature-icon"><img src="{% static 'img/features/money_off.svg' %}" alt="{% trans 'Free' %}">
+                <div class="feature-icon"><img src="{% static 'img/features/money_off.svg' %}"
+                                               alt="{% trans 'Money off' %}">
                 </div>
 
                 <!-- Nadpis -->
@@ -54,26 +56,26 @@
                 <!-- Seznam funkcí -->
                 <div class="feature-list">
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Get any model for free' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Extensive 3D Model Library' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Multiple 3D format support' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Absolutely no ads' %}</span>
                     </div>
                 </div>
 
                 <!-- Tlačítko (pokud je uživatel přihlášen, vede na profil, jinak na registraci) -->
                 {% if user.is_authenticated %}
-                    <a href="{% url 'profile' %}" class="feature-button">{% trans "Create account" %}</a>
+                    <a href="{% url 'profile' %}" class="feature-button">{% trans "Profile" %}</a>
                 {% else %}
                     <a href="{% url 'users:register' %}" class="feature-button">{% trans "Create account" %}</a>
                 {% endif %}
@@ -92,28 +94,28 @@
                 <!-- Seznam funkcí -->
                 <div class="feature-list">
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Upload your models for free' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Unpaid account creation' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Secure registration and login' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Anyone can rate your models' %}</span>
                     </div>
                 </div>
 
-                <!-- Tlačítko (pokud je uživatel přihlášen, vede na nahrání modelu, jinak na registraci) -->
+                <!-- Tlačítko (pokud je uživatel přihlášen, vede na nahrání modelu, jinak na přihlášení) -->
                 {% if user.is_authenticated %}
                     <a href="{% url 'upload' %}" class="feature-button">{% trans "Upload model" %}</a>
                 {% else %}
-                    <a href="{% url 'users:login' %}" class="feature-button">{% trans "Upload model" %}</a>
+                    <a href="{% url 'users:login' %}" class="feature-button">{% trans "Login" %}</a>
                 {% endif %}
             </div>
 
@@ -129,19 +131,19 @@
                 <!-- Seznam funkcí -->
                 <div class="feature-list">
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Full 360° model preview' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Panning, zooming and rotating' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Texture visibility control' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'Works on all devices' %}</span>
                     </div>
                 </div>
@@ -162,28 +164,28 @@
                 <!-- Seznam funkcí -->
                 <div class="feature-list">
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
-                        <span>{% trans 'Secure pasword change' %}</span>
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
+                        <span>{% trans 'Secure password change' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
-                        <span>{% trans 'Add user information' %}</span>
-                    </div>
-                    <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
                         <span>{% trans 'No cyber tracking' %}</span>
                     </div>
                     <div class="feature-list-item">
-                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Check' %}">
-                        <span>{% trans 'Safe account deletion' %}</span>
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
+                        <span>{% trans 'Change account credentials' %}</span>
+                    </div>
+                    <div class="feature-list-item">
+                        <img class="check-icon" src="{% static 'img/symbols/tick.svg' %}" alt="{% trans 'Tick' %}">
+                        <span>{% trans 'Manage your models' %}</span>
                     </div>
                 </div>
 
-                <!-- Tlačítko (pokud je uživatel přihlášen, vede na profil, jinak na registraci) -->
+                <!-- Tlačítko (pokud je uživatel přihlášen, vede na seznam jeho modelů, jinak na přihlášení) -->
                 {% if user.is_authenticated %}
-                    <a href="{% url 'profile' %}" class="feature-button">{% trans "View your profile" %}</a>
+                    <a href="{% url 'user_models_all' %}" class="feature-button">{% trans "My models" %}</a>
                 {% else %}
-                    <a href="{% url 'users:login' %}" class="feature-button">{% trans "View your profile" %}</a>
+                    <a href="{% url 'users:login' %}" class="feature-button">{% trans "Login" %}</a>
                 {% endif %}
             </div>
         </div>
@@ -209,12 +211,3 @@
     <!-- Obsahuje logiku pro posun carouselu pomocí šipek -->
     <script src="{% static 'js/web/carousel.js' %}"></script>
 {% endblock %}
-
-<!-- Testovací popis
-
-Detailní 3D model navržený pro technické testování a optimalizaci renderingu.
-Tento asset je ideální pro ověření funkčnosti 3D prohlížečů. Vhodné pro:
-real-time vizualizace, testování světelných podmínek a shaderů, validaci polygonální struktury a textur, demo účely a prototypování.
-Model slouží jako standardizovaný testovací asset v rámci vývoje aplikace FreeVat.
-
--->

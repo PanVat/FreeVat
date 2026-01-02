@@ -9,17 +9,17 @@ class User(AbstractUser):
     picture = models.ImageField(upload_to="users/avatars/",
                                 null=True,
                                 blank=True,
-                                verbose_name=_("Profile picture"),
-                                help_text=_("Upload a profile picture"),
-                                error_messages={"invalid": _("Invalid image format")})
+                                verbose_name="Profile picture",
+                                help_text="Upload a profile picture",
+                                error_messages={"invalid": "Invalid image format"})
 
     # URL pro profilový obrázek ze sociálního účtu
     picture_url = models.URLField(
         max_length=500,
         blank=True,
         null=True,
-        verbose_name=_("Profile Picture URL"),
-        help_text=_("URL of profile picture from social account")
+        verbose_name="Profile picture URL",
+        help_text="URL of profile picture from social account"
     )
 
     # Bio/Popis uživatele
@@ -27,7 +27,7 @@ class User(AbstractUser):
         max_length=500,
         blank=True,
         null=True,
-        verbose_name=_("Description"),
+        verbose_name="Description",
     )
 
     # Odkaz na osobní web nebo portfolio
@@ -35,16 +35,15 @@ class User(AbstractUser):
         max_length=255,
         blank=True,
         null=True,
-        verbose_name=_("Website"),
+        verbose_name="Website",
     )
 
     # Přepsání pole groups pro řešení kolize (E304)
     groups = models.ManyToManyField(
         Group,
-        verbose_name=_('groups'),
+        verbose_name='groups',
         blank=True,
-        help_text=_(
-            'The groups this user belongs to. A user will get all permissions granted to each of their groups.'),
+        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
         related_name="users_custom_groups",
         related_query_name="user",
     )
@@ -52,9 +51,9 @@ class User(AbstractUser):
     # Přepsání pole user_permissions pro řešení kolize (E304)
     user_permissions = models.ManyToManyField(
         Permission,
-        verbose_name=_('user permissions'),
+        verbose_name='user permissions',
         blank=True,
-        help_text=_('Specific permissions for this user.'),
+        help_text='Specific permissions for this user.',
         related_name="users_custom_permissions",
         related_query_name="user",
     )
@@ -75,5 +74,5 @@ class User(AbstractUser):
 
     class Meta(AbstractUser.Meta):
         ordering = ['username']
-        verbose_name = _("User")
-        verbose_name_plural = _("Users")
+        verbose_name = "User"
+        verbose_name_plural = "Users"

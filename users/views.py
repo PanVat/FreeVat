@@ -72,7 +72,7 @@ def register_view(request):
             user.save()
 
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            messages.success(request, f'Účet pro {user.username} byl vytvořen!')
+            messages.success(request, f'Account for {user.username} was created!')
             return redirect('index')
     else:
         form = CustomUserCreationForm()

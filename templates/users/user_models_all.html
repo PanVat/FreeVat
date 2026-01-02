@@ -1,18 +1,18 @@
 {% extends "base/base.html" %}
 {% load i18n static %}
 
-{% block title %}{% trans 'My Models' %}{% endblock %}
+{% block title %}{% trans 'FreeVat - My models' %}{% endblock %}
 
 {% block content %}
     <div class="models-full-page">
         <div class="models-sort-container">
             <h1 class="models-category-title">
-                {% trans "My Uploaded Models" %}
+                {% trans "My models" %}
             </h1>
 
             <a href="{% url 'upload' %}"
                class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded transition-all">
-                <i class="fas fa-plus mr-2"></i> {% trans "Upload New" %}
+                <i class="fas fa-plus mr-2"></i> {% trans "Upload new" %}
             </a>
         </div>
 

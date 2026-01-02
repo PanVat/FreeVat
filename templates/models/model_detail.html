@@ -3,6 +3,9 @@
 <!-- Načtení potřebných knihoven -->
 {% load i18n static format_numbers %}
 
+<!-- Titulek stránky -->
+{% block title %}{% trans 'FreeVat - Model information' %}{% endblock %}
+
 {% block content %}
     <!-- Celá stránka -->
     <div class="model-detail-page">
@@ -21,14 +24,14 @@
                     <button id="reset-view"
                             class="model-scene-button"
                             title="{% trans 'Reset View' %}">
-                        <img src="{% static 'img/icons/reset.svg' %}" alt="Reset">
+                        <img src="{% static 'img/icons/reset.svg' %}" alt="{% trans 'Reset' %}">
                     </button>
 
                     <!-- Prepínání do režimu celé obrazovky -->
                     <button id="toggle-fullscreen"
                             class="model-scene-button"
                             title="{% trans 'Fullscreen' %}">
-                        <img src="{% static 'img/icons/fullscreen.svg' %}" alt="Fullscreen">
+                        <img src="{% static 'img/icons/fullscreen.svg' %}" alt="{% trans 'Fullscreen' %}">
                     </button>
                 </div>
 
@@ -74,18 +77,18 @@
 
                         <!-- Líbí se -->
                         <button class="model-rating-button" title="Like">
-                            <img src="{% static 'img/icons/like.svg' %}" alt="Like">
+                            <img src="{% static 'img/icons/like.svg' %}" alt="{% trans 'Like' %}">
                         </button>
 
                         <!-- Nelíbí se -->
                         <button class="model-rating-button" title="Dislike">
-                            <img src="{% static 'img/icons/dislike.svg' %}" alt="Dislike">
+                            <img src="{% static 'img/icons/dislike.svg' %}" alt="{% trans 'Dislike' %}">
                         </button>
 
                         <!-- Sdílet odkaz -->
                         <button onclick="navigator.clipboard.writeText(window.location.href)"
                                 class="model-rating-button" title="Copy Link">
-                            <img src="{% static 'img/icons/share.svg' %}" alt="Share">
+                            <img src="{% static 'img/icons/share.svg' %}" alt="{% trans 'Share' %}">
                         </button>
                         <a href="{{ model.model.url }}" download class="button bg-green-900">
                             {% trans "Download" %}
@@ -151,7 +154,7 @@
                      class="fixed inset-0 z-[100] hidden bg-black/90 items-center justify-center p-4 cursor-zoom-out px-auto flex"
                      onclick="closeModal()">
                     <img id="modalImage" src="" class="max-w-full max-h-full rounded-md shadow-2xl cursor-default"
-                         onclick="event.stopPropagation()" alt="">
+                         onclick="event.stopPropagation()" alt="{% trans 'Thumbnail' %}">
                 </div>
             </div>
 
@@ -181,8 +184,8 @@
                         {% else %}
                             <div class="comment-not-login">
                                 <p class="text-base text-gray-500">
-                                    {% trans "Please" %} <a href="{% url 'users:login' %}"
-                                                            class="text-blue-400 hover:underline">{% trans "login" %}</a> {% trans "to add a comment" %}
+                                    {% trans "For comment please " %} <a href="{% url 'users:login' %}"
+                                                            class="text-blue-400 hover:underline">{% trans "login" %}</a>
                                 </p>
                             </div>
                         {% endif %}
@@ -213,7 +216,7 @@
                             <!-- Jinak zobraz hlášku -->
                             {% empty %}
                             <div class="text-center py-8">
-                                <p class="text-gray-500 text-lg italic">{% trans "No comments yet." %}</p>
+                                <p class="text-gray-500 text-lg italic">{% trans "No models available yet." %}</p>
                             </div>
                         {% endfor %}
                     </div>

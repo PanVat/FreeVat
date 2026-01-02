@@ -4,7 +4,7 @@
 {% load crispy_forms_tags static i18n %}
 
 <!-- Titulek stránky !-->
-{% block title %} {% trans 'Register' %} {% endblock %}
+{% block title %} {% trans 'FreeVat - Create account' %} {% endblock %}
 
 {% block content %}
     <!-- Registrační stránka -->
@@ -27,9 +27,6 @@
             <!-- Registrační formulář -->
             <form class="form" method="POST">
                 {% csrf_token %}
-
-                <!-- Zobrazení chybových hlášek -->
-                {% include "base/error.html" %}
 
                 <!-- Formulářová pole -->
                 <div class="form-inputs-container">

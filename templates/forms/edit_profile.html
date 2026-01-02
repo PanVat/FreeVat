@@ -25,9 +25,6 @@
             <form class="form" method="POST">
                 {% csrf_token %}
 
-                <!-- Zobrazení chybových hlášek -->
-                {% include "base/error.html" %}
-
                 <!-- Formulářová pole -->
                 <div class="form-inputs-container">
                     {% for field in form %}
@@ -47,7 +44,7 @@
                     <!-- Zrušit úpravy -->
                     <a href="{% url 'profile' %}"
                        class="form-discard-button">
-                        {% trans 'Cancel' %}
+                        {% trans 'Return' %}
                     </a>
                 </div>
             </form>

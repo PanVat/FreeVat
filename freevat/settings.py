@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'rosetta',  # Rosetta (vícejazyčnost)
     'django_browser_reload',  # Pro automatické obnovení stránky při změně kódu
     'crispy_forms',  # Crispy - pro lepší vzhled formulářů
-    'crispy_tailwind'  # Pro použití Tailwind CSS s crispy_forms
+    'crispy_tailwind',  # Pro použití Tailwind CSS s crispy_forms
+    'modeltranslation', # Přeložení kategorií
 ]
 
 # Důležité kvůli chybě

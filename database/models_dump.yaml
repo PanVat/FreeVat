@@ -1,0 +1,1173 @@
+﻿-   model: freevat.category
+    pk: 3
+    fields:
+        name: Animals
+        icon: models/categories/animals.svg
+-   model: freevat.category
+    pk: 4
+    fields:
+        name: Architecture
+        icon: models/categories/architecture.svg
+-   model: freevat.category
+    pk: 6
+    fields:
+        name: Drink
+        icon: models/categories/drink.svg
+-   model: freevat.category
+    pk: 8
+    fields:
+        name: Food
+        icon: models/categories/food.svg
+-   model: freevat.category
+    pk: 10
+    fields:
+        name: Home
+        icon: models/categories/home.svg
+-   model: freevat.category
+    pk: 11
+    fields:
+        name: Characters
+        icon: models/categories/characters.svg
+-   model: freevat.category
+    pk: 12
+    fields:
+        name: Nature
+        icon: models/categories/nature.svg
+-   model: freevat.category
+    pk: 14
+    fields:
+        name: Sport
+        icon: models/categories/sport.svg
+-   model: freevat.category
+    pk: 15
+    fields:
+        name: Technology
+        icon: models/categories/technology.svg
+-   model: freevat.category
+    pk: 16
+    fields:
+        name: Vehicles
+        icon: models/categories/vehicles.svg
+-   model: freevat.format
+    pk: 6
+    fields:
+        name: FBX
+        extension: fbx
+        icon: models/formats/fbx.svg
+        description: .fbx
+-   model: freevat.format
+    pk: 7
+    fields:
+        name: OBJ
+        extension: obj
+        icon: models/formats/obj.svg
+        description: .obj
+-   model: freevat.format
+    pk: 8
+    fields:
+        name: GLTF
+        extension: gltf
+        icon: models/formats/gltf.svg
+        description: .gltf
+-   model: freevat.format
+    pk: 9
+    fields:
+        name: GLB
+        extension: glb
+        icon: models/formats/glb.svg
+        description: .glb
+-   model: freevat.format
+    pk: 10
+    fields:
+        name: STL
+        extension: stl
+        icon: models/formats/stl.svg
+        description: .stl
+-   model: freevat.software
+    pk: 1
+    fields:
+        name: Blender
+        icon: models/software/blender.svg
+        description: .blend
+-   model: freevat.software
+    pk: 2
+    fields:
+        name: Cinema 4D
+        icon: models/software/cinema_4d.svg
+        description: .c4d
+-   model: freevat.software
+    pk: 3
+    fields:
+        name: 3ds Max
+        icon: models/software/3ds_max.svg
+        description: .max, .3ds
+-   model: freevat.software
+    pk: 4
+    fields:
+        name: Maya
+        icon: models/software/maya.svg
+        description: .mb, .ma
+-   model: freevat.model3d
+    pk: 6
+    fields:
+        name: Flexi Stitch
+        category: 11
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/flexi_stitch.stl
+        thumbnail: models/thumbnails/flexi-stitch/flexi_stitch_4.jpg
+        user: 1
+        uploaded: 2026-01-01 21:48:36.596535+00:00
+        updated: 2026-01-01 21:48:36.596549+00:00
+-   model: freevat.model3d
+    pk: 40
+    fields:
+        name: Hospital bed
+        category: 10
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/hospital_bed.glb
+        thumbnail: models/thumbnails/hospital-bed/hospital_bed_3.jpg
+        user: 1
+        uploaded: 2026-01-01 22:01:09.343775+00:00
+        updated: 2026-01-01 22:01:09.343796+00:00
+-   model: freevat.model3d
+    pk: 41
+    fields:
+        name: Pizza
+        category: 8
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/pizza.glb
+        thumbnail: models/thumbnails/pizza/pizza_0.jpg
+        user: 1
+        uploaded: 2026-01-01 22:02:28.667491+00:00
+        updated: 2026-01-01 22:02:28.667504+00:00
+-   model: freevat.model3d
+    pk: 42
+    fields:
+        name: Log cabin
+        category: 4
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/log_cabin.glb
+        thumbnail: models/thumbnails/log-cabin/log_cabin_1.jpg
+        user: 1
+        uploaded: 2026-01-01 22:04:10.407151+00:00
+        updated: 2026-01-01 22:04:10.407169+00:00
+-   model: freevat.model3d
+    pk: 43
+    fields:
+        name: Dragon fruit
+        category: 8
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/dragon_fruit.glb
+        thumbnail: models/thumbnails/dragon-fruit/dragon_fruit_0.jpg
+        user: 1
+        uploaded: 2026-01-01 22:05:26.014645+00:00
+        updated: 2026-01-01 22:05:26.014664+00:00
+-   model: freevat.model3d
+    pk: 44
+    fields:
+        name: Futuristic building
+        category: 4
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/futuristic_building.glb
+        thumbnail: models/thumbnails/futuristic-building/futuristic_building_0.jpg
+        user: 1
+        uploaded: 2026-01-01 22:06:44.286967+00:00
+        updated: 2026-01-01 22:06:44.286985+00:00
+-   model: freevat.model3d
+    pk: 45
+    fields:
+        name: Banana
+        category: 8
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/banana.stl
+        thumbnail: models/thumbnails/banana/banana_1.jpg
+        user: 1
+        uploaded: 2026-01-01 22:07:49.437028+00:00
+        updated: 2026-01-01 22:07:49.437041+00:00
+-   model: freevat.model3d
+    pk: 46
+    fields:
+        name: Game Boy
+        category: 15
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/game_boy.glb
+        thumbnail: models/thumbnails/game-boy/game_boy_0.jpg
+        user: 1
+        uploaded: 2026-01-01 22:09:16.923355+00:00
+        updated: 2026-01-01 22:09:16.923369+00:00
+-   model: freevat.model3d
+    pk: 47
+    fields:
+        name: Kettle bell
+        category: 14
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/kettle_bell.glb
+        thumbnail: models/thumbnails/kettle-bell/kettle_bell_2.jpg
+        user: 1
+        uploaded: 2026-01-01 22:10:36.047105+00:00
+        updated: 2026-01-01 22:10:36.047119+00:00
+-   model: freevat.model3d
+    pk: 48
+    fields:
+        name: Rabbit
+        category: 3
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/rabbit.glb
+        thumbnail: models/thumbnails/rabbit/rabbit_0.jpg
+        user: 1
+        uploaded: 2026-01-01 22:11:41.324271+00:00
+        updated: 2026-01-01 22:11:41.324284+00:00
+-   model: freevat.model3d
+    pk: 49
+    fields:
+        name: NVIDIA GeForce RTX 3090
+        category: 15
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/nvidia_geforce_rtx_3090.glb
+        thumbnail: models/thumbnails/nvidia-geforce-rtx-3090/nvidia_geforce_rtx_3090_4.jpg
+        user: 1
+        uploaded: 2026-01-01 22:13:21.549090+00:00
+        updated: 2026-01-01 22:13:21.549106+00:00
+-   model: freevat.model3d
+    pk: 50
+    fields:
+        name: Soccer ball
+        category: 14
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/soccer_ball.glb
+        thumbnail: models/thumbnails/soccer-ball/soccer_ball_4.jpg
+        user: 1
+        uploaded: 2026-01-01 22:14:27.380805+00:00
+        updated: 2026-01-01 22:14:27.380818+00:00
+-   model: freevat.model3d
+    pk: 51
+    fields:
+        name: FNAF soda cup
+        category: 6
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/fnaf_soda_cup.glb
+        thumbnail: models/thumbnails/fnaf-soda-cup/fnaf_soda_cup_3.jpg
+        user: 1
+        uploaded: 2026-01-01 22:15:51.289110+00:00
+        updated: 2026-01-01 22:15:51.289124+00:00
+-   model: freevat.model3d
+    pk: 52
+    fields:
+        name: Cracked egg
+        category: 8
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/cracked_egg.glb
+        thumbnail: models/thumbnails/cracked-egg/cracked_egg_4.jpg
+        user: 1
+        uploaded: 2026-01-01 22:17:19.405277+00:00
+        updated: 2026-01-01 22:17:19.405296+00:00
+-   model: freevat.model3d
+    pk: 53
+    fields:
+        name: Dinosaur
+        category: 3
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/dinosaur.glb
+        thumbnail: models/thumbnails/dinosaur/dinosaur_2.jpg
+        user: 1
+        uploaded: 2026-01-01 22:18:12.020299+00:00
+        updated: 2026-01-01 22:18:12.020312+00:00
+-   model: freevat.model3d
+    pk: 54
+    fields:
+        name: Hamburger
+        category: 8
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/burger.glb
+        thumbnail: models/thumbnails/hamburger/burger_0.jpg
+        user: 1
+        uploaded: 2026-01-01 22:28:17.561607+00:00
+        updated: 2026-01-01 22:28:17.561624+00:00
+-   model: freevat.model3d
+    pk: 55
+    fields:
+        name: Alarm clock
+        category: 10
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/alarm_clock.glb
+        thumbnail: models/thumbnails/alarm-clock/alarm_clock_3.jpg
+        user: 1
+        uploaded: 2026-01-01 22:29:06.049351+00:00
+        updated: 2026-01-01 22:29:06.049369+00:00
+-   model: freevat.model3d
+    pk: 56
+    fields:
+        name: Pumpkin
+        category: 12
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/pumpkin.glb
+        thumbnail: models/thumbnails/pumpkin/pumpkin_3.jpg
+        user: 1
+        uploaded: 2026-01-01 22:30:07.582485+00:00
+        updated: 2026-01-01 22:30:07.582505+00:00
+-   model: freevat.model3d
+    pk: 57
+    fields:
+        name: Fizzy drink
+        category: 6
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/fizzy_drink.glb
+        thumbnail: models/thumbnails/fizzy-drink/fizzy_drink_4.jpg
+        user: 1
+        uploaded: 2026-01-01 22:31:03.703984+00:00
+        updated: 2026-01-01 22:31:03.704004+00:00
+-   model: freevat.model3d
+    pk: 58
+    fields:
+        name: Sleeping cat
+        category: 3
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/sleeping_cat.glb
+        thumbnail: models/thumbnails/sleeping-cat/sleeping_cat_1.jpg
+        user: 1
+        uploaded: 2026-01-01 22:32:13.034477+00:00
+        updated: 2026-01-01 22:32:13.034495+00:00
+-   model: freevat.model3d
+    pk: 59
+    fields:
+        name: Forklift
+        category: 16
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/forklift.glb
+        thumbnail: models/thumbnails/forklift/forklift_1.jpg
+        user: 1
+        uploaded: 2026-01-01 22:33:55.655107+00:00
+        updated: 2026-01-01 22:33:55.655120+00:00
+-   model: freevat.model3d
+    pk: 60
+    fields:
+        name: Monster energy drink
+        category: 6
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/monster_energy_drink.glb
+        thumbnail: models/thumbnails/monster-energy-drink/monster_energy_drink_3.jpg
+        user: 1
+        uploaded: 2026-01-01 22:34:58.206064+00:00
+        updated: 2026-01-01 22:34:58.206077+00:00
+-   model: freevat.model3d
+    pk: 61
+    fields:
+        name: Stylized mushrooms
+        category: 12
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/stylized_mushrooms.glb
+        thumbnail: models/thumbnails/stylized-mushrooms/stylized_mushrooms_3.jpg
+        user: 1
+        uploaded: 2026-01-01 22:36:12.837280+00:00
+        updated: 2026-01-01 22:36:12.837293+00:00
+-   model: freevat.model3d
+    pk: 62
+    fields:
+        name: Spider plant
+        category: 12
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/spider_plant.glb
+        thumbnail: models/thumbnails/spider-plant/spider_plant_4.jpg
+        user: 1
+        uploaded: 2026-01-01 22:37:20.466438+00:00
+        updated: 2026-01-01 22:37:20.466451+00:00
+-   model: freevat.model3d
+    pk: 63
+    fields:
+        name: Capybara with suitcase
+        category: 11
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/capybara_carrying_suitcase.glb
+        thumbnail: models/thumbnails/capybara-with-suitcase/capybara_carrying_suitcase_2.jpg
+        user: 1
+        uploaded: 2026-01-01 22:38:30.349762+00:00
+        updated: 2026-01-01 22:38:30.349779+00:00
+-   model: freevat.model3d
+    pk: 64
+    fields:
+        name: Bowling ball
+        category: 14
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/bowling_ball.glb
+        thumbnail: models/thumbnails/bowling-ball/bowling_ball_1.jpg
+        user: 1
+        uploaded: 2026-01-01 22:39:21.175921+00:00
+        updated: 2026-01-01 22:39:21.175942+00:00
+-   model: freevat.model3d
+    pk: 66
+    fields:
+        name: Spongebob Squarepants
+        category: 11
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/spongebob_squarepants.glb
+        thumbnail: models/thumbnails/spongebob-squarepants/spongebob_squarepants_4.jpg
+        user: 1
+        uploaded: 2026-01-01 22:41:41.489573+00:00
+        updated: 2026-01-01 22:41:41.489587+00:00
+-   model: freevat.model3d
+    pk: 67
+    fields:
+        name: Minecraft Creeper
+        category: 11
+        description: "Detailed 3D model designed for technical testing and rendering optimization. This asset is ideal for verifying the functionality of 3D viewers. Suitable for: real-time visualization, testing of lighting conditions and shaders, validation of polygonal structure and textures, demo purposes, and prototyping. The model serves as a standardized testing asset within the development of the FreeVat application.."
+        model: models/models/minecraft_creeper.glb
+        thumbnail: models/thumbnails/minecraft-creeper/minecraft_creeper_1.jpg
+        user: 1
+        uploaded: 2026-01-01 22:42:49.499041+00:00
+        updated: 2026-01-01 22:42:49.499054+00:00
+-   model: freevat.modelimage
+    pk: 21
+    fields:
+        model3d: 6
+        image: models/gallery/flexi-stitch/flexi_stitch_0.jpg
+-   model: freevat.modelimage
+    pk: 22
+    fields:
+        model3d: 6
+        image: models/gallery/flexi-stitch/flexi_stitch_1.jpg
+-   model: freevat.modelimage
+    pk: 23
+    fields:
+        model3d: 6
+        image: models/gallery/flexi-stitch/flexi_stitch_2.jpg
+-   model: freevat.modelimage
+    pk: 24
+    fields:
+        model3d: 6
+        image: models/gallery/flexi-stitch/flexi_stitch_3.jpg
+-   model: freevat.modelimage
+    pk: 54
+    fields:
+        model3d: 40
+        image: models/gallery/hospital-bed/hospital_bed_0.jpg
+-   model: freevat.modelimage
+    pk: 55
+    fields:
+        model3d: 40
+        image: models/gallery/hospital-bed/hospital_bed_1.jpg
+-   model: freevat.modelimage
+    pk: 56
+    fields:
+        model3d: 40
+        image: models/gallery/hospital-bed/hospital_bed_2.jpg
+-   model: freevat.modelimage
+    pk: 57
+    fields:
+        model3d: 40
+        image: models/gallery/hospital-bed/hospital_bed_4.jpg
+-   model: freevat.modelimage
+    pk: 58
+    fields:
+        model3d: 41
+        image: models/gallery/pizza/pizza_1.jpg
+-   model: freevat.modelimage
+    pk: 59
+    fields:
+        model3d: 41
+        image: models/gallery/pizza/pizza_2.jpg
+-   model: freevat.modelimage
+    pk: 60
+    fields:
+        model3d: 41
+        image: models/gallery/pizza/pizza_3.jpg
+-   model: freevat.modelimage
+    pk: 61
+    fields:
+        model3d: 41
+        image: models/gallery/pizza/pizza_4.jpg
+-   model: freevat.modelimage
+    pk: 62
+    fields:
+        model3d: 42
+        image: models/gallery/log-cabin/log_cabin_0.jpg
+-   model: freevat.modelimage
+    pk: 63
+    fields:
+        model3d: 42
+        image: models/gallery/log-cabin/log_cabin_2.jpg
+-   model: freevat.modelimage
+    pk: 64
+    fields:
+        model3d: 42
+        image: models/gallery/log-cabin/log_cabin_3.jpg
+-   model: freevat.modelimage
+    pk: 65
+    fields:
+        model3d: 42
+        image: models/gallery/log-cabin/log_cabin_4.jpg
+-   model: freevat.modelimage
+    pk: 66
+    fields:
+        model3d: 43
+        image: models/gallery/dragon-fruit/dragon_fruit_1.jpg
+-   model: freevat.modelimage
+    pk: 67
+    fields:
+        model3d: 43
+        image: models/gallery/dragon-fruit/dragon_fruit_2.jpg
+-   model: freevat.modelimage
+    pk: 68
+    fields:
+        model3d: 43
+        image: models/gallery/dragon-fruit/dragon_fruit_3.jpg
+-   model: freevat.modelimage
+    pk: 69
+    fields:
+        model3d: 43
+        image: models/gallery/dragon-fruit/dragon_fruit_4.jpg
+-   model: freevat.modelimage
+    pk: 70
+    fields:
+        model3d: 44
+        image: models/gallery/futuristic-building/futuristic_building_1.jpg
+-   model: freevat.modelimage
+    pk: 71
+    fields:
+        model3d: 44
+        image: models/gallery/futuristic-building/futuristic_building_2.jpg
+-   model: freevat.modelimage
+    pk: 72
+    fields:
+        model3d: 44
+        image: models/gallery/futuristic-building/futuristic_building_3.jpg
+-   model: freevat.modelimage
+    pk: 73
+    fields:
+        model3d: 44
+        image: models/gallery/futuristic-building/futuristic_building_4.jpg
+-   model: freevat.modelimage
+    pk: 74
+    fields:
+        model3d: 45
+        image: models/gallery/banana/banana_0.jpg
+-   model: freevat.modelimage
+    pk: 75
+    fields:
+        model3d: 45
+        image: models/gallery/banana/banana_2.jpg
+-   model: freevat.modelimage
+    pk: 76
+    fields:
+        model3d: 45
+        image: models/gallery/banana/banana_3.jpg
+-   model: freevat.modelimage
+    pk: 77
+    fields:
+        model3d: 45
+        image: models/gallery/banana/banana_4.jpg
+-   model: freevat.modelimage
+    pk: 78
+    fields:
+        model3d: 46
+        image: models/gallery/game-boy/game_boy_1.jpg
+-   model: freevat.modelimage
+    pk: 79
+    fields:
+        model3d: 46
+        image: models/gallery/game-boy/game_boy_2.jpg
+-   model: freevat.modelimage
+    pk: 80
+    fields:
+        model3d: 46
+        image: models/gallery/game-boy/game_boy_3.jpg
+-   model: freevat.modelimage
+    pk: 81
+    fields:
+        model3d: 46
+        image: models/gallery/game-boy/game_boy_4.jpg
+-   model: freevat.modelimage
+    pk: 82
+    fields:
+        model3d: 47
+        image: models/gallery/kettle-bell/kettle_bell_0.jpg
+-   model: freevat.modelimage
+    pk: 83
+    fields:
+        model3d: 47
+        image: models/gallery/kettle-bell/kettle_bell_1.jpg
+-   model: freevat.modelimage
+    pk: 84
+    fields:
+        model3d: 47
+        image: models/gallery/kettle-bell/kettle_bell_3.jpg
+-   model: freevat.modelimage
+    pk: 85
+    fields:
+        model3d: 47
+        image: models/gallery/kettle-bell/kettle_bell_4.jpg
+-   model: freevat.modelimage
+    pk: 86
+    fields:
+        model3d: 48
+        image: models/gallery/rabbit/rabbit_1.jpg
+-   model: freevat.modelimage
+    pk: 87
+    fields:
+        model3d: 48
+        image: models/gallery/rabbit/rabbit_2.jpg
+-   model: freevat.modelimage
+    pk: 88
+    fields:
+        model3d: 48
+        image: models/gallery/rabbit/rabbit_3.jpg
+-   model: freevat.modelimage
+    pk: 89
+    fields:
+        model3d: 48
+        image: models/gallery/rabbit/rabbit_4.jpg
+-   model: freevat.modelimage
+    pk: 90
+    fields:
+        model3d: 49
+        image: models/gallery/nvidia-geforce-rtx-3090/nvidia_geforce_rtx_3090_0.jpg
+-   model: freevat.modelimage
+    pk: 91
+    fields:
+        model3d: 49
+        image: models/gallery/nvidia-geforce-rtx-3090/nvidia_geforce_rtx_3090_1.jpg
+-   model: freevat.modelimage
+    pk: 92
+    fields:
+        model3d: 49
+        image: models/gallery/nvidia-geforce-rtx-3090/nvidia_geforce_rtx_3090_2.jpg
+-   model: freevat.modelimage
+    pk: 93
+    fields:
+        model3d: 49
+        image: models/gallery/nvidia-geforce-rtx-3090/nvidia_geforce_rtx_3090_3.jpg
+-   model: freevat.modelimage
+    pk: 94
+    fields:
+        model3d: 50
+        image: models/gallery/soccer-ball/soccer_ball_0.jpg
+-   model: freevat.modelimage
+    pk: 95
+    fields:
+        model3d: 50
+        image: models/gallery/soccer-ball/soccer_ball_1.jpg
+-   model: freevat.modelimage
+    pk: 96
+    fields:
+        model3d: 50
+        image: models/gallery/soccer-ball/soccer_ball_2.jpg
+-   model: freevat.modelimage
+    pk: 97
+    fields:
+        model3d: 50
+        image: models/gallery/soccer-ball/soccer_ball_3.jpg
+-   model: freevat.modelimage
+    pk: 98
+    fields:
+        model3d: 51
+        image: models/gallery/fnaf-soda-cup/fnaf_soda_cup_0.jpg
+-   model: freevat.modelimage
+    pk: 99
+    fields:
+        model3d: 51
+        image: models/gallery/fnaf-soda-cup/fnaf_soda_cup_1.jpg
+-   model: freevat.modelimage
+    pk: 100
+    fields:
+        model3d: 51
+        image: models/gallery/fnaf-soda-cup/fnaf_soda_cup_2.jpg
+-   model: freevat.modelimage
+    pk: 101
+    fields:
+        model3d: 51
+        image: models/gallery/fnaf-soda-cup/fnaf_soda_cup_4.jpg
+-   model: freevat.modelimage
+    pk: 102
+    fields:
+        model3d: 52
+        image: models/gallery/cracked-egg/cracked_egg_0.jpg
+-   model: freevat.modelimage
+    pk: 103
+    fields:
+        model3d: 52
+        image: models/gallery/cracked-egg/cracked_egg_1.jpg
+-   model: freevat.modelimage
+    pk: 104
+    fields:
+        model3d: 52
+        image: models/gallery/cracked-egg/cracked_egg_2.jpg
+-   model: freevat.modelimage
+    pk: 105
+    fields:
+        model3d: 52
+        image: models/gallery/cracked-egg/cracked_egg_3.jpg
+-   model: freevat.modelimage
+    pk: 106
+    fields:
+        model3d: 53
+        image: models/gallery/dinosaur/dinosaur_0.jpg
+-   model: freevat.modelimage
+    pk: 107
+    fields:
+        model3d: 53
+        image: models/gallery/dinosaur/dinosaur_1.jpg
+-   model: freevat.modelimage
+    pk: 108
+    fields:
+        model3d: 53
+        image: models/gallery/dinosaur/dinosaur_3.jpg
+-   model: freevat.modelimage
+    pk: 109
+    fields:
+        model3d: 53
+        image: models/gallery/dinosaur/dinosaur_4.jpg
+-   model: freevat.modelimage
+    pk: 110
+    fields:
+        model3d: 54
+        image: models/gallery/hamburger/burger_1.jpg
+-   model: freevat.modelimage
+    pk: 111
+    fields:
+        model3d: 54
+        image: models/gallery/hamburger/burger_2.jpg
+-   model: freevat.modelimage
+    pk: 112
+    fields:
+        model3d: 54
+        image: models/gallery/hamburger/burger_3.jpg
+-   model: freevat.modelimage
+    pk: 113
+    fields:
+        model3d: 54
+        image: models/gallery/hamburger/burger_4.jpg
+-   model: freevat.modelimage
+    pk: 114
+    fields:
+        model3d: 55
+        image: models/gallery/alarm-clock/alarm_clock_0.jpg
+-   model: freevat.modelimage
+    pk: 115
+    fields:
+        model3d: 55
+        image: models/gallery/alarm-clock/alarm_clock_1.jpg
+-   model: freevat.modelimage
+    pk: 116
+    fields:
+        model3d: 55
+        image: models/gallery/alarm-clock/alarm_clock_2.jpg
+-   model: freevat.modelimage
+    pk: 117
+    fields:
+        model3d: 55
+        image: models/gallery/alarm-clock/alarm_clock_4.jpg
+-   model: freevat.modelimage
+    pk: 118
+    fields:
+        model3d: 56
+        image: models/gallery/pumpkin/pumpkin_0.jpg
+-   model: freevat.modelimage
+    pk: 119
+    fields:
+        model3d: 56
+        image: models/gallery/pumpkin/pumpkin_1.jpg
+-   model: freevat.modelimage
+    pk: 120
+    fields:
+        model3d: 56
+        image: models/gallery/pumpkin/pumpkin_2.jpg
+-   model: freevat.modelimage
+    pk: 121
+    fields:
+        model3d: 56
+        image: models/gallery/pumpkin/pumpkin_4.jpg
+-   model: freevat.modelimage
+    pk: 122
+    fields:
+        model3d: 57
+        image: models/gallery/fizzy-drink/fizzy_drink_0.jpg
+-   model: freevat.modelimage
+    pk: 123
+    fields:
+        model3d: 57
+        image: models/gallery/fizzy-drink/fizzy_drink_1.jpg
+-   model: freevat.modelimage
+    pk: 124
+    fields:
+        model3d: 57
+        image: models/gallery/fizzy-drink/fizzy_drink_2.jpg
+-   model: freevat.modelimage
+    pk: 125
+    fields:
+        model3d: 57
+        image: models/gallery/fizzy-drink/fizzy_drink_3.jpg
+-   model: freevat.modelimage
+    pk: 126
+    fields:
+        model3d: 58
+        image: models/gallery/sleeping-cat/sleeping_cat_0.jpg
+-   model: freevat.modelimage
+    pk: 127
+    fields:
+        model3d: 58
+        image: models/gallery/sleeping-cat/sleeping_cat_2.jpg
+-   model: freevat.modelimage
+    pk: 128
+    fields:
+        model3d: 58
+        image: models/gallery/sleeping-cat/sleeping_cat_3.jpg
+-   model: freevat.modelimage
+    pk: 129
+    fields:
+        model3d: 58
+        image: models/gallery/sleeping-cat/sleeping_cat_4.jpg
+-   model: freevat.modelimage
+    pk: 130
+    fields:
+        model3d: 59
+        image: models/gallery/forklift/forklift_0.jpg
+-   model: freevat.modelimage
+    pk: 131
+    fields:
+        model3d: 59
+        image: models/gallery/forklift/forklift_2.jpg
+-   model: freevat.modelimage
+    pk: 132
+    fields:
+        model3d: 59
+        image: models/gallery/forklift/forklift_3.jpg
+-   model: freevat.modelimage
+    pk: 133
+    fields:
+        model3d: 59
+        image: models/gallery/forklift/forklift_4.jpg
+-   model: freevat.modelimage
+    pk: 134
+    fields:
+        model3d: 60
+        image: models/gallery/monster-energy-drink/monster_energy_drink_0.jpg
+-   model: freevat.modelimage
+    pk: 135
+    fields:
+        model3d: 60
+        image: models/gallery/monster-energy-drink/monster_energy_drink_1.jpg
+-   model: freevat.modelimage
+    pk: 136
+    fields:
+        model3d: 60
+        image: models/gallery/monster-energy-drink/monster_energy_drink_2.jpg
+-   model: freevat.modelimage
+    pk: 137
+    fields:
+        model3d: 60
+        image: models/gallery/monster-energy-drink/monster_energy_drink_4.jpg
+-   model: freevat.modelimage
+    pk: 138
+    fields:
+        model3d: 61
+        image: models/gallery/stylized-mushrooms/stylized_mushrooms_0.jpg
+-   model: freevat.modelimage
+    pk: 139
+    fields:
+        model3d: 61
+        image: models/gallery/stylized-mushrooms/stylized_mushrooms_1.jpg
+-   model: freevat.modelimage
+    pk: 140
+    fields:
+        model3d: 61
+        image: models/gallery/stylized-mushrooms/stylized_mushrooms_2.jpg
+-   model: freevat.modelimage
+    pk: 141
+    fields:
+        model3d: 61
+        image: models/gallery/stylized-mushrooms/stylized_mushrooms_4.jpg
+-   model: freevat.modelimage
+    pk: 142
+    fields:
+        model3d: 62
+        image: models/gallery/spider-plant/spider_plant_0.jpg
+-   model: freevat.modelimage
+    pk: 143
+    fields:
+        model3d: 62
+        image: models/gallery/spider-plant/spider_plant_1.jpg
+-   model: freevat.modelimage
+    pk: 144
+    fields:
+        model3d: 62
+        image: models/gallery/spider-plant/spider_plant_2.jpg
+-   model: freevat.modelimage
+    pk: 145
+    fields:
+        model3d: 62
+        image: models/gallery/spider-plant/spider_plant_3.jpg
+-   model: freevat.modelimage
+    pk: 146
+    fields:
+        model3d: 63
+        image: models/gallery/capybara-with-suitcase/capybara_carrying_suitcase_0.jpg
+-   model: freevat.modelimage
+    pk: 147
+    fields:
+        model3d: 63
+        image: models/gallery/capybara-with-suitcase/capybara_carrying_suitcase_1.jpg
+-   model: freevat.modelimage
+    pk: 148
+    fields:
+        model3d: 63
+        image: models/gallery/capybara-with-suitcase/capybara_carrying_suitcase_3.jpg
+-   model: freevat.modelimage
+    pk: 149
+    fields:
+        model3d: 63
+        image: models/gallery/capybara-with-suitcase/capybara_carrying_suitcase_4.jpg
+-   model: freevat.modelimage
+    pk: 150
+    fields:
+        model3d: 64
+        image: models/gallery/bowling-ball/bowling_ball_0.jpg
+-   model: freevat.modelimage
+    pk: 151
+    fields:
+        model3d: 64
+        image: models/gallery/bowling-ball/bowling_ball_2.jpg
+-   model: freevat.modelimage
+    pk: 152
+    fields:
+        model3d: 64
+        image: models/gallery/bowling-ball/bowling_ball_3.jpg
+-   model: freevat.modelimage
+    pk: 153
+    fields:
+        model3d: 64
+        image: models/gallery/bowling-ball/bowling_ball_4.jpg
+-   model: freevat.modelimage
+    pk: 158
+    fields:
+        model3d: 66
+        image: models/gallery/spongebob-squarepants/spongebob_squarepants_0.jpg
+-   model: freevat.modelimage
+    pk: 159
+    fields:
+        model3d: 66
+        image: models/gallery/spongebob-squarepants/spongebob_squarepants_1.jpg
+-   model: freevat.modelimage
+    pk: 160
+    fields:
+        model3d: 66
+        image: models/gallery/spongebob-squarepants/spongebob_squarepants_2.jpg
+-   model: freevat.modelimage
+    pk: 161
+    fields:
+        model3d: 66
+        image: models/gallery/spongebob-squarepants/spongebob_squarepants_3.jpg
+-   model: freevat.modelimage
+    pk: 162
+    fields:
+        model3d: 67
+        image: models/gallery/minecraft-creeper/minecraft_creeper_0.jpg
+-   model: freevat.modelimage
+    pk: 163
+    fields:
+        model3d: 67
+        image: models/gallery/minecraft-creeper/minecraft_creeper_2.jpg
+-   model: freevat.modelimage
+    pk: 164
+    fields:
+        model3d: 67
+        image: models/gallery/minecraft-creeper/minecraft_creeper_3.jpg
+-   model: freevat.modelimage
+    pk: 165
+    fields:
+        model3d: 67
+        image: models/gallery/minecraft-creeper/minecraft_creeper_4.jpg
+-   model: freevat.data
+    pk: 67
+    fields:
+        polygons: 72
+        vertices: 144
+        file_size: 15284
+        file_format: GLB
+-   model: freevat.data
+    pk: 66
+    fields:
+        polygons: 2498
+        vertices: 1960
+        file_size: 191328
+        file_format: GLB
+-   model: freevat.data
+    pk: 64
+    fields:
+        polygons: 8976
+        vertices: 9356
+        file_size: 409300
+        file_format: GLB
+-   model: freevat.data
+    pk: 63
+    fields:
+        polygons: 10072
+        vertices: 7384
+        file_size: 1759668
+        file_format: GLB
+-   model: freevat.data
+    pk: 62
+    fields:
+        polygons: 9174
+        vertices: 6858
+        file_size: 1822420
+        file_format: GLB
+-   model: freevat.data
+    pk: 61
+    fields:
+        polygons: 12057
+        vertices: 9317
+        file_size: 2304192
+        file_format: GLB
+-   model: freevat.data
+    pk: 60
+    fields:
+        polygons: 2804
+        vertices: 1658
+        file_size: 2663208
+        file_format: GLB
+-   model: freevat.data
+    pk: 59
+    fields:
+        polygons: 4426
+        vertices: 6478
+        file_size: 2829244
+        file_format: GLB
+-   model: freevat.data
+    pk: 58
+    fields:
+        polygons: 31139
+        vertices: 18658
+        file_size: 2994024
+        file_format: GLB
+-   model: freevat.data
+    pk: 57
+    fields:
+        polygons: 125924
+        vertices: 66853
+        file_size: 3673960
+        file_format: GLB
+-   model: freevat.data
+    pk: 56
+    fields:
+        polygons: 3442
+        vertices: 2279
+        file_size: 4078344
+        file_format: GLB
+-   model: freevat.data
+    pk: 55
+    fields:
+        polygons: 9140
+        vertices: 7187
+        file_size: 5336340
+        file_format: GLB
+-   model: freevat.data
+    pk: 54
+    fields:
+        polygons: 11728
+        vertices: 7384
+        file_size: 6648528
+        file_format: GLB
+-   model: freevat.data
+    pk: 53
+    fields:
+        polygons: 26005
+        vertices: 16968
+        file_size: 6752832
+        file_format: GLB
+-   model: freevat.data
+    pk: 52
+    fields:
+        polygons: 51368
+        vertices: 31716
+        file_size: 7401008
+        file_format: GLB
+-   model: freevat.data
+    pk: 51
+    fields:
+        polygons: 1460
+        vertices: 1021
+        file_size: 7471272
+        file_format: GLB
+-   model: freevat.data
+    pk: 50
+    fields:
+        polygons: 500
+        vertices: 420
+        file_size: 7853352
+        file_format: GLB
+-   model: freevat.data
+    pk: 49
+    fields:
+        polygons: 99390
+        vertices: 83642
+        file_size: 8336132
+        file_format: GLB
+-   model: freevat.data
+    pk: 48
+    fields:
+        polygons: 150000
+        vertices: 106486
+        file_size: 11813424
+        file_format: GLB
+-   model: freevat.data
+    pk: 47
+    fields:
+        polygons: 7084
+        vertices: 3930
+        file_size: 12320048
+        file_format: GLB
+-   model: freevat.data
+    pk: 46
+    fields:
+        polygons: 18182
+        vertices: 16319
+        file_size: 13234704
+        file_format: GLB
+-   model: freevat.data
+    pk: 45
+    fields:
+        polygons: 350000
+        vertices: 175002
+        file_size: 17500084
+        file_format: STL
+-   model: freevat.data
+    pk: 44
+    fields:
+        polygons: 28048
+        vertices: 27771
+        file_size: 19087140
+        file_format: GLB
+-   model: freevat.data
+    pk: 43
+    fields:
+        polygons: 100000
+        vertices: 56175
+        file_size: 25170428
+        file_format: GLB
+-   model: freevat.data
+    pk: 42
+    fields:
+        polygons: 585229
+        vertices: 411144
+        file_size: 36725204
+        file_format: GLB
+-   model: freevat.data
+    pk: 41
+    fields:
+        polygons: 55336
+        vertices: 52168
+        file_size: 46757684
+        file_format: GLB
+-   model: freevat.data
+    pk: 40
+    fields:
+        polygons: 3988
+        vertices: 3991
+        file_size: 49090568
+        file_format: GLB
+-   model: freevat.data
+    pk: 6
+    fields:
+        polygons: 1513258
+        vertices: 683515
+        file_size: 75662984
+        file_format: STL

@@ -1,4 +1,4 @@
-{% load static %}
+{% load i18n static %}
 
 <!-- Jednotlivé okno s odkazem na detail modelu -->
 <a href="{% url 'model_detail' similar.pk %}" class="group block">
@@ -53,7 +53,7 @@
                 -->
                 <div class="flex gap-0.5 mt-1">
                     {% for i in "12345" %}
-                        <img src="{% static 'img/symbols/star.svg' %}" class="w-2.5 h-2.5" alt="Star">
+                        <img src="{% static 'img/symbols/star.svg' %}" class="w-2.5 h-2.5" alt="{% trans 'Star' %}">
                     {% endfor %}
                 </div>
             </div>

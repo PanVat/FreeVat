@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-14 23:08+0100\n"
-"PO-Revision-Date: 2025-10-13 12:43+0200\n"
-"Last-Translator:   <admin@email.com>\n"
+"POT-Creation-Date: 2026-01-02 23:10+0100\n"
+"PO-Revision-Date: 2026-01-02 23:14+0100\n"
+"Last-Translator:   <admin@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,346 +19,409 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\freevat\models.py:12
+#: .\freevat\forms.py:19
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
-#: .\freevat\models.py:13
-msgid "Enter the name"
-msgstr ""
+#: .\freevat\forms.py:22
+msgid "Enter model name"
+msgstr "Modellname eingeben"
 
-#: .\freevat\models.py:14
-msgid "Name cannot be empty"
-msgstr ""
+#: .\freevat\forms.py:30 .\templates\forms\upload.html:40
+msgid "Category"
+msgstr "Kategorie"
 
-#: .\freevat\models.py:15
-msgid "Name cannot exceed 50 characters"
-msgstr ""
-
-#: .\freevat\models.py:18
-#, fuzzy
-#| msgid "Upload"
-msgid "Uploaded at"
-msgstr "Hochladen"
-
-#: .\freevat\models.py:21
-msgid "Date of last update"
-msgstr ""
-
-#: .\freevat\models.py:25
+#: .\freevat\forms.py:39 .\templates\models\model_detail.html:104
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
-#: .\freevat\models.py:26
-msgid "Enter a short description of the model"
-msgstr ""
+#: .\freevat\forms.py:42
+msgid "Describe your model..."
+msgstr "Beschreiben Sie Ihr Modell..."
 
-#: .\freevat\models.py:27
-msgid "Description cannot exceed 1000 characters"
-msgstr ""
+#: .\freevat\forms.py:49
+msgid "Model"
+msgstr "Modell"
 
-#: .\freevat\models.py:30
-msgid "3D model"
-msgstr ""
+#: .\freevat\forms.py:59 .\templates\forms\upload.html:109
+#: .\templates\models\model_detail.html:157
+msgid "Thumbnail"
+msgstr "Miniaturansicht"
 
-#: .\freevat\models.py:31
-msgid "Upload the 3D model file (.obj, .fbx..)"
-msgstr ""
+#: .\freevat\forms.py:93
+msgid "Write a comment..."
+msgstr "Kommentar schreiben..."
 
-#: .\freevat\models.py:32
-msgid "Invalid file format"
-msgstr ""
-
-#: .\freevat\models.py:35
-msgid "Model preview image"
-msgstr ""
-
-#: .\freevat\models.py:36
-msgid "Upload a preview image for the model"
-msgstr ""
-
-#: .\freevat\models.py:37 .\users\models.py:13
-msgid "Invalid image format"
-msgstr ""
-
-#: .\freevat\models.py:40
-msgid "Creator"
-msgstr ""
-
-#: .\freevat\models.py:48 .\freevat\models.py:55 .\freevat\models.py:77
-#, fuzzy
-#| msgid "Models"
-msgid "3D Model"
-msgstr "Modelle"
-
-#: .\freevat\models.py:49
-#, fuzzy
-#| msgid "Models"
-msgid "3D Models"
-msgstr "Modelle"
-
-#: .\freevat\models.py:57
-msgid "Number of polygons"
-msgstr ""
-
-#: .\freevat\models.py:59
-msgid "Number of vertices"
-msgstr ""
-
-#: .\freevat\models.py:61
-msgid "File size (bytes)"
-msgstr ""
-
-#: .\freevat\models.py:63
-#, fuzzy
-#| msgid "Formats"
-msgid "File format"
-msgstr "Formate"
-
-#: .\freevat\models.py:72
-msgid "Author"
-msgstr ""
-
-#: .\freevat\models.py:79
-msgid "Content"
-msgstr ""
-
-#: .\freevat\models.py:80
-msgid "Enter your comment here"
-msgstr ""
-
-#: .\freevat\models.py:81
-msgid "Comment cannot be empty"
-msgstr ""
-
-#: .\freevat\models.py:82
-msgid "Comment cannot exceed 2000 characters"
-msgstr ""
-
-#: .\freevat\models.py:85
-msgid "Created at"
-msgstr ""
-
-#: .\freevat\models.py:88
-msgid "Updated at"
-msgstr ""
-
-#: .\freevat\models.py:95
-msgid "Comment"
-msgstr ""
-
-#: .\freevat\models.py:96
-msgid "Comments"
-msgstr ""
-
-#: .\freevat\settings.py:197
+#: .\freevat\settings.py:199
 msgid "English"
 msgstr "Englisch"
 
-#: .\freevat\settings.py:198
+#: .\freevat\settings.py:200
 msgid "Czech"
 msgstr "Tschechisch"
 
-#: .\freevat\settings.py:199
+#: .\freevat\settings.py:201
 msgid "German"
 msgstr "Deutsch"
 
-#: .\templates\base\base.html:5
-msgid "lang"
-msgstr ""
+#: .\freevat\translations_dummy.py:5
+msgid "Animals"
+msgstr "Tiere"
 
-#: .\templates\index.html:10
-msgid "Unlimited World of Professional 3D Models"
-msgstr ""
-
-#: .\templates\index.html:11
-msgid "Explore high quality assets without any financial barriers!"
-msgstr ""
-
-#: .\templates\index.html:18 .\templates\index.html:143
-msgid "Arrow Left"
-msgstr ""
-
-#: .\templates\index.html:31 .\templates\index.html:33
-#: .\templates\layout\navbar\partials\menu.html:16
+#: .\freevat\translations_dummy.py:6
 msgid "Architecture"
 msgstr "Architektur"
 
-#: .\templates\index.html:39 .\templates\index.html:41
-#, fuzzy
-#| msgid "Animals & Pets"
-msgid "Animals"
-msgstr "Tiere & Haustiere"
-
-#: .\templates\index.html:47 .\templates\index.html:49
-msgid "Cars"
-msgstr ""
-
-#: .\templates\index.html:55 .\templates\index.html:57
-#, fuzzy
-#| msgid "Characters & Creatures"
-msgid "Characters"
-msgstr "Charaktere & Kreaturen"
-
-#: .\templates\index.html:63 .\templates\index.html:65
-#, fuzzy
-#| msgid "Cars & Vehicles"
-msgid "Vehicles"
-msgstr "Autos & Fahrzeuge"
-
-#: .\templates\index.html:71 .\templates\index.html:73
-msgid "Technology"
-msgstr ""
-
-#: .\templates\index.html:79 .\templates\index.html:81
-#, fuzzy
-#| msgid "Electronics & Gadgets"
-msgid "Electronics"
-msgstr "Elektronik & Gadgets"
-
-#: .\templates\index.html:87 .\templates\index.html:89
-msgid "Food"
-msgstr ""
-
-#: .\templates\index.html:95 .\templates\index.html:97
+#: .\freevat\translations_dummy.py:7
 msgid "Drink"
-msgstr ""
+msgstr "Getränk"
 
-#: .\templates\index.html:103 .\templates\index.html:105
-#, fuzzy
-#| msgid "Furniture & Home"
-msgid "Furniture"
-msgstr "Möbel & Wohnen"
+#: .\freevat\translations_dummy.py:8
+msgid "Food"
+msgstr "Lebensmittel"
 
-#: .\templates\index.html:111 .\templates\index.html:113
+#: .\freevat\translations_dummy.py:9
 msgid "Home"
-msgstr ""
+msgstr "Startseite"
 
-#: .\templates\index.html:119 .\templates\index.html:121
+#: .\freevat\translations_dummy.py:10
+msgid "Characters"
+msgstr "Charaktere"
+
+#: .\freevat\translations_dummy.py:11
 msgid "Nature"
-msgstr ""
+msgstr "Natur"
 
-#: .\templates\index.html:127 .\templates\index.html:129
-msgid "Plants"
-msgstr ""
-
-#: .\templates\index.html:135 .\templates\index.html:137
-#, fuzzy
+#: .\freevat\translations_dummy.py:12
 msgid "Sport"
-msgstr "Unterstützung"
+msgstr "Sport"
 
-#: .\templates\index.html:153
-msgid "COMPLETELY FREE ACCESS"
-msgstr ""
+#: .\freevat\translations_dummy.py:13
+msgid "Technology"
+msgstr "Technologie"
 
-#: .\templates\index.html:158
-msgid "Get any model for free"
-msgstr ""
+#: .\freevat\translations_dummy.py:14
+msgid "Vehicles"
+msgstr "Fahrzeuge"
 
-#: .\templates\index.html:162
-msgid "Extensive 3D Model Library"
-msgstr ""
+#: .\templates\base\base.html:5
+msgid "en"
+msgstr "de"
 
-#: .\templates\index.html:166
-msgid "Multiple 3D format support"
-msgstr ""
+#: .\templates\forms\change_password.html:7
+msgid "FreeVat - Change password"
+msgstr "FreeVat – Passwort ändern"
 
-#: .\templates\index.html:170
-msgid "Absolutely no ads"
-msgstr ""
+#: .\templates\forms\change_password.html:17 .\templates\users\profile.html:45
+msgid "Change password"
+msgstr "Passwort ändern"
 
-#: .\templates\index.html:174
-msgid "Create Account"
-msgstr ""
+#: .\templates\forms\change_password.html:20
+msgid "Use long and random password to stay secure"
+msgstr "Verwenden Sie lange und zufällige Passwörter, um sicher zu bleiben."
 
-#: .\templates\index.html:181
-msgid "SHARE YOUR CREATIONS"
-msgstr ""
+#: .\templates\forms\change_password.html:45
+msgid "Update password"
+msgstr "Passwort aktualisieren"
 
-#: .\templates\index.html:186
-msgid "Upload your models for free"
-msgstr ""
+#: .\templates\forms\change_password.html:49
+#: .\templates\forms\edit_profile.html:47
+msgid "Return"
+msgstr "Rückgabe"
 
-#: .\templates\index.html:190
-msgid "Unpaid account creation"
-msgstr ""
+#: .\templates\forms\edit_profile.html:7
+msgid "FreeVat - Edit profile"
+msgstr "FreeVat – Profil bearbeiten"
 
-#: .\templates\index.html:194
-msgid "Secure registration and login"
-msgstr ""
+#: .\templates\forms\edit_profile.html:17 .\templates\users\profile.html:39
+msgid "Edit profile"
+msgstr "Profil bearbeiten"
 
-#: .\templates\index.html:198
-msgid "Anyone can rate your models"
-msgstr ""
+#: .\templates\forms\edit_profile.html:20
+msgid "Update your personal information"
+msgstr "Aktualisieren Sie Ihre persönlichen Daten"
 
-#: .\templates\index.html:202
-#, fuzzy
-#| msgid "Upload"
-msgid "Upload Model"
+#: .\templates\forms\edit_profile.html:42
+msgid "Save changes"
+msgstr "Änderungen speichern"
+
+#: .\templates\forms\login.html:7
+msgid "FreeVat - Login to account"
+msgstr "FreeVat – Bei Konto anmelden"
+
+#: .\templates\forms\login.html:17
+msgid "Login to FreeVat"
+msgstr "Bei FreeVat anmelden"
+
+#: .\templates\forms\login.html:20
+msgid "Not a member yet?"
+msgstr "Noch kein Mitglied?"
+
+#: .\templates\forms\login.html:22
+msgid "Create new account!"
+msgstr "Neues Konto erstellen!"
+
+#: .\templates\forms\login.html:48
+msgid "Remember me"
+msgstr "An mich erinnern"
+
+#: .\templates\forms\login.html:55
+msgid "Forgotten password?"
+msgstr "Passwort vergessen?"
+
+#: .\templates\forms\login.html:64
+msgid "Login to account"
+msgstr "Bei Konto anmelden"
+
+#: .\templates\forms\register.html:7
+msgid "FreeVat - Create account"
+msgstr "FreeVat – Konto erstellen"
+
+#: .\templates\forms\register.html:17 .\templates\forms\register.html:44
+msgid "Create new account"
+msgstr "Neues Konto erstellen"
+
+#: .\templates\forms\register.html:20
+msgid "Already have an account?"
+msgstr "Haben Sie bereits ein Konto?"
+
+#: .\templates\forms\register.html:22
+msgid "Login here!"
+msgstr "Hier einloggen!"
+
+#: .\templates\forms\upload.html:7
+msgid "FreeVat - Upload model"
+msgstr "FreeVat – Modell hochladen"
+
+#: .\templates\forms\upload.html:17
+msgid "Upload 3D model"
+msgstr "3D-Modell hochladen"
+
+#: .\templates\forms\upload.html:20
+msgid "View your uploaded models "
+msgstr "Ihre hochgeladenen Modelle anzeigen"
+
+#: .\templates\forms\upload.html:22
+msgid "here"
+msgstr "hier"
+
+#: .\templates\forms\upload.html:46
+msgid "Select a category"
+msgstr "Wählen Sie eine Kategorie aus"
+
+#: .\templates\forms\upload.html:48
+msgid "Arrow down"
+msgstr "Pfeil nach unten"
+
+#: .\templates\forms\upload.html:59
+msgid "Category icon"
+msgstr "Kategorie-Symbol"
+
+#: .\templates\forms\upload.html:77
+msgid "3D Model"
+msgstr "3D Modell"
+
+#: .\templates\forms\upload.html:89 .\templates\forms\upload.html:121
+#: .\templates\forms\upload.html:160
+msgid "Select"
+msgstr "Auswählen"
+
+#: .\templates\forms\upload.html:98 .\templates\forms\upload.html:166
+msgid "Delete"
+msgstr "Löschen"
+
+#: .\templates\forms\upload.html:131
+msgid "Cross"
+msgstr "Kreuz"
+
+#: .\templates\forms\upload.html:141
+msgid "Photos"
+msgstr "Fotos"
+
+#: .\templates\forms\upload.html:177 .\templates\layout\header\header.html:31
+#: .\templates\users\profile.html:69
+msgid "Upload"
 msgstr "Hochladen"
 
-#: .\templates\index.html:210
+#: .\templates\forms\upload.html:179 .\templates\models\model_detail.html:27
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: .\templates\forms\upload.html:182
+msgid "Discard"
+msgstr "Verwerfen"
+
+#: .\templates\index.html:14
+msgid "Unlimited World of Professional 3D Models"
+msgstr "Unbegrenzte Welt professioneller 3D-Modelle"
+
+#: .\templates\index.html:15
+msgid "Explore high quality assets without any financial barriers!"
+msgstr "Entdecken Sie hochwertige Assets ohne finanzielle Hindernisse!"
+
+#: .\templates\index.html:22
+msgid "Arrow left"
+msgstr "Pfeil nach links"
+
+#: .\templates\index.html:39
+msgid "Arrow right"
+msgstr "Pfeil nach rechts"
+
+#: .\templates\index.html:50
+msgid "Money off"
+msgstr "Preisnachlass"
+
+#: .\templates\index.html:54
+msgid "COMPLETELY FREE ACCESS"
+msgstr "VOLLSTÄNDIG KOSTENLOSER ZUGANG"
+
+#: .\templates\index.html:59 .\templates\index.html:63
+#: .\templates\index.html:67 .\templates\index.html:71
+#: .\templates\index.html:97 .\templates\index.html:101
+#: .\templates\index.html:105 .\templates\index.html:109
+#: .\templates\index.html:134 .\templates\index.html:138
+#: .\templates\index.html:142 .\templates\index.html:146
+#: .\templates\index.html:167 .\templates\index.html:171
+#: .\templates\index.html:175 .\templates\index.html:179
+msgid "Tick"
+msgstr "Pfeife"
+
+#: .\templates\index.html:60
+msgid "Get any model for free"
+msgstr "Erhalten Sie jedes Modell kostenlos"
+
+#: .\templates\index.html:64
+msgid "Extensive 3D Model Library"
+msgstr "Umfangreiche 3D-Modellbibliothek"
+
+#: .\templates\index.html:68
+msgid "Multiple 3D format support"
+msgstr "Unterstützung mehrerer 3D-Formate"
+
+#: .\templates\index.html:72
+msgid "Absolutely no ads"
+msgstr "Absolut keine Werbung"
+
+#: .\templates\index.html:78 .\templates\layout\header\header.html:36
+#: .\templates\users\profile.html:20
+msgid "Profile"
+msgstr "Profil"
+
+#: .\templates\index.html:80
+msgid "Create account"
+msgstr "Konto erstellen"
+
+#: .\templates\index.html:88
+msgid "Accessibility"
+msgstr "Barrierefreiheit"
+
+#: .\templates\index.html:92
+msgid "SHARE YOUR CREATIONS"
+msgstr "TEILEN SIE IHRE KREATIONEN"
+
+#: .\templates\index.html:98
+msgid "Upload your models for free"
+msgstr "Laden Sie Ihre Modelle kostenlos hoch"
+
+#: .\templates\index.html:102
+msgid "Unpaid account creation"
+msgstr "Unbezahlte Kontoerstellung"
+
+#: .\templates\index.html:106
+msgid "Secure registration and login"
+msgstr "Sichere Registrierung und Anmeldung"
+
+#: .\templates\index.html:110
+msgid "Anyone can rate your models"
+msgstr "Jeder kann Ihre Modelle bewerten."
+
+#: .\templates\index.html:116
+msgid "Upload model"
+msgstr "Modell hochladen"
+
+#: .\templates\index.html:118 .\templates\index.html:188
+msgid "Login"
+msgstr "Anmelden"
+
+#: .\templates\index.html:126
+msgid "VR headset"
+msgstr "VR-Headset"
+
+#: .\templates\index.html:129
 msgid "ADVANCED 3D VIEWER"
-msgstr ""
+msgstr "ERWEITERTER 3D-BETRACHTER"
 
-#: .\templates\index.html:215
+#: .\templates\index.html:135
 msgid "Full 360° model preview"
-msgstr ""
+msgstr "Vollständige 360°-Modellvorschau"
 
-#: .\templates\index.html:219
+#: .\templates\index.html:139
 msgid "Panning, zooming and rotating"
-msgstr ""
+msgstr "Schwenken, Zoomen und Drehen"
 
-#: .\templates\index.html:223
+#: .\templates\index.html:143
 msgid "Texture visibility control"
-msgstr ""
+msgstr "Steuerung der Textur-Sichtbarkeit"
 
-#: .\templates\index.html:227
+#: .\templates\index.html:147
 msgid "Works on all devices"
-msgstr ""
+msgstr "Funktioniert auf allen Geräten"
 
-#: .\templates\index.html:231
-msgid "Explore Assets"
-msgstr ""
+#: .\templates\index.html:152
+msgid "Explore 3Ds"
+msgstr "Entdecken"
 
-#: .\templates\index.html:238
-msgid "Compatible With The Most Popular 3D Programs"
-msgstr ""
+#: .\templates\index.html:159
+msgid "Person"
+msgstr "Person"
 
-#: .\templates\index.html:283
-msgid "Support Of The Most Common File Formats"
-msgstr ""
+#: .\templates\index.html:162
+msgid "SIMPLE MAINTENANCE"
+msgstr "EINFACHE WARTUNG"
 
-#: .\templates\index.html:357
+#: .\templates\index.html:168
+msgid "Secure password change"
+msgstr "Sichere Passwortänderung"
+
+#: .\templates\index.html:172
+msgid "No cyber tracking"
+msgstr "Keine Cyber-Verfolgung"
+
+#: .\templates\index.html:176
+msgid "Change account credentials"
+msgstr "Kontoanmeldedaten ändern"
+
+#: .\templates\index.html:180
+msgid "Manage your models"
+msgstr "Verwalten Sie Ihre Modelle"
+
+#: .\templates\index.html:186 .\templates\users\profile.html:63
+#: .\templates\users\profile.html:74 .\templates\users\user_models_all.html:10
+msgid "My models"
+msgstr "Meine Modelle"
+
+#: .\templates\index.html:196
 msgid "Browse The Latest 3D Models"
-msgstr ""
+msgstr "Durchsuchen Sie die neuesten 3D-Modelle"
+
+#: .\templates\index.html:204 .\templates\models\model_detail.html:219
+msgid "No models available yet."
+msgstr "Noch keine Modelle verfügbar."
 
 #: .\templates\layout\header\header.html:9
 msgid "Logo"
 msgstr "Logo"
 
 #: .\templates\layout\header\header.html:18
-msgid "Magnifying"
-msgstr "Lupe"
-
 #: .\templates\layout\header\header.html:22
 msgid "Search"
-msgstr "Suchen"
+msgstr "Suche"
 
-#: .\templates\layout\header\header.html:31 .\templates\upload.html:7
-#: .\templates\upload.html:120
-msgid "Upload"
-msgstr "Hochladen"
-
-#: .\templates\layout\header\header.html:36
-msgid "Profile"
-msgstr ""
-
-#: .\templates\layout\header\header.html:42 .\users\forms.py:117
+#: .\templates\layout\header\header.html:42 .\users\forms.py:118
 msgid "Log in"
-msgstr "Einloggen"
+msgstr "Anmelden"
 
-#: .\templates\layout\header\header.html:43 .\users\forms.py:71
+#: .\templates\layout\header\header.html:43 .\users\forms.py:72
 msgid "Sign up"
 msgstr "Registrieren"
 
@@ -367,278 +430,243 @@ msgid "Models"
 msgstr "Modelle"
 
 #: .\templates\layout\navbar\partials\menu.html:14
-msgid "All categories"
-msgstr "Alle Kategorien"
-
-#: .\templates\layout\navbar\partials\menu.html:15
-msgid "Animals & Pets"
-msgstr "Tiere & Haustiere"
-
-#: .\templates\layout\navbar\partials\menu.html:17
-msgid "Cars & Vehicles"
-msgstr "Autos & Fahrzeuge"
-
-#: .\templates\layout\navbar\partials\menu.html:18
-msgid "Characters & Creatures"
-msgstr "Charaktere & Kreaturen"
-
-#: .\templates\layout\navbar\partials\menu.html:19
-msgid "Electronics & Gadgets"
-msgstr "Elektronik & Gadgets"
+msgid "All"
+msgstr "Alle"
 
 #: .\templates\layout\navbar\partials\menu.html:20
-msgid "Food & Drink"
-msgstr "Essen & Trinken"
+#, python-format
+msgid "%(name)s"
+msgstr ""
 
-#: .\templates\layout\navbar\partials\menu.html:21
-msgid "Furniture & Home"
-msgstr "Möbel & Wohnen"
-
-#: .\templates\layout\navbar\partials\menu.html:22
-msgid "Nature & Plants"
-msgstr "Natur & Pflanzen"
-
-#: .\templates\layout\navbar\partials\menu.html:23
-msgid "Sports & Fitness"
-msgstr "Sport & Fitness"
-
-#: .\templates\layout\navbar\partials\menu.html:29
+#: .\templates\layout\navbar\partials\menu.html:28
 msgid "Formats"
 msgstr "Formate"
 
-#: .\templates\layout\navbar\partials\menu.html:43
+#: .\templates\layout\navbar\partials\menu.html:42
 msgid "Software"
 msgstr "Software"
 
-#: .\templates\layout\navbar\partials\menu.html:60
+#: .\templates\layout\navbar\partials\menu.html:61
 msgid "Textures"
 msgstr "Texturen"
 
-#: .\templates\upload.html:18
-msgid "Upload 3D model"
-msgstr ""
+#: .\templates\models\model_detail.html:7
+msgid "FreeVat - Model information"
+msgstr "FreeVat – Modellinformationen"
 
-#: .\templates\upload.html:21
-msgid "View your uploaded models "
-msgstr ""
+#: .\templates\models\model_detail.html:26
+msgid "Reset View"
+msgstr "Ansicht Zurücksetzen"
 
-#: .\templates\upload.html:23
-msgid "here"
-msgstr ""
+#: .\templates\models\model_detail.html:33
+#: .\templates\models\model_detail.html:34
+msgid "Fullscreen"
+msgstr "Vollbild"
 
-#: .\templates\upload.html:58 .\templates\upload.html:91
-msgid "Select"
-msgstr ""
+#: .\templates\models\model_detail.html:42
+msgid "Loading 3D Scene..."
+msgstr "3D-Szene wird geladen..."
 
-#: .\templates\upload.html:66
-#, fuzzy
-#| msgid "Models"
-msgid "Model"
-msgstr "Modelle"
+#: .\templates\models\model_detail.html:53
+msgid "No similar models found."
+msgstr "Keine ähnlichen Modelle gefunden."
 
-#: .\templates\upload.html:75 .\templates\upload.html:108
-msgid "Delete"
-msgstr ""
+#: .\templates\models\model_detail.html:80
+msgid "Like"
+msgstr "Mögen"
 
-#: .\templates\upload.html:99
-msgid "File"
-msgstr ""
+#: .\templates\models\model_detail.html:85
+msgid "Dislike"
+msgstr "Nicht mögen"
 
-#: .\templates\upload.html:126
-msgid "Reset"
-msgstr ""
+#: .\templates\models\model_detail.html:91
+msgid "Share"
+msgstr "Teilen"
 
-#: .\templates\upload.html:133
-msgid "Discard"
-msgstr ""
+#: .\templates\models\model_detail.html:94
+msgid "Download"
+msgstr "Herunterladen"
 
-#: .\templates\users\login.html:7
-msgid "Login"
-msgstr ""
+#: .\templates\models\model_detail.html:106
+msgid "No description provided for this model."
+msgstr "Für dieses Modell liegt keine Beschreibung vor."
 
-#: .\templates\users\login.html:17
-msgid "Login to FreeVat"
-msgstr ""
+#: .\templates\models\model_detail.html:114
+msgid "Format"
+msgstr "Format"
 
-#: .\templates\users\login.html:20
-msgid "Not a member yet?"
-msgstr ""
+#: .\templates\models\model_detail.html:123
+msgid "Size"
+msgstr "Größe"
 
-#: .\templates\users\login.html:22
-msgid "Create new account!"
-msgstr ""
+#: .\templates\models\model_detail.html:129
+msgid "Triangles"
+msgstr "Dreiecke"
 
-#: .\templates\users\login.html:51
-msgid "Remember me"
-msgstr ""
+#: .\templates\models\model_detail.html:135
+msgid "Vertices"
+msgstr "Eckpunkte"
 
-#: .\templates\users\login.html:58
-msgid "Forgotten password?"
-msgstr ""
+#: .\templates\models\model_detail.html:167
+msgid "Comments"
+msgstr "Kommentare"
 
-#: .\templates\users\login.html:67
-msgid "Login to account"
-msgstr ""
+#: .\templates\models\model_detail.html:180
+msgid "Comment"
+msgstr "Kommentar"
 
-#: .\templates\users\profile.html:4
-msgid "User Profile"
-msgstr ""
+#: .\templates\models\model_detail.html:187
+msgid "For comment please "
+msgstr "Für Kommentare bitte"
 
-#: .\templates\users\profile.html:18
-msgid "Member since"
-msgstr ""
+#: .\templates\models\model_detail.html:188
+msgid "login"
+msgstr "einloggen"
 
-#: .\templates\users\profile.html:27
-#, fuzzy
-#| msgid "Models"
-msgid "My Models"
-msgstr "Modelle"
+#: .\templates\models\model_list.html:6
+msgid "FreeVat - Model list"
+msgstr "FreeVat – Modellliste"
+
+#: .\templates\models\model_list.html:19
+msgid "All models"
+msgstr "Alle Modelle"
+
+#: .\templates\models\model_list.html:29
+msgid "Sort by"
+msgstr "Sortieren"
+
+#: .\templates\models\model_list.html:37 .\templates\models\model_list.html:52
+msgid "Newest"
+msgstr "Neueste"
+
+#: .\templates\models\model_list.html:38 .\templates\models\model_list.html:57
+msgid "Oldest"
+msgstr "Älteste"
+
+#: .\templates\models\model_list.html:39 .\templates\models\model_list.html:62
+msgid "Name (A-Z)"
+msgstr "Name (A-Z)"
+
+#: .\templates\models\model_list.html:40 .\templates\models\model_list.html:67
+msgid "Name (Z-A)"
+msgstr "Name (Z-A)"
+
+#: .\templates\models\model_list.html:41
+msgid "Select..."
+msgstr "Wählen Sie..."
+
+#: .\templates\models\model_list.html:82
+msgid "No models found in this category."
+msgstr "In dieser Kategorie wurden keine Modelle gefunden."
+
+#: .\templates\models\partials\model_box.html:56
+msgid "Star"
+msgstr "Stern"
+
+#: .\templates\users\profile.html:7
+msgid "FreeVat - User profile"
+msgstr "FreeVat – Benutzerprofil"
 
 #: .\templates\users\profile.html:28
-msgid "You have not uploaded any models yet."
-msgstr ""
+msgid "Member since"
+msgstr "Mitglied seit"
 
-#: .\templates\users\profile.html:31
-msgid "Upload First Model"
-msgstr ""
-
-#: .\templates\users\profile.html:36
-msgid "Account Settings"
-msgstr ""
-
-#: .\templates\users\profile.html:38
-msgid "Edit Profile"
-msgstr ""
-
-#: .\templates\users\profile.html:39
-msgid "Change Password"
-msgstr ""
-
-#: .\templates\users\profile.html:41
-#, fuzzy
-#| msgid "Logo"
+#: .\templates\users\profile.html:51
 msgid "Logout"
-msgstr "Logo"
+msgstr "Abmelden"
 
-#: .\templates\users\register.html:7
-msgid "Register"
-msgstr ""
-
-#: .\templates\users\register.html:17 .\templates\users\register.html:47
-msgid "Create new account"
-msgstr ""
-
-#: .\templates\users\register.html:20
-msgid "Already have an account?"
-msgstr ""
-
-#: .\templates\users\register.html:22
-msgid "Login here!"
-msgstr ""
+#: .\templates\users\profile.html:89 .\templates\users\user_models_all.html:44
+msgid "You have not uploaded any models yet."
+msgstr "Sie haben noch keine Modelle hochgeladen."
 
 #: .\templates\users\socials.html:7
 msgid "or"
-msgstr ""
+msgstr "oder"
 
-#: .\templates\users\socials.html:20
-msgid "Google"
-msgstr ""
+#: .\templates\users\user_models_all.html:4
+msgid "FreeVat - My models"
+msgstr "FreeVat – Meine Modelle"
 
-#: .\templates\users\socials.html:29
-msgid "GitHub"
-msgstr ""
+#: .\templates\users\user_models_all.html:15
+msgid "Upload new"
+msgstr "Neu hochladen"
 
-#: .\users\forms.py:24
+#: .\templates\users\user_models_all.html:29
+msgid "EDIT"
+msgstr "BEARBEITEN"
+
+#: .\templates\users\user_models_all.html:33
+msgid "Are you sure you want to delete this model?"
+msgstr "Sind Sie sicher, dass Sie dieses Modell löschen möchten?"
+
+#: .\templates\users\user_models_all.html:37
+msgid "DELETE"
+msgstr "LÖSCHEN"
+
+#: .\users\forms.py:25
 msgid "Username"
-msgstr ""
+msgstr "Benutzername"
 
-#: .\users\forms.py:28
+#: .\users\forms.py:29
 msgid "Enter your username"
-msgstr ""
+msgstr "Geben Sie Ihren Benutzernamen ein"
 
-#: .\users\forms.py:35 .\users\forms.py:88
+#: .\users\forms.py:36 .\users\forms.py:89 .\users\forms.py:176
 msgid "Email"
-msgstr ""
+msgstr "E-Mail"
 
-#: .\users\forms.py:39 .\users\forms.py:92
+#: .\users\forms.py:40 .\users\forms.py:93
 msgid "Enter your email"
-msgstr ""
+msgstr "Geben Sie Ihre E-Mail-Adresse ein"
 
-#: .\users\forms.py:45 .\users\forms.py:98
+#: .\users\forms.py:46 .\users\forms.py:99
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
-#: .\users\forms.py:48 .\users\forms.py:101
+#: .\users\forms.py:49 .\users\forms.py:102
 msgid "Enter your password"
-msgstr ""
+msgstr "Geben Sie Ihr Passwort ein"
 
-#: .\users\forms.py:81
+#: .\users\forms.py:82
 msgid "Email address is already in use."
-msgstr ""
+msgstr "Die E-Mail-Adresse wird bereits verwendet."
 
-#: .\users\forms.py:133 .\users\forms.py:135
+#: .\users\forms.py:134 .\users\forms.py:136
 msgid "Invalid email or password."
-msgstr ""
+msgstr "Ungültige E-Mail-Adresse oder Passwort."
 
-#: .\users\models.py:11
-msgid "Profile picture"
-msgstr ""
+#: .\users\forms.py:149
+msgid "Your username"
+msgstr "Ihr Benutzername"
 
-#: .\users\models.py:12
-msgid "Upload a profile picture"
-msgstr ""
+#: .\users\forms.py:154
+msgid "Your email"
+msgstr "Ihre E-Mail-Adresse"
 
-#: .\users\models.py:20
-msgid "Profile Picture URL"
-msgstr ""
+#: .\users\forms.py:160
+msgid "Tell us something about yourself"
+msgstr "Erzählen Sie uns etwas über sich selbst."
 
-#: .\users\models.py:21
-msgid "URL of profile picture from social account"
-msgstr ""
+#: .\users\forms.py:165
+msgid "Your web or portfolio link"
+msgstr "Ihr Web- oder Portfolio-Link"
 
-#: .\users\models.py:27
-msgid "groups"
-msgstr ""
+#: .\users\forms.py:193
+msgid "Your current password"
+msgstr "Ihr aktuelles Passwort"
 
-#: .\users\models.py:30
-msgid ""
-"The groups this user belongs to. A user will get all permissions granted to "
-"each of their groups."
-msgstr ""
+#: .\users\forms.py:194
+msgid "Your new password"
+msgstr "Ihr neues Passwort"
 
-#: .\users\models.py:38
-msgid "user permissions"
-msgstr ""
+#: .\users\forms.py:195 .\users\forms.py:218
+msgid "Confirm new password"
+msgstr "Neues Passwort bestätigen"
 
-#: .\users\models.py:40
-msgid "Specific permissions for this user."
-msgstr ""
+#: .\users\forms.py:216
+msgid "Current password"
+msgstr "Aktuelles Passwort"
 
-#: .\users\models.py:61
-msgid "User"
-msgstr ""
-
-#: .\users\models.py:62
-msgid "Users"
-msgstr ""
-
-#~ msgid "Language"
-#~ msgstr "de"
-
-#~ msgid "Hello, World!"
-#~ msgstr "Hallo, Welt!"
-
-#~ msgid "My Application"
-#~ msgstr "Meine Bewerbung"
-
-#~ msgid "Products"
-#~ msgstr "Produkte"
-
-#~ msgid "Solutions"
-#~ msgstr "Lösungen"
-
-#~ msgid "Prices"
-#~ msgstr "Preise"
-
-#~ msgid "Blog"
-#~ msgstr "Blog"
+#: .\users\forms.py:217
+msgid "New password"
+msgstr "Neues Passwort"

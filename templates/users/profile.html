@@ -4,7 +4,7 @@
 {% load i18n static %}
 
 <!-- Titulek stránky -->
-{% block title %}{% trans 'User profile' %}{% endblock %}
+{% block title %}{% trans 'FreeVat - User profile' %}{% endblock %}
 
 {% block content %}
     <!-- Celá stránka -->
@@ -17,7 +17,7 @@
                     <!-- Profilový obrázek uživatele -->
                     <div class="relative">
                         <img src="{{ user.get_profile_picture }}"
-                             alt="Profile"
+                             alt="{% trans 'Profile' %}"
                              class="profile-picture">
                     </div>
                     <!-- Údaje uživatele -->
@@ -47,7 +47,7 @@
 
                     <!-- Odhlášení -->
                     <a href="{% url 'users:logout' %}"
-                       class="button text-lg">
+                       class="button text-lg bg-red-900">
                         {% trans 'Logout' %}
                     </a>
                 </div>
