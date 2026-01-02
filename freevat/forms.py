@@ -7,7 +7,6 @@ from .models import Category, Comment
 # CSS třídy pro vstupy do formulářových polí a popisy
 INPUT_CLASSES = "form-input-classes"
 LABEL_CLASSES = "form-label-classes"
-COMMENT_CLASSES = "user-comment-classes"
 
 
 # Nahrání formuláře s 3D modelem
@@ -90,7 +89,7 @@ class CommentForm(forms.ModelForm):
         fields = ['content']
         widgets = {
             'content': forms.Textarea(attrs={
-                'class': COMMENT_CLASSES,
+                'class': 'w-full bg-[#2A2A2A] text-white p-4 rounded-md focus:outline-none text-base',
                 'placeholder': _('Write a comment...'),
                 'rows': '3',
             }),

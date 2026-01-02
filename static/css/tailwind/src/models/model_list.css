@@ -45,12 +45,12 @@
 
 /* Seznam náhledových oken modelů */
 .models-preview-cards {
-    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pb-8;
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pb-4;
 }
 
 /* Náhledové okno modelu */
 .model-preview-card {
-    @apply bg-[#1A1A1A] rounded-md overflow-hidden drop-shadow-sm transition-all duration-150;
+    @apply bg-[#252525] rounded-md overflow-hidden drop-shadow-sm transition-all duration-150;
 }
 
 /* Náhledový obrázek modelu */

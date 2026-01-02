@@ -7,24 +7,24 @@
     <!-- Celá stránka -->
     <div class="model-detail-page">
 
-        <!-- Název aktuálního modelu -->
-        <h1 class="models-category-title">{{ model.name }}</h1>
-
         <!-- Horní sekce s 3D modelem a dalšími doporučenými modely -->
         <div class="model-detail-upper-section">
 
-            <div class="model-3d-scene group relative">
+            <!-- 3D viewer -->
+            <div class="model-3d-scene group">
                 <div id="model-container"
-                     data-model-url="{{ model.model.url }}"
-                     class="w-full h-full relative z-0">
+                     data-model-url="{{ model.model.url }}">
                 </div>
 
                 <div class="model-scene-buttons z-10">
+                    <!-- Resetování pozice a natočení modelu -->
                     <button id="reset-view"
                             class="model-scene-button"
                             title="{% trans 'Reset View' %}">
                         <img src="{% static 'img/icons/reset.svg' %}" alt="Reset">
                     </button>
+
+                    <!-- Prepínání do režimu celé obrazovky -->
                     <button id="toggle-fullscreen"
                             class="model-scene-button"
                             title="{% trans 'Fullscreen' %}">
@@ -32,7 +32,8 @@
                     </button>
                 </div>
 
-                <div id="loading-overlay" class="model-scene-loading z-20">
+                <!-- Načítací kolečko (když ještě model není načtený) -->
+                <div id="loading-overlay" class="model-scene-loading">
                     <div class="text-center">
                         <div class="model-scene-loader"></div>
                         <p class="text-lg font-medium">{% trans "Loading 3D Scene..." %}</p>
@@ -40,19 +41,22 @@
                 </div>
             </div>
 
+            <!-- Zobrazení podobných modelů (ze stejné kategorie) -->
             <div class="related-models-container">
                 {% for similar in similar_models %}
                     {% include 'models/partials/model_box.html' with similar=similar %}
                     {% empty %}
-                    <div class="flex items-center justify-center h-full bg-[#1A1A1A] rounded-md border border-gray-800 border-dashed p-6 text-center">
-                        <p class="text-gray-500 text-sm italic">{% trans "No similar models found." %}</p>
+                    <div class="related-models-empty">
+                        <p>{% trans "No similar models found." %}</p>
                     </div>
                 {% endfor %}
             </div>
         </div>
 
-        <!-- Spodní sekce s galerií obrázků, hodnocením modelu a bližšími informacemi o modelu -->
+        <!-- Spodní sekce s galerií obrázků, hodnocením modelu, komentáři a bližšími informacemi o modelu -->
         <div class="model-detail-lower-section">
+
+            <!-- Všechno kromě komentářů -->
             <div class="lg:col-span-3">
 
                 <!-- Sekce s názvem modelu, kategorií, tlačítky pro hodnocení a stažení -->
@@ -60,19 +64,24 @@
                     <!-- Název modelu a kategorie -->
                     <div>
                         <h1 class="model-rating-name">{{ model.name }}</h1>
-                        <a class="model-rating-category">{{ model.category.name }}</a>
+                        <a href="{% url 'model_list_by_category' model.category.name %}" class="model-rating-category">
+                            {{ model.category.name }}
+                        </a>
                     </div>
 
                     <!-- Uživatelská tlačítka -->
                     <div class="flex items-center gap-2">
+
                         <!-- Líbí se -->
                         <button class="model-rating-button" title="Like">
                             <img src="{% static 'img/icons/like.svg' %}" alt="Like">
                         </button>
+
                         <!-- Nelíbí se -->
                         <button class="model-rating-button" title="Dislike">
                             <img src="{% static 'img/icons/dislike.svg' %}" alt="Dislike">
                         </button>
+
                         <!-- Sdílet odkaz -->
                         <button onclick="navigator.clipboard.writeText(window.location.href)"
                                 class="model-rating-button" title="Copy Link">
@@ -86,6 +95,8 @@
 
                 <!-- Box s popisem modelu a technickými parametry -->
                 <div class="model-info-description-box">
+
+                    <!-- Popis modelu -->
                     <div class="model-description-box">
                         <h3 class="section-title">{% trans "Description" %}</h3>
                         <p class="model-description-text">
@@ -93,25 +104,33 @@
                         </p>
                     </div>
 
+                    <!-- Technické parametry -->
                     <div class="model-technical-params">
+                        <!-- Formát 3D modelu -->
                         <div class="param-item">
-                            <span class="text-gray-500 uppercase text-xs font-bold">{% trans "Format" %}</span>
-                            <span class="font-bold uppercase text-blue-400">{{ model.data.file_format }}</span>
+                            <span class="model-trait">{% trans "Format" %}</span>
+                            <a href="{% url 'model_list_by_format' model.data.file_format %}"
+                               class="font-bold uppercase text-blue-400 hover:underline">
+                                {{ model.data.file_format }}
+                            </a>
                         </div>
 
+                        <!-- Velikost souboru -->
                         <div class="param-item">
-                            <span class="text-gray-500 uppercase text-xs font-bold">{% trans "Size" %}</span>
-                            <span class="font-mono text-gray-200">{{ model.data.file_size|filesizeformat }}</span>
+                            <span class="model-trait">{% trans "Size" %}</span>
+                            <span class="font-bold text-gray-200">{{ model.data.file_size|filesizeformat }}</span>
                         </div>
 
+                        <!-- Počet trojúhelníků -->
                         <div class="param-item">
-                            <span class="text-gray-500 uppercase text-xs font-bold">{% trans "Triangles" %}</span>
-                            <span class="font-mono text-yellow-500">{{ model.data.polygons|default:"0"|format_numbers }}</span>
+                            <span class="model-trait">{% trans "Triangles" %}</span>
+                            <span class="font-bold text-yellow-500">{{ model.data.polygons|default:"0"|format_numbers }}</span>
                         </div>
 
+                        <!-- Počet vrcholů -->
                         <div class="param-item">
-                            <span class="text-gray-500 uppercase text-xs font-bold">{% trans "Vertices" %}</span>
-                            <span class="font-mono text-yellow-500">{{ model.data.vertices|default:"0"|format_numbers }}</span>
+                            <span class="model-trait">{% trans "Vertices" %}</span>
+                            <span class="font-bold text-yellow-500">{{ model.data.vertices|default:"0"|format_numbers }}</span>
                         </div>
                     </div>
                 </div>
@@ -119,65 +138,82 @@
                 <!-- Galerie náhledových obrázků modelu -->
                 <div class="model-detail-gallery">
                     {% for img in gallery %}
-                        <div class="model-detail-thumbnail">
-                            <img src="{{ img.image.url }}" class="w-full h-full object-cover"
+                        <div class="model-detail-thumbnail" onclick="openModal('{{ img.image.url }}')">
+                            <img src="{{ img.image.url }}"
+                                 class="gallery-image"
                                  alt="{{ model.name }} preview">
                         </div>
-                        {% empty %}
-                        {% for i in "1234" %}
-                            <div class="model-detail-thumbnail-empty">{{ i }}</div>
-                        {% endfor %}
                     {% endfor %}
+                </div>
+
+                <!-- Zvětšené náhledové okno -->
+                <div id="imageModal"
+                     class="fixed inset-0 z-[100] hidden bg-black/90 items-center justify-center p-4 cursor-zoom-out px-auto flex"
+                     onclick="closeModal()">
+                    <img id="modalImage" src="" class="max-w-full max-h-full rounded-md shadow-2xl cursor-default"
+                         onclick="event.stopPropagation()" alt="">
                 </div>
             </div>
 
             <!-- Uživatelské komentáře k modelu -->
-            <div class="lg:col-span-1 flex flex-col gap-6">
-                <div class="bg-[#1A1A1A] p-6 rounded-md flex-grow flex flex-col">
-                    <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">
+            <div class="comment-section-wrapper">
+                <div class="comment-section">
+
+                    <!-- Nadpis -->
+                    <h3 class="section-title">
                         {% trans "Comments" %} ({{ comments.count }})
                     </h3>
 
+                    <!-- Vstupní pole -->
                     <div class="mb-6">
+                        <!-- Komentovat může pouze přihlášený uživatel -->
                         {% if user.is_authenticated %}
                             <form method="post" class="flex flex-col gap-2">
                                 {% csrf_token %}
                                 {{ comment_form.content }}
+                                <!-- Odeslat komentář -->
                                 <button type="submit"
-                                        class="self-end bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-xs font-bold transition">
-                                    {% trans "POST COMMENT" %}
+                                        class="self-end bg-green-900 button">
+                                    {% trans "Comment" %}
                                 </button>
                             </form>
+                            <!-- Jinak se zobrazí výzva k přihlášení -->
                         {% else %}
-                            <div class="text-center p-4 bg-[#222] rounded border border-dashed border-gray-700">
-                                <p class="text-xs text-gray-500">
-                                    {% trans "Please" %} <a href="{% url 'account_login' %}"
-                                                            class="text-blue-400 hover:underline">{% trans "login" %}</a> {% trans "to add a comment." %}
+                            <div class="comment-not-login">
+                                <p class="text-base text-gray-500">
+                                    {% trans "Please" %} <a href="{% url 'users:login' %}"
+                                                            class="text-blue-400 hover:underline">{% trans "login" %}</a> {% trans "to add a comment" %}
                                 </p>
                             </div>
                         {% endif %}
                     </div>
 
-                    <div class="flex flex-col gap-4 overflow-y-auto max-h-[500px] pr-2 custom-scrollbar">
+                    <!-- Vypsání uživatelkých komentářů -->
+                    <div class="comments-container">
                         {% for comment in comments %}
-                            <div class="border-b border-gray-800 pb-4 last:border-0">
-                                <div class="flex items-center gap-3 mb-2">
+                            <!-- Vyfetchuj všechny komentáře -->
+                            <div class="single-comment">
+                                <div class="comment-info">
+                                    <!-- Profil komentujícího -->
                                     <img src="{{ comment.user.get_profile_picture }}"
                                          alt="{{ comment.user.username }}"
-                                         class="w-8 h-8 rounded-full object-cover">
+                                         class="w-9 h-9 rounded-full object-cover">
 
+                                    <!-- Uživatelské jméno a datum vytvoření komentáře -->
                                     <div class="flex flex-col">
-                                        <span class="text-sm font-bold text-gray-200">{{ comment.user.username }}</span>
-                                        <span class="text-[10px] text-gray-500 uppercase">{{ comment.created_at|timesince }} {% trans "ago" %}</span>
+                                        <span class="text-lg font-bold text-gray-200">{{ comment.user.username }}</span>
+                                        <span class="text-xs text-gray-400 uppercase">{{ comment.created_at|date:"d. m. Y" }}</span>
                                     </div>
                                 </div>
-                                <p class="text-sm text-gray-400 leading-relaxed">
+                                <!-- Obsah komentáře -->
+                                <p class="text-base text-yellow-500 leading-relaxed">
                                     {{ comment.content }}
                                 </p>
                             </div>
+                            <!-- Jinak zobraz hlášku -->
                             {% empty %}
                             <div class="text-center py-8">
-                                <p class="text-gray-600 text-sm">{% trans "No comments yet." %}</p>
+                                <p class="text-gray-500 text-lg italic">{% trans "No comments yet." %}</p>
                             </div>
                         {% endfor %}
                     </div>
@@ -186,10 +222,13 @@
         </div>
     </div>
 
+    <!-- Three.js skript -->
     {% if debug %}
         <script type="module" src="http://localhost:5173/js/three/src/main.js"></script>
     {% else %}
         <script type="module" src="{% static 'js/three/dist/main.js' %}"></script>
     {% endif %}
 
+    <!-- Zobrazení okna z galerie obrázků -->
+    <script src="{% static 'js/web/gallery.js' %}"></script>
 {% endblock %}

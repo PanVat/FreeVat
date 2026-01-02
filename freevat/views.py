@@ -53,7 +53,7 @@ def upload_model(request):
         form = ModelUploadForm()
 
     # Vykreslení domovské stránky
-    return render(request, 'upload.html', {'form': form})
+    return render(request, 'forms/upload.html', {'form': form})
 
 
 # Zobrazení živatelského profilu (pouze pro přihlášené)
@@ -91,7 +91,7 @@ def model_list(request, category_name=None, format_ext=None, software_name=None)
         models = models.order_by('id')
 
     # Výpis stránky
-    return render(request, 'model_list.html', {
+    return render(request, 'models/model_list.html', {
         'models': models,
         'current_filter': current_filter,
         'current_sort': sort_by,
@@ -129,4 +129,4 @@ def model_detail(request, pk):
         'comment_form': form,  # Předání formuláře
         'debug': settings.DEBUG
     }
-    return render(request, 'model_detail.html', context)
+    return render(request, 'models/model_detail.html', context)

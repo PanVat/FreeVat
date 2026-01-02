@@ -48,11 +48,6 @@
     @apply text-lg font-medium mb-2 block;
 }
 
-/* Stylování uživatelských komentářů */
-.user-comment-classes{
-    @apply w-full bg-[#2A2A2A] text-white p-3 rounded-md border border-gray-700 focus:outline-none focus:border-blue-500 text-sm;
-}
-
 /* Červená barva pro hvězdičky povinných polí */
 .asteriskField {
     color: #ef4444;

@@ -76,7 +76,7 @@ def register_view(request):
             return redirect('index')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'forms/register.html', {'form': form})
 
 
 # Piřhlášení uživatele
@@ -99,7 +99,7 @@ def login_view(request):
                 messages.error(request, 'Neplatný email nebo heslo.')
     else:
         form = CustomLoginForm()
-    return render(request, 'users/login.html', {'form': form})
+    return render(request, 'forms/login.html', {'form': form})
 
 
 # Odhlášení uživatele
@@ -120,7 +120,7 @@ def edit_profile(request):
     else:
         form = UserUpdateForm(instance=request.user)
 
-    return render(request, 'users/edit_profile.html', {'form': form})
+    return render(request, 'forms/edit_profile.html', {'form': form})
 
 
 # Změna hesla uživatele
@@ -136,4 +136,4 @@ def change_password(request):
             return redirect('profile')
     else:
         form = StyledPasswordChangeForm(request.user)
-    return render(request, 'users/change_password.html', {'form': form})
+    return render(request, 'forms/change_password.html', {'form': form})

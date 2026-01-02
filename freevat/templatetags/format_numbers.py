@@ -18,14 +18,14 @@ def format_numbers(value):
         # Tisíce
         formatted = value / 1000.0
         if formatted.is_integer():
-            return f"{int(formatted)}k"
+            return f"{int(formatted)} k"
         else:
-            return f"{formatted:.1f}k".replace('.', ',')
+            return f"{formatted:.1f} k".replace('.', ',')
 
     else:
         # Miliony
         formatted = value / 1_000_000.0
         if formatted.is_integer():
-            return f"{int(formatted)}m"
+            return f"{int(formatted)} M"
         else:
-            return f"{formatted:.1f}m".replace('.', ',')
+            return f"{formatted:.1f} M".replace('.', ',')

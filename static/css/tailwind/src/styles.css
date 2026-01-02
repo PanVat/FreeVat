@@ -15,7 +15,7 @@
 @import './users/profile.css';
 
 /* Jednotlivé stránky */
-@import 'pages/index.css';
+@import './pages/index.css';
 @import './models/model_list.css';
 @import './models/model_detail.css';
 
@@ -34,7 +34,7 @@
     /* Obecné tlačítko */
     .button {
         @apply py-2 px-4 duration-150 rounded-md text-base justify-center;
-        @apply hover:opacity-90 bg-[#3B4042];
+        @apply hover:opacity-90 bg-[#3B4042] cursor-pointer;
     }
 }
 
