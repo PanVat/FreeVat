@@ -96,10 +96,12 @@
                                 <!-- Tlačítka pro spravování modelů -->
                                 <div class="flex gap-2">
                                     <!-- Upravit model -->
-                                    <button href="{% url 'edit_model' user_model.pk %}"
-                                            class="model-manage-button bg-blue-900">
-                                        {% trans "EDIT" %}
-                                    </button>
+                                    <form action="{% url 'edit_model' user_model.pk %}" method="get" class="inline">
+                                        <button type="submit"
+                                                class="model-manage-button bg-blue-900">
+                                            {% trans "EDIT" %}
+                                        </button>
+                                    </form>
 
                                     <!-- Vymazat model -->
                                     <form action="{% url 'delete_model' user_model.pk %}" method="post" class="inline">

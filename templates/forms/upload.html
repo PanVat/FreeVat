@@ -45,7 +45,8 @@
                                  id="dropdownTrigger">
                                 <span id="selectedCategoryText">{% trans "Select a category" %}</span>
                                 <img src="{% static 'img/symbols/arrow_down.svg' %}"
-                                     class="w-5 h-5 transition-transform" id="dropdownChevron" alt="{% trans 'Arrow down' %}">
+                                     class="w-5 h-5 transition-transform" id="dropdownChevron"
+                                     alt="{% trans 'Arrow down' %}">
                             </div>
 
                             <!-- Seznam kategorií (dropdown) - fetchuje se z databáze -->
@@ -56,7 +57,8 @@
                                     <li class="form-category-item"
                                         data-value="{{ category.id }}">
                                         {% if category.icon %}
-                                            <img src="{{ category.icon.url }}" class="w-5 h-5" alt="{% trans 'Category icon' %}">
+                                            <img src="{{ category.icon.url }}" class="w-5 h-5"
+                                                 alt="{% trans 'Category icon' %}">
                                         {% endif %}
                                         <span>{{ category.name }}</span>
                                     </li>
@@ -95,7 +97,7 @@
                                     <span id="modelFileName"></span>
                                     <button type="button" id="removeModelButton"
                                             class="remove-file-button">
-                                        <img src="{% static 'img/icons/cross.svg' %}" alt="{% trans 'Delete' %}"/>
+                                        <img src="{% static 'img/symbols/cross.svg' %}" alt="{% trans 'Delete' %}"/>
                                     </button>
                                 </div>
                             </div>
@@ -124,11 +126,10 @@
                             <!-- Kontejner s nahraným náhledovým obrázkem -->
                             <div class="hidden" id="selectedPreviewContainer">
                                 <div class="selected-file-container">
-                                <div class="selected-file-container">
                                     <span id="previewFileName"></span>
                                     <button type="button" id="removePreviewButton"
                                             class="remove-file-button">
-                                        <img src="{% static 'img/icons/cross.svg' %}" alt="{% trans 'Cross' %}"/>
+                                        <img src="{% static 'img/symbols/cross.svg' %}" alt="{% trans 'Cross' %}"/>
                                     </button>
                                 </div>
                             </div>
@@ -184,6 +185,11 @@
             </form>
         </div>
     </div>
+    <!-- Obsahuje věci, které kvůli Jinja syntaxi nejdou použít přímo v JS -->
+    <script>
+        const crossIconUrl = "{% static 'img/symbols/cross.svg' %}"
+    </script>
+
     <!-- Obsahuje veškerou logiku pro dropdown a nahrávání souborů -->
     <script src="{% static 'js/web/upload.js' %}"></script>
 {% endblock %}

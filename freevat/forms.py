@@ -26,14 +26,14 @@ class ModelUploadForm(forms.Form):
     # Kategorie
     category = forms.ModelChoiceField(
         queryset=Category.objects.all(),
-        required=True,
+        required=False,
         label=_('Category'),
         widget=forms.HiddenInput()
     )
 
     # Popis modelu
     description = forms.CharField(
-        required=True,
+        required=False,
         max_length=1000,
         min_length=10,
         label=_('Description'),
@@ -45,7 +45,7 @@ class ModelUploadForm(forms.Form):
 
     # Samotný 3D model
     model_file = forms.FileField(
-        required=True,
+        required=False,
         label=_('Model'),
         widget=forms.FileInput(attrs={
             'class': 'file-input hidden',
@@ -55,7 +55,7 @@ class ModelUploadForm(forms.Form):
 
     # Náhledový obrázek
     preview_image = forms.ImageField(
-        required=True,
+        required=False,
         label=_('Thumbnail'),
         widget=forms.FileInput(attrs={
             'class': 'file-input hidden',

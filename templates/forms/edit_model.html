@@ -1,0 +1,136 @@
+{% extends "base/base.html" %}
+{% load crispy_forms_tags static i18n file_filters %}
+
+{% block title %} {% trans 'FreeVat - Edit model' %} {% endblock %}
+
+{% block content %}
+    <div class="form-page">
+        <div class="form-container--upload">
+            <div>
+                <h2 class="form-main-heading">{% trans "Edit 3D model" %}</h2>
+                <p class="form-sub-heading">{% trans "by" %} {{ model.user.username }}</p>
+            </div>
+
+            <form class="form" id="uploadForm" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Důležité -->
+                <input type="hidden" name="delete_images" id="deleteImagesInput" value="">
+
+                <div class="form-inputs-container">
+                    <div class="mb-4">{{ form.model_name | as_crispy_field }}</div>
+                    <div class="mb-4 relative">
+                        <label class="form-label-classes">{% trans "Category" %}</label>
+                        {{ form.category }}
+                        <div class="custom-dropdown" id="categoryDropdown">
+                            <div class="form-input-classes cursor-pointer" id="dropdownTrigger">
+                                <span id="selectedCategoryText">{{ model.category.name }}</span>
+                                <img src="{% static 'img/symbols/arrow_down.svg' %}"
+                                     class="w-5 h-5 transition-transform" id="dropdownChevron">
+                            </div>
+                            <ul class="form-category-list hidden" id="dropdownList">
+                                {% for category in form.category.field.queryset %}
+                                    <li class="form-category-item" data-value="{{ category.id }}">
+                                        {% if category.icon %}
+                                            <img src="{{ category.icon.url }}" class="w-5 h-5">{% endif %}
+                                        <span>{{ category.name }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">{{ form.description | as_crispy_field }}</div>
+
+                    <div class="mb-6">
+                        <label class="form-label-classes">{% trans "3D Model" %}</label>
+                        <div class="file-upload-area" id="modelFileUploadArea">
+                            <h3 class="file-upload-title hidden">Update 3D Model File</h3>
+                            <p class="file-upload-description hidden">Max File Size - 100 MB</p>
+
+                            <div id="modelFileButtonContainer" class="hidden">
+                                <input type="file" id="modelFile" name="model_file" class="file-input hidden"
+                                       accept=".obj,.fbx,.stl,.gltf,.glb,.usdz,.blend">
+                                <label for="modelFile" class="form-file-button">{% trans 'Select' %}</label>
+                            </div>
+
+                            <div id="selectedModelContainer">
+                                <div class="selected-file-container">
+                                    <span id="modelFileName">{{ model.model.name|basename }}</span>
+                                    <button type="button" id="removeModelButton" class="remove-file-button">
+                                        <img src="{% static 'img/symbols/cross.svg' %}" alt="{% trans 'Delete' %}"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="form-label-classes">{% trans "Thumbnail" %}</label>
+                        <div class="file-upload-area" id="previewFileUploadArea">
+                            <h3 class="file-upload-title hidden">Main Preview Image</h3>
+                            <p class="file-upload-description hidden">Max File Size - 2 MB</p>
+
+                            <div id="previewFileButtonContainer" class="hidden">
+                                <input type="file" id="previewFile" name="preview_image" class="file-input hidden"
+                                       accept=".jpg,.jpeg,.png,.webp">
+                                <label for="previewFile" class="form-file-button">{% trans 'Select' %}</label>
+                            </div>
+
+                            <div id="selectedPreviewContainer">
+                                <div class="selected-file-container">
+                                    <span id="previewFileName">{{ model.thumbnail.name|basename }}</span>
+                                    <button type="button" id="removePreviewButton" class="remove-file-button">
+                                        <img src="{% static 'img/symbols/cross.svg' %}" alt="{% trans 'Cross' %}"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="form-label-classes">{% trans "Photos" %}</label>
+                        <div class="file-upload-area" id="galleryFileUploadArea">
+                            <h3 class="file-upload-title {% if model.images.all %}hidden{% endif %}">Photos</h3>
+                            <p class="file-upload-description {% if model.images.all %}hidden{% endif %}">Upload more
+                                images.</p>
+
+                            <div id="selectedGalleryContainer" class="{% if not model.images.all %}hidden{% endif %}">
+                                <div id="galleryFilesList" class="gallery-uploaded-files">
+                                    {% for img in model.images.all %}
+                                        <div class="selected-file-container mb-2">
+                                            <span class="truncate pr-4">{{ img.image.name|basename }}</span>
+                                            <button type="button" class="remove-single-file remove-file-button"
+                                                    data-db-id="{{ img.id }}">
+                                                <img src="{% static 'img/symbols/cross.svg' %}" alt="Remove"/>
+                                            </button>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div id="galleryFileButtonContainer" class="form-gallery-buttons">
+                                <input type="file" id="galleryFiles" name="gallery_images" class="file-input hidden"
+                                       accept=".jpg,.jpeg,.png,.webp" multiple>
+                                <label for="galleryFiles"
+                                       class="form-file-button inline-block cursor-pointer">{% trans 'Select' %}</label>
+                                <button type="button" id="clearAllGallery"
+                                        class="remove-gallery-button">{% trans "Delete" %}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-4">
+                    <button type="submit" class="form-submit-button">{% trans 'Submit' %}</button>
+                    <button type="reset" id="resetButton" class="form-reset-button">{% trans 'Reset' %}</button>
+                    <a href="{% url 'user_models_all' %}" id="discardButton"
+                       class="form-discard-button flex items-center justify-center">{% trans 'Discard' %}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>const crossIconUrl = "{% static 'img/symbols/cross.svg' %}"</script>
+    <script src="{% static 'js/web/upload.js' %}"></script>
+{% endblock %}

@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
             item.innerHTML = `
             <span class="truncate pr-4">${file.name}</span>
             <button type="button" class="remove-single-file remove-file-button" data-index="${index}">
-                <img src="/img/symbols/cross.svg" alt="Remove"/>
+                <img src="${crossIconUrl}" alt="Remove"/>
             </button>
         `;
             galleryList.appendChild(item);
@@ -144,13 +144,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* Mazání nahraných souborů */
+    /* Mazání nahraných souborů */
     if (galleryList) {
         galleryList.addEventListener('click', function (e) {
             const btn = e.target.closest('.remove-single-file');
-            if (btn) {
-                const index = parseInt(btn.getAttribute('data-index'));
-                galleryFilesArray.splice(index, 1);
+            if (!btn) return;
+
+            const index = btn.getAttribute('data-index');
+
+            if (index !== null) {
+                // Jde o NOVÝ soubor (má data-index), mažeme z pole a překreslujeme
+                galleryFilesArray.splice(parseInt(index), 1);
                 renderGallery();
+            } else {
+                // Jde o EXISTUJÍCÍ soubor z DB (nemá data-index), mažeme jen zobrazení
+                // Tady bys mohl přidat i logiku pro odeslání ID na server pro smazání z DB
+                const container = btn.closest('.selected-file-container');
+                if (container) {
+                    container.remove();
+                }
+
+                // Pokud po smazání nic nezbylo, ukážeme původní texty
+                if (galleryList.children.length === 0 && galleryFilesArray.length === 0) {
+                    galleryContainer.classList.add('hidden');
+                    const texts = galleryArea.querySelectorAll('.file-upload-title, .file-upload-description');
+                    texts.forEach(el => el.classList.remove('hidden'));
+                }
             }
         });
     }

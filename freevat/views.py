@@ -87,7 +87,6 @@ def delete_model(request, pk):
     model_obj = get_object_or_404(Model3D, pk=pk, user=request.user)
     if request.method == 'POST':
         model_obj.delete()
-        messages.success(request, "Model was successfully deleted.")
         return redirect('user_models_all')
     return redirect('user_models_all')
 
@@ -96,7 +95,52 @@ def delete_model(request, pk):
 @login_required
 def edit_model(request, pk):
     model_obj = get_object_or_404(Model3D, pk=pk, user=request.user)
-    return render(request, 'forms/edit_model.html', {'model': model_obj})
+
+    if request.method == 'POST':
+        form = ModelUploadForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            # 1. Ruční aktualizace polí
+            model_obj.name = form.cleaned_data['model_name']
+            model_obj.category = form.cleaned_data['category']
+            model_obj.description = form.cleaned_data['description']
+
+            # 2. Aktualizace souborů pouze, pokud byly nahrány
+            if 'model_file' in request.FILES:
+                model_obj.model = request.FILES['model_file']
+            if 'preview_image' in request.FILES:
+                model_obj.thumbnail = request.FILES['preview_image']
+
+            model_obj.save()
+
+            # 3. Zpracování galerie
+            gallery_files = request.FILES.getlist('gallery_images')
+            for f in gallery_files:
+                ModelImage.objects.create(model3d=model_obj, image=f)
+
+            # 4. Smazání obrázků z galerie
+            delete_ids = request.POST.get('delete_images', '').split(',')
+            for img_id in delete_ids:
+                if img_id.strip().isdigit():
+                    ModelImage.objects.filter(id=img_id, model3d=model_obj).delete()
+
+            # 5. PŘESMĚROVÁNÍ (nyní se provede, protože form je validní)
+            return redirect('user_models_all')
+        else:
+            # Pokud se nic neděje, podívej se do konzole serveru na tyto chyby:
+            print(form.errors)
+    else:
+        initial_data = {
+            'model_name': model_obj.name,
+            'category': model_obj.category,
+            'description': model_obj.description,
+        }
+        form = ModelUploadForm(initial=initial_data)
+
+    return render(request, 'forms/edit_model.html', {
+        'form': form,
+        'model': model_obj
+    })
 
 
 # Seznam nahraných 3D modelů
