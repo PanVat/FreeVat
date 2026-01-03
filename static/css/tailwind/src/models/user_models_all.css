@@ -1,0 +1,5 @@
+/* Tlačítka pro správu modelů */
+.model-manage-button {
+    @apply py-1.5 px-3 duration-150 rounded-md text-sm text-center;
+    @apply hover:opacity-90 cursor-pointer;
+}

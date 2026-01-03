@@ -36,7 +36,7 @@
                     <!-- Upravit profil -->
                     <a href="{% url 'users:edit_profile' %}"
                        class="button text-lg">
-                       {% trans 'Edit profile' %}
+                        {% trans 'Edit profile' %}
                     </a>
 
                     <!-- Změnit heslo -->
@@ -60,7 +60,7 @@
                 <div class="models-buttons">
 
                     <!-- Nadpis -->
-                    <h2 class="text-3xl font-bold">{% trans 'My models' %}</h2>
+                    <h2 class="text-3xl font-bold">{% trans 'My models' %} ({{ total_models_count }})</h2>
 
                     <div class="flex gap-3 w-full sm:w-auto">
                         <!-- Nahrát model -->

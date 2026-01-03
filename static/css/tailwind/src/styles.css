@@ -18,6 +18,7 @@
 @import './pages/index.css';
 @import './models/model_list.css';
 @import './models/model_detail.css';
+@import './models/user_models_all.css';
 
 /* Vlastní fonty */
 @theme {

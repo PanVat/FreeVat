@@ -1,47 +1,151 @@
 {% extends "base/base.html" %}
+<!-- Načtení potřebných knihoven -->
 {% load i18n static %}
 
+<!-- Titulek stránky -->
 {% block title %}{% trans 'FreeVat - My models' %}{% endblock %}
 
 {% block content %}
+    <!-- Celá stránka s modely uživatele -->
     <div class="models-full-page">
+        <!-- Nadpis a řazení modelů podle různých kritérií -->
         <div class="models-sort-container">
+
+            <!-- Nadpis a počet uživatelových modelů -->
             <h1 class="models-category-title">
-                {% trans "My models" %}
+                {% trans "My models" %} ({{ models|length }})
             </h1>
 
-            <a href="{% url 'upload' %}"
-               class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded transition-all">
-                <i class="fas fa-plus mr-2"></i> {% trans "Upload new" %}
-            </a>
-        </div>
 
-        <div class="models-preview-cards">
-            {% for user_model in models %}
-                <div class="flex flex-col">
-                    <div class="flex-grow">
-                        {% include 'models/partials/model_box.html' with similar=user_model %}
-                    </div>
+            <!-- Dropdown pro řazení modelů -->
+            <div class="models-sort-dropdown group">
 
-                    <div class="flex border-x border-b border-[#404040] bg-[#252525] rounded-b-md overflow-hidden">
-                        <a href="{% url 'edit_model' user_model.pk %}"
-                           class="flex-1 py-2 text-center text-xs font-bold text-blue-400 hover:bg-[#3B4042] transition-colors border-r border-[#404040]">
-                            <i class="fas fa-edit mr-1"></i> {% trans "EDIT" %}
+                <!-- Štítek "Seřadit" nad dropdownem -->
+                <div class="models-sort-label">
+                    {% trans "Sort by" %}
+                </div>
+
+                <!-- Tlačítko pro otevření dropdownu -->
+                <button class="models-dropdown-button">
+
+                    <!-- Aktuální vybrané řazení -->
+                    <span class="truncate">
+                    {% if current_sort == 'newest' %}{% trans "Newest" %}
+                        {% elif current_sort == 'oldest' %}{% trans "Oldest" %}
+                        {% elif current_sort == 'name_asc' %}{% trans "Name (A-Z)" %}
+                        {% elif current_sort == 'name_desc' %}{% trans "Name (Z-A)" %}
+                    {% else %}{% trans "Select..." %}{% endif %}
+                    </span>
+
+                </button>
+
+                <!-- Dropdown menu s možnostmi řazení -->
+                <div class="models-dropdown-menu">
+                    <div class="py-1">
+                        <!-- Nejnovější modely -->
+                        <a href="?sort=newest"
+                           class="models-dropdown-item">
+                            {% trans "Newest" %}
                         </a>
-
-                        <form action="{% url 'delete_model' user_model.pk %}" method="post" class="flex-1"
-                              onsubmit="return confirm('{% trans "Are you sure you want to delete this model?" %}');">
-                            {% csrf_token %}
-                            <button type="submit"
-                                    class="w-full py-2 text-center text-xs font-bold text-red-500 hover:bg-[#3B4042] transition-colors">
-                                <i class="fas fa-trash-alt mr-1"></i> {% trans "DELETE" %}
-                            </button>
-                        </form>
+                        <!-- Nejstarší modely -->
+                        <a href="?sort=oldest"
+                           class="models-dropdown-item">
+                            {% trans "Oldest" %}
+                        </a>
+                        <!-- Abecední řazení A-Z -->
+                        <a href="?sort=name_asc"
+                           class="models-dropdown-item">
+                            {% trans "Name (A-Z)" %}
+                        </a>
+                        <!-- Abecední řazení Z-A -->
+                        <a href="?sort=name_desc"
+                           class="models-dropdown-item">
+                            {% trans "Name (Z-A)" %}
+                        </a>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Náhledová okna 3D modelů -->
+        <div class="models-preview-cards">
+            {% for user_model in models %}
+                <!-- Jednotlivé okno s odkazem na detail modelu -->
+                <a href="{% url 'model_detail' user_model.pk %}" class="group block">
+                    <div class="model-preview-card">
+
+                        <!-- Náhledový obrázek modelu importovaný z databáze -->
+                        <div class="model-thumbnail-div">
+                            {% if user_model.thumbnail %}
+                                <img src="{{ user_model.thumbnail.url }}" alt="{{ user_model.name }}">
+                            {% endif %}
+                        </div>
+
+                        <!-- Podokno s informacemi o modelu -->
+                        <div class="model-preview-info flex justify-between items-center w-full">
+
+                            <!-- Levá sekce -->
+                            <div class="flex-col">
+                                <div class="flex-1 min-w-0 mb-2">
+                                    <!-- Název modelu -->
+                                    <h3 class="model-info-name truncate">
+                                        {{ user_model.name }}
+                                    </h3>
+                                </div>
+
+                                <!-- Tlačítka pro spravování modelů -->
+                                <div class="flex gap-2">
+                                    <!-- Upravit model -->
+                                    <button href="{% url 'edit_model' user_model.pk %}"
+                                            class="model-manage-button bg-blue-900">
+                                        {% trans "EDIT" %}
+                                    </button>
+
+                                    <!-- Vymazat model -->
+                                    <form action="{% url 'delete_model' user_model.pk %}" method="post" class="inline">
+                                        {% csrf_token %}
+                                        <button type="submit"
+                                                class="model-manage-button bg-red-900">
+                                            {% trans "DELETE" %}
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Kategorie modelu a formát souboru -->
+                            <div class="model-properties">
+                                <div class="flex gap-1 items-center">
+
+                                    <!-- Ikona kategorie modelu -->
+                                    <div class="model-property-icon w-4 h-4">
+                                        {% if user_model.category.icon %}
+                                            <img src="{{ user_model.category.icon.url }}"
+                                                 alt="{{ user_model.category.name }}"
+                                                 class="w-full h-full object-contain">
+                                        {% endif %}
+                                    </div>
+                                    <!-- Formát souboru modelu -->
+                                    <div class="model-property-filename">
+                                        {{ user_model.model.name|slice:"-4:"|cut:"."|upper }}
+                                    </div>
+                                </div>
+
+                                <!-- Uživatelské hodnocení modelu (5 hvězdiček)
+                                     Prozatím nefunguje, je to zde pro dekoraci
+                                -->
+                                <div class="flex gap-0.5 mt-1">
+                                    {% for i in "12345" %}
+                                        <img src="{% static 'img/symbols/star.svg' %}" class="w-2.5 h-2.5"
+                                             alt="{% trans 'Star' %}">
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
                 {% empty %}
                 <div class="models-no-results">
-                    <p class="text-xl">{% trans 'You have not uploaded any models yet.' %}</p>
+                    <p class="text-xl">{% trans 'No models found.' %}</p>
                 </div>
             {% endfor %}
         </div>

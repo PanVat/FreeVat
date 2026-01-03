@@ -66,7 +66,7 @@ def user_profile(request):
 
     return render(request, 'users/profile.html', {
         'user_models': user_models_preview,
-        'total_models_count': Model3D.objects.filter(user=request.user).count()
+        'total_models_count': Model3D.objects.filter(user=request.user).count(),
     })
 
 
@@ -88,8 +88,8 @@ def delete_model(request, pk):
     if request.method == 'POST':
         model_obj.delete()
         messages.success(request, "Model was successfully deleted.")
-        return redirect('users:profile')
-    return redirect('users:profile')
+        return redirect('user_models_all')
+    return redirect('user_models_all')
 
 
 # Úprava již nahraného modelu
