@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Jednotlivé moduly */
+/* VŠECHNY CSS MODULY */
 
 /* Základní struktura stránky */
 @import './base/navbar.css';
@@ -16,6 +16,7 @@
 
 /* Jednotlivé stránky */
 @import './pages/index.css';
+@import './pages/404.css';
 @import './models/model_list.css';
 @import './models/model_detail.css';
 @import './models/user_models_all.css';

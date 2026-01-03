@@ -43,11 +43,6 @@
     @apply flex w-full px-4 py-3 placeholder-gray-400 rounded-lg border-2 border-[#3B4042] outline-none text-base justify-between items-center;
 }
 
-/* Náhled obrázků v 'edit_model.html' */
-.edit_model_image {
-    @apply w-32 h-20 object-cover rounded-lg border border-[#3B4042];
-}
-
 /* Stylování popisků ve formuláři */
 .form-label-classes {
     @apply text-lg font-medium mb-2 block;

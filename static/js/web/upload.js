@@ -1,16 +1,20 @@
+/* Stará se o nahrání dat do databáze a logiku */
 document.addEventListener('DOMContentLoaded', function () {
-    /* Dropdown pro výběr kategorie */
+
+    /* Načtení prvků dropdownu z DOM */
     const trigger = document.getElementById('dropdownTrigger');
     const list = document.getElementById('dropdownList');
     const chevron = document.getElementById('dropdownChevron');
     const hiddenInput = document.querySelector('input[name="category"]');
     const selectedText = document.getElementById('selectedCategoryText');
 
+    /* Inicializace textu: pokud už je v hidden inputu hodnota (např. při editaci), nastavíme text v UI */
     if (hiddenInput && hiddenInput.value) {
         const defaultLi = list.querySelector(`li[data-value="${hiddenInput.value}"]`);
         if (defaultLi) selectedText.innerText = defaultLi.querySelector('span').innerText;
     }
 
+    /* Otevírání/zavírání seznamu kategorií a otáčení šipky po kliknutí na trigger */
     if (trigger) {
         trigger.addEventListener('click', () => {
             list.classList.toggle('hidden');
@@ -18,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    /* Výběr kategorie: uložení ID do hidden inputu, aktualizace textu a zavření seznamu */
     if (list) {
         list.querySelectorAll('li').forEach(item => {
             item.addEventListener('click', function () {
@@ -29,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    /* Zavření dropdownu kliknutím kamkoliv mimo něj */
     document.addEventListener('click', (e) => {
         if (trigger && list && !trigger.contains(e.target) && !list.contains(e.target)) {
             list.classList.add('hidden');
@@ -36,8 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
-    /* Funkce pro přepínání stavu nahrávání souborů */
+    /* Skryje nahrávací texty/tlačítka a zobrazí jméno souboru s křížkem (nebo naopak) */
     function toggleUploadState(type, isFileSelected) {
         const area = document.getElementById(`${type}FileUploadArea`);
         if (!area) return;
@@ -57,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    /* Obsluha nahrávání jednotlivých souborů */
+    /* Logika pro 3D model soubor (.obj, .glb, atd.) */
     const modelFileInput = document.getElementById('modelFile');
     const modelFileName = document.getElementById('modelFileName');
     const removeModelButton = document.getElementById('removeModelButton');
@@ -76,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    /* Obsluha nahrávání náhledového souboru */
+    /* Logika pro hlavní náhledový obrázek (Thumbnail) */
     const previewFileInput = document.getElementById('previewFile');
     const previewFileName = document.getElementById('previewFileName');
     const removePreviewButton = document.getElementById('removePreviewButton');
@@ -95,22 +100,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    /* Pokročilá obsluha nahrávání více souborů (do galerie) */
     const galleryArea = document.getElementById('galleryFileUploadArea');
     const galleryInput = document.getElementById('galleryFiles');
-    const galleryButtonContainer = document.getElementById('galleryFileButtonContainer');
-    const galleryContainer = document.getElementById('selectedGalleryContainer');
     const galleryList = document.getElementById('galleryFilesList');
+    const galleryContainer = document.getElementById('selectedGalleryContainer');
     const clearAllBtn = document.getElementById('clearAllGallery');
-    let galleryFilesArray = [];
+    let galleryFilesArray = []; /* Pole, kde držíme reálné objekty souborů z JS */
 
+    /* Funkce, která vykreslí seznam souborů v galerii na základě galleryFilesArray */
     function renderGallery() {
         if (!galleryList || !galleryArea) return;
 
         galleryList.innerHTML = '';
         galleryFilesArray.forEach((file, index) => {
             const item = document.createElement('div');
-            // Stejná třída jako u jednotlivých souborů pro konzistenci stylů
             item.className = "selected-file-container mb-2";
             item.innerHTML = `
             <span class="truncate pr-4">${file.name}</span>
@@ -121,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function () {
             galleryList.appendChild(item);
         });
 
+        /* Přepínání viditelnosti textů podle toho, zda je galerie prázdná */
         const texts = galleryArea.querySelectorAll('.file-upload-title, .file-upload-description');
-
         if (galleryFilesArray.length > 0) {
             galleryContainer.classList.remove('hidden');
             texts.forEach(el => el.classList.add('hidden'));
@@ -132,19 +135,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    /* Přidávání souborů do galerie */
+    /* Přidání vybraných souborů do našeho pole a promazání inputu pro další výběr */
     if (galleryInput) {
         galleryInput.addEventListener('change', function () {
             if (this.files.length > 0) {
                 galleryFilesArray = [...galleryFilesArray, ...Array.from(this.files)];
                 renderGallery();
-                this.value = ''; // Reset inputu, aby šlo vybrat stejný soubor znovu
+                this.value = '';
             }
         });
     }
 
-    /* Mazání nahraných souborů */
-    /* Mazání nahraných souborů */
+    /* Odstraňování souborů z galerie (delegování událostí na galleryList) */
     if (galleryList) {
         galleryList.addEventListener('click', function (e) {
             const btn = e.target.closest('.remove-single-file');
@@ -153,18 +155,17 @@ document.addEventListener('DOMContentLoaded', function () {
             const index = btn.getAttribute('data-index');
 
             if (index !== null) {
-                // Jde o NOVÝ soubor (má data-index), mažeme z pole a překreslujeme
+                /* Smazání nově přidaného souboru z pole */
                 galleryFilesArray.splice(parseInt(index), 1);
                 renderGallery();
             } else {
-                // Jde o EXISTUJÍCÍ soubor z DB (nemá data-index), mažeme jen zobrazení
-                // Tady bys mohl přidat i logiku pro odeslání ID na server pro smazání z DB
+                /* Smazání existujícího souboru (pouze vizuální z UI) */
                 const container = btn.closest('.selected-file-container');
                 if (container) {
                     container.remove();
                 }
 
-                // Pokud po smazání nic nezbylo, ukážeme původní texty
+                /* Kontrola prázdného stavu pro zobrazení původních textů */
                 if (galleryList.children.length === 0 && galleryFilesArray.length === 0) {
                     galleryContainer.classList.add('hidden');
                     const texts = galleryArea.querySelectorAll('.file-upload-title, .file-upload-description');
@@ -174,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Mazání všeho
+    /* Tlačítko pro kompletní vymazání galerie */
     if (clearAllBtn) {
         clearAllBtn.addEventListener('click', () => {
             galleryFilesArray = [];
@@ -182,44 +183,39 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // KLÍČOVÁ ČÁST: Synchronizace před odesláním
+    /* Protože soubory držíme v JS poli, musíme je před odesláním vložit do skutečného inputu */
     const uploadForm = document.getElementById('uploadForm');
     if (uploadForm) {
         uploadForm.addEventListener('submit', function (e) {
-            // Vytvoříme virtuální kontejner pro soubory
             const dataTransfer = new DataTransfer();
 
-            // Přidáme všechny soubory z našeho JS pole do tohoto kontejneru
+            /* Přeneseme všechny soubory z galleryFilesArray do objektu DataTransfer */
             galleryFilesArray.forEach(file => {
                 dataTransfer.items.add(file);
             });
 
-            // Přepíšeme obsah skutečného inputu těmito soubory
+            /* Přiřadíme výsledné soubory do inputu, který odchází na server */
             if (galleryInput) {
                 galleryInput.files = dataTransfer.files;
             }
-
-            // Pokud pole prázdné a pole je povinné, zde můžete přidat e.preventDefault()
         });
     }
 
 
-    // ==========================================
-    // 5. RESET A DISCARD LOGIKA
-    // ==========================================
-
+    /* Vyčistí kompletně celé uživatelské rozhraní formuláře do původního stavu */
     function clearUI() {
         toggleUploadState('model', false);
         toggleUploadState('preview', false);
 
         galleryFilesArray = [];
-        renderGallery(); // Toto zajistí, že se tlačítko vrátí nahoru a texty se zobrazí
+        renderGallery();
 
         if (selectedText) selectedText.innerText = "Select a category";
         if (hiddenInput) hiddenInput.value = "";
         if (trigger) trigger.classList.remove('border-blue-500');
     }
 
+    /* Tlačítko Reset: Vymaže formulář a po krátké prodlevě vyčistí i UI prvky */
     const resetBtn = document.getElementById('resetButton');
     if (resetBtn) {
         resetBtn.addEventListener('click', function () {
@@ -229,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    /* Tlačítko Discard: Vymaže formulář, vyčistí UI a přesměruje uživatele pryč */
     const discardBtn = document.getElementById('discardButton');
     if (discardBtn && uploadForm) {
         discardBtn.addEventListener('click', function (e) {

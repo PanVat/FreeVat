@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from . import settings
 from .forms import ModelUploadForm, CommentForm  # Formulář pro nahrání modelu
 from .models import Model3D, ModelImage, Category  # Tabulky z databáze
-from django.contrib import messages
 
 
 # Domovská stránka
@@ -70,14 +69,34 @@ def user_profile(request):
     })
 
 
+# Pomocná funkce pro sjednocení logiky řazení
+def get_sorted_models(queryset, request):
+    sort_by = request.GET.get('sort', 'newest')
+
+    if sort_by == 'oldest':
+        return queryset.order_by('id'), sort_by
+    elif sort_by == 'name_asc':
+        return queryset.order_by('name'), sort_by
+    elif sort_by == 'name_desc':
+        return queryset.order_by('-name'), sort_by
+    else:
+        # Výchozí: nejnovější
+        return queryset.order_by('-id'), 'newest'
+
+
 # Zobrazení všech modelů uživatele
 @login_required
 def user_models_list(request):
     # Fetchujeme všechny modely přihlášeného uživatele
-    all_models = Model3D.objects.filter(user=request.user).order_by('-id')
+    models = Model3D.objects.filter(user=request.user)
 
+    # Použití sjednocené logiky řazení
+    models, current_sort = get_sorted_models(models, request)
+
+    # Vrácení šablony a dat
     return render(request, 'users/user_models_all.html', {
-        'models': all_models
+        'models': models,
+        'current_sort': current_sort
     })
 
 
@@ -100,12 +119,12 @@ def edit_model(request, pk):
         form = ModelUploadForm(request.POST, request.FILES)
 
         if form.is_valid():
-            # 1. Ruční aktualizace polí
+            # Ruční aktualizace polí
             model_obj.name = form.cleaned_data['model_name']
             model_obj.category = form.cleaned_data['category']
             model_obj.description = form.cleaned_data['description']
 
-            # 2. Aktualizace souborů pouze, pokud byly nahrány
+            # Aktualizace souborů pouze, pokud byly nahrány
             if 'model_file' in request.FILES:
                 model_obj.model = request.FILES['model_file']
             if 'preview_image' in request.FILES:
@@ -113,21 +132,20 @@ def edit_model(request, pk):
 
             model_obj.save()
 
-            # 3. Zpracování galerie
+            # Zpracování galerie
             gallery_files = request.FILES.getlist('gallery_images')
             for f in gallery_files:
                 ModelImage.objects.create(model3d=model_obj, image=f)
 
-            # 4. Smazání obrázků z galerie
+            # Smazání obrázků z galerie
             delete_ids = request.POST.get('delete_images', '').split(',')
             for img_id in delete_ids:
                 if img_id.strip().isdigit():
                     ModelImage.objects.filter(id=img_id, model3d=model_obj).delete()
 
-            # 5. PŘESMĚROVÁNÍ (nyní se provede, protože form je validní)
+            # Přesměrování
             return redirect('user_models_all')
         else:
-            # Pokud se nic neděje, podívej se do konzole serveru na tyto chyby:
             print(form.errors)
     else:
         initial_data = {
@@ -159,23 +177,19 @@ def model_list(request, category_name=None, format_ext=None, software_name=None)
         models = models.filter(data__file_format__iexact=format_ext)
         current_filter = format_ext.upper()
 
-    # Filtrování podle softwaru (přes příponu v Data)
+    # Filtrování podle softwaru
     elif software_name:
         models = models.filter(data__file_format__iexact=software_name)
         current_filter = software_name
 
-    # Řazení
-    sort_by = request.GET.get('sort', 'newest')
-    if sort_by == 'newest':
-        models = models.order_by('-id')
-    elif sort_by == 'oldest':
-        models = models.order_by('id')
+    # Použití sjednocené logiky řazení
+    models, current_sort = get_sorted_models(models, request)
 
     # Výpis stránky
     return render(request, 'models/model_list.html', {
         'models': models,
         'current_filter': current_filter,
-        'current_sort': sort_by,
+        'current_sort': current_sort,
     })
 
 
@@ -202,12 +216,13 @@ def model_detail(request, pk):
     # Načtení komentářů pro tento konkrétní model
     comments = model_obj.comments.all()
 
+    # Předání dat do šablony
     context = {
         'model': model_obj,
         'gallery': gallery,
         'similar_models': similar_models,
-        'comments': comments,  # Předání komentářů
-        'comment_form': form,  # Předání formuláře
+        'comments': comments,
+        'comment_form': form,
         'debug': settings.DEBUG
     }
     return render(request, 'models/model_detail.html', context)

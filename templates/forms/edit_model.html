@@ -1,38 +1,55 @@
 {% extends "base/base.html" %}
+
+<!-- Načtení potřebných knihoven -->
 {% load crispy_forms_tags static i18n file_filters %}
 
+<!-- Titulek stránky -->
 {% block title %} {% trans 'FreeVat - Edit model' %} {% endblock %}
 
 {% block content %}
+    <!-- Stránka pro nahrávání 3D modelů -->
     <div class="form-page">
+        <!-- Nahrávací formulář - kontejner -->
         <div class="form-container--upload">
+            <!-- Hlavička -->
             <div>
                 <h2 class="form-main-heading">{% trans "Edit 3D model" %}</h2>
                 <p class="form-sub-heading">{% trans "by" %} {{ model.user.username }}</p>
             </div>
 
+            <!-- Nahrávací formulář -->
             <form class="form" id="uploadForm" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <!-- Důležité -->
                 <input type="hidden" name="delete_images" id="deleteImagesInput" value="">
 
+                <!-- Formulářová pole -->
                 <div class="form-inputs-container">
+
+                    <!-- Název modelu -->
                     <div class="mb-4">{{ form.model_name | as_crispy_field }}</div>
+
+                    <!-- Výběr kategorie modelu -->
                     <div class="mb-4 relative">
                         <label class="form-label-classes">{% trans "Category" %}</label>
                         {{ form.category }}
                         <div class="custom-dropdown" id="categoryDropdown">
+                            <!-- Spouštěč dropdownu -->
                             <div class="form-input-classes cursor-pointer" id="dropdownTrigger">
                                 <span id="selectedCategoryText">{{ model.category.name }}</span>
                                 <img src="{% static 'img/symbols/arrow_down.svg' %}"
-                                     class="w-5 h-5 transition-transform" id="dropdownChevron">
+                                     class="w-5 h-5 transition-transform" id="dropdownChevron"
+                                     alt="{% trans 'Arrow down' %}">
                             </div>
-                            <ul class="form-category-list hidden" id="dropdownList">
+
+                            <!-- Seznam kategorií (dropdown) - fetchuje se z databáze -->
+                            <ul class=" form-category-list hidden" id="dropdownList">
                                 {% for category in form.category.field.queryset %}
                                     <li class="form-category-item" data-value="{{ category.id }}">
                                         {% if category.icon %}
-                                            <img src="{{ category.icon.url }}" class="w-5 h-5">{% endif %}
+                                            <img src="{{ category.icon.url }}" class="w-5 h-5"
+                                                 alt="{% trans 'Category icon' %}">{% endif %}
                                         <span>{{ category.name }}</span>
                                     </li>
                                 {% endfor %}
@@ -40,20 +57,27 @@
                         </div>
                     </div>
 
+                    <!-- Popis modelu -->
                     <div class="mb-4">{{ form.description | as_crispy_field }}</div>
 
+                    <!-- Nahrání souboru 3D modelu -->
                     <div class="mb-6">
+                        <!-- Nadpis -->
                         <label class="form-label-classes">{% trans "3D Model" %}</label>
+
+                        <!-- Oblast pro nahrání souboru -->
                         <div class="file-upload-area" id="modelFileUploadArea">
                             <h3 class="file-upload-title hidden">Update 3D Model File</h3>
                             <p class="file-upload-description hidden">Max File Size - 100 MB</p>
 
+                            <!-- Tlačítko pro výběr modelu -->
                             <div id="modelFileButtonContainer" class="hidden">
                                 <input type="file" id="modelFile" name="model_file" class="file-input hidden"
                                        accept=".obj,.fbx,.stl,.gltf,.glb,.usdz,.blend">
                                 <label for="modelFile" class="form-file-button">{% trans 'Select' %}</label>
                             </div>
 
+                            <!-- Kontejner s nahraným modelem -->
                             <div id="selectedModelContainer">
                                 <div class="selected-file-container">
                                     <span id="modelFileName">{{ model.model.name|basename }}</span>
@@ -65,18 +89,23 @@
                         </div>
                     </div>
 
+                    <!-- Nahrání náhledového obrázku -->
                     <div class="mb-6">
+                        <!-- Nadpis -->
                         <label class="form-label-classes">{% trans "Thumbnail" %}</label>
+                        <!-- Oblast pro nahrání souboru -->
                         <div class="file-upload-area" id="previewFileUploadArea">
                             <h3 class="file-upload-title hidden">Main Preview Image</h3>
                             <p class="file-upload-description hidden">Max File Size - 2 MB</p>
 
+                            <!-- Tlačítko pro výběr náhledového obrázku -->
                             <div id="previewFileButtonContainer" class="hidden">
                                 <input type="file" id="previewFile" name="preview_image" class="file-input hidden"
                                        accept=".jpg,.jpeg,.png,.webp">
                                 <label for="previewFile" class="form-file-button">{% trans 'Select' %}</label>
                             </div>
 
+                            <!-- Kontejner s nahraným náhledovým obrázkem -->
                             <div id="selectedPreviewContainer">
                                 <div class="selected-file-container">
                                     <span id="previewFileName">{{ model.thumbnail.name|basename }}</span>
@@ -88,14 +117,20 @@
                         </div>
                     </div>
 
+                    <!-- Nahrání galerie obrázků modelu -->
                     <div class="mb-6">
+                        <!-- Nadpis -->
                         <label class="form-label-classes">{% trans "Photos" %}</label>
+                        <!-- Oblast pro nahrání souboru -->
                         <div class="file-upload-area" id="galleryFileUploadArea">
                             <h3 class="file-upload-title {% if model.images.all %}hidden{% endif %}">Photos</h3>
-                            <p class="file-upload-description {% if model.images.all %}hidden{% endif %}">Upload more
+                            <p class="file-upload-description {% if model.images.all %}hidden{% endif %}">Upload
+                                more
                                 images.</p>
 
-                            <div id="selectedGalleryContainer" class="{% if not model.images.all %}hidden{% endif %}">
+                            <!-- Kontejner s nahranými obrázky do galerie obrázků -->
+                            <div id="selectedGalleryContainer"
+                                 class="{% if not model.images.all %}hidden{% endif %}">
                                 <div id="galleryFilesList" class="gallery-uploaded-files">
                                     {% for img in model.images.all %}
                                         <div class="selected-file-container mb-2">
@@ -109,11 +144,14 @@
                                 </div>
                             </div>
 
+                            <!-- Tlačítko pro výběr obrázku do galerie obrázků -->
                             <div id="galleryFileButtonContainer" class="form-gallery-buttons">
                                 <input type="file" id="galleryFiles" name="gallery_images" class="file-input hidden"
                                        accept=".jpg,.jpeg,.png,.webp" multiple>
                                 <label for="galleryFiles"
                                        class="form-file-button inline-block cursor-pointer">{% trans 'Select' %}</label>
+
+                                <!-- Tlačítko pro smazání všech obrázků v galerii -->
                                 <button type="button" id="clearAllGallery"
                                         class="remove-gallery-button">{% trans "Delete" %}</button>
                             </div>
@@ -121,9 +159,13 @@
                     </div>
                 </div>
 
+                <!-- Tlačítka -->
                 <div class="flex justify-center gap-4">
-                    <button type="submit" class="form-submit-button">{% trans 'Submit' %}</button>
+                    <!-- Potvrdit změny -->
+                    <button type="submit" class="form-submit-button">{% trans 'Commit changes' %}</button>
+                    <!-- Resetovat formulář do původních dat -->
                     <button type="reset" id="resetButton" class="form-reset-button">{% trans 'Reset' %}</button>
+                    <!-- Zahodit změny -->
                     <a href="{% url 'user_models_all' %}" id="discardButton"
                        class="form-discard-button flex items-center justify-center">{% trans 'Discard' %}</a>
                 </div>

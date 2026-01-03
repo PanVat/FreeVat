@@ -16,55 +16,8 @@
                 {% trans "My models" %} ({{ models|length }})
             </h1>
 
-
-            <!-- Dropdown pro řazení modelů -->
-            <div class="models-sort-dropdown group">
-
-                <!-- Štítek "Seřadit" nad dropdownem -->
-                <div class="models-sort-label">
-                    {% trans "Sort by" %}
-                </div>
-
-                <!-- Tlačítko pro otevření dropdownu -->
-                <button class="models-dropdown-button">
-
-                    <!-- Aktuální vybrané řazení -->
-                    <span class="truncate">
-                    {% if current_sort == 'newest' %}{% trans "Newest" %}
-                        {% elif current_sort == 'oldest' %}{% trans "Oldest" %}
-                        {% elif current_sort == 'name_asc' %}{% trans "Name (A-Z)" %}
-                        {% elif current_sort == 'name_desc' %}{% trans "Name (Z-A)" %}
-                    {% else %}{% trans "Select..." %}{% endif %}
-                    </span>
-
-                </button>
-
-                <!-- Dropdown menu s možnostmi řazení -->
-                <div class="models-dropdown-menu">
-                    <div class="py-1">
-                        <!-- Nejnovější modely -->
-                        <a href="?sort=newest"
-                           class="models-dropdown-item">
-                            {% trans "Newest" %}
-                        </a>
-                        <!-- Nejstarší modely -->
-                        <a href="?sort=oldest"
-                           class="models-dropdown-item">
-                            {% trans "Oldest" %}
-                        </a>
-                        <!-- Abecední řazení A-Z -->
-                        <a href="?sort=name_asc"
-                           class="models-dropdown-item">
-                            {% trans "Name (A-Z)" %}
-                        </a>
-                        <!-- Abecední řazení Z-A -->
-                        <a href="?sort=name_desc"
-                           class="models-dropdown-item">
-                            {% trans "Name (Z-A)" %}
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <!-- Dropdown pro řazení 3D modelů -->
+            {% include "models/partials/model_sort.html" %}
         </div>
 
         <!-- Náhledová okna 3D modelů -->

@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+{% load i18n static %}
+
+<!-- Titulek stránky -->
+{% block title %} {% trans "404 - Page Not Found" %} {% endblock %}
+
+{% block content %}
+    <!-- Stránka -->
+    <div class="layout-404">
+        <!-- Ikonka -->
+        <div class="mb-8">
+            <img src="{% static 'img/icons/404.svg' %}" alt="404" class="icon-404">
+        </div>
+
+        <!-- Nadpis -->
+        <h1 class="title-404">
+            {% trans "Oops! Someone deleted the default cube." %}
+        </h1>
+
+        <!-- Podnadpis -->
+        <p class="subheading-404">
+            {% trans "It appears that this address has inverted normals and its geometry has collapsed into a singularity." %}
+        </p>
+
+        <!-- Tlačítko pro návrat na domovskou stránku -->
+        <a href="{% url 'index' %}"
+           class="button-404">
+            {% trans "Back to Home" %}
+        </a>
+    </div>
+{% endblock %}

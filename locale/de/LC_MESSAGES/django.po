@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-02 23:10+0100\n"
-"PO-Revision-Date: 2026-01-02 23:14+0100\n"
+"POT-Creation-Date: 2026-01-04 00:17+0100\n"
+"PO-Revision-Date: 2026-01-04 00:22+0100\n"
 "Last-Translator:   <admin@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -27,7 +27,8 @@ msgstr "Name"
 msgid "Enter model name"
 msgstr "Modellname eingeben"
 
-#: .\freevat\forms.py:30 .\templates\forms\upload.html:40
+#: .\freevat\forms.py:30 .\templates\forms\edit_model.html:35
+#: .\templates\forms\upload.html:40
 msgid "Category"
 msgstr "Kategorie"
 
@@ -43,8 +44,8 @@ msgstr "Beschreiben Sie Ihr Modell..."
 msgid "Model"
 msgstr "Modell"
 
-#: .\freevat\forms.py:59 .\templates\forms\upload.html:109
-#: .\templates\models\model_detail.html:157
+#: .\freevat\forms.py:59 .\templates\forms\edit_model.html:95
+#: .\templates\forms\upload.html:111 .\templates\models\model_detail.html:157
 msgid "Thumbnail"
 msgstr "Miniaturansicht"
 
@@ -52,57 +53,37 @@ msgstr "Miniaturansicht"
 msgid "Write a comment..."
 msgstr "Kommentar schreiben..."
 
-#: .\freevat\settings.py:199
+#: .\freevat\settings.py:200
 msgid "English"
 msgstr "Englisch"
 
-#: .\freevat\settings.py:200
+#: .\freevat\settings.py:201
 msgid "Czech"
 msgstr "Tschechisch"
 
-#: .\freevat\settings.py:201
+#: .\freevat\settings.py:202
 msgid "German"
 msgstr "Deutsch"
 
-#: .\freevat\translations_dummy.py:5
-msgid "Animals"
-msgstr "Tiere"
+#: .\templates\404.html:5
+msgid "404 - Page Not Found"
+msgstr "404 – Seite nicht gefunden"
 
-#: .\freevat\translations_dummy.py:6
-msgid "Architecture"
-msgstr "Architektur"
+#: .\templates\404.html:17
+msgid "Oops! Someone deleted the default cube."
+msgstr "Hoppla! Jemand hat den Standardwürfel gelöscht."
 
-#: .\freevat\translations_dummy.py:7
-msgid "Drink"
-msgstr "Getränk"
+#: .\templates\404.html:22
+msgid ""
+"It appears that this address has inverted normals and its geometry has "
+"collapsed into a singularity."
+msgstr ""
+"Es scheint, dass diese Adresse invertierte Normalen aufweist und ihre "
+"Geometrie zu einer Singularität kollabiert ist."
 
-#: .\freevat\translations_dummy.py:8
-msgid "Food"
-msgstr "Lebensmittel"
-
-#: .\freevat\translations_dummy.py:9
-msgid "Home"
-msgstr "Startseite"
-
-#: .\freevat\translations_dummy.py:10
-msgid "Characters"
-msgstr "Charaktere"
-
-#: .\freevat\translations_dummy.py:11
-msgid "Nature"
-msgstr "Natur"
-
-#: .\freevat\translations_dummy.py:12
-msgid "Sport"
-msgstr "Sport"
-
-#: .\freevat\translations_dummy.py:13
-msgid "Technology"
-msgstr "Technologie"
-
-#: .\freevat\translations_dummy.py:14
-msgid "Vehicles"
-msgstr "Fahrzeuge"
+#: .\templates\404.html:28
+msgid "Back to Home"
+msgstr "Zurück zur Startseite"
 
 #: .\templates\base\base.html:5
 msgid "en"
@@ -128,6 +109,68 @@ msgstr "Passwort aktualisieren"
 #: .\templates\forms\edit_profile.html:47
 msgid "Return"
 msgstr "Rückgabe"
+
+#: .\templates\forms\edit_model.html:7
+#, fuzzy
+#| msgid "FreeVat - My models"
+msgid "FreeVat - Edit model"
+msgstr "FreeVat – Meine Modelle"
+
+#: .\templates\forms\edit_model.html:16
+#, fuzzy
+#| msgid "Upload 3D model"
+msgid "Edit 3D model"
+msgstr "3D-Modell hochladen"
+
+#: .\templates\forms\edit_model.html:17
+msgid "by"
+msgstr "von"
+
+#: .\templates\forms\edit_model.html:43 .\templates\forms\upload.html:49
+msgid "Arrow down"
+msgstr "Pfeil nach unten"
+
+#: .\templates\forms\edit_model.html:52 .\templates\forms\upload.html:61
+msgid "Category icon"
+msgstr "Kategorie-Symbol"
+
+#: .\templates\forms\edit_model.html:66 .\templates\forms\upload.html:79
+msgid "3D Model"
+msgstr "3D Modell"
+
+#: .\templates\forms\edit_model.html:77 .\templates\forms\edit_model.html:105
+#: .\templates\forms\edit_model.html:152 .\templates\forms\upload.html:91
+#: .\templates\forms\upload.html:123 .\templates\forms\upload.html:161
+msgid "Select"
+msgstr "Auswählen"
+
+#: .\templates\forms\edit_model.html:85 .\templates\forms\edit_model.html:156
+#: .\templates\forms\upload.html:100 .\templates\forms\upload.html:167
+msgid "Delete"
+msgstr "Löschen"
+
+#: .\templates\forms\edit_model.html:113 .\templates\forms\upload.html:132
+msgid "Cross"
+msgstr "Kreuz"
+
+#: .\templates\forms\edit_model.html:123 .\templates\forms\upload.html:142
+msgid "Photos"
+msgstr "Fotos"
+
+#: .\templates\forms\edit_model.html:165
+#, fuzzy
+#| msgid "Save changes"
+msgid "Commit changes"
+msgstr "Änderungen speichern"
+
+#: .\templates\forms\edit_model.html:167 .\templates\forms\upload.html:180
+#: .\templates\models\model_detail.html:27
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: .\templates\forms\edit_model.html:170 .\templates\forms\upload.html:183
+msgid "Discard"
+msgstr "Verwerfen"
 
 #: .\templates\forms\edit_profile.html:7
 msgid "FreeVat - Edit profile"
@@ -209,47 +252,10 @@ msgstr "hier"
 msgid "Select a category"
 msgstr "Wählen Sie eine Kategorie aus"
 
-#: .\templates\forms\upload.html:48
-msgid "Arrow down"
-msgstr "Pfeil nach unten"
-
-#: .\templates\forms\upload.html:59
-msgid "Category icon"
-msgstr "Kategorie-Symbol"
-
-#: .\templates\forms\upload.html:77
-msgid "3D Model"
-msgstr "3D Modell"
-
-#: .\templates\forms\upload.html:89 .\templates\forms\upload.html:121
-#: .\templates\forms\upload.html:160
-msgid "Select"
-msgstr "Auswählen"
-
-#: .\templates\forms\upload.html:98 .\templates\forms\upload.html:166
-msgid "Delete"
-msgstr "Löschen"
-
-#: .\templates\forms\upload.html:131
-msgid "Cross"
-msgstr "Kreuz"
-
-#: .\templates\forms\upload.html:141
-msgid "Photos"
-msgstr "Fotos"
-
-#: .\templates\forms\upload.html:177 .\templates\layout\header\header.html:31
+#: .\templates\forms\upload.html:178 .\templates\layout\header\header.html:31
 #: .\templates\users\profile.html:69
 msgid "Upload"
 msgstr "Hochladen"
-
-#: .\templates\forms\upload.html:179 .\templates\models\model_detail.html:27
-msgid "Reset"
-msgstr "Zurücksetzen"
-
-#: .\templates\forms\upload.html:182
-msgid "Discard"
-msgstr "Verwerfen"
 
 #: .\templates\index.html:14
 msgid "Unlimited World of Professional 3D Models"
@@ -396,7 +402,7 @@ msgid "Manage your models"
 msgstr "Verwalten Sie Ihre Modelle"
 
 #: .\templates\index.html:186 .\templates\users\profile.html:63
-#: .\templates\users\profile.html:74 .\templates\users\user_models_all.html:10
+#: .\templates\users\profile.html:74 .\templates\users\user_models_all.html:16
 msgid "My models"
 msgstr "Meine Modelle"
 
@@ -432,11 +438,6 @@ msgstr "Modelle"
 #: .\templates\layout\navbar\partials\menu.html:14
 msgid "All"
 msgstr "Alle"
-
-#: .\templates\layout\navbar\partials\menu.html:20
-#, python-format
-msgid "%(name)s"
-msgstr ""
 
 #: .\templates\layout\navbar\partials\menu.html:28
 msgid "Formats"
@@ -531,37 +532,42 @@ msgstr "FreeVat – Modellliste"
 msgid "All models"
 msgstr "Alle Modelle"
 
-#: .\templates\models\model_list.html:29
-msgid "Sort by"
-msgstr "Sortieren"
-
-#: .\templates\models\model_list.html:37 .\templates\models\model_list.html:52
-msgid "Newest"
-msgstr "Neueste"
-
-#: .\templates\models\model_list.html:38 .\templates\models\model_list.html:57
-msgid "Oldest"
-msgstr "Älteste"
-
-#: .\templates\models\model_list.html:39 .\templates\models\model_list.html:62
-msgid "Name (A-Z)"
-msgstr "Name (A-Z)"
-
-#: .\templates\models\model_list.html:40 .\templates\models\model_list.html:67
-msgid "Name (Z-A)"
-msgstr "Name (Z-A)"
-
-#: .\templates\models\model_list.html:41
-msgid "Select..."
-msgstr "Wählen Sie..."
-
-#: .\templates\models\model_list.html:82
+#: .\templates\models\model_list.html:35
 msgid "No models found in this category."
 msgstr "In dieser Kategorie wurden keine Modelle gefunden."
 
 #: .\templates\models\partials\model_box.html:56
+#: .\templates\users\user_models_all.html:94
 msgid "Star"
 msgstr "Stern"
+
+#: .\templates\models\partials\model_sort.html:7
+msgid "Sort by"
+msgstr "Sortieren"
+
+#: .\templates\models\partials\model_sort.html:13
+#: .\templates\models\partials\model_sort.html:24
+msgid "Newest"
+msgstr "Neueste"
+
+#: .\templates\models\partials\model_sort.html:14
+#: .\templates\models\partials\model_sort.html:26
+msgid "Oldest"
+msgstr "Älteste"
+
+#: .\templates\models\partials\model_sort.html:15
+#: .\templates\models\partials\model_sort.html:28
+msgid "Name (A-Z)"
+msgstr "Name (A-Z)"
+
+#: .\templates\models\partials\model_sort.html:16
+#: .\templates\models\partials\model_sort.html:30
+msgid "Name (Z-A)"
+msgstr "Name (Z-A)"
+
+#: .\templates\models\partials\model_sort.html:17
+msgid "Select..."
+msgstr "Wählen Sie..."
 
 #: .\templates\users\profile.html:7
 msgid "FreeVat - User profile"
@@ -575,7 +581,7 @@ msgstr "Mitglied seit"
 msgid "Logout"
 msgstr "Abmelden"
 
-#: .\templates\users\profile.html:89 .\templates\users\user_models_all.html:44
+#: .\templates\users\profile.html:89
 msgid "You have not uploaded any models yet."
 msgstr "Sie haben noch keine Modelle hochgeladen."
 
@@ -583,25 +589,23 @@ msgstr "Sie haben noch keine Modelle hochgeladen."
 msgid "or"
 msgstr "oder"
 
-#: .\templates\users\user_models_all.html:4
+#: .\templates\users\user_models_all.html:6
 msgid "FreeVat - My models"
 msgstr "FreeVat – Meine Modelle"
 
-#: .\templates\users\user_models_all.html:15
-msgid "Upload new"
-msgstr "Neu hochladen"
-
-#: .\templates\users\user_models_all.html:29
+#: .\templates\users\user_models_all.html:55
 msgid "EDIT"
 msgstr "BEARBEITEN"
 
-#: .\templates\users\user_models_all.html:33
-msgid "Are you sure you want to delete this model?"
-msgstr "Sind Sie sicher, dass Sie dieses Modell löschen möchten?"
-
-#: .\templates\users\user_models_all.html:37
+#: .\templates\users\user_models_all.html:64
 msgid "DELETE"
 msgstr "LÖSCHEN"
+
+#: .\templates\users\user_models_all.html:103
+#, fuzzy
+#| msgid "No similar models found."
+msgid "No models found."
+msgstr "Keine ähnlichen Modelle gefunden."
 
 #: .\users\forms.py:25
 msgid "Username"
@@ -670,3 +674,39 @@ msgstr "Aktuelles Passwort"
 #: .\users\forms.py:217
 msgid "New password"
 msgstr "Neues Passwort"
+
+#~ msgid "Animals"
+#~ msgstr "Tiere"
+
+#~ msgid "Architecture"
+#~ msgstr "Architektur"
+
+#~ msgid "Drink"
+#~ msgstr "Getränk"
+
+#~ msgid "Food"
+#~ msgstr "Lebensmittel"
+
+#~ msgid "Home"
+#~ msgstr "Startseite"
+
+#~ msgid "Characters"
+#~ msgstr "Charaktere"
+
+#~ msgid "Nature"
+#~ msgstr "Natur"
+
+#~ msgid "Sport"
+#~ msgstr "Sport"
+
+#~ msgid "Technology"
+#~ msgstr "Technologie"
+
+#~ msgid "Vehicles"
+#~ msgstr "Fahrzeuge"
+
+#~ msgid "Upload new"
+#~ msgstr "Neu hochladen"
+
+#~ msgid "Are you sure you want to delete this model?"
+#~ msgstr "Sind Sie sicher, dass Sie dieses Modell löschen möchten?"
