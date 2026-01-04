@@ -17,6 +17,9 @@
                 <p class="form-sub-heading">{% trans "by" %} {{ model.user.username }}</p>
             </div>
 
+            <!-- Chybové zprávy -->
+            {% include 'base/form_errors.html' %}
+
             <!-- Nahrávací formulář -->
             <form class="form" id="uploadForm" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}

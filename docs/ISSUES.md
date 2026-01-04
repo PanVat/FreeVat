@@ -5,6 +5,11 @@
 - ✅ pole `kategorie` v `freevat/models.py` je zatím odstraněno (musí se vyřešit)
 - ❎ dočasně odstraněné pole `tagy` (pro zjednodušení)
 - ✅ Na domovské stránce v carouselu chybí odkazy na kategorie
-- ❎ Na Kubernetesu se musí udělat migrace i u `/users` aplikace
 - ✅ Jazyky se nedají přepínat (nějaká chyba)
 - ❎ Vyřešit hodnocení (hvězdičky)
+- ❎ Validace na formulářích není stoprocentní
+- ❎ Plná podpora zatím jen `fbx` (bez externích textur), `glb` a `stl`
+- ❎ Nejde změnit uživatelský profil
+- ❎ Možnost zapomenuté heslo nefunguje
+- ❎ 'Zapamatovat si mě' asi taky nefunguje
+- ❎ Aplikace není zdockerovaná (nemám na to čas)

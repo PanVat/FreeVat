@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model, authenticate
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Field, Layout
 from django.contrib.auth.forms import PasswordChangeForm
+from .validators import validate_username, validate_password
 
 # Pro překlad textů
 from django.utils.translation import gettext_lazy as _
@@ -21,9 +22,10 @@ LABEL_CLASSES = "text-lg font-medium mb-2 block"
 class CustomUserCreationForm(UserCreationForm):
     # Uživatelské jméno
     username = forms.CharField(
-        max_length=50,
+        max_length=20,
         label=_("Username"),
         required=True,
+        validators=[validate_username],
         widget=forms.TextInput(attrs={
             'class': INPUT_CLASSES,
             'placeholder': _('Enter your username')
@@ -44,6 +46,7 @@ class CustomUserCreationForm(UserCreationForm):
     # Heslo
     password1 = forms.CharField(
         label=_("Password"),
+        validators=[validate_password],
         widget=forms.PasswordInput(attrs={
             'class': INPUT_CLASSES,
             'placeholder': _('Enter your password')
@@ -175,6 +178,8 @@ class UserUpdateForm(forms.ModelForm):
         self.helper.form_show_errors = False
         self.fields['email'].label = _("Email")
         self.fields['email'].required = True
+        self.fields['username'].validators.append(validate_username)
+        self.fields['username'].max_length = 20
 
         self.helper.layout = Layout(
             Field('username', css_class=INPUT_CLASSES),
@@ -217,7 +222,7 @@ class StyledPasswordChangeForm(PasswordChangeForm):
         self.fields['new_password1'].label = _("New password")
         self.fields['new_password2'].label = _("Confirm new password")
 
-         # Vlastní layout
+        # Vlastní layout
         self.helper.layout = Layout(
             *[Field(field, css_class=INPUT_CLASSES) for field in self.fields]
         )

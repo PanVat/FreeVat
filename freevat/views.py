@@ -74,14 +74,19 @@ def get_sorted_models(queryset, request):
     sort_by = request.GET.get('sort', 'newest')
 
     if sort_by == 'oldest':
-        return queryset.order_by('id'), sort_by
+        return queryset.order_by('uploaded'), sort_by
     elif sort_by == 'name_asc':
         return queryset.order_by('name'), sort_by
     elif sort_by == 'name_desc':
         return queryset.order_by('-name'), sort_by
+
+    elif sort_by == 'size_asc':
+        return queryset.order_by('data__file_size'), sort_by
+    elif sort_by == 'size_desc':
+        return queryset.order_by('-data__file_size'), sort_by
     else:
-        # Výchozí: nejnovější
-        return queryset.order_by('-id'), 'newest'
+        # Výchozí: nejnovější podle data nahrání
+        return queryset.order_by('-uploaded'), 'newest'
 
 
 # Zobrazení všech modelů uživatele
@@ -165,9 +170,11 @@ def edit_model(request, pk):
 def model_list(request, category_name=None, format_ext=None, software_name=None):
     models = Model3D.objects.all()
     current_filter = None
+    current_category = None
 
     # Filtrování podle kategorie
     if category_name:
+        current_category = get_object_or_404(Category, name=category_name)
         category_obj = get_object_or_404(Category, name=category_name)
         models = models.filter(category=category_obj)
         current_filter = category_obj.name
@@ -189,6 +196,7 @@ def model_list(request, category_name=None, format_ext=None, software_name=None)
     return render(request, 'models/model_list.html', {
         'models': models,
         'current_filter': current_filter,
+        'current_category': current_category,
         'current_sort': current_sort,
     })
 

@@ -21,6 +21,9 @@
                 </p>
             </div>
 
+            <!-- Chybové zprávy -->
+            {% include 'base/form_errors.html' %}
+
             <!-- Formulář pro úpravu profilu -->
             <form class="form" method="POST">
                 {% csrf_token %}

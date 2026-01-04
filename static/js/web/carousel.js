@@ -9,9 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* Funkce pro aktualizaci viditelnosti šipek */
     function updateArrowVisibility() {
-        // UPRAVENO: Odstraněna logika skrývání.
-        // Šipky se pouze "resetují" do viditelného stavu, aby byly vždy dostupné.
-
         leftArrow.classList.remove('arrow-hidden');
         leftArrow.style.pointerEvents = 'auto';
 
@@ -34,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* Kontrola pozice při scrollování */
     carousel.addEventListener('scroll', updateArrowVisibility);
 
-    // Drag & drop
+    /* Drag & drop */
     let isDragging = false;
     let startX, scrollLeft;
 

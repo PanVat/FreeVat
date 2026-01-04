@@ -6,7 +6,7 @@ moderních technologiích a poskytuje uživatelům jednoduché a intuitivní roz
 modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si je moct stáhnout úplně kdokoli a používat na
 úplně cokoli. Je to takové zdrojákoviště 3D objektů, do kterého můžou dobrovolníci přispívat svými výtvory, ke kterým bude mít každý přístup.
 
-[![Version](https://img.shields.io/badge/Verze-Pre--Alpha_0.1.0-green.svg?logo=github&logoColor=white)](https://github.com/PanVat/FreeVat)
+[![Version](https://img.shields.io/badge/Verze-Alpha_1.0.0-green.svg?logo=github&logoColor=white)](https://github.com/PanVat/FreeVat)
 [![Developer](https://img.shields.io/badge/Vývojář-PanVat-blue)](https://github.com/PanVat)
 ![License](https://img.shields.io/badge/Licence-Open_Source_✅-purple.svg)
 ---
@@ -111,9 +111,20 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - Prokrastinace :(
 ---
 
-### ✅Prosinec 2025 (1/1) - ![Verze](https://img.shields.io/badge/Pre--Alpha_0.1.0-darkgreen.svg)
+### ✅Prosinec 2025 - ![Verze](https://img.shields.io/badge/Pre--Alpha_0.1.0-darkgreen.svg)
 - Formulář pro nahrávání uživatelských dat
 - Ukládání 3D modelů do databáze
 - Zobrazení nahraných modelů na stránce
 - Posouvání, přibližování a rotace modelů ve vieweru
 - Možnost změny hesla a uživatelských údajů
+---
+
+### ✅Leden 2026 - ![Verze](https://img.shields.io/badge/Alpha_1.0.0-darkgreen.svg)
+- Zobrazení mřížky s 3D modely
+- Prohlížení modelů ve 360°
+- Zobrazení základních informací o modelech
+- Možnost editace a mazání vlastních modelů
+- Psaní uživatelských komentářů
+- Dumpy pro jednoduché nahrávání dat
+- Vytvoření vlastního loga a faviconu
+- Seznam nedostatků je uveden [zde](docs/ISSUES.md)

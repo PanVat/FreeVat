@@ -1,33 +1,34 @@
-<!-- Načtení potřebných knihoven -->
 {% load i18n static %}
 
-<!-- Řazení modelů -->
+<!-- Dropdown s řazením modelů -->
 <div class="models-sort-dropdown group">
     <div class="models-sort-label">
         {% trans "Sort by" %}
     </div>
 
-    <!-- Dropdown pro řazení modelů -->
     <button class="models-dropdown-button">
         <span class="truncate">
-        {% if current_sort == 'newest' %}{% trans "Newest" %}
-            {% elif current_sort == 'oldest' %}{% trans "Oldest" %}
-            {% elif current_sort == 'name_asc' %}{% trans "Name (A-Z)" %}
-            {% elif current_sort == 'name_desc' %}{% trans "Name (Z-A)" %}
-        {% else %}{% trans "Select..." %}{% endif %}
+            {% if current_sort == 'newest' %}{% trans "Newest" %}
+                {% elif current_sort == 'oldest' %}{% trans "Oldest" %}
+                {% elif current_sort == 'name_asc' %}{% trans "Name (A-Z)" %}
+                {% elif current_sort == 'name_desc' %}{% trans "Name (Z-A)" %}
+                {% elif current_sort == 'size_asc' %}{% trans "Smallest size" %}
+                {% elif current_sort == 'size_desc' %}{% trans "Largest size" %}
+            {% else %}{% trans "Select..." %}{% endif %}
         </span>
     </button>
 
     <div class="models-dropdown-menu">
         <div class="py-1">
-            <!-- Nejnovější -->
+            <!-- Řazení podle data -->
             <a href="?sort=newest" class="models-dropdown-item">{% trans "Newest" %}</a>
-            <!-- Nejstarší -->
             <a href="?sort=oldest" class="models-dropdown-item">{% trans "Oldest" %}</a>
-            <!-- Sestupně -->
+            <!-- Řazení podle názvu -->
             <a href="?sort=name_asc" class="models-dropdown-item">{% trans "Name (A-Z)" %}</a>
-            <!-- Vzestupně -->
             <a href="?sort=name_desc" class="models-dropdown-item">{% trans "Name (Z-A)" %}</a>
+            <!-- Řazení podle velikosti -->
+            <a href="?sort=size_asc" class="models-dropdown-item">{% trans "Smallest size" %}</a>
+            <a href="?sort=size_desc" class="models-dropdown-item">{% trans "Largest size" %}</a>
         </div>
     </div>
 </div>

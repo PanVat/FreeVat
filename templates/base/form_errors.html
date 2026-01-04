@@ -1,0 +1,23 @@
+{% load static i18n %}
+
+{% if form.errors %}
+    <div class="mb-4 p-4 rounded-lg bg-red-900/50 border border-red-500 text-red-100 animate-fade-in-down">
+        <div class="flex flex-col gap-2">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="flex items-center gap-2 text-base font-medium">
+                        <img src="{% static 'img/icons/error.svg' %}" alt="{% trans 'Error' %}">
+                        <span><strong class="font-bold text-red-200">{{ field.label }}:</strong> {{ error }}</span>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            {% for error in form.non_field_errors %}
+                <div class="flex items-center gap-2 text-base font-medium">
+                    <img src="{% static 'img/icons/error.svg' %}" alt="{% trans 'Error' %}">
+                    <span><strong class="font-bold text-red-200">{{ field.label }}:</strong> {{ error }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

@@ -14,9 +14,9 @@
             <!-- Nadpis kategorie nebo všechny modely -->
             <h1 class="models-category-title">
                 {% if current_category %}
-                    {{ current_category.name }}
+                    {{ current_category.name }} ({{ models|length }})
                 {% else %}
-                    {% trans "All models" %}
+                    {% trans "All models" %} ({{ models|length }})
                 {% endif %}
             </h1>
 
@@ -32,7 +32,7 @@
                 <!-- Zpráva, že nebyly nalezeny žádné modely v dané kategorii -->
                 {% empty %}
                 <div class="models-no-results">
-                    <p class="text-xl">{% trans 'No models found in this category.' %}</p>
+                    <p>{% trans 'No models found in this category.' %}</p>
                 </div>
             {% endfor %}
         </div>

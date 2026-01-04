@@ -12,7 +12,7 @@
 
 /* Logo webu */
 .web-icon {
-    @apply h-7 min-w-[130px];
+    @apply h-9 min-w-[130px];
 }
 
 /* Vyhledávací pole */

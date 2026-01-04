@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-04 00:17+0100\n"
-"PO-Revision-Date: 2026-01-04 00:22+0100\n"
+"POT-Creation-Date: 2026-01-04 04:14+0100\n"
+"PO-Revision-Date: 2026-01-04 04:19+0100\n"
 "Last-Translator:   <admin@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,37 +19,43 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\freevat\forms.py:19
+#: .\freevat\forms.py:29
 msgid "Name"
 msgstr "Name"
 
-#: .\freevat\forms.py:22
+#: .\freevat\forms.py:32
 msgid "Enter model name"
 msgstr "Modellname eingeben"
 
-#: .\freevat\forms.py:30 .\templates\forms\edit_model.html:35
-#: .\templates\forms\upload.html:40
+#: .\freevat\forms.py:40 .\templates\forms\edit_model.html:38
+#: .\templates\forms\upload.html:43
 msgid "Category"
 msgstr "Kategorie"
 
-#: .\freevat\forms.py:39 .\templates\models\model_detail.html:104
+#: .\freevat\forms.py:49 .\templates\models\model_detail.html:104
 msgid "Description"
 msgstr "Beschreibung"
 
-#: .\freevat\forms.py:42
+#: .\freevat\forms.py:52
 msgid "Describe your model..."
 msgstr "Beschreiben Sie Ihr Modell..."
 
-#: .\freevat\forms.py:49
+#: .\freevat\forms.py:60
 msgid "Model"
 msgstr "Modell"
 
-#: .\freevat\forms.py:59 .\templates\forms\edit_model.html:95
-#: .\templates\forms\upload.html:111 .\templates\models\model_detail.html:157
+#: .\freevat\forms.py:71 .\templates\forms\edit_model.html:98
+#: .\templates\forms\upload.html:114 .\templates\models\model_detail.html:157
 msgid "Thumbnail"
 msgstr "Miniaturansicht"
 
-#: .\freevat\forms.py:93
+#: .\freevat\forms.py:105
+#, fuzzy
+#| msgid "Upload model"
+msgid "Upload Model"
+msgstr "Modell hochladen"
+
+#: .\freevat\forms.py:117
 msgid "Write a comment..."
 msgstr "Kommentar schreiben..."
 
@@ -64,6 +70,26 @@ msgstr "Tschechisch"
 #: .\freevat\settings.py:202
 msgid "German"
 msgstr "Deutsch"
+
+#: .\freevat\validators.py:10 .\users\validators.py:13
+msgid "can only contain letters, numbers, and _"
+msgstr "darf nur Buchstaben, Zahlen und Unterstriche enthalten"
+
+#: .\freevat\validators.py:12
+msgid "must be 3-50 characters long"
+msgstr "muss 3 bis 50 Zeichen lang sein"
+
+#: .\freevat\validators.py:19
+msgid "file is too large (max 100 MB)"
+msgstr "Die Datei ist zu groß (max. 100 MB)."
+
+#: .\freevat\validators.py:26
+msgid "image is too large (max 2 MB)"
+msgstr "Bild ist zu groß (max. 2 MB)"
+
+#: .\freevat\validators.py:34
+msgid "unsupported 3D model format"
+msgstr "Nicht unterstütztes 3D-Modellformat"
 
 #: .\templates\404.html:5
 msgid "404 - Page Not Found"
@@ -89,6 +115,10 @@ msgstr "Zurück zur Startseite"
 msgid "en"
 msgstr "de"
 
+#: .\templates\base\form_errors.html:9 .\templates\base\form_errors.html:17
+msgid "Error"
+msgstr "Fehler"
+
 #: .\templates\forms\change_password.html:7
 msgid "FreeVat - Change password"
 msgstr "FreeVat – Passwort ändern"
@@ -101,12 +131,12 @@ msgstr "Passwort ändern"
 msgid "Use long and random password to stay secure"
 msgstr "Verwenden Sie lange und zufällige Passwörter, um sicher zu bleiben."
 
-#: .\templates\forms\change_password.html:45
+#: .\templates\forms\change_password.html:48
 msgid "Update password"
 msgstr "Passwort aktualisieren"
 
-#: .\templates\forms\change_password.html:49
-#: .\templates\forms\edit_profile.html:47
+#: .\templates\forms\change_password.html:52
+#: .\templates\forms\edit_profile.html:50
 msgid "Return"
 msgstr "Rückgabe"
 
@@ -126,49 +156,49 @@ msgstr "3D-Modell hochladen"
 msgid "by"
 msgstr "von"
 
-#: .\templates\forms\edit_model.html:43 .\templates\forms\upload.html:49
+#: .\templates\forms\edit_model.html:46 .\templates\forms\upload.html:52
 msgid "Arrow down"
 msgstr "Pfeil nach unten"
 
-#: .\templates\forms\edit_model.html:52 .\templates\forms\upload.html:61
+#: .\templates\forms\edit_model.html:55 .\templates\forms\upload.html:64
 msgid "Category icon"
 msgstr "Kategorie-Symbol"
 
-#: .\templates\forms\edit_model.html:66 .\templates\forms\upload.html:79
+#: .\templates\forms\edit_model.html:69 .\templates\forms\upload.html:82
 msgid "3D Model"
 msgstr "3D Modell"
 
-#: .\templates\forms\edit_model.html:77 .\templates\forms\edit_model.html:105
-#: .\templates\forms\edit_model.html:152 .\templates\forms\upload.html:91
-#: .\templates\forms\upload.html:123 .\templates\forms\upload.html:161
+#: .\templates\forms\edit_model.html:80 .\templates\forms\edit_model.html:108
+#: .\templates\forms\edit_model.html:155 .\templates\forms\upload.html:94
+#: .\templates\forms\upload.html:126 .\templates\forms\upload.html:164
 msgid "Select"
 msgstr "Auswählen"
 
-#: .\templates\forms\edit_model.html:85 .\templates\forms\edit_model.html:156
-#: .\templates\forms\upload.html:100 .\templates\forms\upload.html:167
+#: .\templates\forms\edit_model.html:88 .\templates\forms\edit_model.html:159
+#: .\templates\forms\upload.html:103 .\templates\forms\upload.html:170
 msgid "Delete"
 msgstr "Löschen"
 
-#: .\templates\forms\edit_model.html:113 .\templates\forms\upload.html:132
+#: .\templates\forms\edit_model.html:116 .\templates\forms\upload.html:135
 msgid "Cross"
 msgstr "Kreuz"
 
-#: .\templates\forms\edit_model.html:123 .\templates\forms\upload.html:142
+#: .\templates\forms\edit_model.html:126 .\templates\forms\upload.html:145
 msgid "Photos"
 msgstr "Fotos"
 
-#: .\templates\forms\edit_model.html:165
+#: .\templates\forms\edit_model.html:168
 #, fuzzy
 #| msgid "Save changes"
 msgid "Commit changes"
 msgstr "Änderungen speichern"
 
-#: .\templates\forms\edit_model.html:167 .\templates\forms\upload.html:180
+#: .\templates\forms\edit_model.html:170 .\templates\forms\upload.html:183
 #: .\templates\models\model_detail.html:27
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: .\templates\forms\edit_model.html:170 .\templates\forms\upload.html:183
+#: .\templates\forms\edit_model.html:173 .\templates\forms\upload.html:186
 msgid "Discard"
 msgstr "Verwerfen"
 
@@ -184,7 +214,7 @@ msgstr "Profil bearbeiten"
 msgid "Update your personal information"
 msgstr "Aktualisieren Sie Ihre persönlichen Daten"
 
-#: .\templates\forms\edit_profile.html:42
+#: .\templates\forms\edit_profile.html:45
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
@@ -204,15 +234,15 @@ msgstr "Noch kein Mitglied?"
 msgid "Create new account!"
 msgstr "Neues Konto erstellen!"
 
-#: .\templates\forms\login.html:48
+#: .\templates\forms\login.html:51
 msgid "Remember me"
 msgstr "An mich erinnern"
 
-#: .\templates\forms\login.html:55
+#: .\templates\forms\login.html:58
 msgid "Forgotten password?"
 msgstr "Passwort vergessen?"
 
-#: .\templates\forms\login.html:64
+#: .\templates\forms\login.html:67
 msgid "Login to account"
 msgstr "Bei Konto anmelden"
 
@@ -220,7 +250,7 @@ msgstr "Bei Konto anmelden"
 msgid "FreeVat - Create account"
 msgstr "FreeVat – Konto erstellen"
 
-#: .\templates\forms\register.html:17 .\templates\forms\register.html:44
+#: .\templates\forms\register.html:17 .\templates\forms\register.html:47
 msgid "Create new account"
 msgstr "Neues Konto erstellen"
 
@@ -248,11 +278,11 @@ msgstr "Ihre hochgeladenen Modelle anzeigen"
 msgid "here"
 msgstr "hier"
 
-#: .\templates\forms\upload.html:46
+#: .\templates\forms\upload.html:49
 msgid "Select a category"
 msgstr "Wählen Sie eine Kategorie aus"
 
-#: .\templates\forms\upload.html:178 .\templates\layout\header\header.html:31
+#: .\templates\forms\upload.html:181 .\templates\layout\header\header.html:31
 #: .\templates\users\profile.html:69
 msgid "Upload"
 msgstr "Hochladen"
@@ -423,11 +453,11 @@ msgstr "Logo"
 msgid "Search"
 msgstr "Suche"
 
-#: .\templates\layout\header\header.html:42 .\users\forms.py:118
+#: .\templates\layout\header\header.html:42 .\users\forms.py:121
 msgid "Log in"
 msgstr "Anmelden"
 
-#: .\templates\layout\header\header.html:43 .\users\forms.py:72
+#: .\templates\layout\header\header.html:43 .\users\forms.py:75
 msgid "Sign up"
 msgstr "Registrieren"
 
@@ -541,29 +571,39 @@ msgstr "In dieser Kategorie wurden keine Modelle gefunden."
 msgid "Star"
 msgstr "Stern"
 
-#: .\templates\models\partials\model_sort.html:7
+#: .\templates\models\partials\model_sort.html:6
 msgid "Sort by"
 msgstr "Sortieren"
 
-#: .\templates\models\partials\model_sort.html:13
+#: .\templates\models\partials\model_sort.html:11
 #: .\templates\models\partials\model_sort.html:24
 msgid "Newest"
 msgstr "Neueste"
 
-#: .\templates\models\partials\model_sort.html:14
-#: .\templates\models\partials\model_sort.html:26
+#: .\templates\models\partials\model_sort.html:12
+#: .\templates\models\partials\model_sort.html:25
 msgid "Oldest"
 msgstr "Älteste"
 
-#: .\templates\models\partials\model_sort.html:15
-#: .\templates\models\partials\model_sort.html:28
+#: .\templates\models\partials\model_sort.html:13
+#: .\templates\models\partials\model_sort.html:27
 msgid "Name (A-Z)"
 msgstr "Name (A-Z)"
 
-#: .\templates\models\partials\model_sort.html:16
-#: .\templates\models\partials\model_sort.html:30
+#: .\templates\models\partials\model_sort.html:14
+#: .\templates\models\partials\model_sort.html:28
 msgid "Name (Z-A)"
 msgstr "Name (Z-A)"
+
+#: .\templates\models\partials\model_sort.html:15
+#: .\templates\models\partials\model_sort.html:30
+msgid "Smallest size"
+msgstr "Kleinste"
+
+#: .\templates\models\partials\model_sort.html:16
+#: .\templates\models\partials\model_sort.html:31
+msgid "Largest size"
+msgstr "Größte"
 
 #: .\templates\models\partials\model_sort.html:17
 msgid "Select..."
@@ -607,73 +647,89 @@ msgstr "LÖSCHEN"
 msgid "No models found."
 msgstr "Keine ähnlichen Modelle gefunden."
 
-#: .\users\forms.py:25
+#: .\users\forms.py:26
 msgid "Username"
 msgstr "Benutzername"
 
-#: .\users\forms.py:29
+#: .\users\forms.py:31
 msgid "Enter your username"
 msgstr "Geben Sie Ihren Benutzernamen ein"
 
-#: .\users\forms.py:36 .\users\forms.py:89 .\users\forms.py:176
+#: .\users\forms.py:38 .\users\forms.py:92 .\users\forms.py:179
 msgid "Email"
 msgstr "E-Mail"
 
-#: .\users\forms.py:40 .\users\forms.py:93
+#: .\users\forms.py:42 .\users\forms.py:96
 msgid "Enter your email"
 msgstr "Geben Sie Ihre E-Mail-Adresse ein"
 
-#: .\users\forms.py:46 .\users\forms.py:99
+#: .\users\forms.py:48 .\users\forms.py:102
 msgid "Password"
 msgstr "Passwort"
 
-#: .\users\forms.py:49 .\users\forms.py:102
+#: .\users\forms.py:52 .\users\forms.py:105
 msgid "Enter your password"
 msgstr "Geben Sie Ihr Passwort ein"
 
-#: .\users\forms.py:82
+#: .\users\forms.py:85
 msgid "Email address is already in use."
 msgstr "Die E-Mail-Adresse wird bereits verwendet."
 
-#: .\users\forms.py:134 .\users\forms.py:136
+#: .\users\forms.py:137 .\users\forms.py:139
 msgid "Invalid email or password."
 msgstr "Ungültige E-Mail-Adresse oder Passwort."
 
-#: .\users\forms.py:149
+#: .\users\forms.py:152
 msgid "Your username"
 msgstr "Ihr Benutzername"
 
-#: .\users\forms.py:154
+#: .\users\forms.py:157
 msgid "Your email"
 msgstr "Ihre E-Mail-Adresse"
 
-#: .\users\forms.py:160
+#: .\users\forms.py:163
 msgid "Tell us something about yourself"
 msgstr "Erzählen Sie uns etwas über sich selbst."
 
-#: .\users\forms.py:165
+#: .\users\forms.py:168
 msgid "Your web or portfolio link"
 msgstr "Ihr Web- oder Portfolio-Link"
 
-#: .\users\forms.py:193
+#: .\users\forms.py:198
 msgid "Your current password"
 msgstr "Ihr aktuelles Passwort"
 
-#: .\users\forms.py:194
+#: .\users\forms.py:199
 msgid "Your new password"
 msgstr "Ihr neues Passwort"
 
-#: .\users\forms.py:195 .\users\forms.py:218
+#: .\users\forms.py:200 .\users\forms.py:223
 msgid "Confirm new password"
 msgstr "Neues Passwort bestätigen"
 
-#: .\users\forms.py:216
+#: .\users\forms.py:221
 msgid "Current password"
 msgstr "Aktuelles Passwort"
 
-#: .\users\forms.py:217
+#: .\users\forms.py:222
 msgid "New password"
 msgstr "Neues Passwort"
+
+#: .\users\validators.py:9
+#, fuzzy
+#| msgid "Characters"
+msgid "max 20 characters"
+msgstr "Charaktere"
+
+#: .\users\validators.py:20
+#, fuzzy
+#| msgid "Characters"
+msgid "minimum 6 characters"
+msgstr "Charaktere"
+
+#: .\users\validators.py:23
+msgid "must contain at least one digit"
+msgstr "muss mindestens eine Ziffer enthalten"
 
 #~ msgid "Animals"
 #~ msgstr "Tiere"
@@ -689,9 +745,6 @@ msgstr "Neues Passwort"
 
 #~ msgid "Home"
 #~ msgstr "Startseite"
-
-#~ msgid "Characters"
-#~ msgstr "Charaktere"
 
 #~ msgid "Nature"
 #~ msgstr "Natur"

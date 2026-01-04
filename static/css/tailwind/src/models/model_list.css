@@ -99,5 +99,5 @@
 
 /* Zpráva, když nejsou nalezeny žádné modely */
 .models-no-results {
-    @apply col-span-full text-center py-12 text-gray-500;
+    @apply col-span-full text-center py-12 text-gray-500 text-xl italic;
 }
