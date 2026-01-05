@@ -1,0 +1,733 @@
+% ŠABLONA PRO PSANÍ ZÁVĚREČNÉ STUDIJNÍ PRÁCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Autor: Jakub Dokulil (kubadokulil99@gmail.com)
+% Tato šablona byla vytvořena tak, aby pomocí ní mohli v systému LaTeX soutěžící sázet své práce a zároveň odpovídala požadavkům na formátování vyplývajícím z wordové šablony umístěné na webu soc.cz.
+%
+\documentclass[12pt,a4paper,twoside,openany]{report}
+%oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostrannou, mezera pro hřbet pak automaticky bude pouze na levé straně
+
+
+
+% --- odstraneni zbytkoveho textu "superiorSup" a pod. ---
+\AtBeginDocument{%
+	\let\superiorSup\relax
+	\let\textOsF\relax
+	\let\textTOsF\relax
+	\let\liningLF\relax
+	\let\liningTLF\relax
+	\let\tabularTab\relax
+	\let\proportionalProp\relax
+	\let\tabularmath\relax
+	\let\proportionalmath\relax
+	\let\fontspechyperref\relax
+}
+%% Nutné balíčky a nastavení
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Proměnné
+\newcommand\obor{INFORMAČNÍ TECHNOLOGIE} %% -- napiš číslo a název tvého oboru
+\newcommand\kodOboru{18-20-M/01} %% -- napiš číslo a název tvého oboru
+\newcommand\zamereni{se zaměřením na počítačové sítě a programování} %% -- napiš číslo a název tvého oboru
+\newcommand\skola{Střední škola průmyslová a umělecká, Opava} %% vyplň název školy
+\newcommand\trida{IT4} %% vyplň jméno svého konzultanta
+\newcommand\jmenoAutora{Filip Podeszwa}  %% vyplň své jméno
+\newcommand\skolniRok{2025/26} %% vyplň rok
+\newcommand\datumOdevzdani{1. 1. 2026} %% vyplň rok
+\newcommand\nazevPrace{FreeVat} %% vyplň název své práce
+\newcommand\popisPrace{Webová aplikace pro správu 3D modelů}
+
+
+\title{\nazevPrace} %% -- Název tvé práce
+\author{\jmenoAutora} %% -- tvé jméno
+\date{\datumOdevzdani} %% -- rok, kdy píšeš SOČku
+
+\usepackage[top=2.5cm, bottom=2.5cm, left=3.5cm, right=1.5cm]{geometry} %% nastaví okraje, left -- vnitřní okraj, right -- vnější okraj
+
+\usepackage[czech]{babel} %% balík babel pro sazbu v češtině
+\usepackage[utf8]{inputenc} %% balíky pro kódování textu
+\usepackage[T1]{fontenc}
+\usepackage{cmap} %% balíček zajišťující, že vytvořené PDF bude prohledávatelné a kopírovatelné
+
+\usepackage{graphicx} %% balík pro vkládání obrázků
+
+\usepackage{subcaption} %% balíček pro vkládání podobrázků
+
+\usepackage{hyperref} %% balíček, který v PDF vytváří odkazy
+\usepackage{float}
+\usepackage{expl3}
+\linespread{1.25} %% řádkování
+\setlength{\parskip}{0.5em} %% odsazení mezi odstavci
+
+
+\usepackage[pagestyles]{titlesec} %% balíček pro úpravu stylu kapitol a sekcí
+\titleformat{\chapter}[block]{\scshape\bfseries\LARGE}{\thechapter}{10pt}{\vspace{0pt}}[\vspace{-22pt}]
+\titleformat{\section}[block]{\scshape\bfseries\Large}{\thesection}{10pt}{\vspace{0pt}}
+\titleformat{\subsection}[block]{\bfseries\large}{\thesubsection}{10pt}{\vspace{0pt}}
+
+
+\usepackage{tocloft} % Balíček umožní přizpůsobit vzhled tabulky obsahu
+\setlength{\cftbeforechapskip}{0pt}  % Menší rozestup pro kapitoly
+\setlength{\cftbeforesecskip}{0pt}   % Menší rozestup pro sekce
+
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{1}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.025pt}
+
+\usepackage{booktabs}
+
+\usepackage{url}
+
+%% Balíčky co se můžou hodit :) 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{pdfpages} %% Balíček umožňující vkládat stránky z PDF souborů, 
+
+\usepackage{upgreek} %% Balíček pro sazbu stojatých řeckých písmen, třeba u jednotky mikrometr. Například stojaté mí: \upmu, stojaté pí: \uppi
+
+\usepackage{amsmath}    %% Balíčky amsmath a amsfonts 
+\usepackage{amsfonts}   %% pro sazbu matematických symbolů
+\usepackage{esint}     %% pro sazbu různých integrálů (např \oiint)
+\usepackage{mathrsfs}
+\usepackage{helvet} % Helvet font
+\usepackage{mathptmx} % Times New Roman
+\makeatletter
+\@namedef{ver@figureversions.sty}{9999/99/99}
+\newcommand{\DeclareFigureVersion}[2]{}
+\newcommand{\figureversion}[1]{}
+\makeatother
+
+
+\makeatletter
+\providecommand{\superiorSup}{}
+\providecommand{\textOsF}{}
+\providecommand{\textTOsF}{}
+\providecommand{\liningLF}{}
+\providecommand{\liningTLF}{}
+\providecommand{\tabularTab}{}
+\providecommand{\proportionalProp}{}
+\makeatother
+\makeatletter
+\providecommand{\superiorSup}{}
+\providecommand{\textOsF}{}
+\providecommand{\textTOsF}{}
+\providecommand{\liningLF}{}
+\providecommand{\liningTLF}{}
+\providecommand{\tabularTab}{}
+\providecommand{\proportionalProp}{}
+\providecommand{\tabularmath}{}
+\providecommand{\proportionalmath}{}
+\makeatother
+
+%%\usepackage{Oswald} % Oswald font
+
+
+%% makra pro sazbu matematiky
+\newcommand{\dif}{\mathrm{d}} %% makro pro sazbu diferenciálu, místo toho
+%% abych musel psát '\mathrm{d}' mi stačí napsat '\dif' což je mnohem 
+%% kratší a mohu si tak usnadnit práci
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\renewcommand{\lstlistingname}{Kód}% Listing -> Algorithm
+\renewcommand{\lstlistlistingname}{Seznam programových kódů}% List of Listings -> List of Algorithms
+
+%% Definice 
+\lstdefinelanguage{JavaScript}{
+	morekeywords=[1]{break, continue, delete, else, for, function, if, in,
+		new, return, this, typeof, var, void, while, with},
+	% Literals, primitive types, and reference types.
+	morekeywords=[2]{false, null, true, boolean, number, undefined,
+		Array, Boolean, Date, Math, Number, String, Object},
+	% Built-ins.
+	morekeywords=[3]{eval, parseInt, parseFloat, escape, unescape},
+	sensitive,
+	morecomment=[s]{/*}{*/},
+	morecomment=[l]//,
+	morecomment=[s]{/**}{*/}, % JavaDoc style comments
+	morestring=[b]',
+	morestring=[b]"
+}[keywords, comments, strings]
+
+
+\lstdefinelanguage[ECMAScript2015]{JavaScript}[]{JavaScript}{
+	morekeywords=[1]{await, async, case, catch, class, const, default, do,
+		enum, export, extends, finally, from, implements, import, instanceof,
+		let, static, super, switch, throw, try},
+	morestring=[b]` % Interpolation strings.
+}
+
+\lstalias[]{ES6}[ECMAScript2015]{JavaScript}
+
+% Nastavení barev
+% Requires package: color.
+\definecolor{mediumgray}{rgb}{0.3, 0.4, 0.4}
+\definecolor{mediumblue}{rgb}{0.0, 0.0, 0.8}
+\definecolor{forestgreen}{rgb}{0.13, 0.55, 0.13}
+\definecolor{darkviolet}{rgb}{0.58, 0.0, 0.83}
+\definecolor{royalblue}{rgb}{0.25, 0.41, 0.88}
+\definecolor{crimson}{rgb}{0.86, 0.8, 0.24}
+
+% Nastavení pro Python
+\lstdefinestyle{Python}{
+	language=Python,
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily,
+	breakatwhitespace=false,
+	breaklines=false,
+	captionpos=b,
+	columns=fullflexible,
+	commentstyle=\color{mediumgray}\upshape,
+	emph={},
+	emphstyle=\color{crimson},
+	extendedchars=true,  % requires inputenc
+	fontadjust=true,
+	frame=single,
+	identifierstyle=\color{black},
+	keepspaces=true,
+	keywordstyle=\color{mediumblue},
+	keywordstyle={[2]\color{darkviolet}},
+	keywordstyle={[3]\color{royalblue}},
+	literate=%
+	{á}{{\'a}}1 {č}{{\v{c}}}1 {ď}{{\v{d}}}1 {é}{{\'e}}1 {ě}{{\v{e}}}1
+	{í}{{\'i}}1 {ň}{{\v{n}}}1 {ó}{{\'o}}1 {ř}{{\v{r}}}1 {š}{{\v{s}}}1
+	{ť}{{\v{t}}}1 {ú}{{\'u}}1 {ů}{{\r{u}}}1 {ý}{{\'y}}1 {ž}{{\v{z}}}1,		
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\tiny\color{black},
+	rulecolor=\color{black},
+	showlines=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stringstyle=\color{forestgreen},
+	tabsize=2,
+	title=\lstname,
+	upquote=true  % requires textcomp	
+}
+
+
+\lstdefinestyle{JSES6Base}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily,
+	breakatwhitespace=false,
+	breaklines=false,
+	captionpos=b,
+	columns=fullflexible,
+	commentstyle=\color{mediumgray}\upshape,
+	emph={},
+	emphstyle=\color{crimson},
+	extendedchars=true,  % requires inputenc
+	fontadjust=true,
+	frame=single,
+	identifierstyle=\color{black},
+	keepspaces=true,
+	keywordstyle=\color{mediumblue},
+	keywordstyle={[2]\color{darkviolet}},
+	keywordstyle={[3]\color{royalblue}},
+ literate=%
+{á}{{\'a}}1 {č}{{\v{c}}}1 {ď}{{\v{d}}}1 {é}{{\'e}}1 {ě}{{\v{e}}}1
+{í}{{\'i}}1 {ň}{{\v{n}}}1 {ó}{{\'o}}1 {ř}{{\v{r}}}1 {š}{{\v{s}}}1
+{ť}{{\v{t}}}1 {ú}{{\'u}}1 {ů}{{\r{u}}}1 {ý}{{\'y}}1 {ž}{{\v{z}}}1,		
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\tiny\color{black},
+	rulecolor=\color{black},
+	showlines=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stringstyle=\color{forestgreen},
+	tabsize=2,
+	title=\lstname,
+	upquote=true  % requires textcomp
+}
+
+\lstdefinestyle{JavaScript}{
+	language=JavaScript,
+	style=JSES6Base,
+}
+\lstdefinestyle{ES6}{
+	language=ES6,
+	style=JSES6Base
+}
+
+\setlength{\headheight}{15pt}
+
+%% Bordel pro práci - můžeš smáznout :) 
+%%%%%%%%%%%%%%%%%%%
+
+\usepackage{lipsum} %% balíček který píše lipsum (nesmyslný text, který se používá pro kontrolu typografie)
+
+\AtBeginDocument{\clearpage\pagestyle{empty}}
+
+%% Začátek dokumentu
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	
+	\pagestyle{empty}
+	\pagenumbering{Roman}
+	
+	\cleardoublepage
+
+%% Titulní stránka s informacemi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	{\fontfamily{phv}\selectfont
+		%% Logo školy
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{image/logo-skoly.png} 
+		\end{figure}
+		
+		
+		%% Hlavička práce a její název (viz proměnná \nazev prace)
+		%% \sffamily %%% bezpatkové písmo - sans serif
+		{\bfseries %%% písmo na stránce je tučně
+			\begin{center}
+				\vspace{0.025 \textheight}
+				\LARGE{ZÁVĚREČNÁ STUDIJNÍ PRÁCE}\\
+				\large{dokumentace}\\
+				\vspace{0.075 \textheight}
+				\huge {\nazevPrace}\\
+				\Large {\popisPrace}\\
+			\end{center}  
+		}%%%
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{image/favicon.png} 
+		\end{figure}
+		
+		\vspace{0.02 \textheight}
+		\begin{table}[h!]
+			\begin{tabular}{ll}
+				\textbf{Autor:} & \jmenoAutora\\ 
+				\textbf{Obor:} & \kodOboru { } \obor\\
+				\textbf{} & \zamereni\\
+				\textbf{Třída:} & \trida\\
+				\textbf{Školní rok:} & \skolniRok\\
+			\end{tabular}
+			
+		\end{table}		
+	}
+	
+\cleardoublepage %% Zalomení dvojstránky
+	
+%% Stránka obsahující poděkování a prohlášení
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Poděkování - nepovinné
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\clearpage
+	\noindent{\large{\bfseries{Poděkování}}}
+	
+	\noindent Rád bych poděkoval všem umělým inteligencím, zejména \textbf{Google Gemini}, která mi pomáhala od začátku do konce, dále \textbf{ChatGPT} a taky \textbf{DeepSeek}, který není vůbec špatný. Zpočátku mi pomáhal dokonce i \textbf{GitHub Copilot}, ale ten se na mě téměř před čtvrt rokem vykašlal :(
+	
+	\noindent Co se týče lidí, rád bych poděkoval panu \textbf{Ing. Petru Grussmannovi} za pomoc v Kubernetesu, která se ukázala být k ničemu, ale to je můj problém, protože jsem aplikaci již nestihl zdockerovat. Nasazení aplikace na web se budu věnovat někdy později.
+	
+
+%% Prohlášení - povinné
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\clearpage % Zajistí, že prohlášení začne na nové stránce
+	\thispagestyle{empty} % Odstraní číslo stránky, pokud tam překáží
+	
+	\noindent{\large{\bfseries{Prohlášení}}}
+	
+	\noindent Prohlašuji, že jsem závěrečnou práci vypracoval samostatně a uvedl veškeré použité informační zdroje.
+	
+	\medskip % Menší mezera
+	
+	\noindent Souhlasím, aby tato studijní práce byla použita k výukovým a prezentačním účelům na Střední průmyslové a umělecké škole v Opavě, Praskova 399/8. Podmínka je uvedení autora (mě) ve zdrojích.
+	
+	\vspace{2cm} % Místo \vfill použij pevnou mezeru, kterou můžeš zmenšit
+	
+	\noindent V Opavě \datumOdevzdani
+	
+	\vspace{-1cm} % Přitáhne podpis blíž k datu, pokud je málo místa
+	\begin{flushright} % Zarovná podpis doprava elegantněji než hspace
+		\begin{tabular}{@{}p{6cm}@{}}
+			\centering
+			\includegraphics[height=1.5cm]{image/podpis.png} \\[-15pt] 
+			\dotfill \\
+			\centering Podpis autora
+		\end{tabular}
+	\end{flushright}
+	
+
+\clearpage
+%% Stránka obsahující abstrakt (anotaci)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+%% Abstrakt v češtině
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent{\Large{\bfseries{Abstrakt}}}
+
+	\noindent\textbf{FreeVat} je webová platforma zaměřená na komunitní \textbf{sdílení}, \textbf{prohlížení} a \textbf{správu} 3D modelů. Hlavním cílem aplikace je poskytnout uživatelům intuitivní prostředí pro prezentaci jejich digitální tvorby \textbf{bez nutnosti instalace} specializovaného softwaru. Platforma slouží jako centrální úložiště, které propojuje tvůrce 3D obsahu s koncovými uživateli, kteří tyto modely mohou využít ve \textbf{vlastních projektech, hrách nebo při 3D tisku}. 
+	
+	\noindent Aplikace umožňuje uživatelům \textbf{nahrávat modely, zobrazovat je ve 360°, spravovat je a taky mazat.} Přihlašování je možné jak klasickou metodou jméno/email/heslo, nebo pomocí \textbf{Google} či \textbf{GitHubu}. Poskytuje taky prostředí pro psaní komentářů na ostatní modely a zobrazuje základní informace o nich.
+		
+	\vspace{18pt}
+	
+	\noindent{\large{\bfseries{Klíčová slova}}}
+	
+	\noindent FreeVat, 3D grafika, 3D modely, Django, Python, Three.js, HTML, CSS, JavaScript, Tailwind, Adobe Photoshop, PostgreSQL, Node.js, oper-source, správa digitálního obsahu, webová aplikace, interaktivní prohlížeč, web, webové stránky, digitální grafika, programování, modelování
+
+\vspace{18pt}
+
+
+%% Stránka s generovaným obsahem
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+\clearpage
+\thispagestyle{empty} % Obsah bývá bez čísla stránky
+\enlargethispage{2cm} % Přidá místo na výšku pouze pro tuto stránku
+
+\tableofcontents %% Vygeneruje tabulku s obsahem
+
+\clearpage
+\pagenumbering{arabic} %% Nastavení způsobu číslování stránek
+\setcounter{page}{1} %% Nastavení počitadla stránek (Úvod bude strana 1)
+
+%% Stránka s úvodem - povinná část
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+\chapter*{Úvod}
+\addcontentsline{toc}{chapter}{Úvod}
+
+\noindent Téma tohoto projektu jsem si zvolil na základě svého dlouhodobého zájmu o 3D grafiku, které se v Blenderu aktivně věnuji již přes rok. Mým cílem bylo propojit svět digitálního modelování s webovým vývojem a vytvořit platformu, která by uživatelům umožnila snadno prezentovat a sdílet jejich vlastní 3D tvorbu.
+
+\noindent Návrh aplikace začal již ve třetím ročníku, kdy jsem definoval klíčové technologie a nástroje nezbytné pro realizaci takto komplexního systému. Nejtěžší fází byla počáteční implementace, kdy bylo nutné navrhnout celou architekturu aplikace od základu. Jako hlavní nástroj pro vývoj jsem zvolil framework Django, který mi poskytl potřebnou stabilitu a bezpečnost pro správu dat a uživatelů.
+
+\noindent Aplikace se momentálně nachází ve fázi alfa vývoje. Jádro systému je plně funkční a připravené k použití, ačkoliv některé pokročilé funkce jsou zatím implementovány částečně nebo jsou předmětem plánovaného budoucího rozšiřování.
+
+\chapter*{Použité technologie}
+
+\chapter{Front-end}
+\label{ch:frontend}
+Pro uživatelské rozhraní aplikace byl zvolen moderní technologický stack, který kombinuje vysoký výkon při vykreslování 3D grafiky s čistým designem. Hlavním cílem bylo vytvořit intuitivní prostředí, které uživateli umožní manipulovat s modely bez zbytečné technické režie.
+
+\noindent Pro zobrazení 3D grafiky byl použit \textbf{Three.js} a pro stylování stránky \textbf{Tailwind CSS}. Vlastní grafiku jsem udělal za pomocí software \textbf{Adobe Photoshop 2026}.
+
+\clearpage
+
+\section{Three.js}
+\label{sec:threejs}
+
+Klíčovým prvkem frontendu je integrace knihovny \textbf{Three.js}. Tato JavaScriptová knihovna využívá rozhraní \textbf{WebGL} k hardwarově akcelerovanému vykreslování 3D objektů přímo v prohlížeči, díky čemuž si můžeme prohlížet model ze všech stran.
+
+\noindent Díky ní aplikace FreeVat nabízí:
+
+\begin{figure}[H]
+	\centering
+	% Levý "sloupec" pro text (55 % šířky)
+	\begin{minipage}{0.6\textwidth}
+		\begin{itemize}
+			\setlength\itemsep{1pt}
+			\item plynulé prohlížení modelů v reálném čase
+			\item podporu různých materiálů a osvětlení scény
+			\item možnost nahrávat různé 3D formáty
+			\item rotace, přibližování a posun modelů
+		\end{itemize}
+	\end{minipage}
+	\hfill % Pružná mezera mezi textem a obrázkem
+	% Pravý "sloupec" pro obrázek (40 % šířky)
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[height=6cm]{image/threejs_logo.png}
+		% \caption{Popisek k obrázku} % Pokud chceš popisek jen pro obrázek
+	\end{minipage}
+\end{figure}
+
+\clearpage
+
+\section{Tailwind CSS}
+Tento framework byl zvolen pro stylování uživatelského rozhraní a definici vizuální identity aplikace. Na rozdíl od tradičních frameworků, jako je například \textbf{Bootstrap}, nevyužívá předpřipravené komponenty s pevně daným vzhledem. Namísto toho sází na tzv. \textbf{utility-first přístup}, kde jsou jednotlivé vlastnosti (jako okraje, barvy, fonty či rozvržení) aplikovány přímo v HTML šablonách pomocí nízkoúrovňových tříd.
+
+\noindent Tyto třídy je možné skládat do sebe pomocí \textbf{@apply} a tvořit si tak vlastní výkonné komponenty.
+
+\vspace*{1.5cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{image/tailwind_logo.png}
+\end{figure}
+
+\clearpage
+\section{Adobe Photoshop}
+Grafické prvky - \textbf{logo webu} a \textbf{vlajky} - byly navrženy v programu \textbf{Adobe Photoshop}, což zajistilo profesionální vizuální identitu celého projektu. Ačkoli je Photoshop primárně rastrový program, umí i jednoduchou vektorovou grafiku, což je pro mě obrovskou výhodou.
+
+\vspace*{1.5cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\linewidth]{image/photoshop_logo.png}
+\end{figure}
+
+\newpage
+\chapter{Back-end}
+\label{sec:backend}
+
+\section{Django}
+\noindent Jako jádro aplikace a hlavní nástroj pro vývoj serverové části byl zvolen framework \textbf{Django}, napsaný v jazyce \textbf{Python}. Tato volba vychází z požadavku na robustní, bezpečný a snadno rozšiřitelný systém. 
+
+\noindent Django má velkou výhodu v tom, že v sobě integruje většinu funkcí potřebných pro moderní webové aplikace přímo v základní instalaci, což značně zjednodušuje vývoj. Django disponuje tzv. \textbf{ORM}, což umožňuje definovat databázové schéma pomocí \textbf{Python} tříd, což zvyšuje bezpečnost aplikace proti útokům typu \textbf{SQL injection}.
+
+\noindent Django taky obsahuje \textbf{admin panel}, díky kterému můžeme provádět některé operace jednodušeji pomocí "drag and drop".
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{image/django_logo.png}
+\end{figure}
+
+\clearpage
+\section{Python knihovny}
+Kromě samotného frameworku Django bylo v projektu využito několik specializovaných knihoven, které rozšiřují základní funkcionalitu a usnadňují správu specifických částí systému.
+
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item \textbf{Django Rosetta} - pro více jazyků na webu
+	\item \textbf{Django Crispy Forms} - jednoduchá tvorba uživatelských formulářů
+	\item \textbf{Allauth} - přihlašování do aplikace pomocí jiných účtů
+	\item \textbf{PyYAML} - pro tvorbu konfiguračních souborů pro FreeVat
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	% První obrázek
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{image/crispyforms_logo.png}
+	\end{subfigure}
+	\hfill % Mezera mezi 1. a 2.
+	% Druhý obrázek
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{image/allauth_logo.png}
+	\end{subfigure}
+	\hfill % Mezera mezi 2. a 3.
+	% Třetí obrázek
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{image/yaml_logo.png}
+	\end{subfigure}
+\end{figure}
+
+
+\clearpage
+\section{PostgreSQL}
+\noindent Django ve výchozím stavu využívá SQLite, ale tato databáze není příliš vhodná pro větší projekty a proto jsem si jako hlavní databázový systém pro produkční nasazení zvolil \textbf{PostgreSQL}. Jedná se o pokročilý open-source objektově-relační systém, který je v odvětví webového vývoje považován za standard pro projekty vyžadující vysokou integritu dat a škálovatelnost.
+
+\noindent Vývojový diagram, který můžete vidět níže, jsem dělal v online aplikace \textbf{drawDB}.
+
+\begin{figure}[H]
+	\centering
+	% Zde vlož svůj obrázek ERD diagramu nebo struktury modelů
+	\includegraphics[width=0.75\linewidth]{image/freevat_schema.png} 
+\end{figure}
+
+\clearpage
+\section{Node.js}
+Prostředí pro běh JS na serveru. Běží pod ním dva hlavní frameworky - \textbf{Tailwind CSS} a \textbf{Three.js}, které se pomocí build procesu překládají v reálném čase, což velmi zjednodušuje vývoj v nich.
+
+\begin{figure}[H]
+	\centering
+	% Zde vlož svůj obrázek ERD diagramu nebo struktury modelů
+	\includegraphics[width=0.75\linewidth]{image/nodejs_logo.png} 
+\end{figure}
+
+\chapter*{Historie vývoje}
+\label{sec:historie}
+
+\chapter{Zahájení projektu}
+První fáze projektu byla zaměřena na vytvoření infrastruktury a ujasnění vizuální identity. Jako úplně první věc jsem si musel rozmyslet, na čem chci pracovat. Když už jsem měl jasno, přemýšlel jsem, jaké technologie na to budou nejlepší. Vytvořil jsem soubor \textbf{README.md}, ve kterém jsem popsal svoji budoucí aplikaci
+
+\begin{figure}[H]
+	\centering
+	% Zde vlož screenshot webu po přechodu na Tailwind
+	\includegraphics[width=0.8\linewidth]{image/readme_part.png}
+\end{figure}
+
+\vspace*{1cm}
+\noindent Vytvořil jsem \textbf{virtuální prostředí} nainstaloval Django s Bootstrapem a vývoj mohl začít.
+
+\begin{figure}[H]
+	\centering
+	% Zde vlož screenshot webu po přechodu na Tailwind
+	\includegraphics[width=0.9\linewidth]{image/install_django.png}
+\end{figure}
+
+\noindent \large{\textbf{Červen 2025, Indev v0.0.1}}
+
+\clearpage
+
+\chapter{Změna technologií a překlady}
+Zde jsem zjistil, že je framework \textbf{Bootstrap} velmi omezený a jednoduše mi nestačil. Potřeboval jsem něco \textbf{robustnějšího a flexibilnějšího}, tak jsem ho nahradil za Tailwind CSS.
+
+\noindent Taky se mi podařilo zprovoznit aplikaci ve více jazycích. Jazykový přepínač jsem vložil vedle navigační lišty webu a stránka byla nyní dostupná jak v \textbf{angličtině}, tak i v \textbf{češtině} a \textbf{němčině}.
+
+\begin{figure}[H]
+	\centering
+	
+	% První obrázek
+	\begin{subfigure}{\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{image/web_czech.png}
+		\caption{Webová aplikace v češtině}
+		\label{fig:django_install}
+	\end{subfigure}
+	
+	\vspace{1em} % Mezera mezi obrázky
+	
+	% Druhý obrázek
+	\begin{subfigure}{\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{image/web_english.png}
+		\caption{Webová aplikace v angličtině}
+		\label{fig:django_create}
+	\end{subfigure}
+	
+	\vspace{1em} % Mezera mezi obrázky
+	
+	% Třetí obrázek
+	\begin{subfigure}{\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{image/web_german.png}
+		\caption{Webová aplikace v němčině}
+		\label{fig:django_run}
+	\end{subfigure}
+\end{figure}
+
+\noindent \large{\textbf{Září 2025, Indev v0.0.5}}
+
+\clearpage
+
+\chapter{Integrace 3D technologií}
+Klíčovým milníkem bylo zprovoznění vizualizační části aplikace. Tou dobou jsem dokončil základní strukturu webu - \textbf{záhlaví, navigační lištu a zápatí.}
+
+\begin{figure}[H]
+	\centering
+	
+	% První obrázek
+	\begin{subfigure}{\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{image/header.png}
+		\caption{Záhlaví webu FreeVat}
+		\label{fig:header}
+	\end{subfigure}
+	
+	\vspace{1em} % Mezera mezi obrázky
+	
+	% Druhý obrázek
+	\begin{subfigure}{\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{image/footer.png}
+		\caption{Zápatí webu FreeVat}
+		\label{fig:footer}
+	\end{subfigure}
+\end{figure}
+
+\noindent Bylo čas se už někam posunout, a tak jsem se pokusil zprovoznit Three.js přes \textbf{npm}. S tím jsem měl ze začátku problémy, ale nakonec se mi to nějak podařilo a 3D viewer byl na světě (i když s chybami).
+
+\begin{figure}[H]
+	\centering
+	% Zde vlož screenshot prvního funkčního 3D vieweru
+	\includegraphics[width=0.8\linewidth]{image/viewer.png}
+	\caption{Prvotní implementace 3D prohlížeče v prostředí webové stránky}
+	\label{fig:viewer}
+\end{figure}
+
+\noindent \large{\textbf{Říjen 2025, Indev v0.0.7}}
+
+\clearpage
+
+\chapter{Uživatelské účty}
+Vývoj jsem zaměřil na zabezpečení a správu uživatelů. Vytvořil jsem formulář, kde si uživatel může bezplatně vytvořit účet a formulář pro přihlášení k již existujícímu účtu.
+
+\noindent Pokud se uživateli nechce zadávat email a heslo, může se této úlohy zprostit díky tlačítku pro přihlášení přes \textbf{Google} či \textbf{GitHub}.
+
+\begin{figure}[H]
+	\centering
+	% Levý obrázek
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{image/login_form.png}
+		\caption{Přihlášení uživatele}
+		\label{fig:login_form}
+	\end{subfigure}
+	\hfill % Vloží pružnou mezeru mezi obrázky
+	% Pravý obrázek
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{image/register_form.png}
+		\caption{Registrace uživatele}
+		\label{fig:register_from}
+	\end{subfigure}
+\end{figure}
+
+\noindent \large{\textbf{Listopad 2025, Indev v0.0.9}}
+
+\clearpage
+
+\chapter{Správa dat a nahrávací systém}
+\noindent Tato fáze propojila frontend s databází a umožnila uživatelům přidávat vlastní obsah. Nyní je možné nahrávat 3D modely, které je možné si prohlížet pomocí již dříve implementovaného vieweru.
+
+\begin{figure}[H]
+	\centering
+	% Zde vlož screenshot prvního funkčního 3D vieweru
+	\includegraphics[width=1\linewidth]{image/threejs_code.png}
+	\caption{Kód 3D prohlížeče ve frameworku Three.js}
+	\label{fig:threejs_code}
+\end{figure}
+
+\noindent \large{\textbf{Prosinec 2025, Pre-Alpha v0.1.0}}
+
+\clearpage
+
+\chapter{Dokončení aplikace FreeVat}
+Tady vyšla první \textbf{Alpha verze} aplikace FreeVat. Uživatelé si mohou tvořit účty a nahrávat 3D obsah, který je možné si prohlížet. Zobrazují se o něm základní informace a pod jednotlivé modely je možné vkládat uživatelské komentáře.
+
+V \textbf{Adobe Photoshopu 2026} jsem taky vytvořil vlastní logo webu a favicon. Původně jsem chtěl, aby ho toto udělala umělá inteligence, ale výsledky, řekněme, vůbec nevyhovovaly mým představám.
+
+\begin{figure}[H]
+	\centering
+	% Zde vlož finální logo nebo finální screenshot aplikace
+	\includegraphics[width=0.3\linewidth]{image/favicon.png}
+	\caption{Logo aplikace FreeVat}
+	\label{fig:logo_final}
+\end{figure}
+
+\noindent \large{\textbf{Leden 2026, Alpha v1.0.0}}
+
+\newpage
+
+\chapter*{Závěr}
+\addcontentsline{toc}{chapter}{Závěr}
+
+Cílem této práce bylo navrhnout a realizovat webovou platformu FreeVat pro sdílení a prohlížení 3D modelů. Tento cíl se podařilo splnit vytvořením funkční aplikace, která propojuje robustní backend v Djangu s moderním interaktivním frontendem postaveným na Three.js.
+
+\noindent Během vývoje jsem narazil na řadu výzev, především v oblasti zpracování 3D souborů a jejich efektivního zobrazování ve webovém prostředí. Úspěšně jsem implementoval systém validací, který chrání aplikaci před chybnými daty, a vytvořil uživatelské rozhraní, které je intuitivní a responzivní.
+
+\noindent Projekt FreeVat má velký potenciál pro další rozvoj. Do budoucna se nabízí možnost implementace konverze formátů přímo na serveru, přidání sociálních funkcí (jako je sledování autorů) nebo monetizace pro prémiový obsah. Získané znalosti v oblasti webového vývoje a počítačové grafiky považuji za klíčové pro svou další profesní orientaci.
+
+%% literatura
+\begin{thebibliography}{99}
+	\bibitem{django}
+	„Django Documentation“, Django Software Foundation, dostupné z: \url{https://docs.djangoproject.com/}.
+	
+	\bibitem{threejs}
+	„Three.js – JavaScript 3D Library“, dostupné z: \url{https://threejs.org/docs/}.
+	
+	\bibitem{webgl}
+	„WebGL: 2D and 3D graphics for the web“, MDN Web Docs, dostupné z: \url{https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API}.
+	
+\end{thebibliography}
+
+\appendix %% začínají přílohy
+
+\titleformat{\chapter}[block]{\scshape\bfseries\LARGE}{Příloha \thechapter}{10pt}{\vspace{0pt}}[\vspace{-22pt}] %% nastavení nadpisu u příloh
+
+% Zde můžeš přidat screenshoty kódu nebo wireframy jako přílohy
+
+\end{document}

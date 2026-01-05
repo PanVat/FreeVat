@@ -28,8 +28,6 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - `OAuth` - Přihlašování a registrace uživatelů s účty třetích stran
 - `Node.js` - Prostředí pro běh JavaScriptu na serveru
 - `Vite` - Buildování a vývoj v reálném čase
-- `Docker` - Kontejnerizace aplikace pro snadné nasazení
-- `Oracle VirtualBox` - Testování aplikace na jiných zařízeních
 ---
 
 ## 🔧Instalace

@@ -86,6 +86,16 @@ python manage.py loaddata database/software.yaml
 
 ---
 
+### 8-2. Načtení základních dat (volitelné)
+
+Stáhněte si modely na tomto [odkazu](https://github.com/PanVat/FreeVat-Dump.git)
+
+```
+python manage.py loaddata database/models_dump.yaml
+```
+
+---
+
 ### 9. Kompilace překladů
 
 ```
