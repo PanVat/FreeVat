@@ -44,8 +44,12 @@ npm install
 
 ### 4. Vytvoření databáze
 
-#### V PostgreSQL terminálu
+#### Vstupte do PostgreSQL terminálu
 
+```
+psql -U postgres
+```
+#### Zadejte tyto dotazy
 ```
 CREATE DATABASE freevat;
 ALTER USER postgres WITH PASSWORD 'admin';
@@ -62,8 +66,15 @@ ALTER USER postgres WITH PASSWORD 'admin';
 
 ### 6. Spuštění migrací
 
+#### Uživatelé
 ```
-python manage.py migrate
+python manage.py makemigrations users
+python manage.py migrate users
+```
+#### Aplikace
+```
+python manage.py makemigrations freevat
+python manage.py migrate freevat
 ```
 
 ---
