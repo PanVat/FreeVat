@@ -41,3 +41,16 @@
 }
 
 @source "../../../**/*.{html,py,js}";
+
+
+    .example {
+        @apply text-center;
+        @apply p-2;
+        @apply flex;
+    }
+
+    .example {
+        text-align: center;
+        padding: 0.5rem;
+        display: flex;
+    }

@@ -35,5 +35,5 @@
 
 /* Žádné nahrané modely */
 .no-models {
-    @apply py-20 text-center border-2 border-dashed border-gray-700 rounded-xl;
+    @apply py-20 text-center border-2 border-dashed border-[#3B4042] rounded-xl;
 }

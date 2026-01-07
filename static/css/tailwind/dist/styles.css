@@ -1452,7 +1452,7 @@
   border-width: 2px;
   --tw-border-style: dashed;
   border-style: dashed;
-  border-color: var(--color-gray-700);
+  border-color: #3B4042;
   padding-block: calc(var(--spacing) * 20);
   text-align: center;
 }
@@ -2349,6 +2349,16 @@
       }
     }
   }
+}
+.example {
+  text-align: center;
+  padding: calc(var(--spacing) * 2);
+  display: flex;
+}
+.example {
+  text-align: center;
+  padding: 0.5rem;
+  display: flex;
 }
 @property --tw-rotate-x {
   syntax: "*";

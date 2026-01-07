@@ -23,7 +23,7 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 
 - `Django` - Framework pro vývoj webových aplikací v Pythonu
 - `Rosetta` - Správa překladů aplikace, vícejazyčnost
-- `Crispy Forms` - Tvorba a stylování uživateslkých formulářů
+- `Crispy Forms` - Tvorba a stylování uživatelských formulářů
 - `PostgreSQL` - Výkonný databázový systém pro ukládání dat
 - `OAuth` - Přihlašování a registrace uživatelů s účty třetích stran
 - `Node.js` - Prostředí pro běh JavaScriptu na serveru
@@ -60,7 +60,7 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 - [x] Registrace, přihlašování a mazání uživatelských účtů
 - [x] Zobrazování základních informací o modelech (počet ploch, velikost souboru..)
 - [x] Více jazyků na výběr - čeština / angličtina / němčina
-- [ ] Plně responzivní design pro PC
+- [x] Plně responzivní design pro PC
 - [ ] Plně responzivní design pro mobily a tablety
 - [ ] Vyhledávání 3D modelů podle názvu, případně podle velikosti
 - [x] Řazení modelů podle data přidání, názvu nebo velikosti
