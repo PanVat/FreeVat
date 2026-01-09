@@ -57,6 +57,10 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 \usepackage[utf8]{inputenc} %% balíky pro kódování textu
 \usepackage[T1]{fontenc}
 \usepackage{cmap} %% balíček zajišťující, že vytvořené PDF bude prohledávatelné a kopírovatelné
+\usepackage{forest}
+
+\usepackage{microtype}
+
 
 \usepackage{graphicx} %% balík pro vkládání obrázků
 
@@ -106,6 +110,7 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 \usepackage{mathrsfs}
 \usepackage{helvet} % Helvet font
 \usepackage{mathptmx} % Times New Roman
+\usepackage{enumitem}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \makeatletter
@@ -316,7 +321,7 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 		%% Logo školy
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=0.6\linewidth]{image/logo-skoly.png} 
+			\includegraphics[width=0.6\linewidth]{img/logo-skoly.png} 
 		\end{figure}
 		
 		
@@ -328,8 +333,8 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 				\LARGE{ZÁVĚREČNÁ STUDIJNÍ PRÁCE}\\
 				\large{dokumentace}\\
 				\vspace{0.075 \textheight}
-				\LARGE {\nazevPrace}\\
-				\large {\popisPrace}\\
+				\huge {\nazevPrace}\\
+				\Large {\popisPrace}\\
 			\end{center}  
 		}%%%
 		
@@ -351,7 +356,11 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 		\end{table}		
 	}
 	
-	\clearpage %% Zalomení dvojstránky
+    
+    \clearpage
+    \thispagestyle{empty} % Stránka bude úplně prázdná (bez záhlaví/zápatí)
+    \phantom{.} % Neviditelný znak, aby LaTeX stránku nevynechal jako prázdnou
+    \clearpage
 	
 	%% Stránka obsahující poděkování a prohlášení
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -359,16 +368,14 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 	%% Poděkování - nepovinné
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
-	\noindent{\large{\bfseries{Poděkování}\\}}
-	\noindent Rád bych poděkoval všem umělým inteligencím, zejména \textbf{Google Gemini}, která mi pomáhala od začátku do konce, dále \textbf{ChatGPT} a taky \textbf{DeepSeek}, který není vůbec špatný. Zpočátku mi pomáhal dokonce i \textbf{GitHub Copilot}, ale ten se na mě téměř před čtvrt rokem vykašlal :(
+		\noindent{\large{\bfseries{Poděkování}\\}}
+		\noindent Rád bych poděkoval panu učiteli Ing. Petru Grussmannovi za pomoc v Kubernetesu a jiné cenné rady v oblasti projektu. Dík patří taktéž panu učiteli Mgr. Marku Lučnému za rady ohledně dokumentace a maturitního videa.
 	
-	\noindent Co se týče lidí, rád bych poděkoval panu \textbf{Ing. Petru Grussmannovi} za pomoc v Kubernetesu, která se ukázala být k ničemu, ale to je můj problém, protože jsem aplikaci již nestihl zdockerovat. Nasazení aplikace na web se budu věnovat někdy později.
-	
-	\vspace*{0.38\textheight} %% Vertikální mezeru je možné upravit
+	\vspace*{0.6\textheight} %% Vertikální mezeru je možné upravit
 	
 	%% Prohlášení - povinné
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\noindent{\large{\bfseries{Prohlášení}\\}}  %% uprav si koncovky podle toho na jaký rod se cítíš, vypadá to pak lépe :) 
+	\noindent{\large{\bfseries{Prohlášení}}}\\
 	\noindent{Prohlašuji, že jsem závěrečnou práci vypracoval samostatně a uvedl veškeré použité 
 		informační zdroje.\\}
 	\noindent{Souhlasím, aby tato studijní práce byla použita k výukovým a prezentačním účelům na Střední průmyslové a umělecké škole v Opavě, Praskova 399/8.}
@@ -384,7 +391,9 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 	\end{minipage}
 	
 	\clearpage
-	
+	\thispagestyle{empty} % Stránka bude úplně prázdná (bez záhlaví/zápatí)
+	\phantom{.} % Neviditelný znak, aby LaTeX stránku nevynechal jako prázdnou
+	\clearpage
 	
 	%% Stránka obsahující abstrakt (anotaci)
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
@@ -393,9 +402,11 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\noindent{\Large{\bfseries{Abstrakt}}}
 	
-	\noindent\textbf{FreeVat} je webová platforma zaměřená na komunitní \textbf{sdílení}, \textbf{prohlížení} a \textbf{správu} 3D modelů. Hlavním cílem aplikace je poskytnout uživatelům intuitivní prostředí pro prezentaci jejich digitální tvorby \textbf{bez nutnosti instalace} specializovaného softwaru. Platforma slouží jako centrální úložiště, které propojuje tvůrce 3D obsahu s koncovými uživateli, kteří tyto modely mohou využít ve \textbf{vlastních projektech, hrách nebo při 3D tisku}. 
+	\noindent FreeVat je webová platforma zaměřená na komunitní sdílení, prohlížení a správu 3D modelů. Hlavním cílem aplikace je poskytnout uživatelům intuitivní prostředí pro prezentaci jejich digitální tvorby bez nutnosti instalace specializovaného softwaru. Platforma slouží jako centrální úložiště, které propojuje tvůrce 3D obsahu s koncovými uživateli, kteří tyto modely mohou využít ve vlastních projektech, hrách nebo při 3D tisku. 
 	
-	\noindent Aplikace umožňuje uživatelům \textbf{nahrávat modely, zobrazovat je ve 360°, spravovat je a taky mazat.} Přihlašování je možné jak klasickou metodou jméno/email/heslo, tak pomocí \textbf{Google} či \textbf{GitHubu}. Poskytuje taky prostředí pro psaní komentářů na ostatní modely a zobrazuje základní informace o nich.
+	\vspace*{12pt}
+	
+	\noindent Aplikace umožňuje uživatelům nahrávat modely, zobrazovat je ve 360°, spravovat je a taky mazat. Přihlašování je možné jak klasickou metodou jméno/email/heslo, tak pomocí Google či GitHubu. Poskytuje taky prostředí pro psaní komentářů na ostatní modely a zobrazuje základní informace o nich.
 	
 	\vspace{18pt}
 	
@@ -409,9 +420,11 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	\noindent{\Large{\bfseries{Abstract}}}
 	
-	\noindent\textbf{FreeVat} is a web platform focused on community \textbf{sharing}, \textbf{viewing}, and \textbf{managing} 3D models. The main goal of the application is to provide users with an intuitive environment for presenting their digital creations \textbf{without the need to install} specialized software. The platform serves as a central repository that connects 3D content creators with end users who can use these models in \textbf{their own projects, games, or 3D printing}. 
+	\noindent\textbf{FreeVat} is a web platform focused on community sharing, viewing, and managing 3D models. The main goal of the application is to provide users with an intuitive environment for presenting their digital creations without the need to install specialized software. The platform serves as a central repository that connects 3D content creators with end users who can use these models in their own projects, games, or 3D printing. 
 	
-	\noindent The application allows users to \textbf{upload models, view them in 360°, manage them, and delete them}. Users can log in using the classic name/email/password method, but it is also possible via \textbf{Google} or \textbf{GitHub}. It also provides an environment for commenting on other models and displays basic information about them.
+	\vspace*{12pt}
+	
+	\noindent The application allows users to upload models, view them in 360°, manage them, and delete them. Users can log in using the classic name/email/password method, but it is also possible via Google or GitHub. It also provides an environment for commenting on other models and displays basic information about them.
 	
 	\vspace{18pt}
 	
@@ -419,15 +432,16 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 	
 	\noindent FreeVat, 3D graphics, 3D models, Django, Python, Three.js, HTML, CSS, JavaScript, Tailwind, Adobe Photoshop, PostgreSQL, Node.js, open-source, digital content management, web app, interactive viewer, web, web pages, digital graphics, programming, modeling
 	
-	
-	
-	\clearpage %% Zalomení stránky
+	\clearpage
 	
 	%% Stránka s generovaným obsahem
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	
 	\tableofcontents %% Vygeneruje tabulku s obsahem
 	
+	\clearpage
+	\thispagestyle{empty} % Stránka bude úplně prázdná (bez záhlaví/zápatí)
+	\phantom{.} % Neviditelný znak, aby LaTeX stránku nevynechal jako prázdnou
 	\clearpage
 	
 	\pagenumbering{arabic}
@@ -446,334 +460,429 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 	%Druhý parametr chapter specifikuje úroveň záznamu. V tomto případě říkáme, že přidávaný záznam má být považován za kapitolu.
 	%Třetí parametr Úvod je text, který se objeví v obsahu. V tomto případě bude v obsahu zobrazen název "Úvod".	
 	
-	Dřív, než se ponoříme do samotného popisu vývoje aplikace, chtěl bych uvést na pravou míru, že toto byl můj první "velký" projekt, co se IT týče. Nikdy předtím jsem nic takového nedělal. Toto bylo poprvé, co jsem musel pracovat s více věcmi najednou. Nestačilo např. jen něco vytvořit v jazyce \textit{C} či \textit{HTML}, musel jsem do sebe spojit více technologií a zajistit, aby spolu řádně komunikovaly.
+	Webovou aplikaci FreeVat jsem se rozhodl vytvořit jako svůj maturitní projekt, protože jsem chtěl propojit svůj zájem o 3D grafiku s praktickým využitím moderních webových technologií. 
+	Tento projekt jsem si vybral proto, abych se něco přiučil tomu, jak se pracuje na webu s 3D grafikou a abych se naučil dostatečně ovládat framework Django.
 	
-	\noindent Proto prosím berte na vědomí, že postupy v mé aplikaci mnohdy nemusí zcela vyhovovat zažitým praktikám, občas se i vyskytuje malinké množství duplicitního kódu, který samozřejmě v žádné správně naprogramované aplikaci není úplně žádoucí. Stejně tak nemám do hloubky prostudované frameworky, které jsem k vývoji použil. Je tudíž možné, že udělám nějaký překlep nebo i něco špatně interpretuji.
+	\vspace*{12pt}
 	
-	%Tipy k psaní úvodu
-	%Je povinný, nadpis neměňte, rozsah - max. 1 strana. 
-	%Tato část práce obsahuje: 
-	%* náhled do řešené problematiky, zdůvodnění volby problematiky, 
-	%* předem definované cíle práce, 
-	%* motivaci pro další čtení textu včetně stručného uvedení obsahu následujících kapitol 
+	\noindent Cílem práce bylo navrhnout a implementovat funkční systém, který uživatelům poskytne úložiště pro jejich digitální tvorbu a zároveň jim umožní modely prezentovat v interaktivním 3D vieweru. Hlavní myšlenka byla, aby si uživatelé mohli mezi sebou sdílet své 3D modely a navzájem si tak pomáhat na svých vlastních 3D projektech.
 	
+	\vspace*{12pt}
 	
-	\chapter{Využité technologie}
-	
-	Tato kapitola obsahuje podrobný popis technologií, které byly k projektu \textbf{FreeVat} využity. Jsou to jak technologie, co se starají o vzhled, tak i ty, co jsou zodpovědné za vnitřní logiku i běh aplikace. Všechny zdroje jsou uvedeny na konci dokumentace v sekci \textbf{Zdroje}.
-	
-	\section{Front-end}
-	
-	V této sekci jsou popsány technologie využité při vývoji front-endové části aplikace, která tvoří rozhraní pro interakci s uživatelem. Základním stavebním kamenem je kombinace jazyků \textbf{HTML, CSS a JavaScriptu}, doplněná o framework \textbf{Tailwind CSS} pro efektivní tvorbu moderního a responzivního designu. Klíčovou roli zde hraje knihovna \textbf{Three.js}, která do prostředí webového prohlížeče integruje pokročilou 3D grafiku, zatímco o vizuální prvky a grafické podklady se postaral software \textbf{Adobe Photoshop}. Cílem této části je objasnit výběr těchto nástrojů a jejich přínos pro výslednou vizuální podobu a funkčnost uživatelského prostředí.
-	
-	\vspace*{1.5cm}
-	
-	\subsection{Tailwind CSS}
-	
-	Při stylování stránek jsem se rozhodl využít framework Tailwind CSS. Je lepší než klasické CSS, protože využívá tzv. \textbf{utility-first}, což jsou předpřipravené třídy, které lze spojovat a ušetřit tak veliké množství kódu.
-	
-	\begin{figure}[H] % [H] se snaží udržet obrázek PŘESNĚ ZDE. Pokud to nejde, zkus [hbt!]
-		\centering % Vycentruje celý blok na stránce
-		
-		% --- PRVNÍ OBRÁZEK VLEVO ---
-		\begin{subfigure}[b]{0.48\textwidth} % Šířka bloku je 48% stránky
-			\centering
-			% ZDE NAHRAĎ CESTU K SOUBORU:
-			\includegraphics[width=\textwidth]{img/css_example.png}
-			\caption{Klasické CSS styly} % Malý popisek (a)
-			\label{fig:levy-obrazek}
-		\end{subfigure}
-		\hfill % Pružná mezera mezi obrázky
-		% --- DRUHÝ OBRÁZEK VPRAVO ---
-		\begin{subfigure}[b]{0.48\textwidth} % Šířka bloku je 48% stránky
-			\centering
-			% ZDE NAHRAĎ CESTU K SOUBORU:
-			\includegraphics[width=\textwidth]{img/tailwind_example.png}
-			\caption{Tailwind "utility-first"} % Malý popisek (b)
-			\label{fig:pravy-obrazek}
-		\end{subfigure}
-	\end{figure}
-	%%%%% KONEC BLOKU S OBRÁZKY %%%%%
+	\noindent Tato dokumentace popisuje do detailu vývoj aplikace FreeVat. Jsou zde zahrnuty použité technologie, databázové návrhy a všechny aspekty vytváření. Níže můžete taky najít pár již existujících webů, které fungovaly jako taková předloha pro můj projekt. Na závěr je přidáno vlastní sebehodnocení, kde vypisuji nedostatky aktuální verze aplikace a možné návrhy pro zlepšení.
 	
 	\clearpage
-	
-	\subsection{Three.js}
-	
-	Klíčovou roli v aplikaci hraje Three.js. Je to populární open-source knihovna, která výrazně zjednodušuje tvorbu interaktivní 3D grafiky přímo v prohlížeči. Funguje jako nadstavba nad rozhraním WebGL, což umožňuje plně využít výkon grafické karty pro hardwarově akcelerované renderování v reálném čase.
-	
-	\begin{figure}[H]
-		\includegraphics[width=\textwidth]{img/threejs_code.png}
-		\caption*{Ukázka kódu s použitím Three.js}
-	\end{figure}
-	
-	\vspace*{1cm}
-	
-	\subsection{Adobe Photoshop 2026}
-	
-	Ačkoliv je Photoshop primárně rastrový editor, je možné v něm tvořit i nějaké to jednoduché \textbf{SVG}. V tomto programu byly vytvořeny \textbf{vlajky a loga aplikace}.
-	
+	\thispagestyle{empty} % Stránka bude úplně prázdná (bez záhlaví/zápatí)
+	\phantom{.} % Neviditelný znak, aby LaTeX stránku nevynechal jako prázdnou
 	\clearpage
 	
-	\section{Back-end}
 	
-	Tato sekce se obsahuje popis technologií při návrhu a implementaci back-endové části aplikace, která zajišťuje logiku systému a správu dat. Hlavním pilířem je framework Django - robustní základ pro serverovou část, doplněný o nástroje Crispy Forms pro pokročilé zpracování formulářů a Rosetta pro zajištění vícejazyčného rozhraní. Pro bezpečné a výkonné ukládání informací byl zvolen databázový systém PostgreSQL, zatímco integraci externích služeb a bezpečné přihlašování zajišťuje protokol OAuth. Celý vývojový proces a efektivní sestavení aplikace (buildování) pak doplňuje prostředí Node.js spolu s moderním nástrojem Vite.
+	\chapter{Vývoj aplikace}
 	
-	\vspace*{1cm}
+	\section{Existující řešení}
 	
-	\subsection{Django}
+	V současné době se na internetu nachází několik webových stránek, které se specializují na 3D grafiku. Většina z nich ale není zcela dokonalá. Na většině jsou zdarma pouze základní modely a za ty propracovanější si musí uživatel připlatit. Další aplikace zase trpí absencí 3D prohlížeče.
 	
-	Jako základ projektu jsem zvolil framework Django, postavený na čitelném jazyku Python. Díky přístupu „batteries-included“ a integrovanému ORM výrazně urychluje vývoj a zajišťuje vysokou úroveň bezpečnosti proti běžným útokům. Architektura je navržena pro snadnou škálovatelnost a podporuje čistý, pragmatický design celého systému.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=12cm]{img/django.png}
-	\end{figure}
-	
-	\clearpage
-	
-	\subsection{Python knihovny}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=14cm]{img/python_wide.png}
-	\end{figure}
-	
-	\subsubsection{Rosetta}
-	Protože jsem chtěl udělat web ve 3 různých jazycích, potřeboval jsem efektivně vytvářet a spravovat překlady, a na to jsem využil knihovnu Rosetta. Díky této knihovně je možné spravovat překlady přímo v admin panelu jednoduše a přehledně.
+	\noindent Cílem FreeVatu je tyto nedostatky eliminovat a 3D modely distribuovat zadarmo, bez jakýchkoli finančních omezení. Všechny nahrané modely jsou si "rovny", co se týče ceny, a tak např. složitý riggovaný model připravený pro animaci bude na stejné úrovni jako jednoduchý lowpoly asset.
 	
 	\vspace*{1.2cm}
 	
-	\subsubsection{Crispy Forms}
-	Tento balík jsem využil na tvorbu a stylování uživatelských formulářů. Návrh tak šel mnohem rychleji, než kdybych je měl programovat od píky. Za zmínku taky stojí, že pomocí malé knihovničky je možné Crispy Forms propojit s Tailwindem a je možné si tak vytvářet vlastní stylované formuláře, než používat ošklivý vestavěný design.
+	\subsection{Sketchfab}
 	
-	\vspace*{1.2cm}
+	Sketchfab představuje světovou špičku v kvalitě vykreslování 3D obsahu, avšak pro neplatící uživatele je značně omezující. Mezi hlavní nevýhody patří limit na počet nahrání (cca 10 modelů měsíčně) a omezená maximální velikost souborů. Většina klíčových funkcí, jako je soukromý režim nebo pokročilá správa portfolia, je navíc dostupná pouze v rámci nákladného předplatného.
 	
-	\subsubsection{PyYAML}
-	Díky této knihovně jsem databázové dumpy mohl uložit do formátu \textbf{YAML}, který je pro člověka mnohem lépe čitelný než obyčejný \textbf{JSON} a za mě je i spolehlivější.
+	\vspace*{9pt}
 	
-	\clearpage
+	\subsection{TurboSquid}
 	
-	\subsection{PostgreSQL}
-	
-	Django sice má v sobě vestavěnou databázi \textbf{SQLite}, ale ta je hodně omezená a pro větší projekty nevhodná. Proto jsem sáhnul po robustnějším řešení a nainstaloval \textbf{PostgreSQL}, což je velice výkonný \textbf{objektově-relační} databázový systém. Je známý svojí spolehlivostí a integritou dat. A hlavně je open-source, takže zadarmo!
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=3cm]{img/postgresql.png}
-	\end{figure}
-	
-	\subsection{OAuth}
-	
-	\noindent % Zabrání odsazení prvního řádku
-	\begin{minipage}[c]{0.68\textwidth} % Text zabere 75 % šířky
-		OAuth je otevřený protokol, který v aplikaci zajišťuje bezpečné ověřování uživatelů prostřednictvím třetích stran, jako je Google, Facebook nebo GitHub. Díky tomu se uživatelé nemusí starat o hesla a jednoduše se kdykoli přihlásí a odhlásí jedním kliknutím.
-	\end{minipage}
-	\hfill % Pružná mezera mezi textem a logem
-	\begin{minipage}[c]{0.27\textwidth} % Logo zabere 20 % šířky
-		\centering
-		\includegraphics[width=5cm]{img/oauth2.png} % Nahraď svou cestou k logu
-	\end{minipage}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=7.4cm]{img/login.png}
-		\caption*{Přihlašovací formulář}
-	\end{figure}
+	TurboSquid je obří komerční tržiště zaměřené na profesionální prodej 3D modelů. Jeho hlavní nevýhodou je značná složitost rozhraní a silná orientace na zisk, která odrazuje uživatele hledající jednoduchou platformu pro nekomerční sdílení. Postrádá také uživatelsky přívětivý 3D viewer, který by umožnil okamžitou interakci s modelem bez nutnosti nákupu.
 	
 	\clearpage
 	
-	\subsection{Node.js a Vite}
-	Pro integraci technologií \textbf{Tailwind CSS} a \textbf{Three.js} bylo nezbytné zvolit moderní vývojové prostředí schopné efektivně kompilovat zdrojové kódy a styly. Klíčovou roli zde hraje \textbf{Node.js}, který poskytuje runtime prostředí pro buildovací procesy. 
-	\noindent Nástroj \textbf{Vite} zajišťuje extrémně rychlou obsluhu kódu a jeho optimalizaci pro produkční nasazení. Díky technologii Hot Module Replacement (HMR) umožňuje Vite promítat změny v JavaScriptu a CSS okamžitě do prohlížeče, což zásadně zrychluje a zpříjemňuje celý proces vývoje aplikace.
+	\subsection{Thingiverse}
 	
-	\begin{figure}[H] % [H] se snaží udržet obrázek PŘESNĚ ZDE. Pokud to nejde, zkus [hbt!]
-		\centering % Vycentruje celý blok na stránce
+	Thingiverse je přední bezplatná platforma pro sdílení modelů určené k 3D tisku. Jejími slabinami jsou však zastaralé a často pomalé webové rozhraní a technologicky zaostalý 3D prohlížeč. Ten postrádá plynulost a možnosti moderních webových standardů, což ztěžuje kvalitní vizuální prezentaci složitějších modelů.
+	
+	\vspace*{9pt}
+	
+	\subsection{Poliigon}
+	
+	Poliigon je profesionální knihovna textur a assetů, která se však zaměřuje výhradně na prodej vlastního prémiového obsahu. Postrádá jakoukoli možnost pro uživatelské nahrávání či správu vlastních 3D modelů a jeho model funguje na bázi placeného předplatného, což jej činí nevhodným pro bezplatnou komunitní výměnu dat.
+	
+	\clearpage
+	
+	\section{Architektura}
+	
+	\subsection{Front-end}
+	
+	Uživatelské rozhraní jsem vytvořil pomocí standardních technologií \textbf{HTML}, \textbf{CSS} a \textbf{JavaScriptu}. Abych se vyhnul zdlouhavému programování všech komponent od základu a zvýšil efektivitu vývoje, využil jsem moderní a osvědčené knihovny. 
+	
+	\vspace*{6pt}
+	
+	\noindent Pro rychlé stylování a zajištění responzivity jsem zvolil framework \textbf{Tailwind CSS}, který mi umožnil soustředit se na logiku rozhraní místo psaní tisíců řádků CSS kódu. 
+	
+	\vspace*{6pt}
+	
+	\noindent O nejsložitější část, tedy interaktivní vykreslování 3D grafiky, se stará knihovna \textbf{Three.js}. Díky těmto nástrojům je aplikace nejen vizuálně moderní, ale také technicky stabilní a snadno rozšiřitelná.
+	
+	\subsection{Back-end}
+	
+	Celou aplikaci pohání výkonný webový server \textbf{Django}, který se stará o veškerou logiku a nastavení. Zvolil jsem jej pro jeho filozofii „batteries-included“, díky které nabízí integrované funkce jako robustní administraci a správu uživatelů již v základu. Framework automaticky zajišťuje vysokou úroveň zabezpečení proti útokům typu SQL injection či XSS, což výrazně usnadnilo vývoj spolehlivé aplikace.
+	
+	\vspace*{6pt}
+	
+	\noindent Pro ukládání dat jsem využil \textbf{PostgreSQL}, což je výkonný a spolehlivý relační databázový systém. Díky intuitivnímu \textbf{ORM} frameworku Django bylo možné efektivně manipulovat s daty přímo v jazyce Python. Přihlašování a registrace jsou řešeny skrze protokol \textbf{OAuth}, který uživatelům umožňuje bezpečné propojení s účty třetích stran.
+	
+	\vspace*{6pt}
+	
+	\noindent I když je jádro aplikace postaveno na Pythonu, vývojový proces doplňuje prostředí \textbf{Node.js} a nástroj \textbf{Vite}. Tyto technologie slouží k rychlému sestavování (buildování) front-endu (Tailwind CSS a Three.js) a zajišťují okamžitou odezvu při úpravách kódu v reálném čase.
+	
+	\vspace*{18pt}
+	
+	\noindent K rozšíření specifických funkcí backendu jsem využil následující Python balíčky:
+	\vspace*{-6pt}
+	\begin{itemize}
+		\setlength{\itemsep}{1pt}
+		\item \textbf{Rosetta} – nástroj pro snadnou správu překladů a zajištění vícejazyčnosti aplikace.
+		\item \textbf{Crispy Forms} – knihovna pro elegantní tvorbu a stylování uživatelských formulářů.
+		\item \textbf{PyYAML} – parser pro práci s konfiguračními soubory ve formátu YAML.
+	\end{itemize}
+	
+	\clearpage
+	
+	
+	\section{Aplikační struktura}
+	
+	\subsection{Adresářová struktura}
+	
+	Projekt je postaven na frameworku Django a využívá modulární architekturu, kde je logika rozdělena do několika klíčových oblastí. Celková struktura reflektuje snahu o striktní oddělení konfigurace, aplikační logiky a statických souborů.
+	
+	\begin{description}[style=nextline, itemsep=2.2ex, leftmargin=0.5cm]
+		\item[Jádro projektu (\texttt{freevat/})] 
+		Centrální mozek systému. Obsahuje globální nastavení projektu (\texttt{settings.py}), konfiguraci databáze \textbf{PostgreSQL} a hlavní směrování URL adres (\texttt{urls.py}), které deleguje požadavky konkrétním aplikacím.
 		
-		% --- PRVNÍ OBRÁZEK VLEVO ---
-		\begin{subfigure}[b]{0.48\textwidth} % Šířka bloku je 48% stránky
-			\centering
-			% ZDE NAHRAĎ CESTU K SOUBORU:
-			\includegraphics[width=6.5cm]{img/nodejs.png}
-		\end{subfigure}
-		\hfill % Pružná mezera mezi obrázky
-		% --- DRUHÝ OBRÁZEK VPRAVO ---
-		\begin{subfigure}[b]{0.48\textwidth} % Šířka bloku je 48% stránky
-			\centering
-			% ZDE NAHRAĎ CESTU K SOUBORU:
-			\includegraphics[width=5cm]{img/vite.png}
-		\end{subfigure}
+		\item[Uživatelská aplikace (\texttt{users/})] 
+		Funkční jádro portálu zajišťující správu uživatelů a 3D modelů. Zahrnuje databázové modely (\texttt{models.py}), aplikační logiku (\texttt{views.py}) a validační mechanismy (\texttt{forms.py}, \texttt{validators.py}) pro bezpečné nahrávání dat.
+		
+		\item[Statická data a šablony (\texttt{static/}, \texttt{templates/}, \texttt{media/})] 
+		Logické oddělení obsahu pro vyšší bezpečnost a výkon:
+		\begin{itemize}[itemsep=0.5ex, topsep=0.5ex]
+			\item \textbf{Static:} Soubory pro frontend (framework \textbf{Tailwind}, knihovna \textbf{Three.js}).
+			\item \textbf{Templates:} HTML šablony využívající systém dědičnosti pro sjednocení designu.
+			\item \textbf{Media:} Izolované úložiště pro 3D modely nahrané uživateli, oddělené od kódu aplikace.
+		\end{itemize}
+		
+		\item[Konfigurace a vývojové nástroje] 
+		Kořenový adresář obsahuje nastavení pro \textbf{Vite} (sestavení skriptů) a \textbf{Tailwind CSS}. Soubor \texttt{.env} bezpečně izoluje citlivé API klíče a přístupové údaje k databázi mimo zdrojový kód.
+	\end{description}
+	
+	% Definice barev (vlož do preambule nebo před forest)
+	\definecolor{fldColor}{RGB}{0, 102, 204} % Modrá pro složky
+	\definecolor{rootColor}{RGB}{153, 0, 0} % Červená pro kořen
+	\definecolor{fileColor}{HTML}{D35400}   % Tmavší oranžová pro soubory
+	
+	\begin{forest}
+		for tree={
+			font=\ttfamily,
+			grow'=0,
+			child anchor=west,
+			parent anchor=south,
+			anchor=west,
+			calign=first,
+			edge path={
+				\noexpand\path [draw, \forestoption{edge}]
+				(!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+			},
+			before typesetting nodes={
+				if n=1 {insert before={[,phantom]}} {}
+			},
+			fit=band,
+			before computing xy={l=15pt},
+		}
+		[{\textcolor{rootColor}{\textbf{FreeVat}}}
+		[{\textcolor{fldColor}{\textbf{freevat/}}} --- Hlavní aplikace 
+		[{\textcolor{fileColor}{\textbf{settings.py}}} --- Hlavní konfigurace celého projektu]
+		[{\textcolor{fileColor}{\textbf{admin.py}}} --- Konfigurace administrace]
+		[{\textcolor{fileColor}{\textbf{urls.py}}} --- Deklarace pro routy]
+		[{\textcolor{fileColor}{\textbf{views.py}}} --- Definice pro routy]
+		[{\textcolor{fileColor}{\textbf{validators.py}}} --- Validace dat ve formuláři]
+		[{\textcolor{fileColor}{\textbf{models.py}}} --- Základní databázové modely]
+		[{\textcolor{fileColor}{\textbf{forms.py}}} --- Formuláře projektu]
+		]
+		[{\textcolor{fldColor}{\textbf{users/}}} --- Aplikace pro správu uživatelů
+		[{\textcolor{fldColor}{\textbf{migrations/}}} --- Migrační soubory databáze]
+		[{\textcolor{fileColor}{\textbf{admin.py}}} --- Konfigurace administrace pro uživatele]
+		[{\textcolor{fileColor}{\textbf{models.py}}} --- Definice databázových modelů]
+		[{\textcolor{fileColor}{\textbf{tests.py}}} --- Testovací funkce pro ověření logiky]
+		[{\textcolor{fileColor}{\textbf{urls.py}}} --- Lokální směrování URL aplikace]
+		[{\textcolor{fileColor}{\textbf{views.py}}} --- Funkce a logika pro zpracování požadavků]
+		]
+		[{\textcolor{fldColor}{\textbf{database/}}} --- Základní databázové tabulky]
+		[{\textcolor{fldColor}{\textbf{locale/}}} --- {Soubory s překlady (balíček Rosetta)}]
+		[{\textcolor{fldColor}{\textbf{media/}}} --- Ukládání všech nahraných databázových souborů]
+		[{\textcolor{fldColor}{\textbf{static/}}} --- {Statické soubory (CSS, JS, obrázky)}]
+		[{\textcolor{fldColor}{\textbf{templates/}}} --- Globální HTML šablony aplikace]
+		[{\textcolor{fileColor}{\textbf{.env}}} --- Konfigurační soubor s přístupovými API klíči]
+		[{\textcolor{fileColor}{\textbf{package.lock}}} --- Seznam JS závislostí]
+		[{\textcolor{fileColor}{\textbf{manage.py}}} --- Hlavní skript pro správu Django projektu]
+		[{\textcolor{fileColor}{\textbf{requirements.txt}}} --- Seznam Python závislostí]
+		[{\textcolor{fileColor}{\textbf{tailwind.config.js}}} --- Konfigurace Tailwind CSS]
+		[{\textcolor{fileColor}{\textbf{vite.config.mjs}}} --- Nastavení nástroje Vite pro front-end]
+		]
+	\end{forest}
+	
+	
+	\subsection{Databázová struktura}
+	
+	Databázové schéma aplikace je realizováno v relačním databázovém systému \textbf{PostgreSQL} s využitím nástroje \textit{Django ORM} (\textit{Object-Relational Mapping}). Tento přístup umožňuje abstrakci databázové vrstvy a přehlednou práci s daty na úrovni aplikačních objektů. Návrh databáze reflektuje potřebu efektivní správy 3D modelů, jejich metadat a vazeb na uživatelský obsah.
+	
+	\begin{description}[style=nextline, itemsep=2.2ex, leftmargin=0.5cm]
+		\item[Hlavní datový objekt (\texttt{Model3D})]
+		Ústřední entita databázové struktury reprezentující jednotlivé 3D modely nahrané uživateli. Uchovává základní metadata, jako je název, popis, čas nahrání a poslední aktualizace, a zároveň obsahuje odkazy na fyzické soubory modelu a jeho náhledový obrázek. Každý model je jednoznačně svázán se svým autorem, což umožňuje správu obsahu a kontrolu přístupu.
+		
+		\item[Rozšiřující metadata a klasifikace]
+		Databázová struktura je doplněna o podpůrné datové části, které zajišťují kategorizaci modelů, evidenci technických vlastností a podporu různých formátů a softwarových nástrojů. Toto členění umožňuje přehledné filtrování obsahu a správnou interpretaci nahraných dat bez nutnosti zatěžovat základní výpisy detailními informacemi.
+		
+		\item[Uživatelský obsah a interakce]
+		Součástí návrhu je podpora doplňkového obsahu, jako jsou obrázky galerií a textové příspěvky uživatelů. Tato data rozšiřují prezentaci 3D modelů a podporují komunitní charakter aplikace, aniž by narušovala strukturu hlavního datového modelu.
+		
+		\item[Správa souborových dat]
+		Binární data nejsou ukládána přímo do databáze, ale do souborového systému serveru. Databáze uchovává pouze relativní cesty k těmto souborům. Struktura adresářů je generována dynamicky pomocí pomocných funkcí využívajících normalizovaný název modelu, což zajišťuje přehlednou, konzistentní a snadno udržovatelnou organizaci uložených dat.
+	\end{description}
+	
+	\clearpage
+	
+	\subsection{Návrhový diagram databáze}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/database_structure.png}
 	\end{figure}
 
+	\clearpage
+	
+	\subsection{Příprava prostředí a konfigurace}
+	Vývoj aplikace započal vytvořením izolovaného virtuálního prostředí pomocí modulu \texttt{venv}, což umožnilo striktní správu verzí knihoven \texttt{Django}, \texttt{psycopg2} a \texttt{python-dotenv}. Klíčovým úkolem v počáteční fázi byla parametrizace souboru \texttt{settings.py}, kde byla logika konfigurace rozdělena mezi statické definice frameworku a dynamické proměnné prostředí.
+	
+	\noindent Namísto explicitního zápisu citlivých údajů přímo do zdrojového kódu jsem implementoval systém načítání konfigurace ze souboru \texttt{.env}. Tento přístup zajišťuje vysokou úroveň zabezpečení a snadnou přenositelnost projektu mezi vývojovým a produkčním serverem. Hlavní důraz byl kladen na:
+	
+	\begin{itemize}
+		\item \textbf{Abstrakci databázové vrstvy:} Konfigurace slovníku \texttt{DATABASES} využívá ovladač pro \textbf{PostgreSQL}. Veškeré přístupové údaje jsou injektovány skrze metodu \texttt{os.getenv()}, což eliminuje riziko úniku hesel při verzování kódu.
+		\item \textbf{Správu statického obsahu:} Definice cest pro \texttt{STATIC} a \texttt{MEDIA} soubory byla navržena tak, aby reflektovala produkční nasazení, kde jsou uživatelská data (3D modely) striktně oddělena od aplikační logiky.
+		\item \textbf{Vite workflow:} Propojení s nástrojem \textit{Vite} vyžadovalo specifickou úpravu nastavení, aby aplikace v režimu \texttt{DEBUG} správně směrovala požadavky na \textit{Vite dev server}, zatímco v produkci využívala optimalizované buildy.
+	\end{itemize}
+	
+	\vspace*{16pt}
+	
+	\begin{lstlisting}[style=Python, caption={Implementace zabezpečeného připojení k databázi v 'settings.py'}]
+		# Použití PostgreSQL s využitím proměnných prostředí
+		DATABASES = {
+			'default': {
+				'ENGINE': 'django.db.backends.postgresql',
+				'NAME': os.getenv("POSTGRES_DB"),
+				'USER': os.getenv("POSTGRES_USER"),
+				'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
+				'HOST': os.getenv("POSTGRES_HOST"),
+				'PORT': os.getenv("POSTGRES_PORT"),
+			}
+		}
+	\end{lstlisting}
+	
+	\clearpage
+	
+	\subsection{Backendová logika a správa dat}
+	Jádro backendové logiky spočívá v definici datových struktur pomocí Django ORM. Tento přístup mi umožnil definovat databázové tabulky jako Python třídy, což výrazně zjednodušilo manipulaci s daty a zajistilo konzistenci mezi aplikačním kódem a relační databází \textbf{PostgreSQL}. Fyzická synchronizace struktur byla realizována skrze systém migrací, které automaticky generují SQL příkazy pro úpravu schématu.
+	
+	\noindent Při návrhu třídy \texttt{Model3D} jsem se zaměřil na efektivní propojení různých datových typů a vazeb:
+	
+	\begin{itemize}
+		\item \textbf{Relace a cizí klíče:} Použití \texttt{ForeignKey} umožňuje logické propojení modelů s kategoriemi a konkrétními uživateli. Definice \texttt{on\_delete=models.CASCADE} u vazby na uživatele zajišťuje referenční integritu – při smazání účtu dojde k automatickému odstranění jeho modelů.
+		\item \textbf{Správa binárních dat:} Pole \texttt{FileField} a \texttt{ImageField} neukládají soubory přímo do databáze, ale spravují cesty v souborovém systému. Parametr \texttt{upload\_to} využívá dynamické funkce pro organizaci nahraného obsahu do přehledné adresářové struktury.
+	\end{itemize}
+	
+	\vspace*{16pt}
+	
+	
+	
+	\begin{lstlisting}[style=Python, caption={Definice stěžejní třídy 'Model3D' v 'models.py'}]
+		class Model3D(models.Model):
+		name = models.CharField(max_length=50, verbose_name="Name")
 		
-	\chapter{Vývoj}
-	V této kapitole jsou podrobně rozepsány všechny verze projektu. V každé je uvedeno, co bylo přidáno, co odebráno nebo co opraveno.
-	
-	\clearpage
-	
-	\section{Indev 0.0.1}
-	
-	V červnu létě 2025 jsem udělal ten úplně první krok - vytvořil jsem repozitář na GitHubu. Hned nato jsem přidal soubor \textbf{README.md}, do kterého jsem vypsal všechny informace o projektu - popis, závislosti, cíle...
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{img/readme.png}
-	\end{figure}
-	
-	\noindent Vzápětí jsem zapnul \textbf{PyCharm}, zprovoznil \textbf{virtuální prostředí} a nainstaloval Django aplikaci.
-	\noindent Během toho jsem přemýšlel i nad jménem. Napadlo mě více možností, ale vyhrál \textbf{FreeVat}.
-	\noindent Nakonec jsem nainstaloval pár nezbytných závislostí.
-	
-	\clearpage
-	
-	\section{Indev 0.0.5}
-	
-	Původně jsem místo \textbf{Tailwindu} používal \textbf{Bootstrap}, ale později jsem zjistil, že je omezenější a není tak flexibilní jako \textbf{Tailwind}.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{img/bootstrap_tailwind.png}
-	\end{figure}
-	
-	\noindent Touto dobou už jsem pracoval na záhlaví, navigačním menu a zápatí webu. Dokonce se mi podařilo zprovoznit tlačítko pro přepínání jazyků, a tak už tehdy byl web v Češtině, Angličtině a Němčině. Přepínání je zprovozněno pomocí JavaScriptu.
-	
-	\vspace*{1cm}
-	
-	\begin{figure}[H]
-		\centering
+		category = models.ForeignKey(Category, on_delete=models.SET_NULL,
+		null=True, blank=False, verbose_name="Category")
 		
-		\begin{subfigure}[b]{0.28\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{img/cz.png}
-		\end{subfigure}% <--- TENTO ZNAK JE DŮLEŽITÝ (odstraní mezeru)
-		\hfill 
-		\begin{subfigure}[b]{0.28\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{img/gb.png}
-		\end{subfigure}%
-		\hfill
-		\begin{subfigure}[b]{0.28\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{img/de.png}
-		\end{subfigure}
-	\end{figure}
+		description = models.TextField(blank=True, null=True, 
+					verbose_name="Description")
+		
+		model = models.FileField(upload_to="models/models/", 
+			verbose_name="3D model")
+		thumbnail = models.ImageField(upload_to=thumbnail_upload_path,
+			 verbose_name="Model preview image")
+		
+		user = models.ForeignKey(settings.AUTH_USER_MODEL, 
+		on_delete=models.CASCADE, verbose_name="Creator")
+	\end{lstlisting}
 	
 	\clearpage
 	
-	\section{Indev 0.0.7}
+	\subsection{Zpracování a validace souborů}
+	Tato část tvoří bezpečnostní „filtr“ aplikace, který zajišťuje integritu dat a stabilitu systému. Proces validace je v souboru \texttt{validators.py} rozdělen do dvou fází, které chrání server před nevalidními požadavky. První fáze se zaměřuje na striktní kontrolu vstupních parametrů:
 	
-	V říjnu jsem dokončil záhlaví, navigaci a zápatí. Přidal jsem dokonce vyhledávací lištu (která ovšem zatím není funkční :)
+	\begin{itemize}
+		\item \textbf{Syntaktická kontrola:} Pomocí regulárních výrazů (\texttt{re.match}) je ověřována integrita názvu modelu. Jsou povoleny pouze alfanumerické znaky, což eliminuje riziko \textit{XSS injection} skrze názvy souborů.
+		\item \textbf{Datové limity:} Jak ukazuje kód níže, je implementován limit 100 MB na velikost souboru. Tato restrikce předchází \textit{DoS} útokům a zajišťuje plynulost následného vykreslování v prohlížeči.
+	\end{itemize}
 	
-	\begin{figure}[H]{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/navbar.png}
-	\end{figure}
+	\noindent Druhou fází je \textbf{automatický výpočet technických dat}. Po nahrání skript v Pythonu otevře nahraný model a pomocí parsování řádků (identifikace prefixů \texttt{v} a \texttt{f}) vypočítá počet vrcholů a polygonů. Výsledné hodnoty jsou v rámci jedné transakce uloženy do tabulky \texttt{Data}, čímž se automatizuje generování specifikací bez zásahu uživatele. 
 	
-	\begin{figure}[H]{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/footer.png}
-	\end{figure}
+	\vspace*{9pt}
 	
-	\vspace*{1.2cm}
+	\noindent Organizace dat na disku je ošetřena funkcí využívající \texttt{slugify}. Ta transformuje uživatelské názvy na normalizované řetězce (např. „Můj Model“ na \texttt{muj-model}), čímž zajišťuje kompatibilitu URL adres napříč různými operačními systémy a prohlížeči.
 	
-	\noindent Dokonce v té době proběhl první pokus o implementaci 3D prohlížeče na web a dokonce se to i podařilo, ačkoliv to nefungovalo tak, jak by mělo.
-	
-	\begin{figure}[H]{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/npm_run_dev.png}
-	\end{figure}
-	
-	\clearpage
+	\vspace*{24pt}
 	
 	
-	\section{Indev 0.0.9}
 	
-	Zprovoznění formulářů pro registraci nových účtů a přihlašování se ke stávajícím účtům. Funguje jak klasické přihlášení, tak i OAuth přes Google a GitHub.
-	
-	\begin{figure}[H]{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/profile.png}
-	\end{figure}
-	
-	\pagebreak
-	
-	\section{Pre-Alpha 0.1.0}
-	
-	\noindent Tohle byl docela velký update, protože vyšla první Pre-Alpha. Podařilo se mi zprovoznit formulář pro nahrávání 3D modelů, které se nyní krásně ukládají do databáze i se všemi daty.
-	
-	\begin{figure}[H]{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/upload2.png}
-	\end{figure}
+	\begin{lstlisting}[style=Python, caption={Logika validace názvu a velikosti souboru v 'validators.py'}]
+		# Validace nazvu (pismena, cisla, mezery, 3-50 znaku)
+		def validate_model_name(value):
+		if not re.match(r'^[\w ]+$', value):
+		raise ValidationError(_("Can only contain letters, numbers, and _"))
+		if len(value) < 3 or len(value) > 50:
+		raise ValidationError(_("Must be 3-50 characters long"))
+		
+		# Limit velikosti modelu (max 100 MB)
+		def validate_model_file_size(value):
+		limit = 100 * 1024 * 1024
+		if value.size > limit:
+		raise ValidationError(_("File is too large (max 100 MB)"))
+	\end{lstlisting}
 	
 	\clearpage
 	
-	\noindent Taky 3D viewer se mi podařilo plně zprovoznit. Nyní je možné model posouvat, přibližovat a rotovat.
+	\subsection{Implementace 3D prohlížeče}
+	Jádrem frontendu je interaktivní prohlížeč postavený na knihovně \textbf{Three.js}. Integrace probíhá vložením HTML5 elementu \texttt{<canvas>} do Django šablony, který slouží jako vykreslovací plocha pro \textit{WebGL} kontext. Hlavní výzvou implementace byla automatizace přípravy scény pro modely různých rozměrů a orientací.
 	
-	\begin{figure}[H]{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/3d_viewer.png}
-	\end{figure}
+	\noindent Proces vykreslování a přípravy modelu probíhá v těchto fázích:
+	
+	\begin{itemize}
+		\item \textbf{Inicializace prostředí:} Nastavení \texttt{Scene}, \texttt{PerspectiveCamera} a \texttt{WebGLRenderer}. Aby scéna působila realisticky, je využita kombinace \texttt{AmbientLight} pro základní prosvětlení stínů a \texttt{DirectionalLight}, které simuluje sluneční svit a definuje objem objektu.
+		\item \textbf{Asynchronní loading:} Pomocí \texttt{OBJLoader} je model načten z URL adresy poskytnuté backendem. Během tohoto procesu je JavaScriptem sledován stav stahování, což umožňuje zobrazit uživateli vizuální zpětnou vazbu o průběhu nahrávání.
+		\item \textbf{Normalizace a bounding box:} Jak ukazuje kód níže, po načtení je nutné vypočítat ohraničující box (\textit{Bounding Box}) modelu. Tento výpočet je klíčový pro automatické vycentrování geometrie do počátku souřadnic $(0, 0, 0)$ a dynamické nastavení vzdálenosti kamery podle velikosti objektu.
+	\end{itemize}
+	
+	\vspace*{16pt}
+	
+	\begin{lstlisting}[style=JavaScript, caption={Algoritmus pro vycentrování modelu a dynamické nastavení kamery}]
+		/* Výpočet bounding boxu (rozměrů) objektu */
+		const box = new THREE.Box3().setFromObject(object);
+		const center = box.getCenter(new THREE.Vector3());
+		const size = box.getSize(new THREE.Vector3());
+		
+		object.position.x -= center.x;
+		object.position.y -= center.y;
+		object.position.z -= center.z;
+		
+		const maxDim = Math.max(size.x, size.y, size.z);
+		const distance = maxDim === 0 ? 5 : maxDim * 1.5;
+		
+		camera.position.set(distance, distance * 0.6, distance);
+		camera.lookAt(0, 0, 0);
+	\end{lstlisting}
 	
 	\clearpage
 	
-	\section{Alpha 1.0.0}
+	\subsection{Frontend a uživatelské rozhraní}
+	Vzhled aplikace je definován pomocí \textbf{Tailwind CSS}. Tento \textit{utility-first} framework mi umožnil tvořit moderní rozhraní přímo v HTML šablonách, což výrazně urychlilo proces stylování komplexních komponent. Design je navržen v moderním tmavém motivu, který dává vyniknout barvám 3D modelů a snižuje únavu očí uživatele.
 	
-	A je to tady! Vyšla historicky první Alpha verze mého projektu. V této fázi je připravená k používání - soubory se správně nahrávají, 3D zobrazení funguje, uživatelé můžou stahovat modely a psát komentáře
+	\noindent Při návrhu uživatelského rozhraní (UI) byl kladen důraz na čistotu a intuitivní ovládání:
 	
+	\begin{itemize}
+		\item \textbf{Struktura navigace:} Horní lišta obsahuje vyhledávací pole a logické rozdělení do kategorií (Modely, Formáty, Software, Textury).
+		\item \textbf{Karty modelů (Grid):} Seznam modelů je organizován do responzivní mřížky. Každá karta obsahuje náhledový obrázek, název modelu, indikaci formátu (např. GLB) a systém hodnocení. Pro přihlášené autory jsou přímo na kartě dostupná akční tlačítka pro editaci a mazání (\texttt{EDIT}, \texttt{DELETE}).
+		\item \textbf{Vite Pipeline:} Celý frontend je obsluhován nástrojem \textit{Vite}. Ten během vývoje zajišťuje bleskovou obnovu stránky (\textit{HMR}) a při finálním buildu optimalizuje JavaScript a CSS pro minimální datovou náročnost a rychlé vykreslení interaktivních prvků.
+	\end{itemize}
 	
-	\noindent Domovská obrazovka je hezky nadesignovaná
+	\vspace*{16pt}
 	
-	\begin{figure}[H]{\textwidth}
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/home.png}
 	\end{figure}
 	
+	\vspace*{-16pt}
 	
-	\noindent Uživatelé mohou upravovat nebo mazat své nahrané modely
-	
-	\begin{figure}[H]{\textwidth}
+	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{img/user_models.png}
+		\includegraphics[width=\textwidth]{img/model_list.png}
+		\caption{Uživatelské rozhraní domovské stránky a správy vlastních modelů}
 	\end{figure}
 	
 	\clearpage
 	
-	\noindent O modelu se zobrazují technické informace, jako je počet polygonů a vrcholů, velikost souboru a formát modelu. Zobrazují se i čtyři náhledové obrázky.
+	\subsection{Bezpečnost a oprávnění}
+	Zabezpečení aplikace FreeVat je navrženo víceúrovňově s využitím robustního autentizačního systému frameworku Django. Přístup k manipulaci s daty, jako je nahrávání (\textit{Upload}), editace nebo mazání modelů, je striktně omezen na autentizované uživatele pomocí dekorátorů \texttt{@login\_required} a kontrolu vlastnictví objektu (\textit{Object-level permissions}). Anonymní návštěvníci tak mají přístup pouze k prohlížení veřejného obsahu, což eliminuje riziko neautorizovaných zásahů do databáze.
 	
-	\begin{figure}[H]{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/model_detail.png}
-	\end{figure}
-	
-	\clearpage
-	
-	\chapter{Splněné a nesplněné cíle}
-	
-	\vspace*{0.5cm}
-	
-	\section{Splněno}
+	\noindent Klíčové bezpečnostní mechanismy zahrnují:
 	
 	\begin{itemize}
-		\item ukládání modelů do databáze i s jejich daty
-		\item provádění základních CRUD operací s modely
-		\item prohlížení modelů ve 360°
-		\item posouvání, přibližování a otáčení modelů
-		\item registrace, přihlašování a mazání uživatelských účtů
-		\item zobrazení základních informací o modelech
-		\item vytvoření vícejazyčné webové aplikace
-		\item řazení modelů podle názvu, data nahrání a velikosti
+		\item \textbf{OAuth 2.0 Integrace:} Pro zvýšení uživatelské bezpečnosti jsem implementoval přihlašování přes poskytovatele Google a GitHub. Tento přístup umožňuje uživatelům bezpečné přihlášení bez nutnosti sdílet heslo přímo s aplikací FreeVat.
+		\item \textbf{CSRF ochrana:} Každý formulář (např. při nahrávání modelu nebo psaní komentáře) je chráněn unikátním tokenem. To zabraňuje útokům typu \textit{Cross-Site Request Forgery}, kdy by útočník mohl zneužít identitu přihlášeného uživatele k podvržení požadavku.
+		\item \textbf{Správa proměnných prostředí:} Jak ukazuje výpis níže, veškeré citlivé údaje (API klíče k OAuth, přístupy k databázi a \texttt{SECRET\_KEY}) jsou striktně odděleny od zdrojového kódu v souboru \texttt{.env}. Tento soubor je v rámci verzovacího systému \texttt{git} ignorován, což zamezuje úniku přístupových údajů na veřejná úložiště.
 	\end{itemize}
 	
-	\vspace*{0.3cm}
+	\vspace*{32pt}
 	
-	\section{Nesplněno/Neimplementováno}
+	\begin{lstlisting}[style=Python, caption={Struktura konfiguračního souboru '.env' pro bezpečné uložení API klíčů a parametrů}]
+		# Google OAuth konfigurace
+		OAUTH_GOOGLE_CLIENT_ID=<your_google_client_id>
+		OAUTH_GOOGLE_SECRET=<your_google_client_secret>
+		
+		# GitHub OAuth konfigurace
+		OAUTH_GITHUB_CLIENT_ID=<your_github_client_id>
+		OAUTH_GITHUB_SECRET=<your_github_client_secret>
+		
+		# Základní nastavení Django
+		DJANGO_SECRET_KEY=<your_django_secret_key>
+		DJANGO_DEBUG=True
+		ALLOWED_HOSTS=localhost,127.0.0.1
+	\end{lstlisting}
 	
-	\begin{itemize}
-		\item podpora formátů 3D softwarů
-		\item plně responzivní design na PC, tabletu i mobilu
-		\item vyhledávání 3D modelů podle názvu
-		\item zdockerování aplikace
-		\item a samozřejmě mnoho dalšího
+	\clearpage
+	
+	\chapter{Zhodnocení projektu}
+	
+	\section{Dosažené cíle a funkčnost}
+	Během vývoje se podařilo úspěšně realizovat jádro systému, které splňuje požadavky na moderní webovou aplikaci pro správu digitálního obsahu. Mezi klíčové úspěchy patří:
+	
+	\begin{itemize}[itemsep=0.8ex]
+		\item \textbf{Robustní backend a správa dat:} Byla implementována kompletní logika \textit{CRUD} (Create, Read, Update, Delete), která uživatelům umožňuje plnou kontrolu nad jejich modely. Integrace s databází \textbf{PostgreSQL} zajišťuje stabilitu a integritu uložených metadat.
+		\item \textbf{Interaktivní 3D vizualizace:} Podařilo se vytvořit plynulé prostředí pro prohlížení 3D objektů. Prohlížeč postavený na \textbf{Three.js} podporuje intuitivní transformace (rotace, zoom, pan) a poskytuje uživateli okamžitou odezvu bez nutnosti instalace dalších doplňků.
+		\item \textbf{Uživatelská správa a bezpečnost:} Systém obsahuje plnohodnotnou autentizaci. Kromě standardních metod byla úspěšně integrována podpora pro \textit{OAuth}, což zvyšuje uživatelský komfort při přihlašování.
+		\item \textbf{Internacionalizace:} Aplikace je plně lokalizována do českého a anglického jazyka, což rozšiřuje její potenciální dosah na mezinárodní komunitu tvůrců.
+	\end{itemize}
+	
+	\clearpage
+	
+	\section{Limity a neimplementované funkce}
+	I přes funkční stav aplikace existují oblasti, které zůstaly z časových či technických důvodů ve fázi konceptu nebo částečné implementace:
+	
+	\begin{itemize}[itemsep=0.8ex]
+		\item \textbf{Nativní formáty 3D softwaru:} Aktuální verze podporuje standardizované formáty (např. .obj). Přímá podpora proprietárních formátů (jako .blend nebo .max) nebyla realizována z důvodu vysoké náročnosti na serverové konvertory.
+		\item \textbf{Pokročilé vyhledávání:} Systém umožňuje řazení modelů podle několika kritérií, avšak plnotextové vyhledávání podle názvu nebylo v rámci této iterace plně nasazeno.
+		\item \textbf{Kontejnerizace a nasazení:} Plánované „zdockerování“ aplikace bylo odloženo. Aplikace je tak prozatím optimalizována pro běh ve virtuálním prostředí Pythonu, nikoliv v izolovaných kontejnerech.
+	\end{itemize}
+	
+	\vspace*{32pt}
+	
+	
+	\section{Možná vylepšení do budoucna}
+	Projekt FreeVat vnímám jako základ, který lze dále rozvíjet v několika směrech:
+	
+	\begin{itemize}[itemsep=0.8ex]
+		\item \textbf{Automatická optimalizace modelů:} Implementace algoritmu pro automatické zjednodušování geometrie (decimation) při nahrávání příliš komplexních modelů pro web.
+		\item \textbf{Sociální funkce:} Rozšíření systému o možnost sledování oblíbených autorů, systém hodnocení modelů hvězdičkami nebo notifikace o nových komentářích.
+		\item \textbf{Rozšířená realita (AR):} Integrace \textit{WebXR} rozhraní, které by umožnilo uživatelům zobrazit 3D modely v reálném prostoru pomocí kamery mobilního telefonu přímo z webového prohlížeče.
 	\end{itemize}
 	
 	
@@ -786,48 +895,39 @@ oneside,      %% -- odkomentujte, pokud chcete svou práci mít pouze jednostran
 	
 	\noindent Jelikož se jednalo o můj první velký projekt tohoto rozsahu, musel jsem čelit mnoha výzvám, od návrhu databázové struktury až po integraci 3D grafiky v reálném čase. Celý proces vývoje mě naučil efektivně řešit komplexní problémy a propojovat různorodé technologie do jednoho stabilního celku. Aplikace FreeVat je tak výsledkem dlouhodobého učení a představuje funkční základ, který jsem připraven v budoucnu dále rozšiřovat o nové moduly a optimalizace.
 	
+	\vspace*{32pt}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{img/favicon.png} 
+	\end{figure}
+	
 	
 	\begin{thebibliography}{99}
 		
-		\bibitem{htmlSpec}
-		W3C. \textit{HTML Living Standard}. [online]. Dostupné z: \url{https://html.spec.whatwg.org/} [cit. 2025-01-05].
+		\bibitem{djangoDocs}
+		Django Software Foundation. \textit{Dokumentace Django frameworku} [online]. [cit. 2024-12-20]. Dostupné z: \url{https://docs.djangoproject.com/en/5.1/}
 		
-		\bibitem{cssSpec}
-		W3C. \textit{CSS Specifications}. [online]. Dostupné z: \url{https://www.w3.org/Style/CSS/Overview.en.html} [cit. 2025-01-05].
-		
-		\bibitem{javascriptMDN}
-		Mozilla Developer Network. \textit{JavaScript Guide}. [online]. Dostupné z: \url{https://developer.mozilla.org/en-US/docs/Web/JavaScript} [cit. 2025-01-06].
-		
-		\bibitem{threejsDocs}
-		Three.js Authors. \textit{Three.js Documentation}. [online]. Dostupné z: \url{https://threejs.org/docs/} [cit. 2025-01-06].
+		\bibitem{postgresqlDocs}
+		PostgreSQL Global Development Group. \textit{Dokumentace PostgreSQL} [online]. [cit. 2024-12-20]. Dostupné z: \url{https://www.postgresql.org/docs/}
 		
 		\bibitem{tailwindDocs}
-		Tailwind Labs. \textit{Tailwind CSS Documentation}. [online]. Dostupné z: \url{https://tailwindcss.com/docs} [cit. 2025-01-07].
+		Tailwind Labs Inc. \textit{Dokumentace k Tailwind CSS} [online]. [cit. 2024-12-20]. Dostupné z: \url{https://tailwindcss.com/docs/}
 		
-		\bibitem{photoshopDocs}
-		Adobe. \textit{Adobe Photoshop Documentation}. [online]. Dostupné z: \url{https://helpx.adobe.com/photoshop/user-guide.html} [cit. 2025-01-07].
+		\bibitem{allauthDocs}
+		Pennersr. \textit{Dokumentace k Django-Allauth} [online]. [cit. 2024-12-20]. Dostupné z: \url{https://docs.allauth.org/en/latest/}
 		
-		\bibitem{djangoDocs}
-		Django Software Foundation. \textit{Django Documentation}. [online]. Dostupné z: \url{https://docs.djangoproject.com/} [cit. 2025-01-08].
+		\bibitem{threejsDocs}
+		Mr.doob. \textit{Three.js Documentation} [online]. [cit. 2025-01-09]. Dostupné z: \url{https://threejs.org/docs/}
 		
-		\bibitem{djangoI18n}
-		Django Software Foundation. \textit{Internationalization and Localization}. [online]. Dostupné z: \url{https://docs.djangoproject.com/en/stable/topics/i18n/} [cit. 2025-01-08].
+		\bibitem{djangoRosetta}
+		Marco Bonetti. \textit{Django Rosetta Documentation} [online]. [cit. 2025-01-09]. Dostupné z: \url{https://django-rosetta.readthedocs.io/}
 		
 		\bibitem{crispyForms}
-		Django Crispy Forms. \textit{Crispy Forms Documentation}. [online]. Dostupné z: \url{https://django-crispy-forms.readthedocs.io/} [cit. 2025-01-09].
+		Django Crispy Forms. \textit{Django Crispy Forms Documentation} [online]. [cit. 2025-01-09]. Dostupné z: \url{https://django-crispy-forms.readthedocs.io/}
 		
-		\bibitem{postgresDocs}
-		PostgreSQL Global Development Group. \textit{PostgreSQL Documentation}. [online]. Dostupné z: \url{https://www.postgresql.org/docs/} [cit. 2025-01-09].
-		
-		\bibitem{oauthSpec}
-		IETF. \textit{The OAuth 2.0 Authorization Framework}. [online]. Dostupné z: \url{https://datatracker.ietf.org/doc/html/rfc6749} [cit. 2025-01-10].
-		
-		\bibitem{nodejsDocs}
-		OpenJS Foundation. \textit{Node.js Documentation}. [online]. Dostupné z: \url{https://nodejs.org/en/docs} [cit. 2025-01-10].
-		
-		\bibitem{viteDocs}
-		Vite Team. \textit{Vite Documentation}. [online]. Dostupné z: \url{https://vitejs.dev/guide/} [cit. 2025-01-11].
-		
+		\bibitem{htmlSpec}
+		W3C. \textit{HTML Living Standard}. [online]. Dostupné z: \url{https://html.spec.whatwg.org/} [cit. 2025-01-05].
 		
 	\end{thebibliography}
 	
