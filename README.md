@@ -32,6 +32,7 @@ modely, které zde uživatelé nahrají, budou veřejně přístupné a bude si 
 
 ## 🔧Instalace
 - Jak nainstalovat a spustit aplikaci lokálně je uvedeno [zde](docs/INSTALL.md)
+- Videoprezentaci najdete na [tomto odkazu](https://youtu.be/d3qDtdygems?si=ITZSKC820Ejuplzq)
 
 ---
 
